@@ -128,3 +128,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# Password Reset Email Notice
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
