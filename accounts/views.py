@@ -14,7 +14,7 @@ def index(request):
 def logout(request):
     """Log the user out"""
     auth.logout(request)
-    messages.success(request, "You have successfully been logged out!")
+    messages.success(request, "You have been successfully logged out!")
     return redirect(reverse('index'))
 
 def login(request):
@@ -56,9 +56,9 @@ def registration(request):
                                      password=request.POST['password1'])
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered")
+                messages.success(request, "You're registered. Welcome to snAPP!")
             else:
-                messages.error(request, "Unable to register your account at this time")
+                messages.error(request, "Unable to register your account at this time. If this problem persists, contact our adminstrator <insert link>")
     else:
         registration_form = UserRegistrationForm()
     return render(request, 'registration.html', {"registration_form": registration_form})

@@ -2,14 +2,22 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+# from .models import Profile
 
 
+# Login
 class UserLoginForm(forms.Form):
     """Forms to be used to log users in"""
     
     username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
+
+# Registration
+# class ProfileForm(forms.Form):
+#     class Meta:
+#         model = Profile
+#         fields = ['image', 'description']
 
 class UserRegistrationForm(UserCreationForm):
     """Form used to register a new user"""
@@ -26,11 +34,12 @@ class UserRegistrationForm(UserCreationForm):
         model = User
         fields = ['email', 'username', 'password1', 'password2']
     
+    
     def clean_email(self):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
         if User.objects.filter(email=email).exclude(username=username):
-            raise forms.ValidationError(u'Email address must be unique')
+            raise forms.ValidationError(u'This email address is currently registered to another user.')
         return email
     
     def clean_password2(self):
@@ -41,7 +50,7 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError("Please confirm your password")
         
         if password1 != password2:
-            raise ValidationError("Passwords must match")
+            raise ValidationError("Your passwords do not match. Please try again.")
         
         return password2
     

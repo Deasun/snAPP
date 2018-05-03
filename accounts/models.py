@@ -1,20 +1,30 @@
 from django.db import models
-from datetime import date
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
-# User Profile model
-# Once signed-in create edit function
-class UserProfile(models.Model):
-	first_name = models.CharField(max_length=30, blank=True)
-	last_name = models.CharField(max_length=30, blank=True)
-	username = models.CharField(max_length=30)
-	email = models.EmailField()
-	image = models.ImageField(upload_to='images', blank=True)
-	description = models.TextField(blank=True)
-	join_date = models.DateField(default=date.today)
-	password1 = models.CharField(max_length=50)
-	password2 = models.CharField(max_length=50)
 
-	def __str__(self):
-	    return '%s - %s - %s' % (self.username, self.email, self.join_date)
-	   # Test the __str__
-	   # Test blank fields & error returns
+
+
+
+
+
+
+# # Profile model - extra information relating to User Model
+# class Profile(models.Model):
+# 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+# 	image = models.ImageField(upload_to='images', blank=True)
+# 	description = models.TextField(blank=True)
+
+# 	def __str__(self):
+# 	    return self.description
+	    
+# # Profile model created/updated when User instance created/updated
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         Profile.objects.create(user=instance)
+
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
