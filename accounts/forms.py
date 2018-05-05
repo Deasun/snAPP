@@ -1,16 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
+from .models import Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
-from .models import Profile
 
-
-# Login
-class UserLoginForm(forms.Form):
-    """Forms to be used to log users in"""
-    
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
 
 
 # Registration
@@ -27,14 +20,14 @@ class UserRegistrationForm(UserCreationForm):
     
     class Meta:
         model = User
-        fields = ['email', 'username', 'password1', 'password2']
+        fields = ['username', 'email', 'password1', 'password2']
         
     
     def clean_email(self):
         email = self.cleaned_data.get('email')
         username = self.cleaned_data.get('username')
         if User.objects.filter(email=email).exclude(username=username):
-            raise forms.ValidationError(u'This email address is currently registered to another user.')
+            raise forms.ValidationError(u'This email address is currently registered to another snAPP member.')
         return email
     
     def clean_password2(self):
@@ -49,8 +42,15 @@ class UserRegistrationForm(UserCreationForm):
         
         return password2
 
+# Login
+class UserLoginForm(forms.Form):
+    """Forms to be used to log users in"""
+    
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput)
 
-# Edit Profile
+
+# Edit User Profile
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
