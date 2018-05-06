@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -13,7 +13,7 @@ def index(request):
 
 # Register a User
 def registration(request):
-    """Render the registration page"""
+    """Redirect logged user to home page"""
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 
@@ -36,11 +36,6 @@ def registration(request):
     else:
         registration_form = UserRegistrationForm()
     return render(request, 'registration.html', {"registration_form": registration_form})
-
-def user_profile(request):
-    """The user's profile page"""
-    user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
 
 
 # User Login
@@ -68,6 +63,13 @@ def login(request):
         login_form = UserLoginForm()
     
     return render(request, 'login.html', {"login_form": login_form})
+
+
+@login_required
+def user_profile(request):
+    """The user's profile page"""
+    user = User.objects.get(email=request.user.email)
+    return render(request, 'profile.html', {"profile": user})
 
 @login_required
 def logout(request):
