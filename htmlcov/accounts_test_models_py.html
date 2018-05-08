@@ -89,7 +89,7 @@
 <p id="t7" class="stm run hide_run">    <span class="key">def</span> <span class="nam">test_str_representation_and_one_to_one_relationship</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
 <p id="t8" class="stm run hide_run">        <span class="nam">user</span> <span class="op">=</span> <span class="nam">User</span><span class="op">(</span><span class="nam">username</span><span class="op">=</span><span class="str">"Test"</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t9" class="stm run hide_run">        <span class="nam">profile</span> <span class="op">=</span> <span class="nam">Profile</span><span class="op">(</span><span class="nam">user</span><span class="op">=</span><span class="nam">user</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t10" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">assertEqual</span><span class="op">(</span><span class="nam">str</span><span class="op">(</span><span class="nam">profile</span><span class="op">)</span><span class="op">,</span> <span class="str">"Profile of user {}"</span><span class="op">.</span><span class="nam">format</span><span class="op">(</span><span class="nam">user</span><span class="op">.</span><span class="nam">username</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t10" class="stm run hide_run">        <span class="nam">self</span><span class="op">.</span><span class="nam">assertEqual</span><span class="op">(</span><span class="nam">str</span><span class="op">(</span><span class="nam">profile</span><span class="op">)</span><span class="op">,</span> <span class="str">"{}'s profile"</span><span class="op">.</span><span class="nam">format</span><span class="op">(</span><span class="nam">user</span><span class="op">.</span><span class="nam">username</span><span class="op">)</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 
             </td>
         </tr>
@@ -100,7 +100,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-05-05 01:35
+            created at 2018-05-08 12:44
         </p>
     </div>
 </div>
