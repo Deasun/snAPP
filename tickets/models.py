@@ -15,7 +15,7 @@ class Tickets(models.Model):
     ticket = models.CharField(max_length=15, choices=ticket_type, blank=False)
     title = models.CharField(max_length=200, blank=False)
     description = models.TextField(null=True, blank=False)
-    contribution = models.DecimalField(max_digits=6, decimal_places=2, default=5.00)
+    contribution = models.DecimalField(max_digits=6, decimal_places=2, default=9.99, blank=True)
     status = models.CharField(max_length=20, choices=status_set, default=default_status)
     
     def __str__(self):

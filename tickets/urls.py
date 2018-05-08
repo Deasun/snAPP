@@ -4,5 +4,6 @@ from .views import *
 
 
 urlpatterns = [
-    url(r'^create_ticket/$', create_ticket, name="create_ticket"),
+    url(r'^report_bug/$', report_bug, name="report_bug"),
+    url(r'^request_feature/$', request_feature, name="request_feature"),
 ]
