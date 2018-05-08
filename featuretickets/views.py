@@ -13,6 +13,7 @@ def request_feature(request):
         if request_form.is_valid():
             submit = request_form.save(commit=False)
             submit.created_by = request.user
+            submit.save()
             return redirect('profile')
             
     else:

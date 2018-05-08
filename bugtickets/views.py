@@ -13,6 +13,7 @@ def report_bug(request):
         if report_form.is_valid():
             submit = report_form.save(commit=False)
             submit.created_by = request.user
+            submit.save()
             return redirect('profile')
             
     else:
