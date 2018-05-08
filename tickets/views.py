@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Tickets
 from .forms import TicketForm
+from django.contrib.auth.decorators import login_required
 
-
-def create_or_edit_ticket(request):
+@login_required
+def create_ticket(request):
     """
-    Create a new ticket or edit existing one
+    Create a new ticket existing one
     """
     if request.method == 'POST':
         ticket_form = TicketForm(request.POST, request.FILES)
-        
         if ticket_form.is_valid():
-            ticket_form.save()
+            submit = ticket_form.save(commit=False)
+            submit.created_by = request.user
             return redirect('profile')
+            
     else:
         ticket_form = TicketForm()
     return render(request, 'ticketform.html', {'ticket_form': ticket_form})

@@ -1,7 +1,8 @@
-from django.conf.urls import url, include
-from tickets.views import create_or_edit_ticket
+from django.contrib.auth import views as auth_views
+from django.conf.urls import url
+from .views import *
 
 
 urlpatterns = [
-    url(r'^create_or_edit_ticket/', create_or_edit_ticket, name="create_or_edit_ticket"),
+    url(r'^create_ticket/$', create_ticket, name="create_ticket"),
 ]

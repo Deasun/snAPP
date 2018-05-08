@@ -7,7 +7,7 @@
 {% block page_heading %}Ticket{% endblock %} 
 
 {% block content %}
-<form method='POST'>
+<form method='POST' enctype="multipart/form-data">
     {% csrf_token %} {{ ticket_form | as_bootstrap }}
     <button type="submit" class="btn btn-primary">Join the Queue!</button>
 </form>

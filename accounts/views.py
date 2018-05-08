@@ -5,15 +5,23 @@ from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from accounts.models import Profile
 
-# Home Page
+"""
+Home Page
+"""
 def index(request):
-    """Return the index.html file"""
+    """
+    Return the home page
+    """
     return render(request, 'index.html')
 
 
-# Register a User
+"""
+Register a User
+"""
 def registration(request):
-    """Redirect logged user to home page"""
+    """
+    Redirect logged user to home page
+    """
     if request.user.is_authenticated:
         return redirect(reverse('index'))
 

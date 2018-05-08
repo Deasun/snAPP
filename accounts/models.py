@@ -15,4 +15,4 @@ class Profile(models.Model):
 	description = models.TextField(null=True, blank=True)
 
 	def __str__(self):
-	    return "Profile of user {}".format(self.user.username)
+	    return "{}'s profile".format(self.user)
