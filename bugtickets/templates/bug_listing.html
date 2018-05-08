@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block content %} {% for bug in bugs %}
+<div class="row">
+    <div class="col-md-2 col-sm-3 text-center">
+
+        <h3>{{ bug.title }}</h3>
+    </div>
+    <div class="col-md-10 col-sm-9">
+        <p><span class="boldtext">Member:</span>{{ bug.created_by }}</p>
+        <a class="story-img" href="#">
+            <img src="#" class="img-circle">
+        </a>
+        <div class="row">
+            <div class="col-xs-9">
+                <p>{{ bug.description }}</p>
+                <p><span class="boldtext">Published on:</span> {{ bug.date_created }} </p>
+                <p><span class="boldtext">Views:</span>Upvotes</p>
+                <p><span class="boldtext">Tag:</span>Status</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+</div>
+{% endfor %} {% endblock %}
