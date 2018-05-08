@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Tickets
+from .models import BugTicket, RequestTicket
 
     
-admin.site.register(Tickets)
+admin.site.register(BugTicket)
+admin.site.register(RequestTicket)
 

@@ -1,12 +1,12 @@
 from django import forms
-from .models import Tickets
+from .models import BugTicket, RequestTicket
 
 class ReportBugForm(forms.ModelForm):
     class Meta:
-        model = Tickets
-        fields = ('ticket', 'title', 'description', 'status')
+        model = BugTicket
+        fields = ('ticket', 'title', 'description')
 
 class RequestFeatureForm(forms.ModelForm):
     class Meta:
-        model = Tickets
-        fields = ('ticket', 'title', 'description', 'contribution', 'status')
+        model = RequestTicket
+        fields = ('ticket', 'title', 'description', 'contribution')
