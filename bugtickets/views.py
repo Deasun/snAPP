@@ -52,9 +52,13 @@ def edit_bug(request, id):
 
 @login_required
 def delete_bug(request, id=None):
+    bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     query = BugTicket.objects.get(id=id)
+    query.save()
     query.delete()
-    return render(request, "bug_listing.html")
+    messages.success(request, "Your bug report has been deleted.")
+        
+    return render(request, "bug_listing.html", {'bugs': bugs})
     
 
 

@@ -20,7 +20,7 @@
         </li>
 
         <li>
-            <a href="{{ url 'delete_bug' id=bug.id }}"><button class="btn btn-danger" type="submit">Delete</button></a>
+            <form method= 'DELETE' action='delete/{{ bug.id }}'><input class="btn btn-danger" type="submit">Delete</form>
         </li>
         {% endif %}
 
