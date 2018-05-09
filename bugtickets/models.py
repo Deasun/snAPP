@@ -18,4 +18,4 @@ class BugTicket(models.Model):
 
 
     def __str__(self):
-	    return "Bug: {} ({})".format(self.title, self.date_created)
+	    return "Bug: {} ({} - {})".format(self.title, self.date_created, self.id)

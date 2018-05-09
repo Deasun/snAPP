@@ -1,23 +1,29 @@
+<!--CHANGE THE DISPLAY-->
+
 {% extends 'base.html' %} {% block content %} {% for bug in bugs %}
 <div class="row">
-    <div class="col-md-2 col-sm-3 text-center">
 
-        <h3>{{ bug.title }}</h3>
-    </div>
-    <div class="col-md-10 col-sm-9">
-        <p><span class="boldtext">Member:</span>{{ bug.created_by }}</p>
-        <a class="story-img" href="#">
-            <img src="#" class="img-circle">
-        </a>
-        <div class="row">
-            <div class="col-xs-9">
-                <p>{{ bug.description }}</p>
-                <p><span class="boldtext">Published on:</span> {{ bug.date_created }} </p>
-                <p><span class="boldtext">Views:</span>Upvotes</p>
-                <p><span class="boldtext">Tag:</span>Status</p>
-            </div>
-        </div>
-    </div>
-    <hr>
+    <ul style="list-style-type: none; text-align: left">
+        <li>
+            <h3>{{ bug.title }}</h3>
+        </li>
+        <li>{{ bug.description }}</li>
+        <li>Member: {{ bug.created_by }}</li>
+        <li>Published on: {{ bug.date_created }}</li>
+        <li>Upvotes</li>
+        <li>Status</li>
+        <li>BUG #: {{ bug.id }}</li>
+
+        {% if bug.created_by == request.user %}
+        <li>
+            <form method='GET' action='edit/{{ bug.id }}'><input type='submit' value='Edit'></form>
+        </li>
+
+        <li>
+            <a href="{{ url 'delete_bug' id=bug.id }}"><button class="btn btn-danger" type="submit">Delete</button></a>
+        </li>
+        {% endif %}
+
+    </ul>
 </div>
-{% endfor %} {% endblock %}
+<br> {% endfor %} {% endblock %}
