@@ -4,7 +4,7 @@ from .choices import status_set
 import datetime
 
 """
-Bug Ticket model
+Bug Ticket model - enables users to report a bug
 """
 def default_status():
     return 'todo'
@@ -24,11 +24,26 @@ class BugTicket(models.Model):
             self.save()
         except IntegrityError:
             return 'already_upvoted'
-            # messages.error(request, "Your UpVote has already been counted.")
+            
         return 'ok'
-            # messages.success(request, "Your UpVote has been added!")
-
-
 
     def __str__(self):
 	    return "Bug: {} ({} - {})".format(self.title, self.date_created, self.id)
+
+
+"""
+BugUpvote Model - enables user to upvote bug reports
+"""
+
+class BugUpvote(models.Model):
+    bug_ticket = models.ForeignKey(BugTicket, on_delete=models.CASCADE, related_name="bugs_votes")
+    user = models.ForeignKey(User, related_name="user_votes", on_delete=models.CASCADE)
+    date_created = models.DateField(default=datetime.date.today)
+    vote_type = models.CharField(max_length=10, blank=False)
+
+    
+    class Meta:
+        unique_together = ('bug_ticket', 'user', 'date_created', 'vote_type')
+    
+    def __str__(self):
+	    return "{} upvoted {} ({})".format(self.user, self.bugticket, self.date_created)
