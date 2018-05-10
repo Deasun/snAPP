@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'accounts',
     'bugtickets',
     'featuretickets',
+    'bug_upvotes',
 ]
 
 MIDDLEWARE = [
