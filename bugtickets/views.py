@@ -3,6 +3,8 @@ from .models import BugTicket
 from .forms import ReportBugForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from  django.contrib.messages import success, warning, error
+
 from django.utils import timezone
 
 @login_required
@@ -24,12 +26,30 @@ def report_bug(request, pk=None):
 
 
 @login_required
+def upvote_bug(request, id=None):
+    """
+    Enable user to upvote a bug
+    """
+    bug = get_object_or_404(BugTicket, pk=id)
+    
+    if bug.created_by == request.user:
+        messages.error(request, "You cannot upvote your own bug report.")
+    
+    else: 
+        user = request.user
+        vote = bug.upvote(user)
+        messages.success(request, "Your vote has been added to this ticket.")
+    
+    bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
+    return render(request, "bug_listing.html", {'bugs': bugs})
+    
+
+@login_required
 def edit_bug(request, id):
     """
     Edit a Bug Report ticket
     """
     submit = get_object_or_404(BugTicket, pk=id)
-    
     # Is this required? Double protection - also in template
     """Enable authors only to edit bugs"""
     if submit.created_by != request.user:
@@ -52,12 +72,11 @@ def edit_bug(request, id):
 
 @login_required
 def delete_bug(request, id=None):
-    bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     query = BugTicket.objects.get(id=id)
-    query.save()
     query.delete()
     messages.success(request, "Your bug report has been deleted.")
-        
+    
+    bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     return render(request, "bug_listing.html", {'bugs': bugs})
     
 
@@ -65,9 +84,7 @@ def delete_bug(request, id=None):
 @login_required
 def get_bug_listing(request):
     """
-    List bugs that were reported prior to 'now'
-    and render them to the 'bug_listing.html'
-    template
+    List bugs that were reported prior to 'now' and render them to the 'bug_listing.html' template
     """
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     return render(request, "bug_listing.html", {'bugs': bugs})

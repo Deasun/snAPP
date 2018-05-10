@@ -16,13 +16,17 @@
 
         {% if bug.created_by == request.user %}
         <li>
-            <form method='GET' action='edit/{{ bug.id }}'><input type='submit' value='Edit'></form>
+            <form method='GET' action="{% url 'edit_bug' bug.id %}"><input class="btn btn-warning btn-sm" type='submit' value='Edit'></form>
         </li>
 
         <li>
-            <form method= 'DELETE' action='delete/{{ bug.id }}'><input class="btn btn-danger" type="submit">Delete</form>
-        </li>
+            <form method= 'DELETE' action="{% url 'delete_bug' bug.id %}"><input class="btn btn-danger btn-sm" type="submit" value='Delete'></form>
+        </li>      
         {% endif %}
+        <li>
+            <form method= 'POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form> ---- {{ bug.votes }}
+        </li>
+        
 
     </ul>
 </div>

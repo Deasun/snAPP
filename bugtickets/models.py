@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 from .choices import status_set
 import datetime
@@ -18,15 +18,14 @@ class BugTicket(models.Model):
     status = models.CharField(max_length=20, choices=status_set, default=default_status)
 
     def upvote(self, user):
-        try:
-            self.bug_votes.create(bug_ticket=self, user=user, vote_type="up", date_created=default)
-            self.votes += 1
-            self.save()
-        except IntegrityError:
-            return 'already_upvoted'
+        self.bug_votes.create(bug_ticket=self, user=user, vote_type="up")
+        self.votes += 1
+        self.save()
+        # except IntegrityError:
+        #     return 'already_upvoted'
             
-        return 'ok'
-
+            # return 'ok'
+    
     def __str__(self):
 	    return "Bug: {} ({} - {})".format(self.title, self.date_created, self.id)
 
@@ -36,7 +35,7 @@ BugUpvote Model - enables user to upvote bug reports
 """
 
 class BugUpvote(models.Model):
-    bug_ticket = models.ForeignKey(BugTicket, on_delete=models.CASCADE, related_name="bugs_votes")
+    bug_ticket = models.ForeignKey(BugTicket, on_delete=models.CASCADE, related_name="bug_votes")
     user = models.ForeignKey(User, related_name="user_votes", on_delete=models.CASCADE)
     date_created = models.DateField(default=datetime.date.today)
     vote_type = models.CharField(max_length=10, blank=False)
@@ -46,4 +45,4 @@ class BugUpvote(models.Model):
         unique_together = ('bug_ticket', 'user', 'date_created', 'vote_type')
     
     def __str__(self):
-	    return "{} upvoted {} ({})".format(self.user, self.bugticket, self.date_created)
+	    return "{} UPVOTED {}, DATE: ({})".format(self.user, self.bug_ticket, self.date_created)
