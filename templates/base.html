@@ -1,4 +1,4 @@
-{% load static from staticfiles %}
+{% load staticfiles %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +12,10 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'fontawesome/web-fonts-with-css/css/fontawesome-all.css' %}">
+    <link rel="stylesheet" href="{% static 'web-fonts-with-css/css/fontawesome-all.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <!--Custom styles-->
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css'/>
     {% block head_js %}
     {% endblock head_js %}
 </head>
@@ -25,7 +25,7 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
-                <h3 class="masthead-brand">snAPP</h3>
+                <h1 class="masthead-brand">snAPP</h1>
                 <nav class="nav nav-masthead justify-content-center">
                     {% if user.is_authenticated %}
                     <a class="nav-link" href="{% url 'profile' %}">Profile</a>
@@ -33,9 +33,10 @@
                     <a class="nav-link" href="{% url 'request_feature' %}">Request Features</a>
                     <a class="nav-link" href="{% url 'logout' %}">Logout</a> 
                     {% else %}
-                    <a class="nav-link active" href="{% url 'login' %}">Login</a>
-                    <a class="nav-link" href="{% url 'registration' %}">Register</a>
-                    <a class="nav-link" href="#">About snAPP</a> {% endif %}
+                    <h3><a class="nav-link active" href="{% url 'login' %}">Login</a></h3>
+                    <h3><a class="nav-link" href="{% url 'registration' %}">Register</a></h3>
+                    <h3><a class="nav-link" href="#">About snAPP</a></h3> 
+                    {% endif %}
 
                 </nav>
             </div>
@@ -49,15 +50,6 @@
         {% endif %}
         
         {% block content %} {% endblock %}
-
-        <!--Include in index.html-->
-        <!--<main role="main" class="inner cover">-->
-        <!--  <h1 class="cover-heading">Cover your page.</h1>-->
-        <!--  <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>-->
-        <!--  <p class="lead">-->
-        <!--    <a href="#" class="btn btn-lg btn-secondary">Join snAPP</a>-->
-        <!--  </p>-->
-        <!--</main>-->
 
         <footer class="mastfoot mt-auto">
             <div class="inner">

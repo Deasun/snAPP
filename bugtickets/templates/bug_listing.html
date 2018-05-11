@@ -1,6 +1,8 @@
 <!--CHANGE THE DISPLAY-->
 
-{% extends 'base.html' %} {% block content %} {% for bug in bugs %}
+{% extends 'base.html' %} {% block content %} 
+
+{% for bug in bugs %}
 <div class="row">
 
     <ul style="list-style-type: none; text-align: left">
@@ -13,7 +15,11 @@
         <li>{{ bug.votes }} Upvotes</li>
         <li>Status: </li>
         <li>BUG #: {{ bug.id }}</li>
+        
 
+        <li><a href="{% url 'bug_report' bug.id %}">Comments: {{ bug.comments.count }}</a></li>
+       
+        
         {% if bug.created_by == request.user %}
         <li>
             <form method='GET' action="{% url 'edit_bug' bug.id %}"><input class="btn btn-warning btn-sm" type='submit' value='Edit'></form>
@@ -27,5 +33,6 @@
         </li>
     </ul>
 </div>
-{% endfor %} {% endblock %}
+{% endfor %} 
+{% endblock %}
 <hr>
