@@ -1,9 +1,10 @@
 from django.shortcuts import render, reverse, redirect, get_object_or_404
-from .models import BugTicket
+from .models import BugTicket, BugUpvote
 from .forms import ReportBugForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from  django.contrib.messages import success, warning, error
+
 
 from django.utils import timezone
 
@@ -31,18 +32,24 @@ def upvote_bug(request, id=None):
     Enable user to upvote a bug
     """
     bug = get_object_or_404(BugTicket, pk=id)
-    
+   
+    """Prevent user upvoting own reports"""
     if bug.created_by == request.user:
         messages.error(request, "You cannot upvote your own bug report.")
     
     else: 
         user = request.user
         vote = bug.upvote(user)
-        messages.success(request, "Your vote has been added to this ticket.")
+    
+        """Prevent double upvotes and validate upvotes"""
+        if vote == 'already_upvoted':
+            messages.success(request, "You have already upvoted this ticket.")
+        else:
+            messages.success(request, "Your upvote has been counted. Thanks")
     
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     return render(request, "bug_listing.html", {'bugs': bugs})
-    
+
 
 @login_required
 def edit_bug(request, id):
@@ -54,7 +61,7 @@ def edit_bug(request, id):
     """Enable authors only to edit bugs"""
     if submit.created_by != request.user:
         messages.warning(request, "You cannot edit a bug report that you did not generate.")
-    
+        
     else:    
         if request.method == 'POST':
             report_form = ReportBugForm(request.POST, instance=submit)

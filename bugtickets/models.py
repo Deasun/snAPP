@@ -18,14 +18,14 @@ class BugTicket(models.Model):
     status = models.CharField(max_length=20, choices=status_set, default=default_status)
 
     def upvote(self, user):
-        self.bug_votes.create(bug_ticket=self, user=user, vote_type="up")
-        self.votes += 1
-        self.save()
-        # except IntegrityError:
-        #     return 'already_upvoted'
-            
-            # return 'ok'
-    
+        
+        try:
+            self.bug_votes.create(bug_ticket=self, user=user, vote_type="up")
+            self.votes += 1
+            self.save()
+        except IntegrityError:
+            return 'already_upvoted'
+
     def __str__(self):
 	    return "Bug: {} ({} - {})".format(self.title, self.date_created, self.id)
 
@@ -42,7 +42,22 @@ class BugUpvote(models.Model):
 
     
     class Meta:
-        unique_together = ('bug_ticket', 'user', 'date_created', 'vote_type')
+        unique_together = ('bug_ticket', 'user', 'vote_type')
     
     def __str__(self):
 	    return "{} UPVOTED {}, DATE: ({})".format(self.user, self.bug_ticket, self.date_created)
+
+"""
+Comment Model - enables user to leave comments on bug reports
+"""
+class Comment(models.Model):
+    bug_ticket = models.ForeignKey(BugTicket, on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_author")
+    text = models.TextField()
+    date_created = models.DateField(default=datetime.date.today)
+
+    
+    def __str__(self):
+        return "{}: {}'s COMMENTS".format(self.bug_ticket, self.author)
+    
+    

@@ -10,24 +10,22 @@
         <li>{{ bug.description }}</li>
         <li>Member: {{ bug.created_by }}</li>
         <li>Published on: {{ bug.date_created }}</li>
-        <li>Upvotes</li>
-        <li>Status</li>
+        <li>{{ bug.votes }} Upvotes</li>
+        <li>Status: </li>
         <li>BUG #: {{ bug.id }}</li>
 
         {% if bug.created_by == request.user %}
         <li>
             <form method='GET' action="{% url 'edit_bug' bug.id %}"><input class="btn btn-warning btn-sm" type='submit' value='Edit'></form>
         </li>
-
         <li>
-            <form method= 'DELETE' action="{% url 'delete_bug' bug.id %}"><input class="btn btn-danger btn-sm" type="submit" value='Delete'></form>
-        </li>      
+            <form method='DELETE' action="{% url 'delete_bug' bug.id %}"><input class="btn btn-danger btn-sm" type="submit" value='Delete'></form>
+        </li>
         {% endif %}
         <li>
-            <form method= 'POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form> ---- {{ bug.votes }}
+            <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form>
         </li>
-        
-
     </ul>
 </div>
-<br> {% endfor %} {% endblock %}
+{% endfor %} {% endblock %}
+<hr>
