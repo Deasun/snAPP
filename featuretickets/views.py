@@ -52,7 +52,7 @@ def upvote_feature(request, id=None):
 
 @login_required
 def add_comment_to_feature(request, pk):
-    post = FeatureTicket.objects.filter(pk=pk)
+    post = FeatureTicket.objects.get(pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():

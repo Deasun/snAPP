@@ -44,6 +44,7 @@ class FeatureUpvote(models.Model):
 """
 Comment Model - enables user to leave comments on feature requests
 """
+
 class Comment(models.Model):
     feature_ticket = models.ForeignKey(FeatureTicket, on_delete=models.CASCADE, related_name="feature_comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="comment_author")

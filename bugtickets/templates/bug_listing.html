@@ -7,15 +7,14 @@
 
     <ul style="list-style-type: none; text-align: left">
         <li>
-            <h3>{{ bug.title }}</h3>
+            <h3>#{{ bug.id }} -{{ bug.title }}</h3>
         </li>
         <li>{{ bug.description }}</li>
         <li>Member: {{ bug.created_by }}</li>
         <li>Published on: {{ bug.date_created }}</li>
         <li>{{ bug.votes }} Upvotes</li>
-        <li>Status: </li>
-        <li>BUG #: {{ bug.id }}</li>
-        
+        <li>Status: {{ bug.status }}</li>
+
 
         <li><a href="{% url 'bug_report' bug.pk %}">Comments: {{ bug.comments.count }}</a></li>
        

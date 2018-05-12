@@ -30,7 +30,7 @@
 
 
 <hr>
-<a class="btn btn-default" href="{% url 'add_comment_to_feature' id=feature.id %}">Add comment</a> 
+<a class="btn btn-default" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a> 
 {% for comment in feature.feature_comments.all %}
 <div class="comment" style="list-style-type: none; text-align: left">
     <div class="date"></div>{{ comment.text }}
