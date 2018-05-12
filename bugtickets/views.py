@@ -4,8 +4,6 @@ from .forms import ReportBugForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from  django.contrib.messages import success, warning, error
-
-
 from django.utils import timezone
 
 @login_required
