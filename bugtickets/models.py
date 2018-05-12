@@ -52,7 +52,7 @@ Comment Model - enables user to leave comments on bug reports
 """
 class Comment(models.Model):
     bug_ticket = models.ForeignKey(BugTicket, on_delete=models.CASCADE, related_name="comments")
-    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_author")
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="user_author")
     text = models.TextField()
     date_created = models.DateField(default=datetime.date.today)
 

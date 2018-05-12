@@ -78,26 +78,29 @@ def delete_bug(request, id=None):
     
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     return render(request, "bug_listing.html", {'bugs': bugs})
-    
+
+
 
 @login_required
-def add_comment_to_bug(request, id):
-    post = BugTicket.objects.filter(id=id)
+def add_comment_to_bug(request, pk):
+    post = BugTicket.objects.get(pk=pk)
     if request.method == "POST":
+        
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.post = post
+            comment.bug_ticket = post
+            comment.author = request.user
             comment.save()
-            return redirect('bug_report', id=id)
+            return redirect('bug_report', pk=post.pk)
     else:
         form = CommentForm()
     return render(request, "add_comments_to_bug_form.html", {'form': form})
 
 
 @login_required
-def bug_report(request, id):
-    bugs = BugTicket.objects.filter(id=id)
+def bug_report(request, pk=id):
+    bugs = BugTicket.objects.filter(id=pk)
     return render(request, "bug_report.html", {'bugs': bugs})
 
 

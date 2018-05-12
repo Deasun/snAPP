@@ -10,19 +10,18 @@
 {% for bug in bugs %}
 <ul style="list-style-type: none; text-align: left">
     <li>
-        <h3>{{ bug.title }}</h3>
+        <h3>#{{ bug.id }} - {{ bug.title }}</h3>
     </li>
     <li>{{ bug.description }}</li>
     <li>Member: {{ bug.created_by }}</li>
     <li>Published on: {{ bug.date_created }}</li>
     <li>{{ bug.votes }} Upvotes</li>
     <li>Status: </li>
-    <li>BUG #: {{ bug.id }}</li>
 </ul>
 
 
 <hr> 
-<a class="btn btn-default" href="{% url 'add_comment_to_bug' id=bug.id %}">Add comment</a>
+<a class="btn btn-default" href="{% url 'add_comment_to_bug' pk=bug.pk %}">Add comment</a>
 {% for comment in bug.comments.all %}
 <div class="comment" style="list-style-type: none; text-align: left">
     <div class="date"></div>{{ comment.text }}

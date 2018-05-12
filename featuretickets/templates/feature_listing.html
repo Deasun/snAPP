@@ -18,7 +18,7 @@
         <li>TOTAL CONTRIBUTIONS = {{ feature.total_contributions }}</li>
         
 
-        <li><a href="{% url 'feature_report' feature.id %}">Comments: {{ feature.comments.count }}</a></li>
+        <li><a href="{% url 'feature_report' feature.id %}">Comments: {{ feature.feature_comments.count }}</a></li>
     
         
         {% if feature.created_by != request.user %}
@@ -28,8 +28,6 @@
         {% endif %}
 
     </ul>
-
-
 
 </div>
 {% endfor %} 

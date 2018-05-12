@@ -17,7 +17,7 @@
         <li>BUG #: {{ bug.id }}</li>
         
 
-        <li><a href="{% url 'bug_report' bug.id %}">Comments: {{ bug.comments.count }}</a></li>
+        <li><a href="{% url 'bug_report' bug.pk %}">Comments: {{ bug.comments.count }}</a></li>
        
         
         {% if bug.created_by == request.user %}

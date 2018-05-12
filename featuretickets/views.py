@@ -51,23 +51,24 @@ def upvote_feature(request, id=None):
 
 
 @login_required
-def add_comment_to_feature(request, id):
-    post = FeatureTicket.objects.filter(id=id)
+def add_comment_to_feature(request, pk):
+    post = FeatureTicket.objects.filter(pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.post = post
-            # comment.save()
-            return redirect('feature_report', id=id)
+            comment.feature_ticket = post
+            comment.author = request.user
+            comment.save()
+            return redirect('feature_report', pk=post.pk)
     else:
         form = CommentForm()
     return render(request, "add_comments_to_feature_form.html", {'form': form})
 
 
 @login_required
-def feature_report(request, id):
-    features = FeatureTicket.objects.filter(id=id)
+def feature_report(request, pk=id):
+    features = FeatureTicket.objects.filter(id=pk)
     return render(request, "feature_report.html", {'features': features})
 
 
