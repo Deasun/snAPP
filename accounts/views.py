@@ -39,8 +39,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You're registered. Welcome to snAPP!")
-            else:
-                messages.error(request, "Unable to register your account at this time. If this problem persists, contact our adminstrator <insert link>")
+
     else:
         registration_form = UserRegistrationForm()
     return render(request, 'registration.html', {"registration_form": registration_form})
