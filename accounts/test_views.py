@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.shortcuts import get_object_or_404
 from .models import Profile
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserEditForm, ProfileEditForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.contrib.messages import get_messages
@@ -14,8 +14,12 @@ Test User registration
 """
 class TestUserRegistration(TestCase):
     
+    """Set up registered object"""
+    def setUp(self):
+        User.objects.create(username='ANOTest', email='anotest.mail.com', password='7t7r8e9w0q')
+        
     """Test that registration produces model instant and success message"""
-    def test_registration_successful(self):
+    def test_successful_registration(self):
         response = self.client.post(reverse('registration'),
                         data={'username': 'Tested', 
                                 'email': "tested@mail.com", 
@@ -26,9 +30,23 @@ class TestUserRegistration(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), "You're registered. Welcome to snAPP!")
         self.assertTemplateUsed(response, "registration.html")
-        
+    
+
+    
+    """Test blank registration"""
+    def test_blank_registration(self):
+        response = self.client.post(reverse('registration'),
+                        data={'username': '', 
+                                'email': '', 
+                                'password1': '',
+                                'password2': ''}
+                                )
+        self.assertFalse(Profile.objects.exists())
+        self.assertEqual(Profile.objects.count(), 0)
+    
 
         
+
     
 """
 Test Login
@@ -42,6 +60,22 @@ class TestLogin(TestCase):
         self.assertTemplateUsed(page, "login.html")
 
 
+
+"""
+Test Login
+"""
+# class TestLoginProcess(TestCase):
+#     def test_login_success(self):
+#         self.user = User.objects.create_user('Tested', 'tested@mail.com', 'q0w9e8r7t7')
+#         self.user.save()
+#         response = self.client.login(username='Tested', password='q0w9e8r7t6')
+        
+#         # self.assertEquals(response.is_valid(), False)
+#         messages = list(get_messages(response.wsgi_request))
+#         self.assertEqual(len(messages), 1)
+#         self.assertEqual(str(messages[0]), 'Your username or password is incorrect')
+
+
 """
 Test logged user destination & templates
 """
@@ -53,7 +87,7 @@ class TestLoggedViews(TestCase):
         self.user = User.objects.create_user('Tested', 'tested@mail.com', 'q0w9e8r7t7')
         self.user.save()
         login = self.client.login(username='Tested', password='q0w9e8r7t7')
-        
+
     
     """Logged in user access home page"""
     
@@ -92,6 +126,23 @@ class TestLoggedViews(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), 'You have been successfully logged out!')
 
+    """Logged in user edit user success"""
+
+    def test_user_edit_user(self):
+        user = User(username="marty505", email="marty505@test.com")
+        edit_form = UserEditForm({'username': 'tommy606', 'email': 'tommy606@test.com'}, instance=user)
+        self.assertEquals(edit_form.is_valid(), True)
+
+    """Logged in user edit profile success"""
+
+    def test_user_edit_profile(self):
+        profile = Profile(description="This is a test", trade_union="UNISON")
+        edit_form = ProfileEditForm({'description': 'This is another test.', 'trade_union': 'SEIU'}, instance=profile)
+        self.assertEquals(edit_form.is_valid(), True)
+
+    """Logged in user access edit_profile page"""
+    
+    # def test_edit_profile_page(self):
 
 """
 Test Non-logged user destination & templates
