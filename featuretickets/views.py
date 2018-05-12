@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import FeatureTicket
-from .forms import RequestFeatureForm
+from .forms import RequestFeatureForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.contrib import auth, messages
+from django.utils import timezone
 
 @login_required
 def request_feature(request):
@@ -14,7 +16,7 @@ def request_feature(request):
             submit = request_form.save(commit=False)
             submit.created_by = request.user
             submit.save()
-            messages.success(request, "Your feature request will be posted to start attracting supporters once you have made your snAPP contribution!")
+            messages.success(request, "Excellent. Your feature request will be posted to start attracting supporters once you have made your snAPP contribution!")
             return redirect('profile')
 
 # place request in shopping cart
@@ -56,7 +58,7 @@ def add_comment_to_feature(request, id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.post = post
-            comment.save()
+            # comment.save()
             return redirect('feature_report', id=id)
     else:
         form = CommentForm()
@@ -65,7 +67,7 @@ def add_comment_to_feature(request, id):
 
 @login_required
 def feature_report(request, id):
-    bugs = FeatureTicket.objects.filter(id=id)
+    features = FeatureTicket.objects.filter(id=id)
     return render(request, "feature_report.html", {'features': features})
 
 
