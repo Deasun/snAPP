@@ -1,0 +1,37 @@
+<!--CHANGE THE DISPLAY-->
+
+{% extends 'base.html' %} {% block content %} 
+
+{% for feature in features %}
+<div class="row">
+
+    <ul style="list-style-type: none; text-align: left">
+        <li>
+            <h3>#{{ feature.id }} - {{ feature.title }}</h3>
+        </li>
+        <li>{{ feature.description | truncatewords:15 }}</li>
+ 
+        <li>Member: {{ feature.created_by }}</li>
+        <li>Published on: {{ feature.date_created }}</li>
+        <li>{{ feature.votes }} Upvotes</li>
+        <li>Status: {{ feature.status }}</li>
+        <li>TOTAL CONTRIBUTIONS = {{ feature.total_contributions }}</li>
+        
+
+        <li><a href="{% url 'feature_report' feature.id %}">Comments: {{ feature.comments.count }}</a></li>
+    
+        
+        {% if feature.created_by != request.user %}
+         <li>
+            <form method='POST' action="{% url 'upvote_feature' feature.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form>
+        </li>  
+        {% endif %}
+
+    </ul>
+
+
+
+</div>
+{% endfor %} 
+{% endblock %}
+<hr>

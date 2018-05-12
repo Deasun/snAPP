@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block page_title %}Feature Report{% endblock %} {% block page_heading %}Feature Report Ticket{% endblock %} {% block content %} {% for feature in features %}
+
+<ul style="list-style-type: none; text-align: left">
+    <li>
+        <h3>#{{ feature.id }} - {{ feature.title }}</h3>
+    </li>
+    <li>{{ feature.description }}</li>
+    <li>Similar examples: {{ feature.links }}</li>
+    <li>Member: {{ feature.created_by }}</li>
+    <li>Published on: {{ feature.date_created }}</li>
+    <li>{{ feature.votes }} Upvotes</li>
+    <li>Status: {{ feature.status }}</li>
+    <li>TOTAL CONTRIBUTIONS = {{ feature.total_contributions }}</li>
+
+
+    <li><a href="{% url 'feature_report' feature.id %}">Comments: {{ feature.comments.count }}</a></li>
+
+
+    {% if feature.created_by != request.user %}
+    <li>
+        <form method='POST' action="{% url 'upvote_feature' feature.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form>
+    </li>
+    {% endif %}
+
+    <li>
+        <form method='POST' action="#">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Contribute"></form>
+    </li>
+
+</ul>
+
+
+<hr>
+<a class="btn btn-default" href="{% url 'add_comment_to_feature' id=feature.id %}">Add comment</a> {% for comment in feature.comments.all %}
+<div class="comment" style="list-style-type: none; text-align: left">
+    <div class="date"></div>{{ comment.text }}
+    <p><strong>{{ comment.author }}:</strong> {{ comment.date_created }}</p>
+
+    {% endfor %}
+</div>
+
+
+{% endfor %} {% endblock %}
