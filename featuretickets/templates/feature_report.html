@@ -10,28 +10,34 @@
     <li>Published on: {{ feature.date_created }}</li>
     <li>{{ feature.votes }} Upvotes</li>
     <li>Status: {{ feature.status }}</li>
+    <li>STARTUP CONTRIBUTIONS = {{ feature.contribution }}</li>
     <li>TOTAL CONTRIBUTIONS = {{ feature.total_contributions }}</li>
-
-
-    <li><a href="{% url 'feature_report' feature.id %}">Comments: {{ feature.comments.count }}</a></li>
 
 
     {% if feature.created_by != request.user %}
     <li>
-        <form method='POST' action="{% url 'upvote_feature' feature.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form>
+        <form method='POST' action="{% url 'upvote_feature' feature.id %}">
+            {% csrf_token %}
+            <input class="btn btn-success btn-sm" type="submit" value="Upvote">
+        </form>
     </li>
     {% endif %}
 
     <li>
-        <form method='POST' action="#">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Contribute"></form>
+        <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+            {% csrf_token %}
+            <input name='contribution' type='number' min="10" class="form-control" placeholder="Contribution">
+            <span class="input-group-btn">
+            <button class="btn btn-success" type="submit">Add</button>
+            </span>
+        </form>
     </li>
 
 </ul>
 
 
-<hr>
-<a class="btn btn-default" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a> 
-{% for comment in feature.feature_comments.all %}
+<p>Comments: {{ feature.feature_comments.count }}</p>
+<a class="btn btn-default" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a> {% for comment in feature.feature_comments.all %}
 <div class="comment" style="list-style-type: none; text-align: left">
     <div class="date"></div>{{ comment.text }}
     <p><strong>{{ comment.author }}:</strong> {{ comment.date_created }}</p>
