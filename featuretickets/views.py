@@ -6,7 +6,7 @@ from django.contrib import auth, messages
 from django.utils import timezone
 
 @login_required
-def request_feature(request):
+def request_feature(request, pk=None):
     """
     Create a new Feature Request ticket
     """
