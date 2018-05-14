@@ -2,6 +2,7 @@
 
 {% extends 'base.html' %} {% block content %} 
 
+
 {% for feature in features %}
 <div class="row">
 
@@ -10,27 +11,27 @@
             <h3><a href="{% url 'feature_report' feature.pk %}">#{{ feature.id }} - {{ feature.title }}</a></h3>
         </li>
         <li>{{ feature.description | truncatewords:15 }}</li>
- 
+
         <li>Member: {{ feature.created_by }}</li>
         <li>Published on: {{ feature.date_created }}</li>
         <li>{{ feature.votes }} Upvotes</li>
         <li>Status: {{ feature.status }}</li>
         <li>STARTUP CONTRIBUTION = {{ feature.contribution }}</li>
         <li>TOTAL CONTRIBUTIONS = {{ feature.total_contributions }}</li>
-        
 
-        <li>Comments: {{ feature.feature_comments.count }}</a></li>
-    
-        
+
+        <li>Comments: {{ feature.feature_comments.count }}</a>
+        </li>
+
+
         {% if feature.created_by != request.user %}
-         <li>
+        <li>
             <form method='POST' action="{% url 'upvote_feature' feature.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form>
-        </li>  
+        </li>
         {% endif %}
 
     </ul>
 
 </div>
-{% endfor %} 
-{% endblock %}
+{% endfor %} {% endblock %}
 <hr>

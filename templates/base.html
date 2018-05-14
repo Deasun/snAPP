@@ -52,14 +52,28 @@
                 {% for message in messages %} {{ message }} {% endfor %}
             </div>
         </div>
-        {% endif %} {% block content %} {% endblock %}
-
-        <footer class="mastfoot mt-auto">
-            <div class="inner">
-                <p><a class="nav-link" href="#">About snAPP</a></p>
+        {% endif %}
+        <div class="container">
+            <div class="display">
+                <form action="{% url 'feature_search' %}" method='get'>
+                    <input type='text' name='q'>
+                    <button type='submit'>Search Features</button>
+                </form>
             </div>
-        </footer>
+            <div class="display">
+                <form action="{% url 'bug_search' %}" method='get'>
+                    <input type='text' name='q'>
+                    <button type='submit'>Search Bugs</button>
+                </form>
+            </div>
+        </div>
+        {% block content %} {% endblock %}
     </div>
+    <footer>
+        <div class="container">
+            <p>Made by NC</p>
+        </div>
+    </footer>
 
 
     <!-- Bootstrap core JavaScript
