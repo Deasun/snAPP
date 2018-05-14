@@ -9,12 +9,14 @@ def cart_contents(request):
     
     cart_items = []
     total = 0
+    feature_count = 0
     
-
-    for id, contribution in cart.items():
+    for id, quantity in cart.items():
         feature = get_object_or_404(FeatureTicket, pk=id)
-        contribution = feature.contribution
-        total += contribution
-        cart_items.append({'id': id, 'contribution': contribution, 'feature': feature})
+        print(feature)
+        total += quantity * feature.contribution
+        feature_count += quantity
+        cart_items.append({'id': id, 'quantity': quantity, 'feature': feature})
     
-    return { 'cart_items': cart_items, 'total': total }
+    return { 'cart_items': cart_items, 'total': total, 'feature_count': feature_count }
+    

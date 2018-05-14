@@ -4,7 +4,7 @@ from .models import FeatureTicket, Comment
 class RequestFeatureForm(forms.ModelForm):
     class Meta:
         model = FeatureTicket
-        fields = ('title', 'description', 'links', 'contribution')
+        fields = ('title', 'description', 'links')
         
 
 class CommentForm(forms.ModelForm):

@@ -15,9 +15,7 @@
     <link rel="stylesheet" href="{% static 'web-fonts-with-css/css/fontawesome-all.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <!--Custom styles-->
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css'/>
-    {% block head_js %}
-    {% endblock head_js %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' /> {% block head_js %} {% endblock head_js %}
 </head>
 
 <body class="text-center">
@@ -35,8 +33,15 @@
                     {% else %}
                     <h3><a class="nav-link active" href="{% url 'login' %}">Login</a></h3>
                     <h3><a class="nav-link" href="{% url 'registration' %}">Register</a></h3>
-                    <h3><a class="nav-link" href="#">About snAPP</a></h3> 
+                    <h3><a class="nav-link" href="#">About snAPP</a></h3>
                     {% endif %}
+                    <h4><a href="{% url 'view_cart' %}">
+                            <i class='fas fa-shopping-cart'></i>
+                            {% if feature_count > 0 %}
+                            <label class='badge badge-warning'>{{ feature_count }}</label>
+                            {% endif %}
+                        </a>
+                    </h4>
 
                 </nav>
             </div>
@@ -47,9 +52,7 @@
                 {% for message in messages %} {{ message }} {% endfor %}
             </div>
         </div>
-        {% endif %}
-        
-        {% block content %} {% endblock %}
+        {% endif %} {% block content %} {% endblock %}
 
         <footer class="mastfoot mt-auto">
             <div class="inner">
@@ -62,7 +65,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
- <!--bootstrap JS bundles-->
+    <!--bootstrap JS bundles-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
 </body>
