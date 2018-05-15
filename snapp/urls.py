@@ -3,6 +3,7 @@ from django.conf.urls import url, include
 from accounts import urls as urls_accounts
 from bugtickets import urls as urls_bugtickets
 from featuretickets import urls as urls_featuretickets
+from checkout import urls as urls_checkout
 from search import urls as urls_search
 from cart import urls as urls_cart
 from accounts.views import index

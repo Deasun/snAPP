@@ -35,7 +35,7 @@
     <p><span class='fas fa-pound-sign' aria-hidden='true'></span>{{ total }}</p>
 </div>
 
-<form role='form' method='post' id='payment-form' action="{% url 'checkout' %}">
+<form role='form' method='post' id='payment-form' action="{% url 'checkout' %}" enctype= multipart/form-data>
     <legend>Payment Details</legend>
     <div class="credit-card-errors" style="display:none">
         <div class='alert-message block-message error' id='stripe-error-message'></div>
@@ -48,6 +48,8 @@
     <div class="form-group col-md-6">
         {{ payment_form|as_bootstrap }}
     </div>
+    
+    
     
     {% csrf_token %}
     <div class='form-group col-md-12'>
