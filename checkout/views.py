@@ -15,8 +15,7 @@ stripe.api_key = settings.STRIPE_SECRET
 @login_required()
 def checkout(request):
     if request.method=='POST':
-        order_form = OrderForm(regit log
-        quest.POST)
+        order_form = OrderForm(request.POST)
         payment_form = PaymentForm(request.POST)
         
         if order_form.is_valid() and payment_form.is_valid():
