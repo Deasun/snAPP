@@ -45,7 +45,7 @@ class BugUpvote(models.Model):
         unique_together = ('bug_ticket', 'user', 'vote_type')
     
     def __str__(self):
-	    return "{} UPVOTED {}, DATE: ({})".format(self.user, self.bug_ticket, self.date_created)
+	    return "({})".format(self.date_created)
 
 """
 Comment Model - enables user to leave comments on bug reports
@@ -58,6 +58,6 @@ class Comment(models.Model):
 
     
     def __str__(self):
-        return "{}: {}'s COMMENTS".format(self.bug_ticket, self.author)
+	    return "({})".format(self.date_created)
     
     
