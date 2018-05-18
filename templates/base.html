@@ -10,10 +10,11 @@
     <meta name="author" content="">
     <title>snAPP</title>
 
-    <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" />
     <link rel="stylesheet" href="{% static 'web-fonts-with-css/css/fontawesome-all.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400i" rel="stylesheet">
     <!--Custom styles-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' /> {% block head_js %} {% endblock head_js %}
 </head>
@@ -24,17 +25,15 @@
         <header class="masthead mb-auto">
             <div class="inner">
                 <h1 class="masthead-brand">snAPP</h1>
+                <hr>
                 <nav class="nav nav-masthead justify-content-center">
+
+                    <!--Navbar for logged in user-->
                     {% if user.is_authenticated %}
                     <h3><a class="nav-link" href="{% url 'profile' %}">Profile</a></h3>
                     <h3><a class="nav-link" href="{% url 'report_bug' %}">Report Bugs</a></h3>
                     <h3><a class="nav-link" href="{% url 'request_feature' %}">Request Features</a></h3>
                     <h3><a class="nav-link" href="{% url 'logout' %}">Logout</a></h3>
-                    {% else %}
-                    <h3><a class="nav-link active" href="{% url 'login' %}">Login</a></h3>
-                    <h3><a class="nav-link" href="{% url 'registration' %}">Register</a></h3>
-                    <h3><a class="nav-link" href="#">About snAPP</a></h3>
-                    {% endif %}
                     <h4><a href="{% url 'view_cart' %}">
                             <i class='fas fa-shopping-cart'></i>
                             {% if feature_count > 0 %}
@@ -42,7 +41,13 @@
                             {% endif %}
                         </a>
                     </h4>
+                    {% else %}
 
+                    <!--Navbar for unlogged user-->
+                    <a class="nav-link active" href="{% url 'login' %}">Login</a>
+                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="{% url 'registration' %}">Register</a>
+                    {% endif %}
                 </nav>
             </div>
         </header>
@@ -53,6 +58,9 @@
             </div>
         </div>
         {% endif %}
+
+        <!--Search fields for logged in user-->
+        {% if user.is_authenticated %}
         <div class="container">
             <div class="display">
                 <form action="{% url 'feature_search' %}" method='get'>
@@ -67,11 +75,12 @@
                 </form>
             </div>
         </div>
+        {% endif %}
         {% block content %} {% endblock %}
     </div>
     <footer>
         <div class="container">
-            <p>Made by NC</p>
+            <h5>You need. We build. You use.</h5>
         </div>
     </footer>
 

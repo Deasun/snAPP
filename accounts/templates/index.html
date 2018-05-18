@@ -1,17 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 
-{% block page_title %}Home Page{% endblock %}
+{% block page_title %}Home Page{% endblock %} 
 
-{% block page_heading %}Home{% endblock %}
+{% block page_heading %}Home{% endblock %} 
 
 {% block content %}
 
-<main role="main" class="inner cover">
-    <h2 class="lead">Where trade unionists come to</h2>
-    <p>share knowledge<br>get support<br>meet<br>build power</p>
-    <p class="lead">
-        <a href="#" class="btn btn-lg btn-secondary">Join snAPP</a>
-    </p>
-</main>
+    <div class="container">
+        <div class="row strapline">
+            <div class="col-xs-12">
+                <h4>The <u>only</u> app designed by and for union activists.</h4>
+            </div>
+        </div>
+        <div class="row icon-sections icon-centered">
+            <div class="col-xs-4"><a href='#'><i class="fas fa-share-alt fa-5x knowledge"></i></a><br><h5>share knowledge</h5></div>
+            <div class="col-xs-4"><a href='#'><i class="fas fa-people-carry fa-5x support"></i></a><br><h5>get and give support</h5></div>
+            <div class="col-xs-4"><a href='#'><i class="fas fa-chess-rook fa-5x tactics"></i></a><br><h5>discuss tactics</h5></div>
+        </div>
+        <p class="home-btn">
+            <button href="#" class="btn btn-lg btn-success">Join snAPP</button>
+        
+        </p>
+    </div>
+
 
 {% endblock %}

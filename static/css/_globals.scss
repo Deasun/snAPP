@@ -1,0 +1,15 @@
+body {
+    background: {
+        size: cover;
+        repeat: no-repeat;
+        image: url('/media/images/snAPP.png');
+        attachment: fixed;
+        position: center;
+    }
+}
+
+hr {
+    margin-top: -1rem;
+    border-color: $white;
+    width: 66.6%;
+}

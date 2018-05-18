@@ -1,0 +1,27 @@
+h1, h3, a {
+    color: $white;
+    font: {
+        family: $font-stack-1; 
+    }
+}
+
+
+h4, h5 {
+    color: $white;
+    font: {
+        family: $font-stack-2
+    };
+}
+
+
+h1 {
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 1rem;
+}
+
+.btn {
+    font-family: $font-stack-1;
+}
