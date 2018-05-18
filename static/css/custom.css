@@ -30,6 +30,10 @@ h3 {
   .index-label {
     font-size: 2.5rem; } }
 
+.control-label {
+  color: #fff;
+  font-family: Lato, sans-serif; }
+
 body {
   background-size: cover;
   background-repeat: no-repeat;
@@ -66,5 +70,10 @@ hr {
 
 .home-btn {
   margin-top: 6rem; }
+
+.login {
+  width: 66%;
+  margin-left: 17%;
+  margin-top: 20%; }
 
 /*# sourceMappingURL=custom.css.map */

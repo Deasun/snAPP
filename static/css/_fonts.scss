@@ -37,12 +37,24 @@ a {
     }
 }
 
+
+// button font
 .btn {
     font-family: $font-stack-1;
 }
 
+
+// labels font
 .index-label {
     @media (min-width: 768px) {
     font-size: 2.5rem;
     }
 }
+
+.control-label {
+    color: $white;
+    font: {
+        family: $font-stack-2
+    };
+}
+

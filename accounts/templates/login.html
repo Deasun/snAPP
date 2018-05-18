@@ -7,9 +7,11 @@
 {% block page_heading %}Login{% endblock %} 
 
 {% block content %}
-<form method='POST'>
+<form method='POST' class="login">
     {% csrf_token %} {{ login_form | as_bootstrap }}
-    <button type="submit" class="btn btn-primary">Sign In</button>
+    <button type="submit" class="btn btn-lg btn-success home-btn">Sign In</button>
 </form>
-<p>Forgot your password? It happens.<a href="{% url 'password_reset' %}"><br>Reset it.</a></p>
+<h4>Forgot your password?<br>It happens.</h4><br>
+
+<h2><a href="{% url 'password_reset' %}">Reset it.</a></h2>
 {% endblock %}
