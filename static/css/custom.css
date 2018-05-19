@@ -2,6 +2,12 @@ h1, h3, a {
   color: #fff;
   font-family: Anton, sans-serif; }
 
+h1, a {
+  color: orange; }
+
+h3 {
+  color: #fff; }
+
 h4, h5 {
   color: #fff;
   font-family: Lato, sans-serif; }
@@ -31,13 +37,13 @@ h3 {
     font-size: 2.5rem; } }
 
 .control-label {
-  color: #fff;
+  color: #ace400;
   font-family: Lato, sans-serif; }
 
 body {
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("/media/images/snAPP.png");
+  background-image: url("/media/images/protest80b.jpg");
   background-attachment: fixed;
   background-position: center; }
 
@@ -69,13 +75,13 @@ hr {
   vertical-align: center; }
 
 .knowledge {
-  color: #976DD0; }
+  color: #7d4cbf; }
 
 .support {
-  color: #FFBA5C; }
+  color: #81b944; }
 
 .tactics {
-  color: #00A6FF; }
+  color: #1b8fce; }
 
 .home-btn {
   margin-top: 5rem; }
@@ -85,8 +91,12 @@ hr {
   margin-left: 17%;
   margin-top: 20%; }
 
+.registration {
+  width: 66%;
+  margin-left: 17%;
+  margin-top: 10%; }
+
 #id_email {
-  margin-top: 4rem;
   display: block;
   width: 100%;
   height: 38px;

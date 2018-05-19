@@ -24,7 +24,7 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
-                <h1 class="masthead-brand">snAPP</h1>
+                <h1 class="masthead-brand"><a href="{% url 'index' %}">snAPP</a></h1>
                 <hr>
                 <nav class="nav nav-masthead justify-content-center">
 
@@ -76,11 +76,13 @@
         </div>
         {% endif %} {% block content %} {% endblock %}
     </div>
+    
     <footer id="footer">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
-                    <h5>You need. We build. You use. We develop.</h5>
+                    <hr>
+                    <h5><strong>You need. We build. You use. We develop.</strong></h5>
                 </div>
             </div>
         </div>
