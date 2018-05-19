@@ -46,8 +46,7 @@
                     <!--Navbar for unlogged user-->
                     <a class="nav-link active" href="{% url 'login' %}">Login</a>
                     <a class="nav-link" href="#">About</a>
-                    <a class="nav-link" href="{% url 'registration' %}">Register</a>
-                    {% endif %}
+                    <a class="nav-link" href="{% url 'registration' %}">Register</a> {% endif %}
                 </nav>
             </div>
         </header>
@@ -75,12 +74,15 @@
                 </form>
             </div>
         </div>
-        {% endif %}
-        {% block content %} {% endblock %}
+        {% endif %} {% block content %} {% endblock %}
     </div>
-    <footer>
+    <footer id="footer">
         <div class="container">
-            <h5>You need. We build. You use. We develop.</h5>
+            <div class="row">
+                <div class="col-xs-12">
+                    <h5>You need. We build. You use. We develop.</h5>
+                </div>
+            </div>
         </div>
     </footer>
 
