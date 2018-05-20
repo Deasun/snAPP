@@ -28,3 +28,18 @@
         -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
         transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+
+
+.edit_form {
+    width: 80%;
+    margin-left: 10%;
+    text-align: left;
+    color: $white;
+    font: {
+        family: $font-stack-3;
+    }
+}
+
+#id_description {
+    width: 120%;
+}

@@ -5,18 +5,21 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
     <title>snAPP</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'web-fonts-with-css/css/fontawesome-all.css' %}">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
     <!--Custom styles-->
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' /> {% block head_js %} {% endblock head_js %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' /> {% block head_js %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    {% endblock head_js %}
 </head>
 
 <body class="text-center">
@@ -24,23 +27,49 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
+                {% if user.is_authenticated %}
+                <a href="{% url 'view_cart' %}"><i class='fas fa-shopping-cart fa-2x'></i>
+                    {% if feature_count > 0 %}
+                    <label class='badge badge-warning'>{{ feature_count }}</label>
+                    {% endif %}
+                </a> {% endif %}
+
                 <h1 class="masthead-brand"><a href="{% url 'index' %}">snAPP</a></h1>
                 <hr>
                 <nav class="nav nav-masthead justify-content-center">
 
                     <!--Navbar for logged in user-->
                     {% if user.is_authenticated %}
-                    <h3><a class="nav-link" href="{% url 'profile' %}">Profile</a></h3>
-                    <h3><a class="nav-link" href="{% url 'report_bug' %}">Report Bugs</a></h3>
-                    <h3><a class="nav-link" href="{% url 'request_feature' %}">Request Features</a></h3>
-                    <h3><a class="nav-link" href="{% url 'logout' %}">Logout</a></h3>
-                    <h4><a href="{% url 'view_cart' %}">
-                            <i class='fas fa-shopping-cart'></i>
-                            {% if feature_count > 0 %}
-                            <label class='badge badge-warning'>{{ feature_count }}</label>
-                            {% endif %}
-                        </a>
-                    </h4>
+
+                   
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">Account
+                          <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu-center">
+                            <li><a href="{% url 'profile' %}">Profile</li>
+                            <li><a href="{% url 'logout' %}">Log Out</a></li>
+                        </ul>
+                    </div>
+
+
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">Develop
+                          <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu-center">
+                            <li><a href="{% url 'report_bug' %}">Report Bugs</li>
+                            <li><a href="{% url 'request_feature' %}">Request Features</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">Explore
+                          <span class="caret"></span></a>
+                        <ul class="dropdown-menu dropdown-menu-center">
+                            <li><a href="#">Knoweldge</li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Strategy</a></li>
+                        </ul>
+                    </div>
+
                     {% else %}
 
                     <!--Navbar for unlogged user-->
@@ -59,24 +88,24 @@
         {% endif %}
 
         <!--Search fields for logged in user-->
-        {% if user.is_authenticated %}
-        <div class="container">
-            <div class="display">
-                <form action="{% url 'feature_search' %}" method='get'>
-                    <input type='text' name='q'>
-                    <button type='submit'>Search Features</button>
-                </form>
-            </div>
-            <div class="display">
-                <form action="{% url 'bug_search' %}" method='get'>
-                    <input type='text' name='q'>
-                    <button type='submit'>Search Bugs</button>
-                </form>
-            </div>
-        </div>
-        {% endif %} {% block content %} {% endblock %}
+        {% block content %} {% endblock %}
     </div>
-    
+    {% if user.is_authenticated %}
+    <div class="container">
+        <div class="display">
+            <form action="{% url 'feature_search' %}" method='get'>
+                <input type='text' name='q'>
+                <button type='submit'>Search Features</button>
+            </form>
+        </div>
+        <div class="display">
+            <form action="{% url 'bug_search' %}" method='get'>
+                <input type='text' name='q'>
+                <button type='submit'>Search Bugs</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
     <footer id="footer">
         <div class="container">
             <div class="row">
@@ -93,8 +122,8 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!--bootstrap JS bundles-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 
 </html>

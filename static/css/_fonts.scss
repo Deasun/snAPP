@@ -1,27 +1,23 @@
-h1, h3, a {
-    color: $white;
+h1, h2, h3, a {
     font: {
         family: $font-stack-1; 
     }
 }
 
-h1, a {
-    color: orange;
-}
-
-h3 {
-    color: $white;
-}
-
-
-
-h4, h5 {
+h3, h4, h5 {
     color: $white;
     font: {
         family: $font-stack-2
     };
 }
 
+h1, a {
+    color: $orange;
+}
+
+h2 {
+    color: $white;
+}
 
 h1 {
     font-size: 5rem;
@@ -47,6 +43,14 @@ a {
     }
 }
 
+p {
+    font: {
+        family: $font-stack-3;
+        size: 2rem
+    }
+    color: $white;
+}
+
 
 // button font
 .btn {
@@ -62,9 +66,23 @@ a {
 }
 
 .control-label {
+    margin-top: 1rem;
     color: $lime;
     font: {
         family: $font-stack-2
     };
 }
 
+.help-block {
+    color: $white;
+    font-size: 1.5rem;
+}
+
+// icons
+.fa-bug {
+    color: $blue;
+}
+
+.fa-plus-square {
+    color: $violet;
+}

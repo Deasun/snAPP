@@ -1,12 +1,55 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block content %}
 
-{% block page_title %}{{ user }}'s Profile{% endblock %}
 
-{% block page_heading %}{{ user }}'s Profile{% endblock %}
+<div class="container">
+    <div class="row main">
+        <div class='col-xs-12 section-head'>
+            <h2>Profile:</h2>
+        </div>
 
-{% block content %}
+        <div class="col-xs-4">
+            <img class='profile-pic' src='{{MEDIA_URL}}{{ user.profile.image }}'>
+        </div>
+        <div class='col-xs-8'>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="section-tail"><strong>username:</strong> {{ user.username }}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p class="section-tail"><strong>union:</strong> {{ user.profile.trade_union }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 section-body">
+            <blockquote>
+                <p>{{ user.profile.description }}</p>
+            </blockquote>
+        </div>
+        <div class="col-xs-8">
+            <p class="section-tail"><strong>email:</strong> {{ user.email }}</p>
+        </div>
+        <div class="col-xs-4">
+            <a href="{% url 'edit_profile' %}"><button class="btn btn-danger">Edit Profile</button></a>
+        </div>
+    </div>
+    <div class="row profile_activity">
+        <div class="col-xs-12">
+            <h2>snAPP activity:</h2>
+        </div>
+        <div class="col-xs-6">
+            <i class="fas fa-bug fa-4x"></i>
+        </div>
+        <div class="col-xs-6">
+            <i class="far fa-plus-square fa-4x"></i>
+        </div>
+    </div>
+
+</div>
+
+
+
 <p>{{ profile.email }}</p>
-
-<a href="{% url 'edit_profile' %}">Edit Profile</a>
 
 {% endblock %}

@@ -39,6 +39,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You're registered. Welcome to snAPP!")
+                return redirect(reverse('profile'))
 
     else:
         registration_form = UserRegistrationForm()
@@ -61,7 +62,7 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
-                return redirect(reverse('index'))
+                return redirect(reverse('profile'))
     
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
@@ -76,7 +77,7 @@ def login(request):
 def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
-    return render(request, 'profile.html', {"profile": user})
+    return render(request, 'profile.html', {"user": user})
 
 @login_required
 def logout(request):

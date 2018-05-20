@@ -1,16 +1,15 @@
-h1, h3, a {
-  color: #fff;
+h1, h2, h3, a {
   font-family: Anton, sans-serif; }
 
-h1, a {
-  color: orange; }
-
-h3 {
-  color: #fff; }
-
-h4, h5 {
+h3, h4, h5 {
   color: #fff;
   font-family: Lato, sans-serif; }
+
+h1, a {
+  color: #e26e1b; }
+
+h2 {
+  color: #fff; }
 
 h1 {
   font-size: 5rem; }
@@ -29,6 +28,11 @@ h3 {
   a {
     font-size: 3rem; } }
 
+p {
+  font-family: "PT Sans Narrow", sans-serif;
+  font-size: 2rem;
+  color: #fff; }
+
 .btn {
   font-family: Anton, sans-serif; }
 
@@ -37,8 +41,19 @@ h3 {
     font-size: 2.5rem; } }
 
 .control-label {
+  margin-top: 1rem;
   color: #ace400;
   font-family: Lato, sans-serif; }
+
+.help-block {
+  color: #fff;
+  font-size: 1.5rem; }
+
+.fa-bug {
+  color: #1b8fce; }
+
+.fa-plus-square {
+  color: #7d4cbf; }
 
 body {
   background-size: cover;
@@ -47,20 +62,67 @@ body {
   background-attachment: fixed;
   background-position: center; }
 
+.container {
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
+.section-head {
+  text-align: left;
+  margin-top: 3rem; }
+
+.section-body {
+  text-align: left;
+  margin-top: 2rem; }
+
+.section-tail {
+  text-align: left;
+  color: #ace400; }
+
 hr {
   margin-top: -1rem;
   border-color: #fff;
   width: 66.6%; }
 
+blockquote {
+  color: #e26e1b; }
+
 #footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
   width: 100%;
   height: 60px; }
 
+.profile_activity {
+  margin-top: 2rem;
+  width: 100%;
+  background-color: #000;
+  padding-bottom: 4rem; }
+
+.profile-pic {
+  border: 0.5rem outset #7d4cbf; }
+
 .nav-link {
   margin-left: 2rem;
   margin-right: 2rem; }
+
+.fa-sign-out-alt {
+  position: fixed;
+  left: 5%;
+  top: 8%; }
+
+.fa-shopping-cart {
+  position: fixed;
+  left: 85%;
+  top: 8%; }
+
+.dropdown {
+  display: inline-block; }
+
+.dropdown-menu-center {
+  left: 50%;
+  right: auto;
+  text-align: center;
+  transform: translate(-50%, 0); }
 
 .strapline {
   margin-top: 3rem; }
@@ -113,5 +175,15 @@ hr {
   -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s; }
+
+.edit_form {
+  width: 80%;
+  margin-left: 10%;
+  text-align: left;
+  color: #fff;
+  font-family: "PT Sans Narrow", sans-serif; }
+
+#id_description {
+  width: 120%; }
 
 /*# sourceMappingURL=custom.css.map */

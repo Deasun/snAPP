@@ -2,3 +2,26 @@
     margin-left: 2rem;
     margin-right: 2rem;
 }
+
+.fa-sign-out-alt {
+    position: fixed;
+    left: 5%;
+    top: 8%;
+}
+
+.fa-shopping-cart {
+    position: fixed;
+    left: 85%;
+    top: 8%;
+}
+
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-menu-center {
+  left: 50%;
+  right: auto;
+  text-align: center;
+  transform: translate(-50%, 0);
+}
