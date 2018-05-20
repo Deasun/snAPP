@@ -1,11 +1,17 @@
-h1, h2, h3, a {
+h1,
+h2,
+h3,
+a {
   font-family: Anton, sans-serif; }
 
-h3, h4, h5 {
+h3,
+h4,
+h5 {
   color: #fff;
   font-family: Lato, sans-serif; }
 
-h1, a {
+h1,
+a {
   color: #e26e1b; }
 
 h2 {
@@ -54,6 +60,10 @@ p {
 
 .fa-plus-square {
   color: #7d4cbf; }
+
+.list-icons {
+  padding-left: 0;
+  padding-right: 0; }
 
 body {
   background-size: cover;
@@ -109,6 +119,16 @@ blockquote {
   margin-top: 10%;
   width: 80%;
   margin-left: 10%; }
+
+.bug_panel {
+  background-color: #313231;
+  font-size: 2rem;
+  color: #1b8fce; }
+
+.bug-badge {
+  background-color: #1b8fce;
+  font-size: 1rem;
+  font-family: Lato, sans-serif; }
 
 .profile_activity {
   margin-top: 2rem;

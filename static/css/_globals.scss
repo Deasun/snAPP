@@ -49,6 +49,9 @@ body {
     color: $lime;
 }
 
+
+
+
 hr {
     margin-top: -1rem;
     border-color: $white;
@@ -72,6 +75,18 @@ blockquote {
     margin-top: 10%;
     width: 80%; 
     margin-left: 10%;
+}
+
+.bug_panel {
+    background-color: $charcoal;
+    font-size: 2rem;
+    color: $blue;
+}
+
+.bug-badge {
+    background-color: $blue;
+    font-size: 1rem;
+    font-family: $font-stack-2;
 }
 
 // backgrounds

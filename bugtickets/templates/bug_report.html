@@ -1,13 +1,4 @@
-{% extends 'base.html' %} 
-
-{% block page_title %}Bug Report{% endblock %} 
-
-{% block page_heading %}Bug Report Ticket{% endblock %} 
-
-{% block content %}
-
-
-{% for bug in bugs %}
+{% extends 'base.html' %} {% block page_title %}Bug Report{% endblock %} {% block page_heading %}Bug Report Ticket{% endblock %} {% block content %} {% for bug in bugs %}
 <ul style="list-style-type: none; text-align: left">
     <li>
         <h3>#{{ bug.id }} - {{ bug.title }}</h3>
@@ -19,17 +10,26 @@
     <li>Status: </li>
 </ul>
 
+<ul>
+    {% if bug.created_by == request.user %}
+    <li>
+        <form method='GET' action="{% url 'edit_bug' bug.id %}"><input class="btn btn-warning btn-sm" type='submit' value='Edit'></form>
+    </li>
+    <li>
+        <form method='DELETE' action="{% url 'delete_bug' bug.id %}"><input class="btn btn-danger btn-sm" type="submit" value='Delete'></form>
+    </li>
+    {% endif %}
 
-<hr> 
-<a class="btn btn-default" href="{% url 'add_comment_to_bug' pk=bug.pk %}">Add comment</a>
-{% for comment in bug.comments.all %}
+</ul>
+
+<hr>
+<a class="btn btn-default" href="{% url 'add_comment_to_bug' pk=bug.pk %}">Add comment</a> {% for comment in bug.comments.all %}
 <div class="comment" style="list-style-type: none; text-align: left">
     <div class="date"></div>{{ comment.text }}
     <p><strong>{{ comment.author }}:</strong> {{ comment.date_created }}</p>
-    
-{% endfor %}
+
+    {% endfor %}
 </div>
 
 
-{% endfor %} 
-{% endblock %}
+{% endfor %} {% endblock %}

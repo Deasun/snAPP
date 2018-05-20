@@ -1,17 +1,24 @@
-h1, h2, h3, a {
+h1,
+h2,
+h3,
+a {
     font: {
-        family: $font-stack-1; 
+        family: $font-stack-1;
     }
 }
 
-h3, h4, h5 {
+h3,
+h4,
+h5 {
     color: $white;
     font: {
         family: $font-stack-2
-    };
+    }
+    ;
 }
 
-h1, a {
+h1,
+a {
     color: $orange;
 }
 
@@ -33,13 +40,13 @@ h3 {
 
 h4 {
     @media (min-width: 768px) {
-    font-size: 3rem;
+        font-size: 3rem;
     }
 }
 
 a {
     @media (min-width: 768px) {
-    font-size: 3rem;
+        font-size: 3rem;
     }
 }
 
@@ -61,7 +68,7 @@ p {
 // labels font
 .index-label {
     @media (min-width: 768px) {
-    font-size: 2.5rem;
+        font-size: 2.5rem;
     }
 }
 
@@ -70,7 +77,8 @@ p {
     color: $lime;
     font: {
         family: $font-stack-2
-    };
+    }
+    ;
 }
 
 .help-block {
@@ -85,4 +93,12 @@ p {
 
 .fa-plus-square {
     color: $violet;
+}
+
+.list-icons {
+    padding: {
+        left: 0;
+        right: 0;
+
+    }
 }
