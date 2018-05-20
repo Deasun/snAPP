@@ -27,6 +27,8 @@
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
+
+                <!--Shooping cart display for logged-in user-->
                 {% if user.is_authenticated %}
                 <a href="{% url 'view_cart' %}"><i class='fas fa-shopping-cart fa-2x'></i>
                     {% if feature_count > 0 %}
@@ -40,8 +42,6 @@
 
                     <!--Navbar for logged in user-->
                     {% if user.is_authenticated %}
-
-                   
                     <div class="dropdown">
                         <a class="dropdown-toggle nav-link" data-toggle="dropdown">Account
                           <span class="caret"></span></a>
@@ -50,14 +50,15 @@
                             <li><a href="{% url 'logout' %}">Log Out</a></li>
                         </ul>
                     </div>
-
-
                     <div class="dropdown">
                         <a class="dropdown-toggle nav-link" data-toggle="dropdown">Develop
                           <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-center">
                             <li><a href="{% url 'report_bug' %}">Report Bugs</li>
+                            <li><a href="{% url 'get_bug_listing' %}">View Bug List</li>
+                            <br>
                             <li><a href="{% url 'request_feature' %}">Request Features</a></li>
+                            <li><a href="{% url 'get_feature_listing' %}">View Features List</a></li>
                         </ul>
                     </div>
                     <div class="dropdown">
@@ -86,12 +87,10 @@
             </div>
         </div>
         {% endif %}
-
-        <!--Search fields for logged in user-->
-        {% block content %} {% endblock %}
     </div>
-    {% if user.is_authenticated %}
-    <div class="container">
+    <!--Search fields for logged in user-->
+    {% block content %} {% endblock %} {% if user.is_authenticated %}
+    
         <div class="display">
             <form action="{% url 'feature_search' %}" method='get'>
                 <input type='text' name='q'>
@@ -104,17 +103,19 @@
                 <button type='submit'>Search Bugs</button>
             </form>
         </div>
-    </div>
+   
     {% endif %}
+
+    <!--Footer-->
     <footer id="footer">
-        <div class="container">
+        
             <div class="row">
                 <div class="col-xs-12">
                     <hr>
                     <h5><strong>You need. We build. You use. We develop.</strong></h5>
                 </div>
             </div>
-        </div>
+        
     </footer>
 
 

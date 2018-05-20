@@ -78,6 +78,19 @@ body {
   text-align: left;
   color: #ace400; }
 
+.list-head {
+  margin-top: 3rem;
+  margin-left: .5rem; }
+
+.list-head-img {
+  text-align: center; }
+
+.list-head-txt {
+  text-align: left; }
+
+.list-head-txt p {
+  color: #ace400; }
+
 hr {
   margin-top: -1rem;
   border-color: #fff;
@@ -91,6 +104,11 @@ blockquote {
   bottom: 0;
   width: 100%;
   height: 60px; }
+
+.panel {
+  margin-top: 10%;
+  width: 80%;
+  margin-left: 10%; }
 
 .profile_activity {
   margin-top: 2rem;

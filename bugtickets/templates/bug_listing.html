@@ -1,37 +1,60 @@
-<!--CHANGE THE DISPLAY-->
-
-{% extends 'base.html' %} {% block content %} 
-
-{% for bug in bugs %}
-<div class="row">
-
-    <ul style="list-style-type: none; text-align: left">
-        <li>
-            <h3>#{{ bug.id }} -{{ bug.title }}</h3>
-        </li>
-        <li>{{ bug.description }}</li>
-        <li>Member: {{ bug.created_by }}</li>
-        <li>Published on: {{ bug.date_created }}</li>
-        <li>{{ bug.votes }} Upvotes</li>
-        <li>Status: {{ bug.status }}</li>
+{% extends 'base.html' %} {% block content %}
 
 
-        <li><a href="{% url 'bug_report' bug.pk %}">Comments: {{ bug.comments.count }}</a></li>
-       
-        
-        {% if bug.created_by == request.user %}
-        <li>
-            <form method='GET' action="{% url 'edit_bug' bug.id %}"><input class="btn btn-warning btn-sm" type='submit' value='Edit'></form>
-        </li>
-        <li>
-            <form method='DELETE' action="{% url 'delete_bug' bug.id %}"><input class="btn btn-danger btn-sm" type="submit" value='Delete'></form>
-        </li>
-        {% endif %}
-        <li>
-            <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form>
-        </li>
-    </ul>
+<!--Bug panel lists-->
+<div class="row list-head">
+    <div class="col-xs-4 list-head-img">
+        <i class="fas fa-bug fa-5x"></i>
+    </div>
+    <div class="col-xs-8 list-head-txt">
+        <p><strong>Experiencing problems using snAPP?<br>Let us know!!!</strong>
+    </div>
+    <div class="col-xs-12">
+        <p>At snAPP we sort out the problems with the largest votes first.<br>Search and vote before you report!</p>
+    </div>
 </div>
-{% endfor %} 
+<div class="row panels">
+    {% for bug in bugs %}
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><a href="{% url 'bug_report' bug.pk %}">#{{ bug.id }} -{{ bug.title }}</a><br>Status: {{ bug.status }}</div>
+            <div class="panel-body">
+                {{ bug.description | truncatewords:15 }}
+            </div>
+            <div class="panel-footer"><strong>{{ bug.created_by }}</strong>,<em> {{ bug.date_created }}</em></div>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <i class="far fa-thumbs-up fa-2x">
+                        <label class='badge badge-warning'>{{ bug.votes }}</label>
+                        </i>
+                        
+                    </div>
+                    <div class="col-xs-6">
+                        <i class="far fa-comments fa-2x">
+                            <label class='badge badge-danger'>{{ bug.comments.count }}</label>
+                        </i> 
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ul>
+            {% if bug.created_by == request.user %}
+            <li>
+                <form method='GET' action="{% url 'edit_bug' bug.id %}"><input class="btn btn-warning btn-sm" type='submit' value='Edit'></form>
+            </li>
+            <li>
+                <form method='DELETE' action="{% url 'delete_bug' bug.id %}"><input class="btn btn-danger btn-sm" type="submit" value='Delete'></form>
+            </li>
+            {% endif %}
+            <li>
+                <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm" type="submit" value="Upvote"></form>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
 <hr>
