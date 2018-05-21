@@ -1,49 +1,143 @@
 {% extends 'base.html' %} {% block page_title %}Feature Report{% endblock %} {% block page_heading %}Feature Report Ticket{% endblock %} {% block content %} {% for feature in features %}
 
-<ul style="list-style-type: none; text-align: left">
-    <li>
-        <h3>#{{ feature.id }} - {{ feature.title }}</h3>
-    </li>
-    <li>{{ feature.description }}</li>
-    <li>Similar examples: {{ feature.links }}</li>
-    <li>Member: {{ feature.created_by }}</li>
-    <li>Published on: {{ feature.date_created }}</li>
-    <li>{{ feature.votes }} Upvotes</li>
-    <li>Status: {{ feature.status }}</li>
-    <li>STARTUP CONTRIBUTIONS = {{ feature.contribution }}</li>
-    <li>TOTAL CONTRIBUTIONS = {{ feature.total_contributions }}</li>
-
-
-    {% if feature.created_by != request.user %}
-    <li>
-        <form method='POST' action="{% url 'upvote_feature' feature.id %}">
-            {% csrf_token %}
-            <input class="btn btn-success btn-sm" type="submit" value="Upvote">
-        </form>
-    </li>
-    {% endif %}
-
-    <li>
-        <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-            {% csrf_token %}
-            <input name='quantity' type='number' min="1" max='999' placeholder="Quantity" class="form-control">
-            <span class="input-group-btn">
-            <button class="btn btn-success" type="submit">Add</button>
-            </span>
-        </form>
-    </li>
-
-</ul>
-
-
-<p>Comments: {{ feature.feature_comments.count }}</p>
-<a class="btn btn-default" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a> {% for comment in feature.feature_comments.all %}
-<div class="comment" style="list-style-type: none; text-align: left">
-    <div class="date"></div>{{ comment.text }}
-    <p><strong>{{ comment.author }}:</strong> {{ comment.date_created }}</p>
-
-    {% endfor %}
+<div class="row list-head">
+    <div class="col-xs-12 list-head-img">
+        <i class="fas fa-cog fa-4x profile feature"></i>
+    </div>
+    <div class "col-xs-12">
+        <p><strong>Building snAPP one feature at a time.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
+    </div>
+    <div class="col-xs-12">
+        <h1 class="feature">Feature Request</h1>
+    </div>
+    <div class="row list-search-field">
+        <div class="col-xs-12">
+            <div class="display">
+                <form action="{% url 'feature_search' %}" method='get'>
+                    <input type='text' name='q'>
+                    <button type='submit' class="btn btn-feature btn-sm">Search Requests</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
+<div class="col-xs-12">
+    <!--Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header feature_modal_head">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Using snAPP's feature request system</h4>
+                </div>
+                <div class="modal-body">
+                    <p>snAPP is a member-driven platform.<br><br>We develop snAPP by adding new features that have been requested by members. We prioritise our work depending on which features are in most demand. Demand is measured through member financial
+                        contributions. These contributions go towards sustaining snAPP and (partially) compensating our software developers for their time.<br><br> If you would like a feature added to snAPP, we would first recommend <strong>searching existing feature requests.</strong><br><br>You
+                        can do this by either scrolling through the list of features or, more efficiently, search by a keyword (e.g. <em>'chat', 'file sharing'</em>). Click on the feature's title to find out more details.<br><br><strong>You can support an existing feature request by making a contribution (minimum £9.99). Also, feel free to leave a comment about the request.</strong>The
+                        more contributions a feature request recieves, the more time we'll have to spend on developing it.<br><br><strong>If nobody has reported the problem yet, complete a Feature Request form.</strong><br><br> You'll be notified when
+                        we have begun to work on the feature, or our administrator may leave a comment seeking more details about your request.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>
+                        </div>
+                        <div class="col-xs-8">
+                            <button type="button" class="btn btn-lg btn-feature" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row panels">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="panel">
+            <div class="panel-heading feature_panel">
+                <h2>#{{ feature.id }} : {{ feature.title }}</h2><br>
+                <p class="feature">startup contirbution: <strong>{{ feature.contribution }}</strong></p>
+                <p class="feature">total contributions: <strong>{{ feature.total_contributions }}</strong></p>
+                <p class="feature">status: <strong>{{ feature.status }}</strong></p>
+            </div>
+            <div class="panel-body">
+                <p>{{ feature.description }}</p>
+                {% if feature.links != blank %}
+                <p><strong>Links to similar features in other apps:</strong> {{ feature.links }}</p>
+                {% endif %}
+            </div>
+
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-4 list-icons">
+                        <i class="far fa-thumbs-up fa-2x">
+                        <label class='badge feature-badge'>{{ feature.votes }}</label>
+                        </i>
+                    </div>
+                    <div class="col-xs-4 list-icons">
+                        <form method='POST' action="{% url 'upvote_feature' feature.id %}">{% csrf_token %}<input class="btn btn-danger btn-sm vote" type="submit" value="Upvote"></form>
+                    </div>
+                    <div class="col-xs-4 list-icons">
+                        <i class="far fa-comments fa-2x">
+                            <label class='badge bug-badge'>{{ feature.comments.count }}</label>
+                        </i>
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer"><strong>{{ feature.created_by }}</strong>,<em> {{ feature.date_created }}</em></div>
+            <div class="panel-heading feature_panel contribute">
+                <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                    {% csrf_token %}
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p class="feature">Contribute Now!</p>
+                        </div>
+                        <div class="col-xs-5">
+                            <input name='quantity' type='number' min="1" max='999' placeholder="Quantity" class="form-control">
+                        </div>
+                        <div class="col-xs-5">
+                            <span class="input-group-btn"><button class="btn btn-success" type="submit">Add</button></span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+<!--Comments-->
+    <div class="col-xs-12 col-md-4 comment-head">
+        <i class="far fa-comments fa-6x"></i><br>
+        <a class="btn btn-danger" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a>
+
+        <section class="comments comment-head">
+            <article class="comment">
+                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}' alt="" width="50" height="50"></a>
+                <div class="comment-body">
+                    {% for comment in feature.feature_comments.all %}
+                    <div class="text">
+                        <p>{{ comment.text }}</p>
+                        <p class="attribution">by <a>{{ comment.author }}</a> on {{ comment.date_created }}</p>
+                    </div>
+                    <br> {% endfor %}
+                </div>
+            </article>
+        </section>
+    </div>
+</div>
 
 {% endfor %} {% endblock %}

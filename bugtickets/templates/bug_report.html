@@ -1,35 +1,122 @@
-{% extends 'base.html' %} {% block page_title %}Bug Report{% endblock %} {% block page_heading %}Bug Report Ticket{% endblock %} {% block content %} {% for bug in bugs %}
-<ul style="list-style-type: none; text-align: left">
-    <li>
-        <h3>#{{ bug.id }} - {{ bug.title }}</h3>
-    </li>
-    <li>{{ bug.description }}</li>
-    <li>Member: {{ bug.created_by }}</li>
-    <li>Published on: {{ bug.date_created }}</li>
-    <li>{{ bug.votes }} Upvotes</li>
-    <li>Status: </li>
-</ul>
+{% extends 'base.html' %} 
 
-<ul>
-    {% if bug.created_by == request.user %}
-    <li>
-        <form method='GET' action="{% url 'edit_bug' bug.id %}"><input class="btn btn-warning btn-sm" type='submit' value='Edit'></form>
-    </li>
-    <li>
-        <form method='DELETE' action="{% url 'delete_bug' bug.id %}"><input class="btn btn-danger btn-sm" type="submit" value='Delete'></form>
-    </li>
-    {% endif %}
+{% block page_title %}Bug Report{% endblock %} 
 
-</ul>
+{% block page_heading %}Bug Report Ticket{% endblock %} {% block content %} {% for bug in bugs %}
 
-<hr>
-<a class="btn btn-default" href="{% url 'add_comment_to_bug' pk=bug.pk %}">Add comment</a> {% for comment in bug.comments.all %}
-<div class="comment" style="list-style-type: none; text-align: left">
-    <div class="date"></div>{{ comment.text }}
-    <p><strong>{{ comment.author }}:</strong> {{ comment.date_created }}</p>
-
-    {% endfor %}
+<div class="row list-head">
+    <div class="col-xs-12 list-head-img">
+        <i class="fas fa-bug fa-4x profile"></i>
+    </div>
+    <div class "col-xs-12">
+        <p><strong>Making snAPP work for you.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
+    </div>
+    <div class="col-xs-12">
+        <h1 class="tactics">Bug Report</h1>
+    </div>
+    <div class="row list-search-field">
+        <div class="col-xs-12">
+            <div class="display">
+                <form action="{% url 'bug_search' %}" method='get'>
+                    <input type='text' name='q'>
+                    <button type='submit' class="btn btn-primary btn-sm">Search Bugs</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
+<div class="col-xs-12">
+    <!--Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header bug_modal_head">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Using snAPP's reporting system</h4>
+                </div>
+                <div class="modal-body">
+                    <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
+                        <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword (e.g. <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong> and feel free to leave a comment.<br><br>
+                        <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about your
+                        problem.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>
+                        </div>
+                        <div class="col-xs-8">
+                            <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="row panels">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="panel">
+            <div class="panel-heading bug_panel">
+                <h2>#{{ bug.id }} : {{ bug.title }}</h2><br>
+                <p class="feature">status: <strong>{{ feature.status }}</strong></p>
+            </div>
+            <div class="panel-body">
+                <p>{{ bug.description }}</p>
+            </div>
+
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-4 list-icons">
+                        <i class="far fa-thumbs-up fa-2x">
+                        <label class='badge bug-badge'>{{ bug.votes }}</label>
+                        </i>
+                    </div>
+                    <div class="col-xs-4 list-icons">
+                        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm vote" type="submit" value="Upvote"></form>
+                    </div>
+                    <div class="col-xs-4 list-icons">
+                        <i class="far fa-comments fa-2x">
+                            <label class='badge bug-badge'>{{ bug.comments.count }}</label>
+                        </i>
+
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer"><strong>{{ bug.created_by }}</strong>,<em> {{ bug.date_created }}</em></div>
+        </div>
+    </div>
+
+<!--Comments-->
+    <div class="col-xs-12 col-md-4 comment-head">
+        <i class="far fa-comments fa-6x"></i><br>
+        <a class="btn btn-danger" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
+        
+        {% if bug.bug_comments > 0 %}
+        <section class="comments comment-head">
+            <article class="comment">
+                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user_bug.profile.image }}' alt="" width="50" height="50"></a>
+                <div class="comment-body">
+                    {% for comment in bug.bug_comments.all %}
+                    <div class="text">
+                        <p>{{ comment.text }}</p>
+                        <p class="attribution">by <a>{{ comment.author }}</a> on {{ comment.date_created }}</p>
+                    </div>
+                    <br> {% endfor %}
+                    {% endif %}
+                </div>
+            </article>
+        </section>
+    </div>
+</div>
 
 {% endfor %} {% endblock %}
