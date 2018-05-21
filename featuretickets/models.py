@@ -10,7 +10,7 @@ def default_status():
     return 'todo'
 
 class FeatureTicket(models.Model):
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_features")
     date_created = models.DateField(default=datetime.date.today)
     title = models.CharField(max_length=200, blank=False)
     description = models.TextField(null=True, blank=False)
