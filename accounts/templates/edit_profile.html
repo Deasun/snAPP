@@ -1,20 +1,19 @@
 {% extends 'base.html' %} 
-{% load static from staticfiles %}
 {% load bootstrap_tags %} {% block page_title %}Edit Profile{% endblock %} {% block page_heading %}Profile{% endblock %} {% block content %}
 
 
     <div class="row">
         <div class="col-xs-12">
-            <h2>Edit Profile</h2>
+            <h2 class="user">Edit Profile</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <form method='POST' class="edit_form">
+            <form method='POST' class="edit_form" enctype="multipart/form-data">
                 {% csrf_token %} 
                 {{ user_form | as_bootstrap }} 
                 {{ profile_form | as_bootstrap }}
-                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="submit" class="btn btn-danger">Save Changes</button>
             </form>
         </div>
     </div>

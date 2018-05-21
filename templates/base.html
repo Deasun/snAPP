@@ -88,23 +88,8 @@
         </div>
         {% endif %}
     </div>
-    <!--Search fields for logged in user-->
-    {% block content %} {% endblock %} {% if user.is_authenticated %}
-    
-        <div class="display">
-            <form action="{% url 'feature_search' %}" method='get'>
-                <input type='text' name='q'>
-                <button type='submit'>Search Features</button>
-            </form>
-        </div>
-        <div class="display">
-            <form action="{% url 'bug_search' %}" method='get'>
-                <input type='text' name='q'>
-                <button type='submit'>Search Bugs</button>
-            </form>
-        </div>
-   
-    {% endif %}
+  
+    {% block content %} {% endblock %} 
 
     <!--Footer-->
     <footer id="footer">
