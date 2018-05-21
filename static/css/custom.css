@@ -48,12 +48,16 @@ p {
 
 .control-label {
   margin-top: 1rem;
-  color: #ace400;
+  color: #64d29f;
   font-family: Lato, sans-serif; }
 
 .help-block {
   color: #fff;
   font-size: 1.5rem; }
+
+.panel-head {
+  color: #fff;
+  font-family: Lato, sans-serif; }
 
 .fa-bug {
   color: #1b8fce; }
@@ -64,6 +68,17 @@ p {
 .list-icons {
   padding-left: 0;
   padding-right: 0; }
+
+.modal p {
+  color: #000; }
+
+.modal h4 {
+  color: #fff;
+  font-family: Anton, sans-serif; }
+
+.modal-body p {
+  font-size: 1.5rem;
+  text-align: left; }
 
 body {
   background-size: cover;
@@ -76,6 +91,21 @@ body {
   margin-left: 1rem;
   margin-right: 1rem; }
 
+.knowledge {
+  color: #7d4cbf; }
+
+.support {
+  color: #81b944; }
+
+.tactics {
+  color: #1b8fce; }
+
+.feature {
+  color: #64d29f; }
+
+.user {
+  color: #7d4cbf; }
+
 .section-head {
   text-align: left;
   margin-top: 3rem; }
@@ -86,20 +116,14 @@ body {
 
 .section-tail {
   text-align: left;
-  color: #ace400; }
+  color: #64d29f; }
 
 .list-head {
-  margin-top: 3rem;
+  margin-top: 6rem;
   margin-left: .5rem; }
 
 .list-head-img {
   text-align: center; }
-
-.list-head-txt {
-  text-align: left; }
-
-.list-head-txt p {
-  color: #ace400; }
 
 hr {
   margin-top: -1rem;
@@ -130,6 +154,16 @@ blockquote {
   font-size: 1rem;
   font-family: Lato, sans-serif; }
 
+.feature_panel {
+  background-color: #313231;
+  font-size: 2rem;
+  color: #64d29f; }
+
+.feature-badge {
+  background-color: #64d29f;
+  font-size: 1rem;
+  font-family: Lato, sans-serif; }
+
 .profile_activity {
   margin-top: 2rem;
   width: 100%;
@@ -137,7 +171,8 @@ blockquote {
   padding-bottom: 4rem; }
 
 .profile-pic {
-  border: 0.5rem outset #7d4cbf; }
+  border: 0.5rem solid #7d4cbf;
+  border-radius: 50%; }
 
 .nav-link {
   margin-left: 2rem;
@@ -162,11 +197,20 @@ blockquote {
   text-align: center;
   transform: translate(-50%, 0); }
 
+.stick-head {
+  width: 5rem;
+  height: auto; }
+
 .strapline {
   margin-top: 3rem; }
 
 .midline {
   margin-top: 6rem; }
+
+.profile {
+  border: solid 3px;
+  border-radius: 50%;
+  padding: 1.75rem; }
 
 .icon-sections {
   margin-top: 6rem; }
@@ -174,17 +218,15 @@ blockquote {
 .icon-centered {
   vertical-align: center; }
 
-.knowledge {
-  color: #7d4cbf; }
-
-.support {
-  color: #81b944; }
-
-.tactics {
-  color: #1b8fce; }
-
 .home-btn {
   margin-top: 5rem; }
+
+.info {
+  color: #e26e1b; }
+
+.btn-feature {
+  background-color: #64d29f;
+  border-color: #64d29f; }
 
 .login {
   width: 66%;
@@ -223,5 +265,17 @@ blockquote {
 
 #id_description {
   width: 120%; }
+
+.list-search-field {
+  margin-top: 3rem; }
+
+.bug_modal_head {
+  background-color: #1b8fce; }
+
+.feature_modal_head {
+  background-color: #64d29f; }
+
+.modal-footer {
+  background-color: #313231; }
 
 /*# sourceMappingURL=custom.css.map */

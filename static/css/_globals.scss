@@ -15,6 +15,33 @@ body {
     }
 }
 
+// themes
+.knowledge {
+    color: $violet;
+
+}
+
+.support {
+    color: $green;
+
+}
+
+.tactics {
+    color: $blue;
+
+}
+
+.feature {
+    color: $lime;
+}
+
+.user {
+    color: $violet;
+}
+
+
+
+
 .section-head {
     text-align: left;
     margin-top: 3rem;
@@ -32,21 +59,14 @@ body {
 }
 
 
+// List pages
 .list-head {
-    margin-top: 3rem;
+    margin-top: 6rem;
     margin-left: .5rem;
 }
 
 .list-head-img {
     text-align: center;
-}
-
-.list-head-txt {
-    text-align: left;
-}
-
-.list-head-txt p {
-    color: $lime;
 }
 
 
@@ -89,6 +109,18 @@ blockquote {
     font-family: $font-stack-2;
 }
 
+.feature_panel {
+    background-color: $charcoal;
+    font-size: 2rem;
+    color: $lime;
+}
+
+.feature-badge {
+    background-color: $lime;
+    font-size: 1rem;
+    font-family: $font-stack-2;
+}
+
 // backgrounds
 .profile_activity {
     margin-top: 2rem;
@@ -99,5 +131,6 @@ blockquote {
 
 // images
 .profile-pic {
-    border: .5rem outset $violet;
+    border: .5rem solid $violet;
+    border-radius: 50%;
 }

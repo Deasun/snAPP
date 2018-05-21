@@ -3,37 +3,68 @@
 
 <!--Bug panel lists-->
 <div class="row list-head">
-    <div class="col-xs-4 list-head-img">
-        <i class="fas fa-bug fa-5x"></i>
+    <div class="col-xs-12 list-head-img">
+        <i class="fas fa-bug fa-4x profile"></i>
     </div>
-    <div class="col-xs-8 list-head-txt">
-        <p><strong>Experiencing problems using snAPP?<br>Let us know!!!</strong>
+    <div class "col-xs-12">
+        <p><strong>Find out how to use snAPP's bug reporting system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
- 
-    <div class="col-xs-12">
-        <p><u>You</u> make the priorities at snAPP.<br>The bugs with the biggest votes get prioritised.<br>Search and vote before you report!</p>
-    </div>
-
 </div>
 
-<div class="row">
+<div class="row list-search-field">
     <div class="col-xs-12">
         <div class="display">
             <form action="{% url 'bug_search' %}" method='get'>
                 <input type='text' name='q'><br><br>
-                <button type='submit' class="btn btn-primary btn-sm">Search Bugs</button>
+                <button type='submit' class="btn btn-primary btn-lg">Search Bugs</button>
             </form>
         </div>
     </div>
 </div>
 
+<div class="col-xs-12">
+    <!--Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header bug_modal_head">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Using snAPP's reporting system</h4>
+                </div>
+                <div class="modal-body">
+                    <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
+                        <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword (e.g. <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong> and feel free to leave a comment.<br><br>
+                        <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about your
+                        problem.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>
+                        </div>
+                        <div class="col-xs-8">
+                            <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 <div class="row panels">
     {% for bug in bugs %}
     <div class="col-xs-12 col-sm-6 col-md-4">
         <div class="panel">
-            <div class="panel-heading bug_panel"><a href="{% url 'bug_report' bug.pk %}">#{{ bug.id }} : {{ bug.title }}</a><br>status: <strong>{{ bug.status }}</strong></div>
+            <div class="panel-heading bug_panel"><a class="panel-head" href="{% url 'bug_report' bug.pk %}">#{{ bug.id }} : {{ bug.title }}</a><br>status: <strong>{{ bug.status }}</strong></div>
             <div class="panel-body">
                 {{ bug.description | truncatewords:15 }}
             </div>
@@ -59,7 +90,7 @@
             </div>
             <div class="panel-footer"><strong>{{ bug.created_by }}</strong>,<em> {{ bug.date_created }}</em></div>
         </div>
-       
+
     </div>
     {% endfor %}
 </div>
