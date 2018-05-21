@@ -254,9 +254,6 @@ blockquote {
   color: #fff;
   font-family: "PT Sans Narrow", sans-serif; }
 
-#id_description {
-  width: 120%; }
-
 .list-search-field {
   margin-top: 3rem; }
 
@@ -268,5 +265,8 @@ blockquote {
 
 .modal-footer {
   background-color: #313231; }
+
+footer {
+  margin-top: 4rem; }
 
 /*# sourceMappingURL=custom.css.map */
