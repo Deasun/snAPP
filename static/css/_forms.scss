@@ -1,7 +1,14 @@
 .login {
     width: 66%;
     margin-left: 17%;
-    margin-top: 20%;
+    @media (min-width: 768px) {
+        width: 33%;
+        margin-left: 33%;
+    }
+    @media (min-width: 992px) {
+        width: 20%;
+        margin-left: 40%;
+    }
 }
 
 .registration {
@@ -28,11 +35,11 @@
     background-image: none;
     border: 1px solid #cccccc;
     border-radius: 4px;
-        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-        box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
-        -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
-        -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 .edit_form {
