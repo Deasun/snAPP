@@ -1,8 +1,8 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %} {% block page_title %}Bug Report{% endblock %} {% block page_heading %}Bug Report Ticket{% endblock %} 
 
-{% block page_title %}Bug Report{% endblock %} 
+{% block content %} 
 
-{% block page_heading %}Bug Report Ticket{% endblock %} {% block content %} {% for bug in bugs %}
+{% for bug in bugs %}
 
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
@@ -39,7 +39,8 @@
                 </div>
                 <div class="modal-body">
                     <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
-                        <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword (e.g. <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong> and feel free to leave a comment.<br><br>
+                        <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword (e.g.
+                        <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong>                        and feel free to leave a comment.<br><br>
                         <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about your
                         problem.
                     </p>
@@ -96,23 +97,21 @@
         </div>
     </div>
 
-<!--Comments-->
+    <!--Comments-->
     <div class="col-xs-12 col-md-4 comment-head">
         <i class="far fa-comments fa-6x"></i><br>
         <a class="btn btn-danger" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
         
-        {% if bug.bug_comments > 0 %}
         <section class="comments comment-head">
             <article class="comment">
-                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user_bug.profile.image }}' alt="" width="50" height="50"></a>
+                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}' alt="" width="50" height="50"></a>
                 <div class="comment-body">
-                    {% for comment in bug.bug_comments.all %}
+                    {% for comment in bug.comments.all %}
                     <div class="text">
                         <p>{{ comment.text }}</p>
                         <p class="attribution">by <a>{{ comment.author }}</a> on {{ comment.date_created }}</p>
                     </div>
-                    <br> {% endfor %}
-                    {% endif %}
+                    <br>{% endfor %}
                 </div>
             </article>
         </section>
