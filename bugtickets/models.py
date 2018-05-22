@@ -1,6 +1,6 @@
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
-from .choices import status_set
+from .choices import status_set, bugs
 import datetime
 
 """
@@ -9,10 +9,14 @@ Bug Ticket model - enables users to report a bug
 def default_status():
     return 'todo'
 
+def default_bug_type():
+    return 'other'
+
 class BugTicket(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_bugs")
     date_created = models.DateField(default=datetime.date.today)
     title = models.CharField(max_length=200, blank=False)
+    bug_type = models.CharField(max_length=30, choices=bugs, default=default_bug_type, blank=False)
     description = models.TextField(null=True, blank=False)
     votes = models.IntegerField(default = 0)
     status = models.CharField(max_length=20, choices=status_set, default=default_status)
