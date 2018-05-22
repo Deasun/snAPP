@@ -180,6 +180,14 @@ blockquote {
 .nav-link {
   margin-left: 2rem;
   margin-right: 2rem; }
+  @media (min-width: 768px) {
+    .nav-link {
+      margin-left: 5rem;
+      margin-right: 5rem; } }
+  @media (min-width: 992px) {
+    .nav-link {
+      margin-left: 10rem;
+      margin-right: 10rem; } }
 
 .fa-sign-out-alt {
   position: fixed;
@@ -266,7 +274,15 @@ a .fa-cc-stipe {
 .registration {
   width: 66%;
   margin-left: 17%;
-  margin-top: 10%; }
+  margin-bottom: 8rem; }
+  @media (min-width: 768px) {
+    .registration {
+      width: 33%;
+      margin-left: 33%; } }
+  @media (min-width: 992px) {
+    .registration {
+      width: 20%;
+      margin-left: 40%; } }
 
 .check-out {
   width: 80%;

@@ -13,8 +13,18 @@
 
 .registration {
     width: 66%;
-    margin-left: 17%;
-    margin-top: 10%;
+    margin: {
+        left: 17%;
+        bottom: 8rem;
+    }
+    @media (min-width: 768px) {
+        width: 33%;
+        margin-left: 33%;
+    }
+    @media (min-width: 992px) {
+        width: 20%;
+        margin-left: 40%;
+    }
 }
 
 .check-out {

@@ -1,16 +1,27 @@
 {% extends 'base.html' %} 
 
-{% load bootstrap_tags %}
+{% load bootstrap_tags %} 
 
 {% block page_title %}Registration Page{% endblock %} 
 
 {% block page_heading %}User Registration{% endblock %} 
 
 {% block content %}
-
-<form method='POST' class="registration">
-    {% csrf_token %} 
-    {{ registration_form | as_bootstrap }}
-    <button type="submit" class="btn btn-lg btn-success">Register</button>
-</form>
+<div class="row list-head">
+    <div class="col-xs-12 list-head-img">
+        <i class="fas fa-id-card fa-4x user profile"></i>
+    </div>
+    <div class "col-xs-12">
+        <p><strong>Join today.</strong></p>
+    </div>
+    <div class="col-xs-12">
+        <h2 class="user">Register</h2>
+    </div>
+    <div class="col-xs-12">
+        <form method='POST' class="registration">
+            {% csrf_token %} {{ registration_form | as_bootstrap }}
+            <button type="submit" class="btn btn-lg btn-success">Register</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
