@@ -1,36 +1,98 @@
 {% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
 
-<div class="row row-flex">
-    {% for item in cart_items %}
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-display">
-        <div class='product' style="#"></div>
-        <div class='caption'>
-            <h3>#{{ item.feature.id }} - {{ item.feature.title }}</h3>
-            <p>{{ feature.description|truncatewords:15 }}</p>
-            <p>Minimum Contribution: {{ item.feature.contribution }}</p>
-            <p>
-                <form class="form-inline" method='post' action="{% url 'adjust_cart' item.id %}">
-                    {% csrf_token %}
-                    <div class='form-group'>
-                        <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                        <div class="input-group">
-                            <div class='input-group-addon'>Qty</div>
-                            <input name='quantity' type='number' min='0' max='999' class="form-control">
-                            <div class="input-group-addon">{{ item.quantity }}</div>
+
+
+
+<div class="row list-head">
+    <div class="col-xs-12 list-head-img">
+        <i class="fas fa-ticket-alt fa-4x profile ticket"></i>
+    </div>
+    <div class "col-xs-12">
+        <p><strong>Review your snAPP requests.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
+    </div>
+    <div class="col-xs-12">
+        <h2 class="ticket">Review Requests</h2>
+    </div>
+</div>
+
+<div class="col-xs-12">
+    <!--Modal-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header ticket_modal_head">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Using snAPP's feature request system</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Before making your contribution, ensure sure that you have chosen both the <strong>correct Features</strong> and the right number of <strong>snAPP tickets.</strong><br><br>
+                    <strong>Remember that 1 snAPP ticket = £9.99</strong><br><br>
+                        When your have reviewed your requests, click the button to enter your details & make your contribution.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>
+                        </div>
+                        <div class="col-xs-8">
+                            <button type="button" class="btn btn-lg btn-cart" data-dismiss="modal">Close</button>
                         </div>
                     </div>
-                    <button type='submit' class='btn btn-primary'><span class="fas fa-edit" aria-hidden='true'></span> Amend</button>
-                </form>
-            </p>
+                </div>
+            </div>
         </div>
     </div>
-    {% endfor %}
-</div>
-<div class="row">
-    <p>Total</p>
-    <p><span class="glyphicon glyphicon-gbp" aria-hidden='true'></span>{{ total }}</p>
-    <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
 </div>
 
 
-{% endblock %}
+<div class="row row-flex">
+    {% for item in cart_items %}
+    <!--test-->
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="panel">
+            <div class="panel-heading feature_panel">
+                <h2 class="panel-head">#{{ item.feature.id }} : {{ item.feature.title }}</h2>
+                <p>1 snAPP ticket = £{{ item.feature.contribution }}</p>
+                <p>total tickets: <strong>{{ item.feature.total_contributions }}</strong></p>
+            </div>
+            <div class="panel-body">
+                {{ item.feature.description | truncatewords:15 }}
+            </div>
+            <hr>
+
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-inline" method='post' action="{% url 'adjust_cart' item.id %}">
+                            <div><strong>Current # of tickets: {{ item.quantity }}</strong></div>
+                            {% csrf_token %}
+                            <div class='form-input'>
+                                <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                                <div class="input-group">
+                                    <div class='input-group-addon'><strong>New #</strong></div>
+                                    <input name='quantity' type='number' min='0' max='999' class="form-control">
+                                </div><br>
+                                <button type='submit' class='btn btn-cart'><span class="fas fa-edit" aria-hidden='true'></span>Amend</button>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+        <div class="row">
+            <p><strong>Sub-total: £{{ total }}</strong></p>
+            <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+        </div>
+        <!--test-->
+
+
+
+
+
+        {% endblock %}

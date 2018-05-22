@@ -9,10 +9,17 @@
     top: 8%;
 }
 
-.fa-shopping-cart {
+.ticket-nav {
     position: fixed;
     left: 85%;
     top: 8%;
+}
+
+.feature-count {
+    position: fixed;
+    left: 85%;
+    top: 7%;
+    background-color: $red;
 }
 
 .dropdown {

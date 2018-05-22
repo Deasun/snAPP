@@ -39,6 +39,9 @@ p {
   font-size: 2rem;
   color: #fff; }
 
+caption {
+  color: #000; }
+
 .btn {
   font-family: Anton, sans-serif; }
 
@@ -105,6 +108,12 @@ body {
 
 .user {
   color: #b37bff; }
+
+.ticket {
+  color: #e4d043; }
+
+.payment {
+  color: #d9534f; }
 
 .section-head {
   text-align: left;
@@ -181,10 +190,16 @@ blockquote {
   left: 5%;
   top: 8%; }
 
-.fa-shopping-cart {
+.ticket-nav {
   position: fixed;
   left: 85%;
   top: 8%; }
+
+.feature-count {
+  position: fixed;
+  left: 85%;
+  top: 7%;
+  background-color: #d9534f; }
 
 .dropdown {
   display: inline-block; }
@@ -231,6 +246,12 @@ blockquote {
   background-color: #64d29f;
   border-color: #64d29f; }
 
+.btn-cart {
+  background-color: #e4d043; }
+
+a .fa-cc-stipe {
+  background-color: #1b8fce; }
+
 .login {
   width: 66%;
   margin-left: 17%;
@@ -240,6 +261,11 @@ blockquote {
   width: 66%;
   margin-left: 17%;
   margin-top: 10%; }
+
+.check-out {
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 5%; }
 
 #id_email {
   display: block;
@@ -269,6 +295,13 @@ blockquote {
 .list-search-field {
   margin-top: 3rem; }
 
+.input-group {
+  width: 100%; }
+
+.input-group-addon {
+  background-color: #313231;
+  color: #fff; }
+
 .bug_modal_head {
   background-color: #1b8fce; }
 
@@ -277,6 +310,10 @@ blockquote {
 
 .modal-footer {
   background-color: #313231; }
+
+.ticket_modal_head {
+  background-color: #e4d043;
+  color: #000; }
 
 footer {
   margin-top: 4rem; }
@@ -362,5 +399,22 @@ footer {
   color: #000;
   font-size: 1.5rem;
   text-align: left; }
+
+.table-width {
+  width: 66.6%;
+  margin-left: 17%;
+  margin-top: 3rem; }
+
+table {
+  text-align: left; }
+
+th {
+  color: #d9534f; }
+
+td {
+  color: #fff; }
+
+.total-row {
+  background-color: #d9534f; }
 
 /*# sourceMappingURL=custom.css.map */

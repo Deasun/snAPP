@@ -1,8 +1,4 @@
-{% extends 'base.html' %} 
-{% load static from staticfiles %} 
-{% load bootstrap_tags %} 
-
-{% block head_js %}
+{% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2"></script>
 <script type="text/javascript">
     //<![CDATA[
@@ -10,51 +6,78 @@
     //]]>
 </script>
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %} 
-
-{% block content %}
-<div class='row row-flex'>
-    
-    {% for item in cart_items %}
-    <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel panel-default">
-        <div class="panel-body">
-        <div class="product" style="#"></div>
-        <div class="caption">
-            <h3>{{ item.feature.title }}</h3>
-            <p class="product-description">{{ item.feature.description|truncatewords:15 }}</p>
-            <p>{{ item.quantity }}</p>
-            <p>{{ item.feature.contribution }}</p>
-        </div>
+{% endblock %} {% block content %}
+<div class="row list-head">
+    <div class="col-xs-12 list-head-img">
+        <i class="fas fa-handshake fa-4x profile payment"></i>
+    </div>
+    <div class "col-xs-12">
+        <p><strong>Enter your payment details.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
+    </div>
+    <div class="col-xs-12">
+        <h2 class="payment">Your Requests</h2>
     </div>
 </div>
-    {% endfor %}
+
+
+<div class="row">
+    <div class="col-xs-12 table-width">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for item in cart_items %}
+                    <td>{{ item.feature.title }} (#{{ item.feature.id }})</td>
+                    <td>{{ item.quantity }}</td>
+                </tr>
+
+                <tr class="total-row">
+                    <td><strong>TOTAL</strong></td>
+                    <td><strong>{{ total }}</strong></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div class="row">
-    <p>Total</p>
-    <p><span class='fas fa-pound-sign' aria-hidden='true'></span>{{ total }}</p>
+    <div class="col-xs-12">
+        <form role='form' method='post' id='payment-form' action="{% url 'checkout' %}" enctype=m ultipart/form-data>
+            <div class="credit-card-errors" style="display:none">
+                <div class='alert-message block-message error' id='stripe-error-message'></div>
+            </div>
+    </div>
+    <div class="col-xs-12">
+        <h2>Personal Details</h2>
+        <div class="form-group col-xs-12 check-out">
+            {{ order_form|as_bootstrap }}
+        </div>
+    </div>
+    <div class="col-xs-12">
+        <h2>Payment Details</h2>
+        <div class="form-group col-xs-12 check-out">
+            {{ payment_form|as_bootstrap }}
+        </div>
+    </div>
+
+
+
+    {% csrf_token %}
+    <div class='form-group col-xs-12'><input class='btn btn-primary' id='submit_payment_btn' name='commit' type='submit' value='Submit Payment'></div>
+    </form>
+    <p>Payment processed through</p>
+    <a target="_blank" href="https://stripe.com/be"><i class="fab fa-cc-stripe fa-3x"></i></a>
+
+
+
+
 </div>
 
-<form role='form' method='post' id='payment-form' action="{% url 'checkout' %}" enctype= multipart/form-data>
-    <legend>Payment Details</legend>
-    <div class="credit-card-errors" style="display:none">
-        <div class='alert-message block-message error' id='stripe-error-message'></div>
-    </div>
-    
-    <div class="form-group col-md-6">
-        {{ order_form|as_bootstrap }}
-    </div>    
-    
-    <div class="form-group col-md-6">
-        {{ payment_form|as_bootstrap }}
-    </div>
-    
-    
-    
-    {% csrf_token %}
-    <div class='form-group col-md-12'>
-        <input class='btn btn-primary' id='submit_payment_btn' name='commit' type='submit' value='Submit Payment'>
-    </div>
-</form> 
 
 {% endblock %}

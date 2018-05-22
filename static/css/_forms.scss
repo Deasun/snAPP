@@ -10,6 +10,12 @@
     margin-top: 10%;
 }
 
+.check-out {
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
 #id_email {
     display: block;
     width: 100%;
@@ -41,4 +47,13 @@
 
 .list-search-field {
     margin-top: 3rem;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.input-group-addon {
+    background-color: $charcoal;
+    color: $white;
 }
