@@ -162,12 +162,16 @@ blockquote {
 
 .panel-body p {
   color: #000;
-  text-align: justify; }
+  text-align: justify;
+  font-family: 'Open Sans Condensed', sans-serif; }
+
+.panel-body {
+  background-color: #9bdafd; }
 
 .bug_panel {
-  background-color: #313231;
-  font-size: 2rem;
-  color: #1b8fce; }
+  background-color: #1b8fce;
+  text-align: left;
+  padding-left: 2rem; }
 
 .bug-badge {
   background-color: #1b8fce;
@@ -175,6 +179,16 @@ blockquote {
   font-family: Lato, sans-serif;
   margin-left: -20px;
   margin-bottom: -20px; }
+
+.comment-badge {
+  background-color: #1b8fce;
+  font-size: 2rem;
+  font-family: Lato, sans-serif;
+  margin-left: -40px;
+  margin-bottom: -20px; }
+
+.bug-card {
+  color: #fff; }
 
 .feature_panel {
   background-color: #313231;
@@ -246,6 +260,11 @@ blockquote {
   margin-top: 3rem;
   color: #d9534f; }
 
+.report-head {
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+  color: #81b944; }
+
 .icon-sections {
   margin-top: 9rem; }
 
@@ -270,6 +289,9 @@ a .fa-cc-stipe {
 
 .password-reset {
   margin-bottom: 8rem; }
+
+.vote {
+  margin-top: .5rem; }
 
 .login {
   width: 66%;

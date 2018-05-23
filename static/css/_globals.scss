@@ -16,6 +16,8 @@ body {
     }
 }
 
+
+
 // themes
 .knowledge {
     color: $violet;
@@ -139,13 +141,20 @@ blockquote {
 .panel-body p {
     color: #000;
     text-align: justify;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.panel-body {
+    background-color: #9bdafd;
 }
 
 .bug_panel {
-    background-color: $charcoal;
-    font-size: 2rem;
-    color: $blue;
+    background-color: $blue;
+    text-align: left;
+    padding-left: 2rem;
 }
+
+
 
 .bug-badge {
     background-color: $blue;
@@ -155,6 +164,20 @@ blockquote {
         left: -20px;
         bottom: -20px;
     }
+}
+
+.comment-badge {
+    background-color: $blue;
+    font-size: 2rem;
+    font-family: $font-stack-2;
+    margin: {
+        left: -40px;
+        bottom: -20px;
+    }
+}
+
+.bug-card {
+    color: $white;
 }
 
 .feature_panel {

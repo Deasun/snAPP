@@ -1,8 +1,4 @@
-{% extends 'base.html' %} {% block page_title %}Bug Report{% endblock %} {% block page_heading %}Bug Report Ticket{% endblock %} 
-
-{% block content %} 
-
-{% for bug in bugs %}
+{% extends 'base.html' %} {% block page_title %}Bug Report{% endblock %} {% block page_heading %}Bug Report Ticket{% endblock %} {% block content %} {% for bug in bugs %}
 
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
@@ -12,7 +8,7 @@
         <p><strong>Making snAPP work for you.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
     <div class="col-xs-12">
-        <h1 class="tactics">Bug Report</h1>
+        <h2 class="tactics">Bug Report</h2>
     </div>
     <div class="row list-search-field">
         <div class="col-xs-12">
@@ -25,12 +21,10 @@
         </div>
     </div>
 </div>
-
 <div class="col-xs-12">
     <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header bug_modal_head">
@@ -53,29 +47,32 @@
                         <div class="col-xs-8">
                             <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Close</button>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     </div>
 </div>
-
 <div class="row panels">
-    <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 report-head">
+        <i class="far fa-thumbs-up fa-6x">
+            <label class='badge comment-badge'>{{ bug.votes }}</label>
+        </i><br>
+        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-md vote" type="submit" value="Upvote"></form>
         <div class="panel">
             <div class="panel-heading bug_panel">
-                <h2>#{{ bug.id }} : {{ bug.title }}</h2><br>
-                <p class="feature">status: <strong>{{ feature.status }}</strong></p>
+                <p><i class="fas fa-bug bug-card fa-2x"></i><strong> #{{ bug.id }} - {{ bug.title }}</strong></p>
             </div>
             <div class="panel-body">
-                <p>{{ bug.description }}</p>
+                <p><strong>Reported by:</strong> {{ bug.created_by }}</p>
+                <p><strong>Date:</strong> {{ bug.date_created }}</p>
+                <p class="feature"><strong>Current status:</strong> {{ feature.status }}</p>
+                <hr>
+                <p><strong>Bug Type:</strong> {{bug.bug_type }}</p>
+                <p><strong>Details:</strong> {{ bug.description }}</p>
             </div>
 
-            <div class="panel-heading">
+            <div class="panel-footer">
                 <div class="row">
                     <div class="col-xs-4 list-icons">
                         <i class="far fa-thumbs-up fa-2x">
@@ -85,23 +82,16 @@
                     <div class="col-xs-4 list-icons">
                         <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm vote" type="submit" value="Upvote"></form>
                     </div>
-                    <div class="col-xs-4 list-icons">
-                        <i class="far fa-comments fa-2x">
-                            <label class='badge bug-badge'>{{ bug.comments.count }}</label>
-                        </i>
-
-                    </div>
                 </div>
             </div>
-            <div class="panel-footer"><strong>{{ bug.created_by }}</strong>,<em> {{ bug.date_created }}</em></div>
         </div>
     </div>
-
     <!--Comments-->
-    <div class="col-xs-12 col-md-4 comment-head">
-        <i class="far fa-comments fa-6x"></i><br>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-0 col-md-5 comment-head">
+        <i class="far fa-comments fa-6x">
+            <label class='badge comment-badge'>{{ bug.comments.count }}</label>
+        </i><br>
         <a class="btn btn-danger" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
-        
         <section class="comments comment-head">
             <article class="comment">
                 <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}' alt="" width="50" height="50"></a>
