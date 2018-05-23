@@ -8,14 +8,30 @@ table {
     text-align: left;
 }
 
-th {
+.tr-checkout th {
     color: $red;
 }
 
 td {
     color: $white;
+    font-size: 14px;
 }
 
 .total-row {
     background-color: $red;
+}
+
+
+.tr-bug th {
+    color: $blue;
+}
+
+.tr-feature th {
+    color: $lime;
+}
+
+
+// hover colors
+.table-hover tbody tr:hover td {
+  background-color: $orange;
 }

@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from accounts.forms import UserLoginForm, UserRegistrationForm, UserEditForm, ProfileEditForm
 from accounts.models import Profile
 from bugtickets.models import BugTicket
+from featuretickets.models import FeatureTicket
 
 """
 Home Page
@@ -79,7 +80,8 @@ def user_profile(request):
     """The user's profile page"""
     user = User.objects.get(email=request.user.email)
     bugs = BugTicket.objects.filter(created_by=request.user.id)
-    return render(request, 'profile.html', {"bugs": bugs}, {"user": user})
+    features = FeatureTicket.objects.filter(created_by=request.user.id)
+    return render(request, 'profile.html', {"features": features, "bugs": bugs, "user": user})
 
 @login_required
 def logout(request):

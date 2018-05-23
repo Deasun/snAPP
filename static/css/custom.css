@@ -84,7 +84,8 @@ body {
   background-repeat: no-repeat;
   background-image: url("/media/images/protest80b.jpg");
   background-attachment: fixed;
-  background-position: center; }
+  background-position: center;
+  margin-bottom: 10rem; }
 
 .container {
   margin-left: 1rem;
@@ -127,6 +128,13 @@ body {
   margin-top: 6rem;
   margin-left: .5rem; }
 
+.md-list-margin {
+  margin-top: 4rem;
+  margin-left: .5rem; }
+
+.md-list-margin-top {
+  margin-top: 5rem; }
+
 .list-head-img {
   text-align: center; }
 
@@ -140,6 +148,12 @@ hr {
 
 blockquote {
   border-left: 0.5rem solid #b37bff; }
+
+.bug-blockquote {
+  border-left: 0.5rem solid #1b8fce; }
+
+.feature-blockquote {
+  border-left: 0.5rem solid #64d29f; }
 
 .panel {
   margin-top: 10%;
@@ -178,16 +192,13 @@ blockquote {
   border-radius: 50%; }
 
 .nav-link {
-  margin-left: 2rem;
-  margin-right: 2rem; }
+  margin-right: 4rem; }
   @media (min-width: 768px) {
     .nav-link {
-      margin-left: 5rem;
-      margin-right: 5rem; } }
+      margin-right: 10rem; } }
   @media (min-width: 992px) {
     .nav-link {
-      margin-left: 10rem;
-      margin-right: 10rem; } }
+      margin-right: 15rem; } }
 
 .fa-sign-out-alt {
   position: fixed;
@@ -435,13 +446,23 @@ a .fa-cc-stipe {
 table {
   text-align: left; }
 
-th {
+.tr-checkout th {
   color: #d9534f; }
 
 td {
-  color: #fff; }
+  color: #fff;
+  font-size: 14px; }
 
 .total-row {
   background-color: #d9534f; }
+
+.tr-bug th {
+  color: #1b8fce; }
+
+.tr-feature th {
+  color: #64d29f; }
+
+.table-hover tbody tr:hover td {
+  background-color: #e26e1b; }
 
 /*# sourceMappingURL=custom.css.map */

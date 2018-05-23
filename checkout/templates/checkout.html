@@ -24,23 +24,23 @@
     <div class="col-xs-12 table-width">
         <table class="table table-hover">
             <thead>
-                <tr>
+                <tr class="tr-checkout">
                     <th>Feature</th>
-                    <th>Quantity</th>
+                    <th>Quantity<br>(1 = £9.99)</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr class="tr-checkout">
                     {% for item in cart_items %}
                     <td>{{ item.feature.title }} (#{{ item.feature.id }})</td>
                     <td>{{ item.quantity }}</td>
                 </tr>
-
+                    {% endfor %}
                 <tr class="total-row">
                     <td><strong>TOTAL</strong></td>
                     <td><strong>{{ total }}</strong></td>
                 </tr>
-                {% endfor %}
+                
             </tbody>
         </table>
     </div>

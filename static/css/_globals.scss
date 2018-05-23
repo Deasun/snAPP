@@ -6,6 +6,7 @@ body {
         attachment: fixed;
         position: center;
     }
+    margin-bottom: 10rem;
 }
 
 .container {
@@ -69,10 +70,25 @@ body {
 }
 
 
+
+
 // List pages
 .list-head {
-    margin-top: 6rem;
-    margin-left: .5rem;
+    margin: {
+        top: 6rem;
+        left: .5rem;
+    }
+}
+
+.md-list-margin {
+    margin: {
+        top: 4rem;
+        left: .5rem;
+    }
+}
+
+.md-list-margin-top {
+    margin-top: 5rem;
 }
 
 .list-head-img {
@@ -89,58 +105,67 @@ hr {
     @media (min-width: 768px) {
         width: 50%;
     }
+} 
+
+// blockquote
+blockquote {
+    border-left: .5rem solid $violet;
+}
+
+.bug-blockquote {
+    border-left: .5rem solid $blue;
+}
+
+.feature-blockquote {
+    border-left: .5rem solid $lime;
 }
 
 
 
-    // blockquote
-    blockquote {
-        border-left: .5rem solid $violet;
-    }
-
-    // panels
-    .panel {
-        margin-top: 10%;
-        width: 80%;
-        margin-left: 10%;
-    }
-
-    .contribute {
-        text-align: left;
-    }
-
-    .panel-body p {
-        color: #000;
-        text-align: justify;
-    }
-
-    .bug_panel {
-        background-color: $charcoal;
-        font-size: 2rem;
-        color: $blue;
-    }
-
-    .bug-badge {
-        background-color: $blue;
-        font-size: 1rem;
-        font-family: $font-stack-2;
-    }
-
-    .feature_panel {
-        background-color: $charcoal;
-        font-size: 2rem;
-        color: $lime;
-    }
-
-    .feature-badge {
-        background-color: $lime;
-        font-size: 1rem;
-        font-family: $font-stack-2;
-    }
 
 
-    // images
-    .profile-pic {
-        border: .5rem solid $violet;
-        border-radius: 50%;
-    }
+// panels
+.panel {
+    margin-top: 10%;
+    width: 80%;
+    margin-left: 10%;
+}
+
+.contribute {
+    text-align: left;
+}
+
+.panel-body p {
+    color: #000;
+    text-align: justify;
+}
+
+.bug_panel {
+    background-color: $charcoal;
+    font-size: 2rem;
+    color: $blue;
+}
+
+.bug-badge {
+    background-color: $blue;
+    font-size: 1rem;
+    font-family: $font-stack-2;
+}
+
+.feature_panel {
+    background-color: $charcoal;
+    font-size: 2rem;
+    color: $lime;
+}
+
+.feature-badge {
+    background-color: $lime;
+    font-size: 1rem;
+    font-family: $font-stack-2;
+} // images
+.profile-pic {
+    border: .5rem solid $violet;
+    border-radius: 50%;
+}
+
+
