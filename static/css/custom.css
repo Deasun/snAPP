@@ -26,10 +26,6 @@ h1 {
 h3 {
   font-size: 1rem; }
 
-@media (min-width: 768px) {
-  a {
-    font-size: 3rem; } }
-
 p {
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 2rem;
@@ -133,7 +129,8 @@ body {
   margin-left: .5rem; }
 
 .md-list-margin-top {
-  margin-top: 5rem; }
+  margin-top: 5rem;
+  text-align: right; }
 
 .list-head-img {
   text-align: center; }
@@ -175,7 +172,9 @@ blockquote {
 .bug-badge {
   background-color: #1b8fce;
   font-size: 1rem;
-  font-family: Lato, sans-serif; }
+  font-family: Lato, sans-serif;
+  margin-left: -20px;
+  margin-bottom: -20px; }
 
 .feature_panel {
   background-color: #313231;
@@ -185,7 +184,9 @@ blockquote {
 .feature-badge {
   background-color: #64d29f;
   font-size: 1rem;
-  font-family: Lato, sans-serif; }
+  font-family: Lato, sans-serif;
+  margin-left: -20px;
+  margin-bottom: -20px; }
 
 .profile-pic {
   border: 0.5rem solid #b37bff;

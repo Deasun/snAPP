@@ -60,40 +60,44 @@
     </div>
 </div>
 
+<!--Bug List Display-->
+<div class="row">
+    
+    <div class="col-xs-12 col-md-5 col-md-offset-1">
+        <h2 class="tactics">Reported Bugs</h2>
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr class="tr-bug">
+                    <th class="hidden-xs">#</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th class="hidden-xs"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bug in bugs %}
+                <tr class="tr-feature">
 
-<div class="row panels">
-    {% for bug in bugs %}
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="panel">
-            <div class="panel-heading bug_panel"><a class="panel-head" href="{% url 'bug_report' bug.pk %}">#{{ bug.id }} : {{ bug.title }}</a><br>status: <strong>{{ bug.status }}</strong></div>
-            <div class="panel-body">
-                {{ bug.description | truncatewords:15 }}
-            </div>
-
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-4 list-icons">
+                    <td class="hidden-xs">{{ bug.id }}</td>
+                    <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title }}</a></td>
+                    <td>{{ bug.bug_type }}</td>
+                    <td>{{ bug.status }}</td>
+                    <td class="list-icons">
                         <i class="far fa-thumbs-up fa-2x">
-                        <label class='badge bug-badge'>{{ bug.votes }}</label>
-                        </i>
-
-                    </div>
-                    <div class="col-xs-4 list-icons">
-                        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm vote" type="submit" value="Upvote"></form>
-                    </div>
-                    <div class="col-xs-4 list-icons">
+                    <label class='badge bug-badge'>{{ bug.votes }}</label>
+                </i>
+                    </td>
+                    <td class="list-icons hidden-xs">
                         <i class="far fa-comments fa-2x">
-                            <label class='badge bug-badge'>{{ bug.comments.count }}</label>
-                        </i>
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer"><strong>{{ bug.created_by }}</strong>,<em> {{ bug.date_created }}</em></div>
-        </div>
+                    <label class='badge bug-badge'>{{ bug.comments.count }}</label>
+                </i>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    {% endfor %} 
 </div>
-
-
 {% endblock %}
-

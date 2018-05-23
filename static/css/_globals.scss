@@ -89,6 +89,7 @@ body {
 
 .md-list-margin-top {
     margin-top: 5rem;
+    text-align: right;
 }
 
 .list-head-img {
@@ -105,7 +106,7 @@ hr {
     @media (min-width: 768px) {
         width: 50%;
     }
-} 
+}
 
 // blockquote
 blockquote {
@@ -150,6 +151,10 @@ blockquote {
     background-color: $blue;
     font-size: 1rem;
     font-family: $font-stack-2;
+    margin: {
+        left: -20px;
+        bottom: -20px;
+    }
 }
 
 .feature_panel {
@@ -162,10 +167,14 @@ blockquote {
     background-color: $lime;
     font-size: 1rem;
     font-family: $font-stack-2;
-} // images
+    margin: {
+        left: -20px;
+        bottom: -20px;
+    }
+} 
+
+// images
 .profile-pic {
     border: .5rem solid $violet;
     border-radius: 50%;
 }
-
-
