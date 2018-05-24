@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import FeatureTicket
+from checkout.models import OrderLineItem   
 from .forms import RequestFeatureForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth, messages
@@ -26,28 +27,28 @@ def request_feature(request, pk=None):
     return render(request, 'request_form.html', {'request_form': request_form})
    
     
-@login_required
-def upvote_feature(request, id=None):
-    """
-    Enable user to upvote a feature
-    """
-    feature = get_object_or_404(FeatureTicket, pk=id)
+# @login_required
+# def upvote_feature(request, id=None):
+#     """
+#     Enable user to upvote a feature
+#     """
+#     feature = get_object_or_404(FeatureTicket, pk=id)
    
-    """Prevent user upvoting own features"""
-    if feature.created_by == request.user:
-        messages.error(request, "You cannot upvote your own feature request. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
-    else: 
-        user = request.user
-        vote = feature.upvote(user)
+#     """Prevent user upvoting own features"""
+#     if feature.created_by == request.user:
+#         messages.error(request, "You cannot upvote your own feature request. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
+#     else: 
+#         user = request.user
+#         vote = feature.upvote(user)
     
-        """Prevent double upvotes and validate upvotes"""
-        if vote == 'already_upvoted':
-            messages.success(request, "You have already upvoted this feature. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
-        else:
-            messages.success(request, "Your upvote has been counted. Thanks. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
+#         """Prevent double upvotes and validate upvotes"""
+#         if vote == 'already_upvoted':
+#             messages.success(request, "You have already upvoted this feature. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
+#         else:
+#             messages.success(request, "Your upvote has been counted. Thanks. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
              
-    features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    return render(request, "feature_listing.html", {'feartures': features})
+#     features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
+#     return render(request, "feature_listing.html", {'feartures': features})
 
 
 @login_required
@@ -73,9 +74,10 @@ def feature_report(request, pk=id):
 
 
 @login_required
-def get_feature_listing(request):
+def get_feature_listing(request, pk=id):
     """
-    List features that were reported prior to 'now' and render them to the 'feature_listing.html' template
+    List features ranked by most recent date and render them to the 'feature_listing.html' template
     """
     features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    return render(request, "feature_listing.html", {'features': features})
+    # votes = OrderLineItem.objects.get(feature=id)
+    return render(request, "feature_listing.html", {'features': features })

@@ -8,7 +8,7 @@
         <p><strong>Building snAPP one feature at a time.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
     <div class="col-xs-12">
-        <h1 class="feature">Feature Request</h1>
+        <h2 class="feature">Feature Request</h2>
     </div>
     <div class="row list-search-field">
         <div class="col-xs-12">
@@ -36,9 +36,7 @@
                 <div class="modal-body">
                     <p>snAPP is a member-driven platform.<br><br>We develop snAPP by adding new features that have been requested by members. We prioritise our work depending on which features are in most demand. Demand is measured through member financial
                         contributions. These contributions go towards sustaining snAPP and (partially) compensating our software developers for their time.<br><br> If you would like a feature added to snAPP, we would first recommend <strong>searching existing feature requests.</strong><br><br>You
-                        can do this by either scrolling through the list of features or, more efficiently, search by a keyword (e.g. <em>'chat', 'file sharing'</em>). Click on the feature's title to find out more details.<br><br><strong>You can support an existing feature request by making a contribution (minimum £9.99). Also, feel free to leave a comment about the request.</strong>The
-                        more contributions a feature request recieves, the more time we'll have to spend on developing it.<br><br><strong>If nobody has reported the problem yet, complete a Feature Request form.</strong><br><br> You'll be notified when
-                        we have begun to work on the feature, or our administrator may leave a comment seeking more details about your request.
+                        can do this by either scrolling through the list of features or, more efficiently, search by a keyword (e.g. <em>'chat', 'file sharing'</em>). Click on the feature's title to find out more details.<br><br><strong>You can support an existing feature request by making a contribution (minimum £9.99) and members may leave comments/questions about the request.</strong><br><br>The more contributions a feature request recieves, the more time we'll have to spend on developing it.<br><br><strong>If you'd like to request a <strong>New Feature</strong>, complete a Feature Request form.</strong><br><br>You should then visit your newly posted feature and <strong>make (at least) a minimum contribution.</strong>We will email you the <strong>snAPP Primer for Securing New Features</strong> which provides details of how to get support for your idea.<br><br>You'll be notified when we have begun to work on the feature, or our administrator may leave a comment seeking more details about your request.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -72,7 +70,7 @@
             <div class="panel-body">
                 <p>{{ feature.description }}</p>
                 {% if feature.links != blank %}
-                <p><strong>Links to similar features in other apps:</strong> {{ feature.links }}</p>
+                <p><strong>Links to similar features in other apps:</strong><a href="{{ feature.links }}" target="_blank">{{ feature.links }}</a></p>
                 {% endif %}
             </div>
 
@@ -83,9 +81,7 @@
                         <label class='badge feature-badge'>{{ feature.votes }}</label>
                         </i>
                     </div>
-                    <div class="col-xs-4 list-icons">
-                        <form method='POST' action="{% url 'upvote_feature' feature.id %}">{% csrf_token %}<input class="btn btn-danger btn-sm vote" type="submit" value="Upvote"></form>
-                    </div>
+
                     <div class="col-xs-4 list-icons">
                         <i class="far fa-comments fa-2x">
                             <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>

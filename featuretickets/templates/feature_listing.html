@@ -81,10 +81,15 @@
                     <td class="hidden-xs">{{ feature.id }}</td>
                     <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title }}</a></td>
                     <td>{{ feature.status }}</td>
-                    <td>{{ feature.total_contributions }}</td>
+                
+                   
+               
+                    <td>{{ feature.features_vote }}</td>
+   
+                    
                     <td class="list-icons">
                         <i class="far fa-thumbs-up fa-2x">
-                    <label class='badge feature-badge'>{{ feature.votes }}</label>
+                    <label class='badge feature-badge'>{{ feature.features_vote.count }}</label>
                 </i>
                     </td>
                     <td class="list-icons hidden-xs">

@@ -16,39 +16,12 @@ class FeatureTicket(models.Model):
     description = models.TextField(null=True, blank=False)
     votes = models.IntegerField(default = 0)
     links = models.URLField(blank=True)
-    contribution = models.DecimalField(max_digits=8, decimal_places=2, default=9.99)
-    total_contributions = models.DecimalField(max_digits=8, decimal_places=2, null=True)
+    contribution = models.DecimalField(max_digits=8, decimal_places=2, default=9.99, editable=False)
     status = models.CharField(max_length=20, choices=status_set, default=default_status, null=True)
     
-    def upvote(self, user):
-        
-        try:
-            self.feature_votes.create(feature_ticket=self, user=user, vote_type="up")
-            self.votes += 1
-            self.save()
-        except IntegrityError:
-            return 'already_upvoted'
-            
     def __str__(self):
 	    return "Request: {} ({})".format(self.title, self.date_created)
 
-
-"""
-FeatureUpvote Model - enables user to upvote feature requests
-"""
-
-class FeatureUpvote(models.Model):
-    feature_ticket = models.ForeignKey(FeatureTicket, on_delete=models.CASCADE, related_name="feature_votes")
-    user = models.ForeignKey(User, related_name="feature_user_votes", on_delete=models.CASCADE)
-    date_created = models.DateField(default=datetime.date.today)
-    vote_type = models.CharField(max_length=10, blank=False)
-
-    
-    class Meta:
-        unique_together = ('feature_ticket', 'user', 'vote_type')
-    
-    def __str__(self):
-	    return "{} UPVOTED {}, DATE: ({})".format(self.user, self.feature_ticket, self.date_created)
 
 """
 Comment Model - enables user to leave comments on feature requests
