@@ -78,7 +78,7 @@
             </thead>
             <tbody>
                 {% for bug in bugs %}
-                <tr class="tr-feature">
+                <tr>
 
                     <td class="hidden-xs">{{ bug.id }}</td>
                     <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title }}</a></td>

@@ -155,7 +155,7 @@ blockquote {
 }
 
 
-
+// badges
 .bug-badge {
     background-color: $blue;
     font-size: 1rem;
@@ -165,6 +165,21 @@ blockquote {
         bottom: -20px;
     }
 }
+
+.feature-badge {
+    background-color: $lime;
+    font-size: 1rem;
+    font-family: $font-stack-2;
+    margin: {
+        left: -20px;
+        bottom: -20px;
+        }
+    }
+
+
+
+
+
 
 .comment-badge {
     background-color: $blue;
@@ -176,6 +191,7 @@ blockquote {
     }
 }
 
+// panels
 .bug-card {
     color: $white;
 }
@@ -186,15 +202,7 @@ blockquote {
     color: $lime;
 }
 
-.feature-badge {
-    background-color: $lime;
-    font-size: 1rem;
-    font-family: $font-stack-2;
-    margin: {
-        left: -20px;
-        bottom: -20px;
-    }
-} 
+
 
 // images
 .profile-pic {

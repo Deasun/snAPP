@@ -94,9 +94,9 @@
         <a class="btn btn-danger" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
         <section class="comments comment-head">
             <article class="comment">
-                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}' alt="" width="50" height="50"></a>
+                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user.image }}' alt="" width="50" height="50"></a>
+                {% for comment in bug.comments.all %}
                 <div class="comment-body">
-                    {% for comment in bug.comments.all %}
                     <div class="text">
                         <p>{{ comment.text }}</p>
                         <p class="attribution">by <a>{{ comment.author }}</a> on {{ comment.date_created }}</p>

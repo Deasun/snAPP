@@ -59,44 +59,47 @@
 </div>
 
 
-<div class="row panels">
-    {% for feature in features %}
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="panel">
-            <div class="panel-heading feature_panel"><a class="panel-head" href="{% url 'feature_report' feature.pk %}">#{{ feature.id }} : {{ feature.title }}</a><br>status: <strong>{{ feature.status }}</strong><br>
-            contributions: <strong>{{ feature.total_contributions }}</strong></div> 
-            <div class="panel-body">
-                {{ feature.description | truncatewords:15 }}
-            </div>
-
-            <div class="panel-heading">
-                <div class="row">
-                    <div class="col-xs-4 list-icons">
+<!--Feature List Display-->
+<div class="row">
+    
+    <div class="col-xs-12 col-md-6">
+        <h2 class="feature">Feature Requests</h2>
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr class="tr-feature">
+                    <th class="hidden-xs">#</th>
+                    <th>Title</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th></th>
+                    <th class="hidden-xs"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for feature in features %}
+                <tr>
+                    <td class="hidden-xs">{{ feature.id }}</td>
+                    <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title }}</a></td>
+                    <td>{{ feature.status }}</td>
+                    <td>{{ feature.total_contributions }}</td>
+                    <td class="list-icons">
                         <i class="far fa-thumbs-up fa-2x">
-                        <label class='badge feature-badge'>{{ feature.votes }}</label>
-                        </i>
-
-                    </div>
-                    <div class="col-xs-4 list-icons">
-                        <form method='POST' action="{% url 'upvote_feature' feature.id %}">{% csrf_token %}<input class="btn btn-danger btn-sm vote" type="submit" value="Upvote"></form>
-                    </div>
-                    <div class="col-xs-4 list-icons">
+                    <label class='badge feature-badge'>{{ feature.votes }}</label>
+                </i>
+                    </td>
+                    <td class="list-icons hidden-xs">
                         <i class="far fa-comments fa-2x">
-                            <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>
-                        </i>
-
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer"><strong>{{ feature.created_by }}</strong>,<em> {{ feature.date_created }}</em></div>
-        </div>
-
+                    <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>
+                </i>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
-    {% endfor %}
 </div>
-
 {% endblock %}
-<hr>
+
 
 
 
