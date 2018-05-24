@@ -3,6 +3,7 @@ from .models import FeatureTicket
 from checkout.models import OrderLineItem   
 from .forms import RequestFeatureForm, CommentForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 from django.contrib import auth, messages
 from django.utils import timezone
 
@@ -70,14 +71,16 @@ def add_comment_to_feature(request, pk):
 @login_required
 def feature_report(request, pk=id):
     features = FeatureTicket.objects.filter(id=pk)
-    return render(request, "feature_report.html", {'features': features})
+    orders = OrderLineItem.objects.filter(feature=pk).aggregate(Sum('quantity'))
+    print(orders)
+    return render(request, "feature_report.html", {'features': features, 'orders': orders })
 
 
 @login_required
-def get_feature_listing(request, pk=id):
+def get_feature_listing(request):
     """
     List features ranked by most recent date and render them to the 'feature_listing.html' template
     """
     features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    # votes = OrderLineItem.objects.get(feature=id)
-    return render(request, "feature_listing.html", {'features': features })
+    orders = OrderLineItem.objects.all()
+    return render(request, "feature_listing.html", {'features': features, 'orders': orders })

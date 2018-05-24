@@ -69,24 +69,21 @@
             </div>
             <div class="panel-body">
                 <p>{{ feature.description }}</p>
-                {% if feature.links != blank %}
-                <p><strong>Links to similar features in other apps:</strong><a href="{{ feature.links }}" target="_blank">{{ feature.links }}</a></p>
-                {% endif %}
-            </div>
 
+                <p><strong>Links to similar features in other apps:</strong><a href="{{ feature.links }}" target="_blank">{{ feature.links }}</a></p>
+            </div>
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-4 list-icons">
                         <i class="far fa-thumbs-up fa-2x">
-                        <label class='badge feature-badge'>{{ feature.votes }}</label>
+            <!--Render Quantity Purchased as Featureticket Upvotes-->
+                        <label class='badge feature-badge'>{{ orders.quantity__sum }}</label>
                         </i>
                     </div>
-
                     <div class="col-xs-4 list-icons">
                         <i class="far fa-comments fa-2x">
                             <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>
                         </i>
-
                     </div>
                 </div>
             </div>

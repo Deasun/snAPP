@@ -14,6 +14,7 @@ class FeatureTicket(models.Model):
     date_created = models.DateField(default=datetime.date.today)
     title = models.CharField(max_length=200, blank=False)
     description = models.TextField(null=True, blank=False)
+    # Not currently in use - decide if keep or link to OrderLineItem.quantity in model
     votes = models.IntegerField(default = 0)
     links = models.URLField(blank=True)
     contribution = models.DecimalField(max_digits=8, decimal_places=2, default=9.99, editable=False)
@@ -21,6 +22,7 @@ class FeatureTicket(models.Model):
     
     def __str__(self):
 	    return "Request: {} ({})".format(self.title, self.date_created)
+	 
 
 
 """
