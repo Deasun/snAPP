@@ -83,11 +83,9 @@
                     <td>{{ feature.status }}</td>
                 
                    
-                    {% for order in orders %}
-                    {% if feature == order.feature %}
-                    <td>{{ order.quantity }}</td>
-                    {% endif %}
-                    {% endfor %}
+                    
+                    <td>{{ feature.features_vote.quantity.count }}</td>
+                    
                     
                     <td class="list-icons">
                         <i class="far fa-thumbs-up fa-2x">

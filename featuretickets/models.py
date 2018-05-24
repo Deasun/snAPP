@@ -24,7 +24,6 @@ class FeatureTicket(models.Model):
 	    return "Request: {} ({})".format(self.title, self.date_created)
 	 
 
-
 """
 Comment Model - enables user to leave comments on feature requests
 """

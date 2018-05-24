@@ -1,4 +1,12 @@
-{% extends 'base.html' %} {% block page_title %}Feature Report{% endblock %} {% block page_heading %}Feature Report Ticket{% endblock %} {% block content %} {% for feature in features %}
+{% extends 'base.html' %} {% block page_title %}Feature Report{% endblock %} 
+
+{% block page_heading %}Feature Report Ticket{% endblock %} 
+
+{% block content %} 
+
+{% load mathfilters %}
+
+{% for feature in features %}
 
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
@@ -63,8 +71,7 @@
         <div class="panel">
             <div class="panel-heading feature_panel">
                 <h2>#{{ feature.id }} : {{ feature.title }}</h2><br>
-                <p class="feature">startup contirbution: <strong>{{ feature.contribution }}</strong></p>
-                <p class="feature">total contributions: <strong>{{ feature.total_contributions }}</strong></p>
+                <p class="feature">total contributions: <strong>{{ orders.quantity__sum|mul:9.99  }}</strong></p>
                 <p class="feature">status: <strong>{{ feature.status }}</strong></p>
             </div>
             <div class="panel-body">

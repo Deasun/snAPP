@@ -21,36 +21,11 @@ def request_feature(request, pk=None):
             messages.success(request, "Excellent. Your feature request will be posted to start attracting supporters once you have made your snAPP contribution!")
             return redirect('profile')
 
-# place request in shopping cart
-# no posting until checkout - all part of this function
     else:
         request_form = RequestFeatureForm()
     return render(request, 'request_form.html', {'request_form': request_form})
    
     
-# @login_required
-# def upvote_feature(request, id=None):
-#     """
-#     Enable user to upvote a feature
-#     """
-#     feature = get_object_or_404(FeatureTicket, pk=id)
-   
-#     """Prevent user upvoting own features"""
-#     if feature.created_by == request.user:
-#         messages.error(request, "You cannot upvote your own feature request. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
-#     else: 
-#         user = request.user
-#         vote = feature.upvote(user)
-    
-#         """Prevent double upvotes and validate upvotes"""
-#         if vote == 'already_upvoted':
-#             messages.success(request, "You have already upvoted this feature. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
-#         else:
-#             messages.success(request, "Your upvote has been counted. Thanks. Visit our 'Developing the snAPP Commons' to find out how to promote your feature.")
-             
-#     features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-#     return render(request, "feature_listing.html", {'feartures': features})
-
 
 @login_required
 def add_comment_to_feature(request, pk):
@@ -71,6 +46,8 @@ def add_comment_to_feature(request, pk):
 @login_required
 def feature_report(request, pk=id):
     features = FeatureTicket.objects.filter(id=pk)
+    
+    # Query OrderLineItem quantity to render upvotes
     orders = OrderLineItem.objects.filter(feature=pk).aggregate(Sum('quantity'))
     print(orders)
     return render(request, "feature_report.html", {'features': features, 'orders': orders })
@@ -82,5 +59,4 @@ def get_feature_listing(request):
     List features ranked by most recent date and render them to the 'feature_listing.html' template
     """
     features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    orders = OrderLineItem.objects.all()
-    return render(request, "feature_listing.html", {'features': features, 'orders': orders })
+    return render(request, "feature_listing.html", {'features': features })

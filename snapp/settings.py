@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'featuretickets',
     'cart',
     'checkout',
+    'mathfilters',
 ]
 
 MIDDLEWARE = [
