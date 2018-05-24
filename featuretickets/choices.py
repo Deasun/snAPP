@@ -1,5 +1,5 @@
 status_set = (
-    ('todo', 'Pending'),
-    ('doing', 'In Progress'),
-    ('done', 'Complete'),
+    ('Pending','Pending'),
+    ('In Progress', 'In Progress'),
+    ('Complete', 'Complete'),
     )
