@@ -4,7 +4,7 @@ $(function() {
         var card = {
             number: $("#id_credit_card_number").val(),
             expMonth: $("#id_expiry_month").val(),
-            expYear: $('#id_expiry_year').val(),
+            expYear: $("#id_expiry_year").val(),
             cvc: $("#id_cvv").val()
         };
         
@@ -16,8 +16,8 @@ $(function() {
             //Prevent the Credit card Details from being submitted to our server
             $("#id_credit_card_number").removeAttr('name');
             $("#id_cvv").removeAttr('name');
-            $("#id_expiry_month").removeAttr('name')
-            $("#id_expiry_year").removeAttr('name')
+            $("#id_expiry_month").removeAttr('name');
+            $("#id_expiry_year").removeAttr('name');
                 
             form.submit();
                 
