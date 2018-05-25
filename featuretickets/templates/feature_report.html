@@ -71,7 +71,11 @@
         <div class="panel">
             <div class="panel-heading feature_panel">
                 <h2>#{{ feature.id }} : {{ feature.title }}</h2><br>
-                <p class="feature">total contributions: <strong>{{ orders.quantity__sum|mul:9.99  }}</strong></p>
+                <p class="feature">total contributions: 
+    
+                <strong>{{ orders.quantity__sum|mul:feature.contribution  }}</strong></p>
+         
+                
                 <p class="feature">status: <strong>{{ feature.status }}</strong></p>
             </div>
             <div class="panel-body">

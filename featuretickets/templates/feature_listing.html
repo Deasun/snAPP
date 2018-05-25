@@ -1,5 +1,9 @@
 <!--CHANGE THE DISPLAY-->
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+
+{% load mathfilters %}
+
+{% block content %}
 
 
 <!--Bug panel lists-->
@@ -83,8 +87,10 @@
                     <td>{{ feature.status }}</td>
                 
                    
-                    
-                    <td>{{ feature.features_vote.quantity.count }}</td>
+                   <!--trying to render upvotes-->
+                   {% for order in orders %}
+                    <td>{{ order.quantity. }}</td>
+                   {% endfor %}
                     
                     
                     <td class="list-icons">
