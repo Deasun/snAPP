@@ -49,7 +49,6 @@ def feature_report(request, pk=id):
     
     # Query OrderLineItem quantity to render upvotes
     orders = OrderLineItem.objects.filter(feature=pk).aggregate(Sum('quantity'))
-    print(orders)
     return render(request, "feature_report.html", {'features': features, 'orders': orders })
 
 
@@ -59,4 +58,9 @@ def get_feature_listing(request):
     List features ranked by most recent date and render them to the 'feature_listing.html' template
     """
     features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    return render(request, "feature_listing.html", {'features': features })
+    
+    # Get rid of this?
+    # Query all OrderLineItem instances
+    orders = OrderLineItem.objects.all
+    
+    return render(request, "feature_listing.html", {'features': features, 'orders': orders })

@@ -31,8 +31,20 @@
     background-color: $red;
 }
 
+// dropdown menus
 .dropdown {
     display: inline-block;
+}
+
+.dropdown-menu {
+    background-color: #000;
+    min-width: 120px;
+
+}
+
+.dropdown-menu li a {
+    color: $white;
+    font-size: 2rem;
 }
 
 .dropdown-menu-center {

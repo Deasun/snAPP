@@ -144,7 +144,8 @@ hr {
       width: 50%; } }
 
 blockquote {
-  border-left: 0.5rem solid #b37bff; }
+  border-left: 0.5rem solid #b37bff;
+  min-height: 20rem; }
 
 .bug-blockquote {
   border-left: 0.5rem solid #1b8fce; }
@@ -233,6 +234,14 @@ blockquote {
 
 .dropdown {
   display: inline-block; }
+
+.dropdown-menu {
+  background-color: #000;
+  min-width: 120px; }
+
+.dropdown-menu li a {
+  color: #fff;
+  font-size: 2rem; }
 
 .dropdown-menu-center {
   left: 50%;
@@ -462,8 +471,6 @@ a .fa-cc-stipe {
   text-align: left; }
 
 .table-width {
-  width: 66.6%;
-  margin-left: 17%;
   margin-top: 3rem; }
 
 table {
