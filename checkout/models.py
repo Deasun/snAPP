@@ -21,7 +21,7 @@ class Order(models.Model):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
 
 class OrderLineItem(models.Model):
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=False)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
     feature = models.ForeignKey(FeatureTicket, on_delete=models.CASCADE, null=False, related_name="features_vote")
     quantity = models.IntegerField(blank=False)
     

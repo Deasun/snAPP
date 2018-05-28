@@ -12,6 +12,7 @@ import stripe
 
 stripe.api_key = settings.STRIPE_SECRET
 
+
 @login_required()
 def checkout(request):
     if request.method=='POST':
@@ -21,7 +22,7 @@ def checkout(request):
         if order_form.is_valid() and payment_form.is_valid():
             order = order_form.save(commit=False)
             order.date = timezone.now()
-            order.save
+            order.save()
             
             cart = request.session.get('cart', {})
             total= 0
@@ -34,7 +35,8 @@ def checkout(request):
                     quantity = quantity
                     )
                 
-                order_line_item.save
+                order_line_item.save()
+
             
             try:
                 customer = stripe.Charge.create(
@@ -43,6 +45,7 @@ def checkout(request):
                     description = request.user.email,
                     card = payment_form.cleaned_data['stripe_id'],
                     )
+ 
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
             

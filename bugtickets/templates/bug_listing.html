@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
 
 
 <!--Bug panel lists-->
@@ -16,7 +16,7 @@
         <div class="display">
             <form action="{% url 'bug_search' %}" method='get'>
                 <input type='text' name='q'><br><br>
-                <button type='submit' class="btn btn-primary btn-lg">Search Bugs</button>
+                <button type='submit' class="btn btn-primary btn-lg">Search Bugs, {{ queryset.count }}</button>
             </form>
         </div>
     </div>
@@ -62,7 +62,7 @@
 
 <!--Bug List Display-->
 <div class="row">
-    
+
     <div class="col-xs-12 col-md-5 col-md-offset-1">
         <h2 class="tactics">Reported Bugs</h2>
         <table class="table table-condensed table-hover">
@@ -99,5 +99,15 @@
             </tbody>
         </table>
     </div>
-</div>
-{% endblock %}
+
+    <!--Render BugTicket Chart using chart.js-->
+    <div class="col-xs-12 col-md-4 col-md-offset-1">
+        <!--<canvas id="lineChart" width="200" height="200"></canvas>-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>-->
+        <!--<script type="text/javascript" src="{% static 'js/charts.js' %}"></script>-->
+
+       
+
+
+    </div>
+    {% endblock %}
