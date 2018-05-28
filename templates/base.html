@@ -10,20 +10,18 @@
     <meta name="author" content="">
     <title>snAPP</title>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{% static 'web-fonts-with-css/css/fontawesome-all.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400i" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-    <!--Custom styles-->
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Bootstrap CSS and fonts -->
+    {% include 'base/css.html' %}
+    
+    <!--jQuery, Bootstrap JS-->
+    {% include 'base/js.html' %}
+    
     {% block head_js %}
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
     {% endblock head_js %}
+    
+    <!--Custom CSS styles-->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' />
 </head>
 
 <body class="text-center">
@@ -108,7 +106,6 @@
             </div>
     </footer>
 
-    
 </body>
 
 </html>

@@ -174,6 +174,14 @@ blockquote {
   text-align: left;
   padding-left: 2rem; }
 
+.feature_panel {
+  background-color: #64d29f;
+  text-align: left;
+  padding-left: 2rem; }
+
+.bug-card {
+  color: #fff; }
+
 .bug-badge {
   background-color: #1b8fce;
   font-size: 1rem;
@@ -194,14 +202,6 @@ blockquote {
   font-family: Lato, sans-serif;
   margin-left: -40px;
   margin-bottom: -20px; }
-
-.bug-card {
-  color: #fff; }
-
-.feature_panel {
-  background-color: #313231;
-  font-size: 2rem;
-  color: #64d29f; }
 
 .profile-pic {
   border: 0.5rem solid #b37bff;
