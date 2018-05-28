@@ -4,13 +4,17 @@ from .choices import status_set, bugs
 import datetime
 
 """
-Bug Ticket model - enables users to report a bug
+Default Attriubutes
 """
 def default_status():
     return 'todo'
 
 def default_bug_type():
     return 'other'
+    
+"""
+Bug Ticket model - enables users to report a bug
+"""
 
 class BugTicket(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_bugs")
@@ -22,16 +26,67 @@ class BugTicket(models.Model):
     status = models.CharField(max_length=20, choices=status_set, default=default_status)
 
     def upvote(self, user):
-        
         try:
             self.bug_votes.create(bug_ticket=self, user=user, vote_type="up")
             self.votes += 1
             self.save()
         except IntegrityError:
             return 'already_upvoted'
+    
+   
+    """
+    Class methods to get BugTickets data for Daily, Weekly, Monthly Activity Chart
+    """
+    @classmethod
+    def qs_today_active_bugs(self):
+        startdate = datetime.date.today()
+        active_bug_today_qs = BugTicket.objects.filter(status="doing", date_created=datetime.date.today())
+        return active_bug_today_qs.count()    
+    
+    @classmethod
+    def qs_7_day_active_bugs(self):
+        startdate = datetime.date.today()
+        last_week = startdate - datetime.timedelta(days=7)
+        active_bug_7_qs = BugTicket.objects.filter(status="doing", date_created__range=(last_week, startdate))
+        return active_bug_7_qs.count()    
+    
+    @classmethod
+    def qs_30_day_active_bugs(self):
+        startdate = datetime.date.today()
+        last_month = startdate - datetime.timedelta(days=30)
+        active_bug_30_qs = BugTicket.objects.filter(status="doing", date_created__range=(last_month, startdate))
+        return active_bug_30_qs.count()
 
+    """
+    Class methods to get BugTickets data for Daily, Weekly, Monthly Completion Chart
+    """
+    @classmethod
+    def qs_today_complete_bugs(self):
+        startdate = datetime.date.today()
+        complete_bug_today_qs = BugTicket.objects.filter(status="done", date_created=datetime.date.today())
+        return complete_bug_today_qs.count()    
+    
+    @classmethod
+    def qs_7_day_complete_bugs(self):
+        startdate = datetime.date.today()
+        last_week = startdate - datetime.timedelta(days=7)
+        complete_bug_7_qs = BugTicket.objects.filter(status="done", date_created__range=(last_week, startdate))
+        return complete_bug_7_qs.count()    
+    
+    @classmethod
+    def qs_30_day_complete_bugs(self):
+        startdate = datetime.date.today()
+        last_month = startdate - datetime.timedelta(days=30)
+        complete_bug_30_qs = BugTicket.objects.filter(status="done", date_created__range=(last_month, startdate))
+        return complete_bug_30_qs.count()
+
+
+    """
+    String Representation
+    """
     def __str__(self):
 	    return "Bug: {} ({} - {})".format(self.title, self.date_created, self.id)
+
 
 
 """
