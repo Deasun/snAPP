@@ -1,6 +1,7 @@
 from django.contrib.auth import views as auth_views
 from django.conf.urls import url
 from .views import report_bug, edit_bug, delete_bug, upvote_bug, get_bug_listing, add_comment_to_bug, bug_report
+from . import api_views
 
 
 urlpatterns = [
@@ -11,6 +12,7 @@ urlpatterns = [
     url(r'^upvote/(?P<id>\d+)$', upvote_bug, name='upvote_bug'),
     url(r'^bug/(?P<pk>\d+)$', bug_report, name='bug_report'),
     url(r'^bug/(?P<pk>\d+)/comment$', add_comment_to_bug, name='add_comment_to_bug'),
+    url(r'^api_views/$', api_views.BugTicketViewSet.as_view())
 
 ]
 
