@@ -5,6 +5,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from  django.contrib.messages import success, warning, error
 from django.utils import timezone
+import datetime
+
+import json
+from django.core import serializers
+from django.http import HttpResponse
 
 @login_required
 def report_bug(request, pk=None):
@@ -80,7 +85,6 @@ def delete_bug(request, id=None):
     return render(request, "bug_listing.html", {'bugs': bugs})
 
 
-
 @login_required
 def add_comment_to_bug(request, pk):
     post = BugTicket.objects.get(pk=pk)
@@ -110,4 +114,8 @@ def get_bug_listing(request):
     List bugs that were reported prior to 'now' and render them to the 'bug_listing.html' template
     """
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    return render(request, "bug_listing.html", {'bugs': bugs})
+    startdate = datetime.date.today()
+    last_week = startdate - datetime.timedelta(days=30)
+    queryset = BugTicket.objects.filter(status="doing", date_created__range=(last_week, startdate))
+    return render(request, "bug_listing.html", {'bugs': bugs, 'queryset': queryset})
+
