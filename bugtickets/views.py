@@ -114,8 +114,5 @@ def get_bug_listing(request):
     List bugs that were reported prior to 'now' and render them to the 'bug_listing.html' template
     """
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    startdate = datetime.date.today()
-    last_week = startdate - datetime.timedelta(days=30)
-    queryset = BugTicket.objects.filter(status="doing", date_created__range=(last_week, startdate))
-    return render(request, "bug_listing.html", {'bugs': bugs, 'queryset': queryset})
+    return render(request, "bug_listing.html", { 'bugs': bugs })
 
