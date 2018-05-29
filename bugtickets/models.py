@@ -68,21 +68,21 @@ class BugTicket(models.Model):
     @classmethod
     def qs_today_active_bugs(self):
         startdate = datetime.date.today()
-        active_bug_today_qs = BugTicket.objects.filter(status="doing", date_created=datetime.date.today())
+        active_bug_today_qs = BugTicket.objects.filter(date_started=datetime.date.today())
         return active_bug_today_qs.count()    
     
     @classmethod
     def qs_7_day_active_bugs(self):
         startdate = datetime.date.today()
         last_week = startdate - datetime.timedelta(days=7)
-        active_bug_7_qs = BugTicket.objects.filter(status="doing", date_created__range=(last_week, startdate))
+        active_bug_7_qs = BugTicket.objects.filter(date_started__range=(last_week, startdate))
         return active_bug_7_qs.count()    
     
     @classmethod
     def qs_30_day_active_bugs(self):
         startdate = datetime.date.today()
         last_month = startdate - datetime.timedelta(days=30)
-        active_bug_30_qs = BugTicket.objects.filter(status="doing", date_created__range=(last_month, startdate))
+        active_bug_30_qs = BugTicket.objects.filter(date_started__range=(last_month, startdate))
         return active_bug_30_qs.count()
 
     """
@@ -91,21 +91,21 @@ class BugTicket(models.Model):
     @classmethod
     def qs_today_complete_bugs(self):
         startdate = datetime.date.today()
-        complete_bug_today_qs = BugTicket.objects.filter(status="done", date_created=datetime.date.today())
+        complete_bug_today_qs = BugTicket.objects.filter(date_completed=datetime.date.today())
         return complete_bug_today_qs.count()    
     
     @classmethod
     def qs_7_day_complete_bugs(self):
         startdate = datetime.date.today()
         last_week = startdate - datetime.timedelta(days=7)
-        complete_bug_7_qs = BugTicket.objects.filter(status="done", date_created__range=(last_week, startdate))
+        complete_bug_7_qs = BugTicket.objects.filter(date_completed__range=(last_week, startdate))
         return complete_bug_7_qs.count()    
     
     @classmethod
     def qs_30_day_complete_bugs(self):
         startdate = datetime.date.today()
         last_month = startdate - datetime.timedelta(days=30)
-        complete_bug_30_qs = BugTicket.objects.filter(status="done", date_created__range=(last_month, startdate))
+        complete_bug_30_qs = BugTicket.objects.filter(date_completed__range=(last_month, startdate))
         return complete_bug_30_qs.count()
 
 
