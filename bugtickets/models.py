@@ -4,7 +4,7 @@ from .choices import status_set, bugs
 import datetime
 
 """
-Default Attriubutes
+Default Attributes
 """
 def default_status():
     return 'todo'
@@ -33,7 +33,7 @@ class BugTicket(models.Model):
         except IntegrityError:
             return 'already_upvoted'
     
-   
+  
     """
     Class methods to get BugTickets data for Daily, Weekly, Monthly Activity Chart
     """
