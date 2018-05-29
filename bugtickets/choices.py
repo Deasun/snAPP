@@ -1,7 +1,7 @@
 status_set = (
-    ('Pending', 'Pending'),
-    ('In Progress', 'In Progress'),
-    ('Complete', 'Complete'),
+    ('checking', 'checking'),
+    ('doing', 'doing'),
+    ('complete', 'complete'),
     )
 
 bugs = (
