@@ -21,8 +21,9 @@
         </div>
     </div>
 </div>
+
+<!--Modal for Bug Reporting System-->
 <div class="col-xs-12">
-    <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
@@ -53,11 +54,9 @@
         </div>
     </div>
 </div>
-<div class="row panels">
-    
 
-    
-    
+<!--BugTicket Panel Display-->
+<div class="row panels">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 report-head">
         <i class="far fa-thumbs-up fa-6x">
             <label class='badge comment-badge'>{{ bug.votes }}</label>
@@ -75,7 +74,6 @@
                 <p><strong>Bug Type:</strong> {{bug.bug_type }}</p>
                 <p><strong>Details:</strong> {{ bug.description }}</p>
             </div>
-
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-xs-4 list-icons">
@@ -90,7 +88,8 @@
             </div>
         </div>
     </div>
-    <!--Comments-->
+
+    <!--Comments List-->
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-0 col-md-5 comment-head">
         <i class="far fa-comments fa-6x">
             <label class='badge comment-badge'>{{ bug.comments.count }}</label>
@@ -98,8 +97,7 @@
         <a class="btn btn-danger" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
         <section class="comments comment-head">
             <article class="comment">
-                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user.image }}' alt="" width="50" height="50"></a>
-                {% for comment in bug.comments.all %}
+                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user.image }}' alt="" width="50" height="50"></a> {% for comment in bug.comments.all %}
                 <div class="comment-body">
                     <div class="text">
                         <p>{{ comment.text }}</p>
@@ -110,7 +108,8 @@
             </article>
         </section>
     </div>
-
 </div>
 
-{% endfor %} {% endblock %}
+{% endfor %}
+
+{% endblock %}
