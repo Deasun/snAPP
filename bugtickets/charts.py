@@ -27,7 +27,7 @@ line_chart = pygal.Line(fill=True, interpolate='cubic', style=custom_style, lege
 line_chart.x_labels = 'today', 'last 7 days', 'last 30 days'
 
 """
-Class methods to filer Active & Complete BugTicket chart data
+Apply class methods to filter current & completed BugTicket chart data
 """
 line_chart.add('Started', [
      int(BugTicket.qs_today_active_bugs()),

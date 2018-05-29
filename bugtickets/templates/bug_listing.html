@@ -98,6 +98,40 @@
                 {% endfor %}
             </tbody>
         </table>
+        <h2 class="tactics">Most Voted Bugs</h2>
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr class="tr-bug">
+                    <th class="hidden-xs">#</th>
+                    <th>Title</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th class="hidden-xs"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bug in bug_votes %}
+                <tr>
+
+                    <td class="hidden-xs">{{ bug.id }}</td>
+                    <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title }}</a></td>
+                    <td>{{ bug.bug_type }}</td>
+                    <td>{{ bug.status }}</td>
+                    <td class="list-icons">
+                        <i class="far fa-thumbs-up fa-2x">
+                    <label class='badge bug-badge'>{{ bug.votes }}</label>
+                </i>
+                    </td>
+                    <td class="list-icons hidden-xs">
+                        <i class="far fa-comments fa-2x">
+                    <label class='badge bug-badge'>{{ bug.comments.count }}</label>
+                </i>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
     <!--Render BugTicket Chart using chart.js-->

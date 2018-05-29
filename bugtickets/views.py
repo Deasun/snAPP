@@ -29,7 +29,7 @@ def report_bug(request, pk=None):
 @login_required
 def upvote_bug(request, id=None):
     """
-    Enable user to upvote a bug
+    Enable user to upvote a bug and render line chart data
     """
     bug = get_object_or_404(BugTicket, pk=id)
    
@@ -109,8 +109,9 @@ def bug_report(request, pk=id):
 @login_required
 def get_bug_listing(request):
     """
-    List bugs with most recent on top
+    List bugs with most recent on top and render line chart data
     """
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    return render(request, "bug_listing.html", { 'bugs': bugs, 'chart_data': chart_data })
+    bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
+    return render(request, "bug_listing.html", { 'bugs': bugs, 'bug_votes': bug_votes, 'chart_data': chart_data })
     
