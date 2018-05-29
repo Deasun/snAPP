@@ -7,6 +7,8 @@ from  django.contrib.messages import success, warning, error
 from django.utils import timezone
 import datetime
 import pygal
+from pygal.style import Style
+from .charts import custom_style
 
 import json
 from django.core import serializers
@@ -115,23 +117,27 @@ def get_bug_listing(request):
     List bugs that were reported prior to 'now' and render them to the 'bug_listing.html' template
     """
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    return render(request, "bug_listing.html", { 'bugs': bugs })
-
-@login_required
-def pygalexample(request):
-        line_chart = pygal.StackedLine(fill=True)
-        line_chart.title = 'snAPP bugfix activity'
-        line_chart.x_labels = 'month', 'week', 'today'
-        line_chart.add('Started', [
-             int(BugTicket.qs_30_day_active_bugs()),
-             int(BugTicket.qs_7_day_active_bugs()),
-             int(BugTicket.qs_today_active_bugs()),
-             ])
-        line_chart.add('Completed', [
-             int(BugTicket.qs_30_day_complete_bugs()),
-             int(BugTicket.qs_7_day_complete_bugs()),
-             int(BugTicket.qs_today_complete_bugs()),
-             ])
-        chart_data = line_chart.render_data_uri()    
-        return render(request, 'chart.html', { 'chart_data': chart_data })
+    
+    """
+    Chart config - importing custom_style from .charts
+    """
+    line_chart = pygal.Line(fill=True, interpolate='cubic', style=custom_style, legend_at_bottom=True, x_label_rotation=-20)
+    line_chart.x_labels = 'today', 'last 7 days', 'last 30 days'
+    
+    """
+    Class methods to query to filer Active & Complete BugTicket chart data
+    """
+    line_chart.add('Started', [
+         int(BugTicket.qs_today_active_bugs()),
+         int(BugTicket.qs_7_day_active_bugs()),
+         int(BugTicket.qs_30_day_active_bugs()),
+             ], dots_size=6)
+    line_chart.add('Completed', [
+         int(BugTicket.qs_today_complete_bugs()),
+         int(BugTicket.qs_7_day_complete_bugs()),         
+         int(BugTicket.qs_30_day_complete_bugs()),
+             ], dots_size=6)
+    chart_data = line_chart.render_data_uri()    
+    
+    return render(request, "bug_listing.html", { 'bugs': bugs, 'chart_data': chart_data })
     
