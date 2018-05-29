@@ -7,7 +7,7 @@ import datetime
 Default Attributes
 """
 def default_status():
-    return 'todo'
+    return 'checking'
 
 def default_bug_type():
     return 'other'
@@ -19,12 +19,17 @@ Bug Ticket model - enables users to report a bug
 class BugTicket(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_bugs")
     date_created = models.DateField(default=datetime.date.today)
+    date_started = models.DateField(blank=True, null=True)
+    date_completed = models.DateField(blank=True, null=True)
     title = models.CharField(max_length=200, blank=False)
     bug_type = models.CharField(max_length=30, choices=bugs, default=default_bug_type, blank=False)
     description = models.TextField(null=True, blank=False)
     votes = models.IntegerField(default = 0)
     status = models.CharField(max_length=20, choices=status_set, default=default_status)
 
+    """
+    Registers Upvotes from users by BugUpvote class and prevents self-votes
+    """
     def upvote(self, user):
         try:
             self.bug_votes.create(bug_ticket=self, user=user, vote_type="up")
@@ -33,6 +38,29 @@ class BugTicket(models.Model):
         except IntegrityError:
             return 'already_upvoted'
     
+    """
+    Triggers start date if status changes to 'doing'
+    """
+    def start_date(self):
+        try:
+            if self.status == 'doing' and self.date_started == None:
+                self.date_started = datetime.date.today()
+                self.save()
+                
+        except IntegrityError:
+            return 'already_started'
+    
+    """
+    Triggers completion date if status changes to 'complete'
+    """
+    def completion_date(self):
+        try:
+            if self.status == 'complete' and self.date_started == None:
+                self.date_completed = datetime.date.today()
+                self.save()
+        except IntegrityError:
+            return 'already_complete'
+                
   
     """
     Class methods to get BugTickets data for Daily, Weekly, Monthly Activity Chart
