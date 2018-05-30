@@ -1,13 +1,10 @@
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
-from .choices import status_set
 import datetime
 
 """
 Feature Ticket model
 """
-def default_status():
-    return 'todo'
 
 class FeatureTicket(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_features")
@@ -18,7 +15,7 @@ class FeatureTicket(models.Model):
     votes = models.IntegerField(default = 0)
     links = models.URLField(blank=True)
     contribution = models.DecimalField(max_digits=8, decimal_places=2, default=9.99, editable=False)
-    status = models.CharField(max_length=20, choices=status_set, default=default_status, null=True)
+
     
     def __str__(self):
 	    return "Request: {} ({})".format(self.title, self.date_created)
