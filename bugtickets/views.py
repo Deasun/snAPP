@@ -47,7 +47,8 @@ def upvote_bug(request, id=None):
             messages.success(request, "Your upvote has been counted. Thanks")
     
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-    return render(request, "bug_listing.html", {'bugs': bugs, 'chart_data': chart_data })
+    bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
+    return render(request, "bug_listing.html", {'bugs': bugs,'bug_votes': bug_votes, 'chart_data': chart_data })
 
 
 @login_required

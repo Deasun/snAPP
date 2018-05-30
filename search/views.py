@@ -9,4 +9,5 @@ def feature_search(request):
 
 def bug_search(request):
     bugs = BugTicket.objects.filter(description__icontains=request.GET['q'])
-    return render(request, 'bug_listing.html', {'bugs': bugs, 'chart_data': chart_data })
+    bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
+    return render(request, 'bug_listing.html', {'bugs': bugs,'bug_votes': bug_votes, 'chart_data': chart_data })
