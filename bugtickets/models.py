@@ -39,28 +39,24 @@ class BugTicket(models.Model):
             return 'already_upvoted'
     
     """
-    Triggers start date if status changes to 'doing'
+    Triggers bug status based on date_started and date_completed
     """
     def start_date(self):
         try:
-            if self.status == 'doing' and self.date_started == None:
-                self.date_started = datetime.date.today()
-                self.save()
+            if self.date_started == None and self.date_completed == None:
+                return '--'
+            elif self.date_started != None and self.date_completed != None:
+                return 'complete'
+            elif self.date_started == None and self.date_completed != None:
+                return 'complete'
+            else:
+                return 'active'
                 
         except IntegrityError:
-            return 'already_started'
+            return 'Unknown status'
+
     
-    """
-    Triggers completion date if status changes to 'complete'
-    """
-    def completion_date(self):
-        try:
-            if self.status == 'complete' and self.date_started == None:
-                self.date_completed = datetime.date.today()
-                self.save()
-        except IntegrityError:
-            return 'already_complete'
-                
+    
   
     """
     Class methods to get BugTickets data for Daily, Weekly, Monthly Activity Chart

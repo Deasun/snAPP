@@ -83,7 +83,11 @@
                     <td class="hidden-xs">{{ bug.id }}</td>
                     <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title }}</a></td>
                     <td>{{ bug.bug_type }}</td>
-                    <td>{{ bug.status }}</td>
+                    
+                    <!--class method to trigger bug status depending on date_started & date_completed attributes-->
+                    
+                    <td>{{ bug.start_date }}</td>
+                    
                     <td class="list-icons">
                         <i class="far fa-thumbs-up fa-2x">
                     <label class='badge bug-badge'>{{ bug.votes }}</label>
