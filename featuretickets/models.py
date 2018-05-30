@@ -1,6 +1,7 @@
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 import datetime
+from .choices import feature_list
 
 """
 Feature Ticket model
@@ -9,12 +10,16 @@ Feature Ticket model
 class FeatureTicket(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_features")
     date_created = models.DateField(default=datetime.date.today)
+    date_started = models.DateField(blank=True, null=True)
+    date_completed = models.DateField(blank=True, null=True)
     title = models.CharField(max_length=200, blank=False)
     description = models.TextField(null=True, blank=False)
+    feature_type = models.CharField(max_length=30, choices=feature_list, blank=False)
     # Not currently in use - decide if keep or link to OrderLineItem.quantity in model
     votes = models.IntegerField(default = 0)
     links = models.URLField(blank=True)
-    contribution = models.DecimalField(max_digits=8, decimal_places=2, default=9.99, editable=False)
+    contribution = models.DecimalField(max_digits=8, decimal_places=2, default=9.99, editable=False)    
+    target = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
 
     
     def __str__(self):
