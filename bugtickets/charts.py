@@ -29,7 +29,7 @@ line_chart.x_labels = 'today', 'last 7 days', 'last 30 days'
 """
 Apply class methods to filter current & completed BugTicket chart data
 """
-line_chart.add('Started', [
+line_chart.add('Active', [
      int(BugTicket.qs_today_active_bugs()),
      int(BugTicket.qs_7_day_active_bugs()),
      int(BugTicket.qs_30_day_active_bugs()),

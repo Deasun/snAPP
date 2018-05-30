@@ -3,11 +3,7 @@ from django.contrib.auth.models import User
 from .choices import bugs
 import datetime
 
-"""
-Default Attributes
-"""
-def default_bug_type():
-    return 'other'
+
     
 """
 Bug Ticket model - enables users to report a bug
@@ -19,7 +15,7 @@ class BugTicket(models.Model):
     date_started = models.DateField(blank=True, null=True)
     date_completed = models.DateField(blank=True, null=True)
     title = models.CharField(max_length=200, blank=False)
-    bug_type = models.CharField(max_length=30, choices=bugs, default=default_bug_type, blank=False)
+    bug_type = models.CharField(max_length=30, choices=bugs, blank=False)
     description = models.TextField(null=True, blank=False)
     votes = models.IntegerField(default = 0)
     
