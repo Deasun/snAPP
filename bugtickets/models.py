@@ -75,8 +75,14 @@ class BugTicket(models.Model):
         qs_bug_type = BugTicket.objects.filter(bug_type=bugtype)
         return qs_bug_type.count()
         
-    
-    
+    """
+    Method to return top 5 most popular bug reports
+    """
+    @classmethod
+    def qs_by_bug_upvotes(self):
+        qs_bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
+        return qs_bug_votes
+        
     """
     String Representation
     """

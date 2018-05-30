@@ -26,9 +26,7 @@ custom_style = Style(
 line_chart = pygal.Line(fill=True, interpolate='cubic', style=custom_style, legend_at_bottom=True, x_label_rotation=-20)
 line_chart.x_labels = 'today', 'last 7 days', 'last 30 days'
 
-"""
-Apply class methods to filter current & completed BugTicket chart data
-"""
+"""Apply class methods to filter current & completed BugTicket chart data"""
 line_chart.add('Active', [
      int(BugTicket.qs_active_bugs(0)),
      int(BugTicket.qs_active_bugs(7)),
@@ -62,6 +60,7 @@ custom_pie_style = Style(
     opacity_hover='.9',
     transition='400ms ease-in',
     )
+"""Apply class methods to filter bug_types"""
 pie_chart = pygal.Pie(half_pie=True, style=custom_pie_style, legend_at_top=True, legend_box_size=18)
 pie_chart.title = 'Bug Reports Received'
 pie_chart.add('Functional', int(BugTicket.qs_by_bug_type('Functional')))
@@ -71,5 +70,3 @@ pie_chart.add('Error Notices', int(BugTicket.qs_by_bug_type('Error Notices')))
 pie_chart.add('Calculation Errors', int(BugTicket.qs_by_bug_type('Calculation Errors')))
 pie_chart.add('Flow Problems', int(BugTicket.qs_by_bug_type('Flow Problems')))
 pie_chart_data = pie_chart.render_data_uri()  
-
-
