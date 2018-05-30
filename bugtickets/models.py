@@ -24,6 +24,7 @@ class BugTicket(models.Model):
     Registers Upvotes from users by BugUpvote class and prevents self-votes
     """
     def upvote(self, user):
+        # pass
         try:
             self.bug_votes.create(bug_ticket=self, user=user, vote_type="up")
             self.votes += 1
@@ -35,6 +36,7 @@ class BugTicket(models.Model):
     Triggers bug status based on date_started and date_completed
     """
     def status(self):
+        # pass
         try:
             if self.date_started == None and self.date_completed == None:
                 return '--'
@@ -53,6 +55,7 @@ class BugTicket(models.Model):
     """
     @classmethod
     def qs_active_bugs(self, num):
+        # pass
         startdate = datetime.date.today()
         enddate = startdate - datetime.timedelta(days=num)
         active_bug_qs = BugTicket.objects.filter(date_started__range=(enddate, startdate))
@@ -63,6 +66,7 @@ class BugTicket(models.Model):
     """
     @classmethod
     def qs_complete_bugs(self, num):
+        # pass
         startdate = datetime.date.today()
         enddate = startdate - datetime.timedelta(days=num)
         complete_bug_qs = BugTicket.objects.filter(date_completed__range=(enddate, startdate))
@@ -72,6 +76,7 @@ class BugTicket(models.Model):
     """
     @classmethod
     def qs_by_bug_type(self, bugtype):
+        # pass
         qs_bug_type = BugTicket.objects.filter(bug_type=bugtype)
         return qs_bug_type.count()
         
@@ -80,6 +85,7 @@ class BugTicket(models.Model):
     """
     @classmethod
     def qs_by_bug_upvotes(self):
+        # pass
         qs_bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
         return qs_bug_votes
         
