@@ -8,7 +8,8 @@
         <p><strong>Building snAPP one feature at a time.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
     <div class="col-xs-12">
-        <h2 class="feature">Feature Request</h2>
+        
+        <h2 class="feature">Feature Request #{{ feature.id }}</h2>
     </div>
     <div class="row list-search-field">
         <div class="col-xs-12">
@@ -63,17 +64,14 @@
 <!--Test-->
 <div class="row panels">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 report-head">
-        <i class="far fa-thumbs-up fa-6x">
+        <i class="fas fa-handshake fa-6x">
             
             <!--Render Ticket Quantity as Feature Upvotes-->
-            {% if orders.quantity is None %} 
-            <label class='badge comment-badge'>0</label>
-            {% else %}
             <label class='badge comment-badge'>{{ orders.quantity__sum|mul:feature.contribution  }}</label>
-            {% endif %}
+ 
             
         </i><br>
-        <p class="feature">Amount Raised: {{ orders.quantity__sum|mul:feature.contribution  }}</p> 
+        <p class="feature">Target: <strong>{{ feature.target  }}</strong></p> 
         <div class="panel">
             <div class="panel-heading feature_panel">
                 <p><i class="fas fa-cog bug-card fa-2x"></i><strong> #{{ feature.id }} - {{ feature.title }}</strong></p>
@@ -83,20 +81,20 @@
                 <p><strong>Date:</strong> {{ feature.date_created }}</p>
                 <p class="feature"><strong>Current status:</strong> {{ feature.status }}</p>
                 <hr>
-                <p><strong>Feature Type:</strong>NEED TO FILL</p>
+                <p><strong>Feature Type:</strong> {{ feature.feature_type }}</p>
                 <p><strong>Details:</strong> {{ feature.description }}</p>
             </div>
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-xs-4 list-icons">
-                        <i class="far fa-thumbs-up fa-2x">
+                        <i class="fas fa-ticket-alt fa-2x">
                             
                             <!--Render Ticket Quantity as Feature Upvotes-->
-                            {% if orders.quantity is None %} 
-                            <label class='badge comment-badge'>0</label>
-                            {% else %}
+                            <!--{% if orders.quantity is None %} -->
+                            <!--<label class='badge comment-badge'>0</label>-->
+                            <!--{% else %}-->
                             <label class='badge comment-badge'>{{ orders.quantity__sum|mul:feature.contribution  }}</label>
-                            {% endif %}
+                            <!--{% endif %}-->
                             
                         </i>
                     </div>
@@ -113,87 +111,16 @@
                             <p class="feature">Contribute Now!</p>
                         </div>
                         <div class="col-xs-5">
-                            <input name='quantity' type='number' min="1" max='999' placeholder="Quantity" class="form-control">
+                            <input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control">
                         </div>
                         <div class="col-xs-5">
-                            <span class="input-group-btn"><button class="btn btn-success" type="submit">Add</button></span>
+                            <span class="input-group-btn"><button class="btn btn-success" type="submit">Support</button></span>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
-
-
-
-    <!--Test-->
-
-
-    <!--<div class="row panels">-->
-    <!--    <div class="col-xs-12 col-sm-6 col-md-4">-->
-    <!--        <div class="panel">-->
-    <!--            <div class="panel-heading feature_panel">-->
-    <!--                <h2>#{{ feature.id }} : {{ feature.title }}</h2><br>-->
-    <!--                <p class="feature">total contributions:-->
-
-                        <!--Calculate Total Contributions using django mathfilter-->
-    <!--                    {% if orders.quantity is None %}-->
-    <!--                    <strong>0</strong></p>-->
-    <!--                {% else %}-->
-    <!--                <p><strong>{{ orders.quantity__sum|mul:feature.contribution  }}</strong></p>-->
-    <!--                {% endif %}-->
-
-    <!--                <p class="feature">status: <strong>{{ feature.status }}</strong></p>-->
-    <!--            </div>-->
-    <!--            <div class="panel-body">-->
-    <!--                <p>{{ feature.description }}</p>-->
-
-                    <!--Render links only if provided-->
-    <!--                {% if feature.links|length > 0 %}-->
-    <!--                <p><strong>Links to similar features in other apps:</strong><a href="{{ feature.links }}" target="_blank">{{ feature.links }}</a></p>-->
-    <!--                {% endif %}-->
-
-    <!--            </div>-->
-    <!--            <div class="panel-heading">-->
-    <!--                <div class="row">-->
-    <!--                    <div class="col-xs-4 list-icons">-->
-    <!--                        <i class="far fa-thumbs-up fa-2x">-->
-                            <!--Render Quantity Purchased as FeatureTicket Upvotes-->
-    <!--                        {% if orders.quantity is None %}-->
-    <!--                        <label class='badge feature-badge'>0</label>-->
-    <!--                        {% else %}            -->
-    <!--                    <label class='badge feature-badge'>{{ orders.quantity__sum }}</label>-->
-    <!--                        {% endif %}-->
-    <!--                    </i>-->
-    <!--                    </div>-->
-    <!--                    <div class="col-xs-4 list-icons">-->
-    <!--                        <i class="far fa-comments fa-2x">-->
-    <!--                        <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>-->
-    <!--                    </i>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--            <div class="panel-footer"><strong>{{ feature.created_by }}</strong>,<em> {{ feature.date_created }}</em></div>-->
-    <!--            <div class="panel-heading feature_panel contribute">-->
-    <!--                <form method='POST' action="{% url 'add_to_cart' feature.id %}">-->
-    <!--                    {% csrf_token %}-->
-
-    <!--                    <div class="row">-->
-    <!--                        <div class="col-xs-12">-->
-    <!--                            <p class="feature">Contribute Now!</p>-->
-    <!--                        </div>-->
-    <!--                        <div class="col-xs-5">-->
-    <!--                            <input name='quantity' type='number' min="1" max='999' placeholder="Quantity" class="form-control">-->
-    <!--                        </div>-->
-    <!--                        <div class="col-xs-5">-->
-    <!--                            <span class="input-group-btn"><button class="btn btn-success" type="submit">Add</button></span>-->
-    <!--                        </div>-->
-    <!--                    </div>-->
-    <!--                </form>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
 
         <!--Comments-->
         <div class="col-xs-12 col-md-4 comment-head">

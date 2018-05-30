@@ -56,13 +56,8 @@
             <div class="panel-heading feature_panel">
                 <h2 class="panel-head">#{{ item.feature.id }} : {{ item.feature.title }}</h2>
                 <p>1 snAPP ticket = £{{ item.feature.contribution }}</p>
-                <p>total tickets: <strong>{{ item.feature.total_contributions }}</strong></p>
-            </div>
-            <div class="panel-body">
-                {{ item.feature.description | truncatewords:15 }}
             </div>
             <hr>
-
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-xs-12">

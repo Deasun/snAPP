@@ -18,7 +18,7 @@ class FeatureTicket(models.Model):
     # Not currently in use - decide if keep or link to OrderLineItem.quantity in model
     votes = models.IntegerField(default = 0)
     links = models.URLField(blank=True)
-    contribution = models.DecimalField(max_digits=8, decimal_places=2, default=9.99, editable=False)    
+    contribution = models.DecimalField(max_digits=8, decimal_places=2, default=10.00, editable=False)    
     target = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
 
     

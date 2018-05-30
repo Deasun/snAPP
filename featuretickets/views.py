@@ -19,14 +19,13 @@ def request_feature(request, pk=None):
             submit.created_by = request.user
             submit.save()
             messages.success(request, "Excellent. Your feature request will be posted to start attracting supporters once you have made your snAPP contribution!")
-            return redirect('profile')
+            return redirect('get_feature_listing')
 
     else:
         request_form = RequestFeatureForm()
     return render(request, 'request_form.html', {'request_form': request_form})
    
     
-
 @login_required
 def add_comment_to_feature(request, pk):
     post = FeatureTicket.objects.get(pk=pk)

@@ -32,7 +32,9 @@
             <thead>
                 <tr class="tr-checkout">
                     <th>Feature</th>
-                    <th>Quantity<br>(1 = £9.99)</th>
+                    {% for item in cart_items %}
+                    <th>Quantity<br>(1 = £{{ item.feature.contribution }})</th>
+                    {% endfor %}
                 </tr>
             </thead>
             <tbody>
