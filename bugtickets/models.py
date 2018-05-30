@@ -31,7 +31,6 @@ class BugTicket(models.Model):
         except IntegrityError:
             return 'already_upvoted'
     
-   
     """
     Triggers bug status based on date_started and date_completed
     """
@@ -50,52 +49,34 @@ class BugTicket(models.Model):
             return 'Unknown status'
 
     """
-    Class methods to get BugTickets data for Daily, Weekly, Monthly Activity Chart
+    Method to get BugTickets data for Daily, Weekly, Monthly Activity Line Chart
     """
     @classmethod
-    def qs_today_active_bugs(self):
+    def qs_active_bugs(self, num):
         startdate = datetime.date.today()
-        active_bug_today_qs = BugTicket.objects.filter(date_started=datetime.date.today())
-        return active_bug_today_qs.count()    
-    
-    @classmethod
-    def qs_7_day_active_bugs(self):
-        startdate = datetime.date.today()
-        last_week = startdate - datetime.timedelta(days=7)
-        active_bug_7_qs = BugTicket.objects.filter(date_started__range=(last_week, startdate))
-        return active_bug_7_qs.count()    
-    
-    @classmethod
-    def qs_30_day_active_bugs(self):
-        startdate = datetime.date.today()
-        last_month = startdate - datetime.timedelta(days=30)
-        active_bug_30_qs = BugTicket.objects.filter(date_started__range=(last_month, startdate))
-        return active_bug_30_qs.count()
+        enddate = startdate - datetime.timedelta(days=num)
+        active_bug_qs = BugTicket.objects.filter(date_started__range=(enddate, startdate))
+        return active_bug_qs.count()    
 
     """
-    Class methods to get BugTickets data for Daily, Weekly, Monthly Completion Chart
+    Method to get BugTickets data for Daily, Weekly, Monthly Completion Line Chart
     """
     @classmethod
-    def qs_today_complete_bugs(self):
+    def qs_complete_bugs(self, num):
         startdate = datetime.date.today()
-        complete_bug_today_qs = BugTicket.objects.filter(date_completed=datetime.date.today())
-        return complete_bug_today_qs.count()    
-    
+        enddate = startdate - datetime.timedelta(days=num)
+        complete_bug_qs = BugTicket.objects.filter(date_completed__range=(enddate, startdate))
+        return complete_bug_qs.count()
+    """
+    Method to count BugTickets by bug_type for Half-Pie Chart
+    """
     @classmethod
-    def qs_7_day_complete_bugs(self):
-        startdate = datetime.date.today()
-        last_week = startdate - datetime.timedelta(days=7)
-        complete_bug_7_qs = BugTicket.objects.filter(date_completed__range=(last_week, startdate))
-        return complete_bug_7_qs.count()    
+    def qs_by_bug_type(self, bugtype):
+        qs_bug_type = BugTicket.objects.filter(bug_type=bugtype)
+        return qs_bug_type.count()
+        
     
-    @classmethod
-    def qs_30_day_complete_bugs(self):
-        startdate = datetime.date.today()
-        last_month = startdate - datetime.timedelta(days=30)
-        complete_bug_30_qs = BugTicket.objects.filter(date_completed__range=(last_month, startdate))
-        return complete_bug_30_qs.count()
-
-
+    
     """
     String Representation
     """
