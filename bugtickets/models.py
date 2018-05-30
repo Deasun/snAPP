@@ -1,14 +1,11 @@
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
-from .choices import status_set, bugs
+from .choices import bugs
 import datetime
 
 """
 Default Attributes
 """
-def default_status():
-    return 'checking'
-
 def default_bug_type():
     return 'other'
     
@@ -25,7 +22,7 @@ class BugTicket(models.Model):
     bug_type = models.CharField(max_length=30, choices=bugs, default=default_bug_type, blank=False)
     description = models.TextField(null=True, blank=False)
     votes = models.IntegerField(default = 0)
-    status = models.CharField(max_length=20, choices=status_set, default=default_status)
+    
 
     """
     Registers Upvotes from users by BugUpvote class and prevents self-votes
@@ -38,10 +35,11 @@ class BugTicket(models.Model):
         except IntegrityError:
             return 'already_upvoted'
     
+   
     """
     Triggers bug status based on date_started and date_completed
     """
-    def start_date(self):
+    def status(self):
         try:
             if self.date_started == None and self.date_completed == None:
                 return '--'
@@ -55,9 +53,6 @@ class BugTicket(models.Model):
         except IntegrityError:
             return 'Unknown status'
 
-    
-    
-  
     """
     Class methods to get BugTickets data for Daily, Weekly, Monthly Activity Chart
     """
