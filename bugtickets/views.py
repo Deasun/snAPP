@@ -6,7 +6,7 @@ from django.contrib import messages
 from  django.contrib.messages import success, warning, error
 from django.utils import timezone
 import datetime
-from .charts import chart_data
+from .charts import chart_data, pie_chart_data
 
 
 @login_required
@@ -48,7 +48,7 @@ def upvote_bug(request, id=None):
     
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
-    return render(request, "bug_listing.html", {'bugs': bugs,'bug_votes': bug_votes, 'chart_data': chart_data })
+    return render(request, "bug_listing.html", {'bugs': bugs,'bug_votes': bug_votes, 'chart_data': chart_data,'pie_chart_data': pie_chart_data  })
 
 
 @login_required
@@ -114,5 +114,5 @@ def get_bug_listing(request):
     """
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
-    return render(request, "bug_listing.html", { 'bugs': bugs, 'bug_votes': bug_votes, 'chart_data': chart_data })
+    return render(request, "bug_listing.html", { 'bugs': bugs, 'bug_votes': bug_votes, 'chart_data': chart_data, 'pie_chart_data': pie_chart_data })
     
