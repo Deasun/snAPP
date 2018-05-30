@@ -45,7 +45,24 @@ chart_data = line_chart.render_data_uri()
 """
 Half-Pie chart for bug_types
 """
-pie_chart = pygal.Pie(half_pie=True)
+custom_pie_style = Style(
+    font_family='googlefont:Anton',
+    legend_font_size = 20,
+    value_font_size = 20,
+    tooltip_font_size = 30,
+    major_label_font_size = 20,
+    label_font_size = 20,
+    value_label_font_size = 30,
+    background='transparent',
+    plot_background='transparent',
+    foreground='#fff',
+    foreground_strong='#fff',
+    foreground_subtle='##1e6992',
+    opacity='.6',
+    opacity_hover='.9',
+    transition='400ms ease-in',
+    )
+pie_chart = pygal.Pie(half_pie=True, style=custom_pie_style, legend_at_top=True, legend_box_size=18)
 pie_chart.title = 'Bug Reports Received'
 pie_chart.add('Functional', int(BugTicket.qs_by_bug_type('Functional')))
 pie_chart.add('Communication', int(BugTicket.qs_by_bug_type('Communication')))

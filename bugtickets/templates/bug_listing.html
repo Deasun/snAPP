@@ -81,7 +81,7 @@
                 <tr>
 
                     <td class="hidden-xs">{{ bug.id }}</td>
-                    <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title }}</a></td>
+                    <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
                     <td>{{ bug.bug_type }}</td>
                     
                     <!--class method to trigger bug status depending on date_started & date_completed attributes-->
@@ -119,7 +119,7 @@
                 <tr>
 
                     <td class="hidden-xs">{{ bug.id }}</td>
-                    <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title }}</a></td>
+                    <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
                     <td>{{ bug.bug_type }}</td>
                     <td>{{ bug.status }}</td>
                     <td class="list-icons">
@@ -142,8 +142,7 @@
     <div class="col-xs-12 col-md-6">
         <h2 class="tactics">What we're working on...</h2>
         <embed type="image/svg+xml" src={{chart_data|safe}} style='max-width:1000px'/>
-    </div>    
-    <div class="col-xs-12 col-md-6">
+
         <h2 class="tactics">Bug Reports Received</h2>
         <embed type="image/svg+xml" src={{pie_chart_data|safe}} style='max-width:1000px'/>
     </div>
