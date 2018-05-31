@@ -7,10 +7,10 @@
 <div class="row list-head visible-xs">
 
     <div class="col-xs-12">
-        {% if user.profile.image is None %}
-        <i class="fas fa-user-secret fa-4x profile user"></i>
-        {% else %}
+        {% if user.profile.image != '' %}
         <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> 
+        {% else %}
+        <i class="fas fa-user-secret fa-4x profile user"></i>
         {% endif %}
     </div>
     <div class "col-xs-12">

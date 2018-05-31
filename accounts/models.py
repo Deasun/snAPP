@@ -10,7 +10,7 @@ Profile model - extra information relating to User Model
 """
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	image = models.ImageField(upload_to='images',null=True, blank=True)
+	image = models.ImageField(upload_to='images', default='')
 	trade_union = models.CharField(max_length=100, blank=True)
 	description = models.TextField(null=True, blank=True)
 
