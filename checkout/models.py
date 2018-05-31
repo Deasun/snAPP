@@ -28,5 +28,3 @@ class OrderLineItem(models.Model):
     def __str__(self):
         return "Item {0} x {1}".format(self.id, self.quantity)
         
-
-    

@@ -103,10 +103,10 @@
 <!--Views sm, md and lg-->
 <div class="row list-head hidden-xs">
     <div class="col-md-2 col-md-offset-2 col-sm-3 col-sm-offset-1">
-        {% if user.profile.image is None %}
-        <i class="fas fa-user-secret fa-4x profile user"></i>
-        {% else %}
+        {% if user.profile.image != '' %}
         <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> 
+        {% else %}
+        <i class="fas fa-user-secret fa-4x profile user"></i>
         {% endif %}
         <p><strong>{{ user.username }}'s snAPP profile.</strong></p>
         <p class="user"><strong>union:</strong> {{ user.profile.trade_union }}</p>

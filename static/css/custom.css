@@ -497,4 +497,7 @@ td {
 .table-hover tbody tr:hover td {
   background-color: #e26e1b; }
 
+.progress {
+  height: 10rem; }
+
 /*# sourceMappingURL=custom.css.map */

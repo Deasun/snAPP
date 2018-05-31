@@ -49,6 +49,8 @@ def feature_report(request, pk=id):
     
     # Query OrderLineItem quantity to render upvotes
     orders = OrderLineItem.objects.filter(feature=pk).aggregate(Sum('quantity'))
+    order_line = OrderLineItem.objects.filter(feature=pk)
+    
     return render(request, "feature_report.html", {'features': features, 'orders': orders })
 
 
