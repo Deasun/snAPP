@@ -15,7 +15,7 @@ class FeatureTicket(models.Model):
     title = models.CharField(max_length=200, blank=False)
     description = models.TextField(null=True, blank=False)
     feature_type = models.CharField(max_length=30, choices=feature_list, blank=False)
-    # Not currently in use - decide if keep or link to OrderLineItem.quantity in model
+    # Not currently in use - maintain for app development - enables non-paying members to support with 1 vote
     votes = models.IntegerField(default = 0)
     links = models.URLField(blank=True)
     contribution = models.DecimalField(max_digits=8, decimal_places=2, default=10.00, editable=False)    
@@ -25,7 +25,7 @@ class FeatureTicket(models.Model):
     """
     Triggers feature status based on date_started and date_completed
     """
-    @classmethod
+
     def status(self):
         # pass
         try:
