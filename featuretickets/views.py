@@ -58,8 +58,4 @@ def get_feature_listing(request):
     """
     features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     
-    # Get rid of this?
-    # Query all OrderLineItem instances
-    orders = OrderLineItem.objects.all
-    
-    return render(request, "feature_listing.html", {'features': features, 'orders': orders })
+    return render(request, "feature_listing.html", {'features': features })

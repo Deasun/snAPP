@@ -20,11 +20,69 @@ class FeatureTicket(models.Model):
     links = models.URLField(blank=True)
     contribution = models.DecimalField(max_digits=8, decimal_places=2, default=10.00, editable=False)    
     target = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
+	 
+    
+    """
+    Triggers feature status based on date_started and date_completed
+    """
+    @classmethod
+    def status(self):
+        # pass
+        try:
+            if self.date_started == None and self.date_completed == None:
+                return '--'
+            elif self.date_started != None and self.date_completed != None:
+                return 'complete'
+            elif self.date_started == None and self.date_completed != None:
+                return 'complete'
+            else:
+                return 'active'
+                
+        except IntegrityError:
+            return 'Unknown status'
 
     
+    """
+    Method to get FeatureTickets data for Daily, Weekly, Monthly Activity Line Chart
+    """
+    @classmethod
+    def qs_active_features(self, num):
+        # pass
+        startdate = datetime.date.today()
+        enddate = startdate - datetime.timedelta(days=num)
+        active_feature_qs = FeatureTicket.objects.filter(date_started__range=(enddate, startdate))
+        return active_feature_qs.count()  
+
+    
+    """
+    Method to get FeatureTickets data for Daily, Weekly, Monthly Completion Line Chart
+    """
+    @classmethod
+    def qs_complete_features(self, num):
+        # pass
+        startdate = datetime.date.today()
+        enddate = startdate - datetime.timedelta(days=num)
+        complete_feature_qs = FeatureTicket.objects.filter(date_completed__range=(enddate, startdate))
+        return complete_feature_qs.count()
+
+
+    """
+    Method to count FeatureTickets by bug_type for Half-Pie Chart
+    """
+    @classmethod
+    def qs_by_feature_type(self, featuretype):
+        # pass
+        qs_feature_type = FeatureTicket.objects.filter(feature_type=featuretype)
+        return qs_feature_type.count()
+
+    
+    """
+    String Representation
+    """
     def __str__(self):
 	    return "Request: {} ({})".format(self.title, self.date_created)
-	 
+
+
 
 """
 Comment Model - enables user to leave comments on feature requests

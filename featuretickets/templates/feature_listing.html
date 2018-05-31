@@ -75,7 +75,7 @@
                     <th class="hidden-xs">#</th>
                     <th>Title</th>
                     <th>Status</th>
-                    <th>Total</th>
+                    <th>Target</th>
                     <th></th>
                     <th class="hidden-xs"></th>
                 </tr>
@@ -87,16 +87,13 @@
                     <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title }}</a></td>
                     <td>{{ feature.status }}</td>
                 
-                   
-                   <!--render upvotes-->
-                   {% for order in orders %}
-                    <td>{{ order.quantity. }}</td>
-                   {% endfor %}
-                    
                     
                     <td class="list-icons">
-                        <i class="fas fa-handshake fa-2x">
-                    <label class='badge feature-badge'>{{ feature.features_vote.count }}</label>
+                        <i class="fas fa-bullseye fa-2x">
+                    <!--render upvotes-->
+                   
+                    <label class='badge feature-badge'>{{ feature.target  }}</label>
+                    
                 </i>
                     </td>
                     <td class="list-icons hidden-xs">
