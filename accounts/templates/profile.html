@@ -7,8 +7,11 @@
 <div class="row list-head visible-xs">
 
     <div class="col-xs-12">
-        <!--<img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> -->
+        {% if user.profile.image is None %}
         <i class="fas fa-user-secret fa-4x profile user"></i>
+        {% else %}
+        <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> 
+        {% endif %}
     </div>
     <div class "col-xs-12">
         <p><strong>{{ user.username }}'s snAPP profile.</strong></p><br>
@@ -100,7 +103,11 @@
 <!--Views sm, md and lg-->
 <div class="row list-head hidden-xs">
     <div class="col-md-2 col-md-offset-2 col-sm-3 col-sm-offset-1">
+        {% if user.profile.image is None %}
         <i class="fas fa-user-secret fa-4x profile user"></i>
+        {% else %}
+        <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> 
+        {% endif %}
         <p><strong>{{ user.username }}'s snAPP profile.</strong></p>
         <p class="user"><strong>union:</strong> {{ user.profile.trade_union }}</p>
         <p class="user"><strong>email:</strong> {{ user.email }}</p>

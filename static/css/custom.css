@@ -205,7 +205,9 @@ blockquote {
 
 .profile-pic {
   border: 0.5rem solid #b37bff;
-  border-radius: 50%; }
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem; }
 
 .nav-link {
   margin-right: 4rem; }
