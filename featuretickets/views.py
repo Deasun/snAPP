@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import FeatureTicket
+from accounts.models import Profile
 from checkout.models import Order, OrderLineItem   
 from .forms import RequestFeatureForm, CommentForm
 from django.contrib.auth.decorators import login_required
@@ -49,9 +50,8 @@ def feature_report(request, pk=id):
     
     # Query OrderLineItem quantity to render upvotes
     orders = OrderLineItem.objects.filter(feature=pk).aggregate(Sum('quantity'))
-    order_line = OrderLineItem.objects.filter(feature=pk)
     
-    return render(request, "feature_report.html", {'features': features, 'orders': orders })
+    return render(request, "feature_report.html", {'features': features, 'orders': orders})
 
 
 @login_required

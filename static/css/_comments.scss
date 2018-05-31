@@ -1,3 +1,4 @@
+// CODE copied and amended from https://bootsnipp.com/snippets/8Mren 
 .comment {
     overflow: hidden;
     padding: 0 0 1rem;
@@ -16,6 +17,13 @@
     display: block;
 }
 
+.comment-pic {
+    border: solid $red .5rem;
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+}
+
 .comment-body {
     overflow: hidden;
 }
@@ -24,7 +32,7 @@
     padding: 10px;
     border: 1px solid #e5e5e5;
     border-radius: 5px;
-    background: #fff;
+    background: rgba(255, 255, 255, .58);
 }
 
 .comment .text p:last-child {
@@ -50,19 +58,19 @@
     content: "";
     position: absolute;
     top: 0;
-    left: 65px;
+    left: 70px;
 }
 
 .comments:before {
-    width: 3px;
+    width: 10px;
     top: -20px;
     bottom: -20px;
     background: rgba(255,255,255,.15);
 }
 
 .comment:before {
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border: 3px solid #fff;
     border-radius: 100px;
     margin: 16px 0 0 -6px;
@@ -74,23 +82,27 @@
     background: orange;
 }
 
-.comment .text:before {
-    top: 18px;
-    left: 78px;
-    width: 9px;
-    height: 9px;
-    border-width: 0 0 1px 1px;
-    border-style: solid;
-    border-color: #e5e5e5;
-    background: #fff;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-}
+// .comment .text:before {
+//     top: 18px;
+//     left: 78px;
+//     width: 9px;
+//     height: 9px;
+//     border-width: 0 0 1px 1px;
+//     border-style: solid;
+//     border-color: #e5e5e5;
+//     background: #fff;
+//     -webkit-transform: rotate(45deg);
+//     -moz-transform: rotate(45deg);
+//     -ms-transform: rotate(45deg);
+//     -o-transform: rotate(45deg);
+// }
 
 .comment p {
     color: #000;
     font-size: 1.5rem;
     text-align: left;
+}
+
+.admin {
+    background: $green;
 }

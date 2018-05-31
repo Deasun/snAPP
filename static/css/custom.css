@@ -87,6 +87,13 @@ body {
   margin-left: 1rem;
   margin-right: 1rem; }
 
+p.expandable {
+  height: 1.75em;
+  overflow: hidden; }
+
+p.full_height {
+  height: auto; }
+
 .knowledge {
   color: #b37bff; }
 
@@ -143,9 +150,10 @@ hr {
     hr {
       width: 50%; } }
 
-blockquote {
+.profile-blockquote {
   border-left: 0.5rem solid #b37bff;
-  min-height: 20rem; }
+  min-height: 20rem;
+  background: rgba(179, 123, 255, 0.17); }
 
 .bug-blockquote {
   border-left: 0.5rem solid #1b8fce; }
@@ -178,9 +186,6 @@ blockquote {
   background-color: #64d29f;
   text-align: left;
   padding-left: 2rem; }
-
-.bug-card {
-  color: #fff; }
 
 .bug-badge {
   background-color: #1b8fce;
@@ -304,6 +309,11 @@ a .fa-cc-stipe {
 .vote {
   margin-top: .5rem; }
 
+.col-xs-5 .form-control {
+  width: 45%;
+  height: 6rem;
+  font-size: 2.5rem; }
+
 .login {
   width: 66%;
   margin-left: 17%; }
@@ -405,6 +415,12 @@ a .fa-cc-stipe {
 .comment-img img {
   display: block; }
 
+.comment-pic {
+  border: solid #d9534f 0.5rem;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%; }
+
 .comment-body {
   overflow: hidden; }
 
@@ -412,7 +428,7 @@ a .fa-cc-stipe {
   padding: 10px;
   border: 1px solid #e5e5e5;
   border-radius: 5px;
-  background: #fff; }
+  background: rgba(255, 255, 255, 0.58); }
 
 .comment .text p:last-child {
   margin: 0; }
@@ -433,17 +449,17 @@ a .fa-cc-stipe {
   content: "";
   position: absolute;
   top: 0;
-  left: 65px; }
+  left: 70px; }
 
 .comments:before {
-  width: 3px;
+  width: 10px;
   top: -20px;
   bottom: -20px;
   background: rgba(255, 255, 255, 0.15); }
 
 .comment:before {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   border: 3px solid #fff;
   border-radius: 100px;
   margin: 16px 0 0 -6px;
@@ -453,24 +469,13 @@ a .fa-cc-stipe {
 .comment:hover:before {
   background: orange; }
 
-.comment .text:before {
-  top: 18px;
-  left: 78px;
-  width: 9px;
-  height: 9px;
-  border-width: 0 0 1px 1px;
-  border-style: solid;
-  border-color: #e5e5e5;
-  background: #fff;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  -o-transform: rotate(45deg); }
-
 .comment p {
   color: #000;
   font-size: 1.5rem;
   text-align: left; }
+
+.admin {
+  background: #81b944; }
 
 .table-width {
   margin-top: 3rem; }
@@ -498,6 +503,10 @@ td {
   background-color: #e26e1b; }
 
 .progress {
-  height: 10rem; }
+  height: 3rem;
+  width: 66.6%;
+  display: block;
+  margin: auto;
+  background-color: rgba(245, 245, 245, 0.18); }
 
 /*# sourceMappingURL=custom.css.map */

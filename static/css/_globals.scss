@@ -17,6 +17,17 @@ body {
 }
 
 
+// para-collapses
+p.expandable {
+  height: 1.75em;
+  overflow: hidden;
+} 
+
+p.full_height {
+  height: auto;
+}
+
+
 
 // themes
 .knowledge {
@@ -111,9 +122,10 @@ hr {
 }
 
 // blockquote
-blockquote {
+.profile-blockquote {
     border-left: .5rem solid $violet;
     min-height: 20rem;
+    background: rgba(179, 123, 255, 0.17);
 }
 
 .bug-blockquote {
@@ -126,7 +138,7 @@ blockquote {
 
 
 
-
+// DELETE PLANELS?
 
 // panels
 .panel {
@@ -161,9 +173,12 @@ blockquote {
     padding-left: 2rem;
 }
 
-.bug-card {
-    color: $white;
-}
+
+
+
+
+
+
 
 
 // badges

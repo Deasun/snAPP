@@ -90,22 +90,25 @@
     </div>
 
     <!--Comments List-->
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-offset-0 col-md-5 comment-head">
+    <div class="col-xs-12 col-md-5 comment-head">
         <i class="far fa-comments fa-6x">
             <label class='badge comment-badge'>{{ bug.comments.count }}</label>
         </i><br>
         <a class="btn btn-danger" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
         <section class="comments comment-head">
+            {% for comment in bug.comments.all %}
             <article class="comment">
-                <a class="comment-img" href="#non"><img class="profile-pic" src='{{MEDIA_URL}}{{ user.image }}' alt="" width="50" height="50"></a> {% for comment in bug.comments.all %}
+                <a class="comment-img comment-pic" href="#non">
+                    <img src='{{MEDIA_URL}}{{ user.profile.image }}' alt="" width="50" height="50"></a> 
                 <div class="comment-body">
                     <div class="text">
-                        <p>{{ comment.text }}</p>
+                        <p>{{ comment.text|linebreaks }}</p>
                         <p class="attribution">by <a>{{ comment.author }}</a> on {{ comment.date_created }}</p>
                     </div>
-                    <br>{% endfor %}
+                    <br>
                 </div>
             </article>
+            {% endfor %}
         </section>
     </div>
 </div>
