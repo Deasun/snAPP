@@ -37,7 +37,7 @@ line_chart.add('Completed', [
      int(FeatureTicket.qs_complete_features(7)),         
      int(FeatureTicket.qs_complete_features(30)),
          ], dots_size=6)
-chart_data = line_chart.render_data_uri()    
+feature_chart_data = line_chart.render_data_uri()    
 
 
 """
@@ -63,10 +63,9 @@ custom_pie_style = Style(
 """Apply class methods to filter feature_types"""
 pie_chart = pygal.Pie(half_pie=True, style=custom_pie_style, legend_at_top=True, legend_box_size=18)
 pie_chart.title = 'Feature Reports Received'
-pie_chart.add('Functional', int(FeatureTicket.qs_by_feature_type('Functional')))
-pie_chart.add('Communication', int(FeatureTicket.qs_by_feature_type('Communication')))
-pie_chart.add('Syntax', int(FeatureTicket.qs_by_feature_type('Syntax')))
-pie_chart.add('Error Notices', int(FeatureTicket.qs_by_feature_type('Error Notices')))
-pie_chart.add('Calculation Errors', int(FeatureTicket.qs_by_feature_type('Calculation Errors')))
-pie_chart.add('Flow Problems', int(FeatureTicket.qs_by_feature_type('Flow Problems')))
-pie_chart_data = pie_chart.render_data_uri()  
+pie_chart.add('Convenience', int(FeatureTicket.qs_by_feature_type('Convenience')))
+pie_chart.add('Security', int(FeatureTicket.qs_by_feature_type('Security')))
+pie_chart.add('Activity', int(FeatureTicket.qs_by_feature_type('Activity')))
+pie_chart.add('Design', int(FeatureTicket.qs_by_feature_type('Design')))
+pie_chart.add('Other', int(FeatureTicket.qs_by_feature_type('Other')))
+feature_pie_chart_data = pie_chart.render_data_uri()  

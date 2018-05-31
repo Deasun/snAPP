@@ -1,8 +1,8 @@
 {% extends 'base.html' %} 
 
+{% load staticfiles %}
 
 {% load mathfilters %}
-
 
 {% block content %}
 
@@ -52,13 +52,9 @@
                         <div class="col-xs-8">
                             <button type="button" class="btn btn-lg btn-feature" data-dismiss="modal">Close</button>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -67,7 +63,7 @@
 <!--Feature List Display-->
 <div class="row">
     
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-6">
+    <div class="col-xs-12 col-md-5 col-md-offset-1">
         <h2 class="feature">Feature Requests</h2>
         <table class="table table-condensed table-hover">
             <thead>
@@ -86,12 +82,9 @@
                     <td class="hidden-xs">{{ feature.id }}</td>
                     <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title }}</a></td>
                     <td>{{ feature.status }}</td>
-                
-                    
                     <td class="list-icons">
                         <i class="fas fa-bullseye fa-2x">
-                    <!--render upvotes-->
-                   
+                    <!--render target amount-->
                     <label class='badge feature-badge'>{{ feature.target  }}</label>
                     
                 </i>
@@ -105,6 +98,36 @@
                 {% endfor %}
             </tbody>
         </table>
+        
+        <!--Filtered Feature List-->
+        <h2 class="feature">Latest Requests</h2>
+        <table class="table table-condensed table-hover">
+            <thead>
+                <tr class="tr-feature">
+                    <th class="hidden-xs">#</th>
+                    <th>Title</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for feature in features %}
+                <tr>
+                    <td><a>{{ feature.title }}</a></td>
+                    <td>{{ feature.date_created }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+    
+    <!--Render BugTicket Chart using chart.js-->
+    <div class="col-xs-12 col-md-6">
+        <h2 class="feature">What we're working on...</h2>
+        <embed type="image/svg+xml" src={{feature_chart_data|safe}} style='max-width:1000px'/>
+
+        <h2 class="feature">Bug Reports Received</h2>
+        <embed type="image/svg+xml" src={{feature_pie_chart_data|safe}} style='max-width:1000px'/>
     </div>
 </div>
 

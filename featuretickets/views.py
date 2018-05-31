@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import FeatureTicket
-from checkout.models import OrderLineItem   
+from checkout.models import Order, OrderLineItem   
 from .forms import RequestFeatureForm, CommentForm
 from django.contrib.auth.decorators import login_required
-from django.db.models import Sum
+from django.db.models import Sum, Max
 from django.contrib import auth, messages
 from django.utils import timezone
+from .charts import feature_chart_data, feature_pie_chart_data
 
 @login_required
 def request_feature(request, pk=None):
@@ -54,8 +55,11 @@ def feature_report(request, pk=id):
 @login_required
 def get_feature_listing(request):
     """
-    List features ranked by most recent date and render them to the 'feature_listing.html' template
+    List features & purchases ranked by most recent date and render them to the 'feature_listing.html' template
     """
     features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
     
-    return render(request, "feature_listing.html", {'features': features })
+    return render(request, "feature_listing.html", {'features': features, 'feature_chart_data': feature_chart_data, 'feature_pie_chart_data': feature_pie_chart_data})
+    
+    
+

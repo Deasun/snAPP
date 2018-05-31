@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from featuretickets.models import FeatureTicket
+from featuretickets.charts import feature_chart_data, feature_pie_chart_data
 from bugtickets.models import BugTicket
-from bugtickets.charts import chart_data
+from bugtickets.charts import chart_data, pie_chart_data
+
+
 
 def feature_search(request):
     features = FeatureTicket.objects.filter(description__icontains=request.GET['q'])
-    return render(request, 'feature_listing.html', {'features': features})
+    return render(request, 'feature_listing.html', {'features': features, 'feature_chart_data': feature_chart_data, 'feature_pie_chart_data': feature_pie_chart_data})
 
 def bug_search(request):
     bugs = BugTicket.objects.filter(description__icontains=request.GET['q'])
