@@ -87,13 +87,6 @@ body {
   margin-left: 1rem;
   margin-right: 1rem; }
 
-p.expandable {
-  height: 1.75em;
-  overflow: hidden; }
-
-p.full_height {
-  height: auto; }
-
 .knowledge {
   color: #b37bff; }
 
@@ -159,7 +152,9 @@ hr {
   border-left: 0.5rem solid #1b8fce; }
 
 .feature-blockquote {
-  border-left: 0.5rem solid #64d29f; }
+  border-left: 0.5rem solid #64d29f;
+  min-height: 20rem;
+  background: rgba(100, 210, 159, 0.17); }
 
 .panel {
   margin-top: 10%;
@@ -200,6 +195,13 @@ hr {
   font-family: Lato, sans-serif;
   margin-left: -20px;
   margin-bottom: -20px; }
+
+.target-badge {
+  margin-left: -100px;
+  margin-bottom: -85px;
+  background-color: #d9534f;
+  font-size: 2rem;
+  font-family: Lato, sans-serif; }
 
 .comment-badge {
   background-color: #1b8fce;
@@ -271,15 +273,9 @@ hr {
   border-radius: 50%;
   padding: 1.75rem; }
 
-.comment-head {
+.head {
   margin-bottom: 3rem;
-  margin-top: 3rem;
-  color: #d9534f; }
-
-.report-head {
-  margin-bottom: 3rem;
-  margin-top: 3rem;
-  color: #81b944; }
+  margin-top: 3rem; }
 
 .icon-sections {
   margin-top: 9rem; }
@@ -309,10 +305,8 @@ a .fa-cc-stipe {
 .vote {
   margin-top: .5rem; }
 
-.col-xs-5 .form-control {
-  width: 45%;
-  height: 6rem;
-  font-size: 2.5rem; }
+.col-xs-12 .form-control {
+  width: 30%; }
 
 .login {
   width: 66%;
@@ -416,7 +410,7 @@ a .fa-cc-stipe {
   display: block; }
 
 .comment-pic {
-  border: solid #d9534f 0.5rem;
+  border: solid #64d29f 0.5rem;
   height: 6rem;
   width: 6rem;
   border-radius: 50%; }
@@ -477,6 +471,10 @@ a .fa-cc-stipe {
 .admin {
   background: #81b944; }
 
+.scroll {
+  overflow-y: auto;
+  max-height: 100rem; }
+
 .table-width {
   margin-top: 3rem; }
 
@@ -508,5 +506,8 @@ td {
   display: block;
   margin: auto;
   background-color: rgba(245, 245, 245, 0.18); }
+
+.progress-bar {
+  background-color: #d9534f; }
 
 /*# sourceMappingURL=custom.css.map */
