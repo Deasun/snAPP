@@ -18,8 +18,6 @@ body {
 
 
 
-
-
 // themes
 .knowledge {
     color: $violet;
@@ -54,6 +52,10 @@ body {
 
 .pre-login {
     color: $orange;
+}
+
+.white {
+    color: $white;
 }
 
 
@@ -121,6 +123,9 @@ hr {
 
 .bug-blockquote {
     border-left: .5rem solid $blue;
+    min-height: 20rem;
+    background: rgba(27, 143, 206, 0.17);
+    
 }
 
 .feature-blockquote {
@@ -176,7 +181,7 @@ hr {
 
 // badges
 .bug-badge {
-    background-color: $blue;
+    background-color: $red;
     font-size: 1rem;
     font-family: $font-stack-2;
     margin: {
@@ -186,7 +191,7 @@ hr {
 }
 
 .feature-badge {
-    background-color: $lime;
+    background-color: $red;
     font-size: 1rem;
     font-family: $font-stack-2;
     margin: {
@@ -211,7 +216,7 @@ hr {
 
 
 .comment-badge {
-    background-color: $blue;
+    background-color: $red;
     font-size: 2rem;
     font-family: $font-stack-2;
     margin: {
@@ -220,7 +225,8 @@ hr {
     }
 }
 
-// panels
+
+
 
 
 

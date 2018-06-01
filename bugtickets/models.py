@@ -71,6 +71,7 @@ class BugTicket(models.Model):
         enddate = startdate - datetime.timedelta(days=num)
         complete_bug_qs = BugTicket.objects.filter(date_completed__range=(enddate, startdate))
         return complete_bug_qs.count()
+   
     """
     Method to count BugTickets by bug_type for Half-Pie Chart
     """
@@ -79,15 +80,6 @@ class BugTicket(models.Model):
         # pass
         qs_bug_type = BugTicket.objects.filter(bug_type=bugtype)
         return qs_bug_type.count()
-        
-    """
-    Method to return top 5 most popular bug reports
-    """
-    @classmethod
-    def qs_by_bug_upvotes(self):
-        # pass
-        qs_bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
-        return qs_bug_votes
         
     """
     String Representation

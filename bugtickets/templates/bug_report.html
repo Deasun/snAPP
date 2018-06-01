@@ -8,7 +8,7 @@
         <p><strong>Making snAPP work for you.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
     <div class="col-xs-12">
-        <h2 class="tactics">Bug Report</h2>
+        <h2 class="tactics">Bug Report #{{ bug.id }}</h2>
     </div>
     <div class="row list-search-field">
         <div class="col-xs-12">
@@ -58,13 +58,13 @@
 <!--BugTicket Panel Display-->
 <div class="row panels">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 head">
-        <i class="far fa-thumbs-up fa-6x">
+        <i class="far fa-thumbs-up fa-6x tactics">
             <label class='badge comment-badge'>{{ bug.votes }}</label>
         </i><br>
-        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-md vote" type="submit" value="Upvote"></form>
+        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-danger btn-md vote" type="submit" value="Upvote"></form>
         <div class="panel">
             <div class="panel-heading bug_panel">
-                <p><i class="fas fa-bug bug-card fa-2x"></i><strong> #{{ bug.id }} - {{ bug.title }}</strong></p>
+                <p><i class="fas fa-bug white fa-2x"></i><strong> #{{ bug.id }} - {{ bug.title }}</strong></p>
             </div>
             <div class="panel-body">
                 <p><strong>Reported by:</strong> {{ bug.created_by }}</p>
@@ -82,7 +82,7 @@
                         </i>
                     </div>
                     <div class="col-xs-4 list-icons">
-                        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-success btn-sm vote" type="submit" value="Upvote"></form>
+                        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-danger btn-sm vote" type="submit" value="Upvote"></form>
                     </div>
                 </div>
             </div>
@@ -91,15 +91,15 @@
 
     <!--Comments List-->
     <div class="col-xs-12 col-md-5 head">
-        <i class="far fa-comments fa-6x">
+        <i class="far fa-comments tactics fa-6x">
             <label class='badge comment-badge'>{{ bug.comments.count }}</label>
         </i><br>
         <a class="btn btn-danger" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
-        <section class="comments head">
+        <section class="comments head scroll">
             {% for comment in bug.comments.all %}
             <article class="comment">
-                <a class="comment-img comment-pic" href="#non">
-                    <img src='{{MEDIA_URL}}{{ user.profile.image }}' alt="" width="50" height="50"></a> 
+                <a class="comment-img comment-pic tactics" href="#non">
+                   <img src='{{MEDIA_URL}}{{ comment.author.profile.image }}' alt="" width="50" height="50"></a> 
                 <div class="comment-body">
                     <div class="text">
                         <p>{{ comment.text|linebreaks }}</p>

@@ -6,14 +6,14 @@ from .models import BugTicket
 Style pygal chart for bugticket list
 """
 custom_style = Style(
-    font_family='googlefont:Anton',
-    legend_font_size = 30,
+    font_family='googlefont:Lato',
+    legend_font_size = 20,
     value_font_size = 20,
     tooltip_font_size = 30,
     major_label_font_size = 20,
     label_font_size = 20,
     value_label_font_size = 30,
-    background='transparent',
+    background='rgba(27, 143, 206, 0.17)',
     plot_background='transparent',
     foreground='#fff',
     foreground_strong='#fff',
@@ -23,7 +23,7 @@ custom_style = Style(
     transition='400ms ease-in',
     colors=('#ff01c0', '#1eb13b')
     )
-line_chart = pygal.Line(fill=True, interpolate='cubic', style=custom_style, legend_at_bottom=True, x_label_rotation=-20)
+line_chart = pygal.Line(fill=True, legend_at_bottom=True, interpolate='cubic', style=custom_style, x_label_rotation=-20, legend_box_size=18)
 line_chart.x_labels = 'today', 'last 7 days', 'last 30 days'
 
 """Apply class methods to filter current & completed BugTicket chart data"""
@@ -41,28 +41,28 @@ chart_data = line_chart.render_data_uri()
 
 
 """
-Half-Pie chart for bug_types
+Pie chart for bug_types
 """
 custom_pie_style = Style(
-    font_family='googlefont:Anton',
+    font_family='googlefont:Lato',
     legend_font_size = 20,
     value_font_size = 20,
     tooltip_font_size = 30,
     major_label_font_size = 20,
     label_font_size = 20,
     value_label_font_size = 30,
-    background='transparent',
+    background='rgba(27, 143, 206, 0.17)',
     plot_background='transparent',
     foreground='#fff',
-    foreground_strong='#fff',
+    foreground_strong='rgba(27, 143, 206, 0.17)',
     foreground_subtle='##1e6992',
     opacity='.6',
     opacity_hover='.9',
     transition='400ms ease-in',
     )
 """Apply class methods to filter bug_types"""
-pie_chart = pygal.Pie(half_pie=True, style=custom_pie_style, legend_at_top=True, legend_box_size=18)
-pie_chart.title = 'Bug Reports Received'
+pie_chart = pygal.Pie(style=custom_pie_style, legend_at_bottom=True, legend_box_size=18)
+pie_chart.y_labels = 2, 4, 6, 8, 10
 pie_chart.add('Functional', int(BugTicket.qs_by_bug_type('Functional')))
 pie_chart.add('Communication', int(BugTicket.qs_by_bug_type('Communication')))
 pie_chart.add('Syntax', int(BugTicket.qs_by_bug_type('Syntax')))

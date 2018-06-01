@@ -1,8 +1,4 @@
-{% extends 'base.html' %} 
-
-{% load staticfiles %} 
-
-{% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
 
 
 <!--Bug panel lists-->
@@ -63,90 +59,79 @@
 <!--Bug List Display-->
 <div class="row">
 
-    <div class="col-xs-12 col-md-5 col-md-offset-1">
-        <h2 class="tactics">Reported Bugs</h2>
-        <table class="table table-condensed table-hover">
-            <thead>
-                <tr class="tr-bug">
-                    <th class="hidden-xs">#</th>
-                    <th>Title</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th></th>
-                    <th class="hidden-xs"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for bug in bugs %}
-                <tr>
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <h2 class='tactics head'>Reported Bugs</h2>
+        <p>snAPP is <u>your</u> platform and we are committed to accountability and transparency in how snAPP develops.</p>
+        <p class="hidden-xs hidden-sm">Below are a list of the {{ bugs.count }} bugs reported by snAPP members to date, with some related information on what we're prioritising.<br>Use the 'search' facility to filter them.</p><br>
+        <div class='scroll-table'>
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr class="tr-bug">
+                        <th class="hidden-xs">#</th>
+                        <th>Title</th>
+                        <th>Type</th>
+                        <th class="hidden-xs hidden-sm">Date</th>
+                        <th class="hidden-xs">Status</th>
+                        <th></th>
+                        <th class="hidden-xs"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bug in bugs %}
+                    <tr>
 
-                    <td class="hidden-xs">{{ bug.id }}</td>
-                    <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
-                    <td>{{ bug.bug_type }}</td>
-                    
-                    <!--class method to trigger bug status depending on date_started & date_completed attributes-->
-                    
-                    <td>{{ bug.status }}</td>
-                    
-                    <td class="list-icons">
-                        <i class="far fa-thumbs-up fa-2x">
+                        <td class="hidden-xs">{{ bug.id }}</td>
+                        <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
+                        <td>{{ bug.bug_type }}</td>
+                        <td class="hidden-xs hidden-sm">{{ bug.date_created }}</td>
+
+
+                        <!--class method to trigger bug status depending on date_started & date_completed attributes-->
+                        <td class="hidden-xs">{{ bug.status }}</td>
+
+                        <td class="list-icons">
+                            <i class="far fa-thumbs-up fa-2x">
                     <label class='badge bug-badge'>{{ bug.votes }}</label>
                 </i>
-                    </td>
-                    <td class="list-icons hidden-xs">
-                        <i class="far fa-comments fa-2x">
+                        </td>
+                        <td class="list-icons hidden-xs">
+                            <i class="far fa-comments fa-2x">
                     <label class='badge bug-badge'>{{ bug.comments.count }}</label>
                 </i>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        
-        <!--Most Voted Filtered Bug List-->
-        <h2 class="tactics">Most Voted Bugs</h2>
-        <table class="table table-condensed table-hover">
-            <thead>
-                <tr class="tr-bug">
-                    <th class="hidden-xs">#</th>
-                    <th>Title</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th></th>
-                    <th class="hidden-xs"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for bug in bug_votes %}
-                <tr>
-
-                    <td class="hidden-xs">{{ bug.id }}</td>
-                    <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
-                    <td>{{ bug.bug_type }}</td>
-                    <td>{{ bug.status }}</td>
-                    <td class="list-icons">
-                        <i class="far fa-thumbs-up fa-2x">
-                    <label class='badge bug-badge'>{{ bug.votes }}</label>
-                </i>
-                    </td>
-                    <td class="list-icons hidden-xs">
-                        <i class="far fa-comments fa-2x">
-                    <label class='badge bug-badge'>{{ bug.comments.count }}</label>
-                </i>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-
-    <!--Render BugTicket Chart using chart.js-->
+    
+    <!--Most Voted Filtered Bug List-->
     <div class="col-xs-12 col-md-6">
-        <h2 class="tactics">What we're working on...</h2>
-        <embed type="image/svg+xml" src={{chart_data|safe}} style='max-width:1000px'/>
-
-        <h2 class="tactics">Bug Reports Received</h2>
-        <embed type="image/svg+xml" src={{pie_chart_data|safe}} style='max-width:1000px'/>
+        <h2 class="chart-label">Reported Bugs</h2>
+        <embed type="image/svg+xml" src={{pie_chart_data|safe}} style='max-width:700px' />
     </div>
+    <div class="col-xs-12 col-md-6">
+        <h2 class="chart-label">Activity Update</h2>
+        <embed type="image/svg+xml" src={{chart_data|safe}} style='max-width:700px' />
+    </div>
+
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <br>
+        <h2 class="white head">Most Voted Bug Tickets</h2>
+    </div>
+    <!--test-->
+    {% for bug in bug_votes %}
+    <div class="col-xs-12 col-sm-4">
+        <blockquote class="bug-blockquote">
+            <p><i class="fas fa-bug pre-login fa-2x"></i><strong><a href="{% url 'bug_report' bug.pk %}">#{{ bug.id }} - {{ bug.title }}</strong></a></p>
+            <p><strong>Bug Type:</strong> {{bug.bug_type }}</p>
+            <p><strong>Current status:</strong> {{ bug.status }}</p>
+            <p><i class="far fa-thumbs-up fa-2x"><label class='badge bug-badge'>{{ bug.votes }}</label></i></p>
+        </blockquote>
+    </div>
+    {% endfor %}
 </div>
-    {% endblock %}
+
+
+{% endblock %}

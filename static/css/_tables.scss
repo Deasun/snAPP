@@ -33,5 +33,10 @@ td {
 
 // hover colors
 .table-hover tbody tr:hover td {
-  background-color: $orange;
+    background: #09486b;
+}
+
+.scroll-table{
+  overflow-y:auto;
+  max-height: 30rem;
 }
