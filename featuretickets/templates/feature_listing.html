@@ -1,8 +1,8 @@
 {% extends 'base.html' %} 
 
-{% load staticfiles %}
+{% load staticfiles %} 
 
-{% load mathfilters %}
+{% load mathfilters %} 
 
 {% block content %}
 
@@ -28,6 +28,7 @@
     </div>
 </div>
 
+
 <div class="col-xs-12">
     <!--Modal-->
     <div class="modal fade" id="myModal" role="dialog">
@@ -40,8 +41,11 @@
                     <h4 class="modal-title">Using snAPP's feature request system</h4>
                 </div>
                 <div class="modal-body">
-                    <p>snAPP is a member-driven platform.<br><br>We develop snAPP by adding new features that have been requested by members. We prioritise our work depending on which features are in most demand. Demand is measured through member financial contributions. These contributions go towards sustaining snAPP and (partially) compensating our software developers for their time.<br><br>
-                        If you would like a feature added to snAPP, we would first recommend <strong>searching existing feature requests.</strong><br><br>You can do this by either scrolling through the list of features or, more efficiently, search by a keyword (e.g. <em>'chat', 'file sharing'</em>). Click on the feature's title to find out more details.<br><br><strong>You can support an existing feature request by making a contribution (minimum £9.99). Also, feel free to leave a comment about the request.</strong>The more contributions a feature request recieves, the more time we'll have to spend on developing it.<br><br><strong>If nobody has reported the problem yet, complete a Feature Request form.</strong><br><br> You'll be notified when we have begun to work on the feature, or our administrator may leave a comment seeking more details about your request.
+                    <p>snAPP is a member-driven platform.<br><br>We develop snAPP by adding new features that have been requested by members. We prioritise our work depending on which features are in most demand. Demand is measured through member financial
+                        contributions. These contributions go towards sustaining snAPP and (partially) compensating our software developers for their time.<br><br> If you would like a feature added to snAPP, we would first recommend <strong>searching existing feature requests.</strong><br><br>You
+                        can do this by either scrolling through the list of features or, more efficiently, search by a keyword (e.g. <em>'chat', 'file sharing'</em>). Click on the feature's title to find out more details.<br><br><strong>You can support an existing feature request by making a contribution (minimum £9.99). Also, feel free to leave a comment about the request.</strong>The
+                        more contributions a feature request recieves, the more time we'll have to spend on developing it.<br><br><strong>If nobody has reported the problem yet, complete a Feature Request form.</strong><br><br> You'll be notified when
+                        we have begun to work on the feature, or our administrator may leave a comment seeking more details about your request.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -60,96 +64,97 @@
 </div>
 
 
+
 <!--Feature List Display-->
 <div class="row">
-    
-    <div class="col-xs-12 col-md-5 col-md-offset-1">
+
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
         <h2 class="feature">Feature Requests</h2>
-        <table class="table table-condensed table-hover">
-            <thead>
-                <tr class="tr-feature">
-                    <th class="hidden-xs">#</th>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Target</th>
-                    <th></th>
-                    <th class="hidden-xs"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for feature in features %}
-                <tr>
-                    <td class="hidden-xs">{{ feature.id }}</td>
-                    <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title }}</a></td>
-                    <td>{{ feature.status }}</td>
-                    <td class="list-icons">
-                        <i class="fas fa-bullseye fa-2x">
-                    <!--render target amount-->
-                    <label class='badge feature-badge'>{{ feature.target  }}</label>
-                    
-                </i>
-                    </td>
-                    <td class="list-icons hidden-xs">
-                        <i class="far fa-comments fa-2x">
-                    <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>
-                </i>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        
-        <!--Filtered Feature List-->
-        <h2 class="feature">Latest Requests</h2>
-        <table class="table table-condensed table-hover">
-            <thead>
-                <tr class="tr-feature">
-                    <th class="hidden-xs">#</th>
-                    <th>Title</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for feature in features %}
-                <tr>
-                    <td><a>{{ feature.title }}</a></td>
-                    <td>{{ feature.date_created }}</td>
-                </tr>
-                {% endfor %}
-
-            </tbody>
-        </table>
+        <div class='scroll-table'>
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr class="tr-feature">
+                        <th class="hidden-xs">#</th>
+                        <th>Title</th>
+                        <th class="hidden-xs hidden-sm">Date</th>
+                        <th class="hidden-xs">Status</th>
+                        <th>Type</th>
+                        <th></th>
+                        <th class="hidden-xs"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for feature in features %}
+                    <tr>
+                        <td class="hidden-xs">{{ feature.id }}</td>
+                        <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title|truncatewords:3 }}</a></td>
+                        <td class="hidden-xs hidden-sm">{{ feature.date_created }}</td>
+                        <td>{{ feature.status }}</td>
+                        <td>{{ feature.feature_type }}</td>
+                        <td class="list-icons">
+                            <i class="fas fa-bullseye fa-2x">
+                            <!--render target amount-->
+                            <label class='badge feature-badge'>£{{ feature.target|floatformat }}</label>
+                            </i>
+                        </td>
+                        <td class="list-icons hidden-xs">
+                            <i class="far fa-comments fa-2x">
+                            <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>
+                            </i>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
-    
-    <!--Render BugTicket Chart using chart.js-->
+    <!--Feature Charts-->
     <div class="col-xs-12 col-md-6">
-        <h2 class="feature">What we're working on...</h2>
-        <embed type="image/svg+xml" src={{feature_chart_data|safe}} style='max-width:1000px'/>
+        <h2 class="chart-label">Feature Requests Received</h2>
+        <embed type="image/svg+xml" src={{feature_pie_chart_data|safe}} style='max-width:700px' />
+    </div>
+    <div class="col-xs-12 col-md-6">
+        <h2 class="chart-label">Activity Update</h2>
+        <embed type="image/svg+xml" src={{feature_chart_data|safe}} style='max-width:700px' />
+    </div>
 
-        <h2 class="feature">Bug Reports Received</h2>
-        <embed type="image/svg+xml" src={{feature_pie_chart_data|safe}} style='max-width:1000px'/>
+    <!--Top 3 Upvoted Features - NEED TO CHANGE-->
+    <div class="col-xs-12 col-sm-4">
+        <h2 class="white head">In development</h2>
+            <blockquote class="feature-blockquote">
+            {% for next in next_feature %}
+            <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' next.pk %}">#{{ next.id }} - {{ next.title }}</strong></a></p>
+            <p><img class='comment-pic'src='{{MEDIA_URL}}{{ next.created_by.profile.image }}' alt="" width="50" height="50"> <strong>{{ next.created_by }}</strong><br>
+            <p><strong>Feature Type:</strong> {{next.feature_type }}</p>
+            <p>{{ next.description|truncatewords:20 }}</p>
+            {% endfor %}
+        </blockquote>
+    </div>    
+    <div class="col-xs-12 col-sm-4">
+        <h2 class="white head">Latest update</h2>
+            <blockquote class="feature-blockquote">
+            {% for latest in latest_feature %}
+            <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' latest.pk %}">#{{ latest.id }} - {{ latest.title }}</strong></a></p>
+            <p><img class='comment-pic'src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"> <strong>{{ latest.created_by }}</strong><br>
+            <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
+            <p>{{ latest.description|truncatewords:20 }}</p>
+            {% endfor %}
+        </blockquote>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+        <h2 class="white head">Seeking support</h2>
+            <blockquote class="feature-blockquote">
+            {% for random in random_feature %}
+            <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' random.pk %}">#{{ random.id }} - {{ random.title }}</strong></a></p>
+            <p><img class='comment-pic'src='{{MEDIA_URL}}{{ random.created_by.profile.image }}' alt="" width="50" height="50"> <strong>{{ random.created_by }}</strong><br>
+            <p><strong>Feature Type:</strong> {{random.feature_type }}</p>
+            <p>{{ random.description|truncatewords:20 }}</p>
+            {% endfor %}
+        </blockquote>
     </div>
 </div>
 
+
+
+
 {% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

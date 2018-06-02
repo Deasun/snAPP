@@ -161,7 +161,8 @@ hr {
 .feature-blockquote {
   border-left: 0.5rem solid #64d29f;
   min-height: 20rem;
-  background: rgba(100, 210, 159, 0.17); }
+  background: rgba(100, 210, 159, 0.17);
+  text-align: left; }
 
 .panel {
   margin-top: 10%;

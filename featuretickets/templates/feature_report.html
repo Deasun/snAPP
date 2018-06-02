@@ -97,6 +97,7 @@
         </div>
 
         <!--snAPP Proposal Display-->
+        {% if feature.report != blank %}
         <div class="col-xs-12 section-body">
             <blockquote class='feature-blockquote'>
                 <p class="user"><i class="fas fa-ticket-alt user fa-2x"></i><strong> #{{ feature.id }} - {{ feature.title }} -- snAPP PROPOSAL</strong></p>
@@ -121,6 +122,8 @@
                 <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
             </blockquote>
         </div>
+        {% else %}
+        {% endif %}
     </div>
 
 
