@@ -6,7 +6,7 @@ body {
         attachment: fixed;
         position: center;
     }
-    margin-bottom: 10rem;
+    margin-bottom: 15rem;
 }
 
 .container {
@@ -114,7 +114,14 @@ hr {
     }
 }
 
+
+
+
 // blockquote
+blockquote {
+    width: 100%;
+}
+
 .profile-blockquote {
     border-left: .5rem solid $violet;
     min-height: 20rem;
@@ -132,6 +139,13 @@ hr {
     border-left: .5rem solid $lime;
     min-height: 20rem;
     background: rgba(100, 210, 159, 0.17);
+    text-align: left;
+}
+
+.alert-blockquote {
+    border-left: .5rem solid $red;
+    min-height: 20rem;
+    background: rgba(217, 83, 79, 0.17);
     text-align: left;
 }
 
@@ -229,7 +243,12 @@ hr {
 
 
 
-
+// profile page icons
+.profile-pg-icon {
+    @media (min-width: 992px) {
+    text-align: right;
+    }
+}
 
 
 
@@ -241,3 +260,4 @@ hr {
     height: 12rem;
     width: 12rem;
 }
+

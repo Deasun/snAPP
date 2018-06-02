@@ -23,7 +23,8 @@ h1 {
   font-size: 5rem; }
   @media (min-width: 768px) {
     h1 {
-      font-size: 11rem; } }
+      font-size: 11rem;
+      margin-bottom: -16px; } }
 
 h3 {
   font-size: 1rem; }
@@ -39,9 +40,17 @@ caption {
 .btn {
   font-family: Anton, sans-serif; }
 
-@media (min-width: 768px) {
-  .index-label {
-    font-size: 2.5rem; } }
+.index-label {
+  color: #d8d8d8; }
+  @media (min-width: 768px) {
+    .index-label {
+      font-size: 2.5rem; } }
+
+.strapline-label {
+  color: #d8d8d8; }
+  @media (min-width: 768px) {
+    .strapline-label {
+      font-size: 3rem; } }
 
 .control-label {
   margin-top: 1rem;
@@ -83,7 +92,7 @@ body {
   background-image: url("/media/images/protest80b.jpg");
   background-attachment: fixed;
   background-position: center;
-  margin-bottom: 10rem; }
+  margin-bottom: 15rem; }
 
 .container {
   margin-left: 1rem;
@@ -148,6 +157,9 @@ hr {
     hr {
       width: 50%; } }
 
+blockquote {
+  width: 100%; }
+
 .profile-blockquote {
   border-left: 0.5rem solid #b37bff;
   min-height: 20rem;
@@ -162,6 +174,12 @@ hr {
   border-left: 0.5rem solid #64d29f;
   min-height: 20rem;
   background: rgba(100, 210, 159, 0.17);
+  text-align: left; }
+
+.alert-blockquote {
+  border-left: 0.5rem solid #d9534f;
+  min-height: 20rem;
+  background: rgba(217, 83, 79, 0.17);
   text-align: left; }
 
 .panel {
@@ -218,6 +236,10 @@ hr {
   margin-left: -40px;
   margin-bottom: -20px; }
 
+@media (min-width: 992px) {
+  .profile-pg-icon {
+    text-align: right; } }
+
 .profile-pic {
   border: 0.5rem solid #b37bff;
   border-radius: 50%;
@@ -272,11 +294,18 @@ hr {
   transform: translate(-50%, 0); }
 
 .stick-head {
+  color: #d8d8d8;
   width: 5rem;
   height: auto; }
+  @media (min-width: 768px) {
+    .stick-head {
+      width: 9rem; } }
 
 .strapline {
-  margin-top: 3rem; }
+  margin-top: 5rem; }
+  @media (min-width: 768px) {
+    .strapline {
+      margin-top: 9rem; } }
 
 .midline {
   margin-top: 6rem; }
@@ -291,13 +320,26 @@ hr {
   margin-top: 3rem; }
 
 .icon-sections {
-  margin-top: 9rem; }
+  margin-top: 4rem; }
+  @media (min-width: 768px) {
+    .icon-sections {
+      margin-top: 8rem; } }
+
+@media (min-width: 768px) {
+  .fa-share-alt,
+  .fa-people-carry,
+  .fa-chess-rook {
+    font-size: 10rem; } }
 
 .icon-centered {
   vertical-align: center; }
 
 .home-btn {
-  margin-top: 2rem; }
+  margin-top: 2rem;
+  background: transparent;
+  color: #e26e1b;
+  border: solid 0.15rem;
+  border-color: #e26e1b; }
   @media (min-width: 768px) {
     .home-btn {
       margin-top: 8rem; } }
@@ -407,8 +449,28 @@ a .fa-cc-stipe {
   width: 100%;
   bottom: 0;
   left: 0;
-  height: 60px;
-  background-color: #000; }
+  background-color: #000;
+  height: 5rem; }
+  @media (min-width: 768px) {
+    #footer {
+      height: 15rem; } }
+
+.globe {
+  text-align: left;
+  margin-top: 2rem;
+  color: #d8d8d8;
+  border-left: solid #e26e1b .2rem; }
+
+.contact {
+  text-align: center;
+  color: #d8d8d8; }
+
+.social-media {
+  margin-top: 3rem; }
+
+.social-media i {
+  color: #d8d8d8;
+  margin-right: .5rem; }
 
 .comment {
   overflow: hidden;
