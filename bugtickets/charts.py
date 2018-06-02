@@ -18,8 +18,8 @@ custom_style = Style(
     foreground='#fff',
     foreground_strong='#fff',
     foreground_subtle='##1e6992',
-    opacity='.6',
-    opacity_hover='.9',
+    opacity='.8',
+    opacity_hover='0',
     transition='400ms ease-in',
     colors=('#ff01c0', '#1eb13b')
     )
@@ -58,8 +58,8 @@ custom_pie_style = Style(
     foreground='#fff',
     foreground_strong='rgba(27, 143, 206, 0.17)',
     foreground_subtle='##1e6992',
-    opacity='.6',
-    opacity_hover='.9',
+    opacity='.8',
+    opacity_hover='0',
     transition='400ms ease-in',
     )
 """Apply class methods to filter bug_types"""

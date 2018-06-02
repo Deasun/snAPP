@@ -18,8 +18,8 @@ custom_style = Style(
     foreground='#fff',
     foreground_strong='#fff',
     foreground_subtle='##1e6992',
-    opacity='.6',
-    opacity_hover='.9',
+    opacity='.8',
+    opacity_hover='0',
     transition='400ms ease-in',
     colors=('#ff01c0', '#1eb13b')
     )
@@ -56,10 +56,10 @@ custom_pie_style = Style(
     background='rgba(100, 210, 159, 0.08)',
     plot_background='transparent',
     foreground='#fff',
-    foreground_strong='rgba(100, 210, 159, 0.08)',
-    foreground_subtle='##1e6992',
-    opacity='.6',
-    opacity_hover='.9',
+    foreground_strong='#fff',
+    foreground_subtle='#1e6992',
+    opacity='.8',
+    opacity_hover='0',
     transition='400ms ease-in',
     )
 """Apply class methods to filter feature_types"""
