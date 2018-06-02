@@ -24,17 +24,19 @@ custom_style = Style(
     colors=('#ff01c0', '#1eb13b')
     )
 line_chart = pygal.Line(fill=True, legend_at_bottom=True, interpolate='cubic', style=custom_style, x_label_rotation=-20, legend_box_size=18)
-line_chart.x_labels = 'today', 'last 7 days', 'last 30 days'
+line_chart.x_labels = 'today', 'last 7 days', 'lat fortnight', 'last 30 days'
 
 """Apply class methods to filter current & completed BugTicket chart data"""
 line_chart.add('Active', [
      int(BugTicket.qs_active_bugs(0)),
      int(BugTicket.qs_active_bugs(7)),
+     int(BugTicket.qs_active_bugs(14)),
      int(BugTicket.qs_active_bugs(30)),
          ], dots_size=6)
 line_chart.add('Completed', [
      int(BugTicket.qs_complete_bugs(0)),
      int(BugTicket.qs_complete_bugs(7)),         
+     int(BugTicket.qs_complete_bugs(14)),         
      int(BugTicket.qs_complete_bugs(30)),
          ], dots_size=6)
 chart_data = line_chart.render_data_uri()    

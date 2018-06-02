@@ -112,7 +112,7 @@ def get_bug_listing(request):
     """
     List bugs with most recent on top and render line chart data
     """
-    bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
+    bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('-date_created')
     bug_votes = BugTicket.objects.all().order_by('-votes')[:3]
     
     return render(request, "bug_listing.html", { 'bugs': bugs, 'bug_votes': bug_votes, 'chart_data': chart_data, 'pie_chart_data': pie_chart_data})
