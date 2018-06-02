@@ -38,7 +38,10 @@
                     {% endif %}
                 </a> {% endif %}
 
-                <a href="{% url 'index' %}"><h1 class="masthead-brand"><img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>snAPP</h1></a>
+
+                <h1 class="masthead-brand"><img class='stick-head' src='{{MEDIA_URL}}images/group-white.png'><a href="{% url 'index' %}">snAPP</a></h1>
+                <p class="hidden-xs">You need. We build. You use. We develop.</p>
+
                 <hr>
                 <nav class="nav nav-masthead justify-content-center">
 
@@ -99,18 +102,27 @@
         </div>
         {% endif %}
     </div>
-  
-    {% block content %} {% endblock %} 
 
-    <!--Footer-->
+    
+    {% block content %} {% endblock %}
+
     <footer id="footer">
-        
-            <div class="row">
-                <div class="col-xs-12">
-                    <h5><strong>You need. We build. You use. We develop.</strong></h5>
-                </div>
+        <div class="row">
+            <div class="hidden-xs col-sm-3 col-sm-offset-1 globe">
+                <i class="fas fa-globe"></i> Belfast, Ireland<br><br>
+                <i class="fas fa-phone"></i> +44 28 90 123456<br><br>
+                <i class="fas fa-envelope-square"></i> admin@snapp.org<br>
             </div>
+            <div class="col-sm-3 col-sm-offset-3 social-media">
+                <i class="fab fa-twitter-square fa-3x"></i>
+                <i class="fab fa-facebook-square fa-3x"></i>
+                <i class="fab fa-github-square fa-3x"></i>
+            </div>
+        </div>
     </footer>
+
+
+
 
 </body>
 
