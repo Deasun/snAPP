@@ -12,14 +12,12 @@
 
     <!-- Bootstrap CSS and fonts -->
     {% include 'base/css.html' %}
-    
+
     <!--jQuery, Bootstrap JS-->
-    {% include 'base/js.html' %}
-    
-    {% block head_js %}
+    {% include 'base/js.html' %} {% block head_js %}
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
     {% endblock head_js %}
-    
+
     <!--Custom CSS styles-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' />
 </head>
@@ -40,14 +38,14 @@
                     {% endif %}
                 </a> {% endif %}
 
-                <h1 class="masthead-brand"><img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>snAPP</h1>
+                <a href="{% url 'index' %}"><h1 class="masthead-brand"><img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>snAPP</h1></a>
                 <hr>
                 <nav class="nav nav-masthead justify-content-center">
 
                     <!--Navbar for logged in user-->
                     {% if user.is_authenticated %}
                     <div class="dropdown">
-                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">Account
+                        <a class="nav-link" data-toggle="dropdown">Account
                           <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-center">
                             <li><a href="{% url 'profile' %}">Profile</li>
@@ -55,7 +53,7 @@
                         </ul>
                     </div>
                     <div class="dropdown">
-                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">Develop
+                        <a class="nav-link" data-toggle="dropdown">Develop
                           <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-center">
                             <li><a href="{% url 'report_bug' %}">Report Bugs</li>
@@ -75,13 +73,21 @@
                             <li><a href="#">Strategy</a></li>
                         </ul>
                     </div>
-
                     {% else %}
-
                     <!--Navbar for unlogged user-->
-                    <a class="nav-link active" href="{% url 'login' %}">Login</a>
-                    <a class="nav-link" href="#">About</a>
-                    <a class="nav-link" href="{% url 'registration' %}">Register</a> {% endif %}
+                    <div class="dropdown">
+                        <a class="nav-link" href="{% url 'login' %}">Login
+                          <span></span></a>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav-link" href="#">About
+                          <span></span></a>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav-link" href="{% url 'registration' %}">Register
+                          <span></span></a>
+                    </div>
+                    {% endif %}
                 </nav>
             </div>
         </header>

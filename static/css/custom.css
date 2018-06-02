@@ -225,13 +225,18 @@ hr {
   width: 12rem; }
 
 .nav-link {
-  margin-right: 4rem; }
+  margin-right: 5rem;
+  font-size: 1.5rem; }
   @media (min-width: 768px) {
     .nav-link {
-      margin-right: 10rem; } }
+      margin-right: 12rem; } }
   @media (min-width: 992px) {
     .nav-link {
-      margin-right: 15rem; } }
+      margin-right: 18rem;
+      font-size: 2rem; } }
+  @media (min-width: 1200px) {
+    .nav-link {
+      margin-right: 20rem; } }
 
 .fa-sign-out-alt {
   position: fixed;
@@ -293,6 +298,9 @@ hr {
 
 .home-btn {
   margin-top: 2rem; }
+  @media (min-width: 768px) {
+    .home-btn {
+      margin-top: 8rem; } }
 
 .info {
   color: #e26e1b; }
@@ -313,7 +321,7 @@ a .fa-cc-stipe {
 .vote {
   margin-top: .5rem; }
 
-.col-xs-12 .form-control {
+.form-control-2 {
   width: 30%; }
 
 .login {
