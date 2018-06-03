@@ -471,7 +471,7 @@ a .fa-cc-stipe {
 #footer {
   position: fixed;
   width: 95%;
-  bottom: 2%;
+  bottom: 0;
   left: 2.5%;
   background-color: #082838;
   height: 7rem;

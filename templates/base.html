@@ -14,9 +14,11 @@
     {% include 'base/css.html' %}
 
     <!--jQuery, Bootstrap JS-->
-    {% include 'base/js.html' %} {% block head_js %}
+    {% include 'base/js.html' %} 
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    {% endblock head_js %}
+    
+    <!--{% block head_js %}-->
+    <!--{% endblock head_js %}-->
 
     <!--Custom CSS styles-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' />
