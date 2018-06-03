@@ -1,25 +1,27 @@
 {% extends 'base.html' %} 
 
+{% load staticfiles %}
+
 {% block page_title %}Home Page{% endblock %} 
 
 {% block page_heading %}Home{% endblock %} 
 
 {% block content %}
 
-
-        <div class="row strapline">
+        <div class="row strapline intro-1">
             <div class="col-xs-12">
                 <h4 class="strapline-label"><strong>The <u>only</u> app designed by and for union activists.</strong></h4>
             </div>
         </div>
         <div class="row icon-sections">
-            <div class="col-xs-4 col-lg-2 col-lg-offset-3"><a href='#'><i class="fas fa-share-alt fa-5x knowledge"></i></a><br><h5 class="index-label">share knowledge</h5></div>
-            <div class="col-xs-4 col-lg-2"><a href='#'><i class="fas fa-people-carry fa-5x support"></i></a><br><h5 class="index-label">get and give support</h5></div>
-            <div class="col-xs-4 col-lg-2"><a href='#'><i class="fas fa-chess-rook fa-5x tactics"></i></a><br><h5 class="index-label">discuss tactics</h5></div>
+            <div class="col-xs-4 col-lg-2 col-lg-offset-3 intro-2"><a href='#'><i class="fas fa-share-alt fa-5x knowledge"></i></a><br><h5 class="index-label">share knowledge</h5></div>
+            <div class="col-xs-4 col-lg-2 intro-3"><a href='#'><i class="fas fa-people-carry fa-5x support"></i></a><br><h5 class="index-label">get and give support</h5></div>
+            <div class="col-xs-4 col-lg-2 intro-4"><a href='#'><i class="fas fa-chess-rook fa-5x tactics"></i></a><br><h5 class="index-label">discuss tactics</h5></div>
         </div>
         <p>
             <a href="{% url 'registration' %}"><button class="btn btn-lg btn-success home-btn">Join snAPP</button></a>
         </p>
+
 
 
 
