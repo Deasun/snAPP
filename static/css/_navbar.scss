@@ -1,6 +1,6 @@
 .nav-link {
     // margin-left: 2rem;
-    margin-right: 5rem;
+    margin-right: 4rem;
     font-size: 1.5rem;
     @media (min-width: 768px) {
         // margin-left: 5rem;
@@ -27,13 +27,31 @@
     position: fixed;
     left: 85%;
     top: 8%;
+    @media (min-width: 768px) {
+      font-size: 6rem;  
+    }
+    z-index: 1049;
+    
 }
 
 .feature-count {
     position: fixed;
-    left: 85%;
-    top: 7%;
+    left: 88%;
+    top: 9%;
+    @media (min-width: 768px) {
+        left: 91%;
+        top: 12%;
+    }
+    @media (min-width: 992px) {
+        left: 90%;
+        top: 12%;
+    }    
+    @media (min-width: 1200px) {
+        left: 88%;
+        top: 12%;
+    }
     background-color: $red;
+    z-index: 1050;
 }
 
 // dropdown menus
@@ -60,6 +78,10 @@
 }
 
 .stick-head {
+    color: #d8d8d8;
     width: 5rem;
+    @media (min-width: 768px) {
+        width: 9rem;
+    }
     height: auto;
 }

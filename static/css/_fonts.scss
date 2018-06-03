@@ -32,7 +32,9 @@ h1 {
     font-size: 5rem;
     @media (min-width: 768px) {
         font-size: 11rem;
+        margin-bottom: -16px;
     }
+    
 }
 
 
@@ -61,10 +63,19 @@ caption {
 
 // labels font
 .index-label {
+    color: #d8d8d8;
     @media (min-width: 768px) {
         font-size: 2.5rem;
     }
 }
+
+.strapline-label {
+    color: #d8d8d8;
+    @media (min-width: 768px) {
+        font-size: 3rem;
+    }
+}
+
 
 .control-label {
     margin-top: 1rem;

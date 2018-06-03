@@ -90,7 +90,7 @@
                         <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title|truncatewords:3 }}</a></td>
                         <td class="hidden-xs hidden-sm">{{ feature.date_created }}</td>
                         <td>{{ feature.status }}</td>
-                        <td>{{ feature.feature_type }}</td>
+                        <td class="hidden-xs">{{ feature.feature_type }}</td>
                         <td class="list-icons">
                             <i class="fas fa-bullseye fa-2x">
                             <!--render target amount-->

@@ -23,7 +23,7 @@
     <div class="col-xs-12">
         <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile/Alert</button></a>
     </div>
-    <div class="col-xs-8 col-xs-offset-2">
+    <div class="col-xs-10 col-xs-offset-1">
         <div class="section-body">
             <blockquote class="alert-blockquote">
                 <p>alert</p>
@@ -75,7 +75,7 @@
                     <thead>
                         <tr class="tr-feature">
                             <th>Title</th>
-                            <th>Total Contributions</th>
+                            <th>Type</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -83,7 +83,7 @@
                         {% for feature in features %}
                         <tr class="tr-feature">
                             <td>{{ feature.title }}</td>
-                            <td>{{ feature.total_contributions }}</td>
+                            <td>{{ feature.feature_type }}</td>
                             <td>{{ feature.status }}</td>
                         </tr>
                         {% endfor %}
@@ -140,7 +140,7 @@
                             <thead>
                                 <tr class="tr-feature">
                                     <th>Title</th>
-                                    <th>Total</th>
+                                    <th>Type</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -148,7 +148,7 @@
                                 {% for feature in features %}
                                 <tr class="tr-feature">
                                     <td>{{ feature.title }}</td>
-                                    <td>{{ feature.total_contributions }}</td>
+                                    <td>{{ feature.feature_type }}</td>
                                     <td>{{ feature.status }}</td>
                                 </tr>
                                 {% endfor %}
@@ -195,103 +195,6 @@
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-<!--    <div class="col-md-2 col-md-offset-1 col-sm-3 col-sm-offset-1">-->
-<!--        {% if user.profile.image != '' %}-->
-<!--        <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}-->
-<!--        <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}-->
-<!--        <p><strong>{{ user.username }}'s snAPP profile.</strong></p>-->
-<!--        <p class="user"><strong>union:</strong> {{ user.profile.trade_union }}</p>-->
-<!--        <p class="user"><strong>email:</strong> {{ user.email }}</p>-->
-<!--        <a href="{% url 'edit_profile' %}"><button class="btn btn-sm btn-danger">Edit Profile</button></a>-->
-<!--    </div>-->
-<!--    <div class="col-sm-6">-->
-<!--        <div class="section-body">-->
-<!--            <blockquote>-->
-<!--                <p>{{ user.profile.description }}</p>-->
-<!--            </blockquote>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="row md-list-margin hidden-xs">-->
-<!--        <div class="col-md-2 col-md-offset-1 col-sm-3 col-sm-offset-1">-->
-<!--            <h2>snAPP activity:</h2>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="row md-list-margin hidden-xs">-->
-<!--        <div class="col-md-2 col-md-offset-1 col-sm-3 col-sm-offset-1 md-list-margin-top">-->
-<!--            <i class="fas fa-bug fa-4x"></i>-->
-<!--            <label class='badge bug-badge'>{{ user.user_bugs.count }}</label>-->
-<!--            <p>bugs reported</p>-->
-<!--        </div>-->
-<!--BUG LIST-->
-<!--        <div class="col-sm-6">-->
-<!--            <div class="section-body">-->
-<!--                <blockquote class="bug-blockquote">-->
-<!--User's Bug Report Details-->
-<!--                    <table class="table table-condensed table-hover">-->
-<!--                        <thead>-->
-<!--                            <tr class="tr-bug">-->
-<!--                                <th>Title</th>-->
-<!--                                <th>Type</th>-->
-<!--                                <th>Status</th>-->
-<!--                            </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                            {% for bug in bugs %}-->
-<!--                            <tr class="tr-bug">-->
-<!--                                <td>{{ bug.title }}</td>-->
-<!--                                <td>{{ bug.bug_type }}</td>-->
-<!--                                <td>{{ bug.status }}</td>-->
-<!--                            </tr>-->
-<!--                            {% endfor %}-->
-<!--                        </tbody>-->
-<!--                    </table>-->
-<!--                </blockquote>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="row md-list-margin hidden-xs">-->
-<!--        <div class="col-md-2 col-md-offset-1 col-sm-3 col-sm-offset-1 md-list-margin-top">-->
-<!--            <i class="fas fa-cog fa-4x feature"></i>-->
-<!--            <label class='badge feature-badge'>{{ user.user_features.count }}</label>-->
-<!--            <p>features requested</p>-->
-<!--        </div>-->
-<!--        <div class="col-sm-6">-->
-<!--            <div class="section-body">-->
-<!--                <blockquote class="feature-blockquote">-->
-<!--Features List-->
-<!--                    <table class="table table-condensed table-hover">-->
-<!--                        <thead>-->
-<!--                            <tr class="tr-feature">-->
-<!--                                <th>Title</th>-->
-<!--                                <th>Total</th>-->
-<!--                                <th>Status</th>-->
-<!--                            </tr>-->
-<!--                        </thead>-->
-<!--                        <tbody>-->
-<!--                            {% for feature in features %}-->
-<!--                            <tr class="tr-feature">-->
-<!--                                <td>{{ feature.title }}</td>-->
-<!--                                <td>{{ feature.total_contributions }}</td>-->
-<!--                                <td>{{ feature.status }}</td>-->
-<!--                            </tr>-->
-<!--                            {% endfor %}-->
-<!--                        </tbody>-->
-<!--                    </table>-->
-<!--                </blockquote>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 
 {% endblock %}

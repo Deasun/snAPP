@@ -1,5 +1,16 @@
 .icon-sections {
-    margin-top: 9rem;
+    margin-top: 4rem;
+     @media (min-width: 768px) {
+         margin-top: 8rem;
+     }
+}
+
+.fa-share-alt,
+.fa-people-carry,
+.fa-chess-rook {
+    @media (min-width: 768px) {
+    font-size: 10rem;
+    }
 }
 
 .icon-centered {
@@ -7,14 +18,19 @@
 
 }
 
-
 .home-btn {
     margin-top: 2rem;
     @media (min-width: 768px) {
         // margin-left: 5rem;
         margin-top: 8rem;
     }
+    background: transparent;
+    color: #e26e1b;
+    border: solid 0.15rem;
+    border-color: #e26e1b;
 }
+
+
 
 .info {
     color: $orange;
@@ -40,3 +56,4 @@ a .fa-cc-stipe {
 .vote {
     margin-top: .5rem;
 }
+
