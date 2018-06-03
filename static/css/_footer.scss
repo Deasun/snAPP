@@ -1,13 +1,11 @@
 #footer {
- position:fixed;
- width: 100%;
- bottom:0;
- left:0;
- background-color: #000;
- height: 5rem;
- @media (min-width: 768px) {
- height: 15rem;
- }
+position: fixed;
+    width: 95%;
+    bottom: 2%;
+    left: 2.5%;
+    background-color: #082838;
+    height: 7rem;
+    border-radius: 10%;;
 }
 
 // footer social media links
@@ -24,7 +22,7 @@ text-align: left;
 }
 
 .social-media {
- margin-top: 3rem;
+ margin-top: 1rem;
 }
 
 .social-media i {
@@ -32,3 +30,6 @@ text-align: left;
     margin-right: .5rem;
 }
 
+.footer-logo {
+    width: 4rem;
+}
