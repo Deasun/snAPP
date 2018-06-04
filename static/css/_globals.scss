@@ -9,10 +9,10 @@ body {
     margin-bottom: 15rem;
 }
 
-a:hover { 
-    color: #fdbc8e !important; 
+a:hover {
+    color: #fdbc8e !important;
     text-decoration: none;
-    
+
 }
 
 .container {
@@ -22,6 +22,7 @@ a:hover {
     }
 }
 
+// hover effects
 
 
 // messages
@@ -133,6 +134,7 @@ blockquote {
     width: 100%;
 }
 
+
 .profile-blockquote {
     border-left: .5rem solid $violet;
     min-height: 20rem;
@@ -143,7 +145,7 @@ blockquote {
     border-left: .5rem solid $blue;
     min-height: 20rem;
     background: rgba(27, 143, 206, 0.17);
-    
+
 }
 
 .feature-blockquote {
@@ -163,7 +165,6 @@ blockquote {
 
 
 // DELETE PLANELS?
-
 // panels
 .panel {
     margin-top: 10%;
@@ -223,8 +224,8 @@ blockquote {
     margin: {
         left: -20px;
         bottom: -20px;
-        }
     }
+}
 
 
 .target-badge {
@@ -234,9 +235,10 @@ blockquote {
     }
     background-color: $red;
     font-size: 2rem;
-    font-family: Lato, sans-serif;
-        
-    }
+    font-family: Lato,
+    sans-serif;
+
+}
 
 
 
@@ -257,7 +259,7 @@ blockquote {
 // profile page icons
 .profile-pg-icon {
     @media (min-width: 992px) {
-    text-align: right;
+        text-align: right;
     }
 }
 
@@ -271,4 +273,3 @@ blockquote {
     height: 12rem;
     width: 12rem;
 }
-

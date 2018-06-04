@@ -300,16 +300,29 @@ blockquote {
       left: 88%;
       top: 12%; } }
 
+#panel, #flip {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #c3c3c3; }
+
+#panel {
+  padding: 50px;
+  display: none; }
+
 .dropdown {
   display: inline-block; }
 
 .dropdown-menu {
-  background-color: #000;
-  min-width: 120px; }
+  background-color: #082838;
+  box-shadow: 7px 10px 10px black;
+  border-radius: 3%; }
 
 .dropdown-menu li a {
   color: #fff;
-  font-size: 2rem; }
+  font-size: 1.75rem;
+  font-family: Lato, sans-serif;
+  font-weight: 600; }
 
 .dropdown-menu-center {
   left: 50%;
