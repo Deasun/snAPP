@@ -1,5 +1,6 @@
 {% extends 'base.html' %} {% load staticfiles %} {% block page_title %}Feature Report{% endblock %} {% block page_heading %}Feature Report Ticket{% endblock %} {% load mathfilters %} {% block content %} {% for feature in features %}
 
+
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
         <i class="fas fa-cog fa-4x profile feature"></i>
@@ -48,10 +49,12 @@
 </div>
 
 
+
+
 <!--FeatureTicket Panel Display-->
 <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 head">
-        <i class="fas fa-bullseye fa-6x head feature">
+        <i class="fas fa-bullseye fa-6x head feature feature-tool">
             
             <!--Render Amount Raised-->
             <label class='badge target-badge'>£{{ feature.target|floatformat  }}</label>
@@ -84,11 +87,6 @@
                 <div class="toggle">
                     <p><strong>Feature Type:</strong> {{ feature.feature_type }}</p>
                     <p>{{ feature.description|linebreaks }}</p>
-
-                    <!---->
-
-
-
                     <!--Purchase FeatureTicket Form-->
                     <p class="feature"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
                     <form method='POST' action="{% url 'add_to_cart' feature.id %}">
@@ -100,13 +98,11 @@
                                 <br>
                                 <button class="btn btn-success" type="submit">Support</button>
                             </div>
-
                         </div>
                     </form>
                     <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
                 </div>
             </blockquote>
-
         </div>
 
         <!--snAPP Proposal Display-->
@@ -152,27 +148,25 @@
             <label class='badge comment-badge'>{{ feature.feature_comments.count }}</label>
         </i><br>
         <a class="btn btn-danger" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a>
-
         <section class="comments head scroll">
 
-            {% for comment in feature.feature_comments.all %}
-
+            {% for comment in feature.feature_comments.all %} 
             <article class="comment">
                 <a class="comment-img feature comment-pic" href="#">
                     <img src='{{MEDIA_URL}}{{ comment.author.profile.image }}' alt="" width="50" height="50">
                 </a>
-
-                <!--need to work on feature-->
-
                 <div class="comment-body">
+                    {% if 'deasun' in comment.author.username %}
+                    <div class="admin-text">
+                    {% else %}
                     <div class="text">
+                    {% endif %}
                         <p>{{ comment.text|linebreaks }}</p>
                         <p class="attribution">by <a> {{ comment.author }}</a> on {{ comment.date_created }}</p>
                     </div>
                     <br>
                 </div>
             </article>
-
             {% endfor %}
         </section>
     </div>
