@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block page_title %}Feature Report{% endblock %} {% block page_heading %}Feature Report Ticket{% endblock %} {% block content %} {% load mathfilters %} {% for feature in features %}
+{% extends 'base.html' %} {% load staticfiles %} {% block page_title %}Feature Report{% endblock %} {% block page_heading %}Feature Report Ticket{% endblock %} {% load mathfilters %} {% block content %} {% for feature in features %}
 
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
@@ -76,25 +76,37 @@
                 <p><strong>Requested by:</strong> {{ feature.created_by }}</p>
                 <p><strong>Date:</strong> {{ feature.date_created }}</p>
                 <p class="feature"><strong>Current status:</strong> {{ feature.status }}</p>
-                <p><strong>Feature Type:</strong> {{ feature.feature_type }}</p>
-                <p><strong>Details:</strong> {{ feature.description|linebreaks }}</p>
+                <br>
+                <br>
+                <button class="toggle-button btn btn-danger">Details</button>
+                <br>
+                <br>
+                <div class="toggle">
+                    <p><strong>Feature Type:</strong> {{ feature.feature_type }}</p>
+                    <p>{{ feature.description|linebreaks }}</p>
 
-                <!--Purchase FeatureTicket Form-->
-                <p class="feature"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
-                <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
-                            <br>
-                            <br>
-                            <button class="btn btn-danger" type="submit">Support</button>
+                    <!---->
+
+
+
+                    <!--Purchase FeatureTicket Form-->
+                    <p class="feature"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
+                    <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
+                                <br>
+                                <br>
+                                <button class="btn btn-success" type="submit">Support</button>
+                            </div>
+
                         </div>
-
-                    </div>
-                </form>
-                <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                    </form>
+                    <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                </div>
             </blockquote>
+
         </div>
 
         <!--snAPP Proposal Display-->
@@ -102,30 +114,35 @@
         <div class="col-xs-12 section-body">
             <blockquote class='feature-blockquote'>
                 <p class="user"><i class="fas fa-ticket-alt user fa-2x"></i><strong> #{{ feature.id }} - {{ feature.title }} -- snAPP PROPOSAL</strong></p>
-                <p><strong>Details:</strong> {{ feature.report|linebreaks }}</p>
                 <p><strong>Start Date:</strong> {{ feature.date_started }}</p>
+                <br>
+                <br>
+                <button class="toggle-button2 btn btn-danger">Details</button>
+                <br>
+                <div class="toggle2">
+                    <p>{{ feature.report|linebreaks }}</p>
 
-                <!--Purchase FeatureTicket Form-->
-                <p class="user"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
-                <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                    {% csrf_token %}
+                    <!--Purchase FeatureTicket Form-->
+                    <p class="user"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
                     <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <p class="user"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
-                            <br>
-                            <br>
-                            <button class="btn btn-danger" type="submit">Support</button>
-                        </div>
-                    </div>
-                </form>
-                </form>
-                <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                        {% csrf_token %}
+                        <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <p class="user"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
+                                    <br>
+                                    <br>
+                                    <button class="btn btn-success" type="submit">Support</button>
+                                </div>
+                            </div>
+                        </form>
+                    </form>
+                    <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                </div>
             </blockquote>
         </div>
-        {% else %}
-        {% endif %}
+        {% else %} {% endif %}
     </div>
 
 
