@@ -72,7 +72,12 @@
         {% endfor %}
         <div class="row">
             <p><strong>Sub-total: £{{ total }}</strong></p>
-            <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+            {% if total > 0 %}
+            <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>   
+            {% else %}
+            <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+            <p>You have not selected any tickets to support yet!</p>
+            {% endif %}
         </div>
     </div>
 </div>
