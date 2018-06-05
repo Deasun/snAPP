@@ -67,7 +67,7 @@
                 <p><i class="fas fa-bug white fa-2x"></i><strong> #{{ bug.id }} - {{ bug.title }}</strong></p>
             </div>
             <div class="panel-body">
-                <p><strong>Reported by:</strong> {{ bug.created_by }}</p>
+                <p><strong>Reported by:</strong><a href="{% url 'profile' bug.created_by.id %}">{{ bug.created_by }}</p>
                 <p><strong>Date:</strong> {{ bug.date_created }}</p>
                 <p class="feature"><strong>Current status:</strong> {{ feature.status }}</p>
                 <hr>
@@ -103,7 +103,7 @@
                 <div class="comment-body">
                     <div class="text">
                         <p>{{ comment.text|linebreaks }}</p>
-                        <p class="attribution">by <a>{{ comment.author }}</a> on {{ comment.date_created }}</p>
+                        <p class="attribution">by <a href="{% url 'profile' comment.author.id %}">{{ comment.author }}</a> on {{ comment.date_created }}</p>
                     </div>
                     <br>
                 </div>

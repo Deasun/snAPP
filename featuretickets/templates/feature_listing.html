@@ -129,7 +129,7 @@
                         </p>
                         <p><img class='comment-pic' src='{{MEDIA_URL}}{{ next.created_by.profile.image }}' alt="" width="50" height="50">
                             <br>
-                            <strong>{{ next.created_by }}</strong></p><br>
+                            <a href="{% url 'profile' next.created_by.id %}"><strong>{{ next.created_by }}</strong></a></p><br>
                         <p><strong>Feature Type:</strong> {{next.feature_type }}</p>
                         <p>{{ next.description|truncatewords:30 }}</p>
                         {% endfor %}
@@ -142,9 +142,8 @@
                         {% for latest in latest_feature %}
                         <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' latest.pk %}">#{{ latest.id }} - {{ latest.title }}</strong></a>
                         </p>
-                        <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"> <strong>
-                            <br>
-                            {{ latest.created_by }}</strong></p><br>
+                        <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"><br> 
+                        <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
                         <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
                         <p>{{ latest.description|truncatewords:30 }}</p>
                         {% endfor %}
@@ -159,7 +158,7 @@
                         </p>
                         <p><img class='comment-pic' src='{{MEDIA_URL}}{{ random.created_by.profile.image }}' alt="" width="50" height="50">
                             <br>
-                            <strong>{{ random.created_by }}</strong></p><br>
+                        <a href="{% url 'profile' random.created_by.id %}"><strong>{{ random.created_by }}</strong></a></p><br>
                         <p><strong>Feature Type:</strong> {{random.feature_type }}</p>
                         <p>{{ random.description|truncatewords:30 }}</p>
                         {% endfor %}

@@ -50,12 +50,14 @@
 <div class="row row-flex">
     {% for item in cart_items %}
     <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-offset-1 col-md-3 col-offset-3">
-        <!--test-->
+        
+        <!--Panel to display Feature Tickets in Cart-->
         <blockquote class="feature-blockquote cart-form">
             <div class="row">
                 <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' item.feature.pk %}">#{{ item.feature.id }} - {{ item.feature.title }}</strong></a>
                 </p>
-                <p><img class='comment-pic' src='{{MEDIA_URL}}{{ item.feature.created_by.profile.image }}' alt="" width="50" height="50"> <strong>{{ item.feature.created_by }}</strong></p><br>
+                <p><img class='comment-pic' src='{{MEDIA_URL}}{{ item.feature.created_by.profile.image }}' alt="" width="50" height="50">
+                    <a href="{% url 'profile' item.feature.created_by.id %}"><strong>{{ item.feature.created_by }}</strong></a></p><br>
                 <p><strong>Feature Type:</strong> {{item.feature.feature_type }}</p>
                 <p>1 snAPP ticket = £{{ item.feature.contribution }}</p>
                 <form class="form-inline" method='post' action="{% url 'adjust_cart' item.id %}">

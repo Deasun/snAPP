@@ -162,7 +162,7 @@
                     <div class="text">
                     {% endif %}
                         <p>{{ comment.text|linebreaks }}</p>
-                        <p class="attribution">by <a> {{ comment.author }}</a> on {{ comment.date_created }}</p>
+                        <p class="attribution">by <a href="{% url 'profile' comment.author.id %}"> {{ comment.author }}</a> on {{ comment.date_created }}</p>
                     </div>
                     <br>
                 </div>

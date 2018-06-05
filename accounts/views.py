@@ -75,35 +75,17 @@ def login(request):
     return render(request, 'login.html', {"login_form": login_form})
 
 
-"""user's own profile page"""
+"""user profile page"""
 @login_required
 def user_profile(request, id):
     """The user's profile page"""
-    # If no such user exists, raise 404
-    # try:
-    #     user = User.objects.get(id)
-    # except:
-    #     raise get_object_or_404
-    
-    # # DO not show editable elements in template
-    # editable = False
-    
-    # if request.user.is_authenticated() and request.user == user:
-    #     editable = True
 
     user = get_object_or_404(User, id=id)
-    users = User.objects.all()
+    auth_user = request.user
     bugs = BugTicket.objects.filter(created_by=id)
     features = FeatureTicket.objects.filter(created_by=id)
-    return render(request, 'profile.html', {"features": features, "bugs": bugs, "user": user, 'users': users})
+    return render(request, 'profile.html', {"features": features, "bugs": bugs, "user": user, "auth_user": auth_user})
 
-# testing user profile access
-# def other_profile(request, id):
-#     user = get_object_or_404(User, id=id)
-#     users = User.objects.all()
-#     bugs = BugTicket.objects.filter(created_by=id)
-#     features = FeatureTicket.objects.filter(created_by=id)
-#     return render(request, 'profile.html', {"features": features, "bugs": bugs, "user": user, 'users': users})
 
 @login_required
 def logout(request):

@@ -28,7 +28,10 @@
                         <div class="col-md-4 col-xs-12 tab-center">
                             <i class="fas fa-user-secret fa-4x profile user"></i>
                             <p><strong>My Profile</strong></p>
+                            {% if user.id is auth_user.id %}                           
                             <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile</button></a>
+                             {% else %}
+                             {% endif %}
                             <br>
                             <br>
                         </div>
@@ -48,8 +51,10 @@
                             <i class="fas fa-exclamation fa-5x payment"></i>
                             <p><strong>Latest Alert</strong></strong>
                             </p>
-
+                            {% if user.id is auth_user.id %}
                             <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Update Alert</button></a>
+                            {% else %}
+                            {% endif %}
                             <br>
                             <br>
                         </div>
