@@ -1,7 +1,7 @@
 .strapline {
     margin-top: 5rem;
     @media (min-width: 768px) {
-        margin-top: 9rem;
+        margin-top: 5rem;
     }
 }
 
@@ -9,15 +9,49 @@
     margin-top: 6rem;
 }
 
-// profile headers
+/*profile headers*/
 .profile {
     border: solid 3px;
     border-radius: 50%;
     padding: 1.75rem;
 }
 
-// comments
+/*comments*/
 .head {
     margin-bottom: 3rem;
     margin-top: 3rem;
+}
+
+
+/*side banners*/
+.banner {    
+    background: #082838;
+    text-align: left;
+    margin-top: 5rem;
+    margin-bottom: 4rem;
+    font-family: Anton;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: 3px 5px 10px $lime;
+    @media (min-width: 992px) {
+        padding: {
+            top: 2rem;
+            bottom: 2rem;
+    }
+}
+
+}
+
+.banner-left {
+    margin-left: -20%;
+    padding-left: 35%;
+    @media (min-width: 992px) {
+        padding-left: 24%;
+    }
+    width: 100%;
+}
+
+.banner-right {
+    width: 150%;
+    padding-left: 5rem;
 }

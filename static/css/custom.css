@@ -235,20 +235,6 @@ hr {
   width: 12rem;
   margin-top: 3rem; }
 
-/*side banners*/
-.banner {
-  background: #082838;
-  margin-left: -15rem;
-  text-align: left;
-  padding-left: 15rem;
-  margin-top: 5rem;
-  margin-bottom: 4rem;
-  font-family: Anton;
-  width: 75%;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  box-shadow: 7px 10px 10px black; }
-
 .nav-link {
   margin-right: 4rem;
   font-size: 1.5rem; }
@@ -343,19 +329,48 @@ hr {
   margin-top: 5rem; }
   @media (min-width: 768px) {
     .strapline {
-      margin-top: 9rem; } }
+      margin-top: 5rem; } }
 
 .midline {
   margin-top: 6rem; }
 
+/*profile headers*/
 .profile {
   border: solid 3px;
   border-radius: 50%;
   padding: 1.75rem; }
 
+/*comments*/
 .head {
   margin-bottom: 3rem;
   margin-top: 3rem; }
+
+/*side banners*/
+.banner {
+  background: #082838;
+  text-align: left;
+  margin-top: 5rem;
+  margin-bottom: 4rem;
+  font-family: Anton;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  box-shadow: 3px 5px 10px #64d29f; }
+  @media (min-width: 992px) {
+    .banner {
+      padding-top: 2rem;
+      padding-bottom: 2rem; } }
+
+.banner-left {
+  margin-left: -20%;
+  padding-left: 35%;
+  width: 100%; }
+  @media (min-width: 992px) {
+    .banner-left {
+      padding-left: 24%; } }
+
+.banner-right {
+  width: 150%;
+  padding-left: 5rem; }
 
 .icon-sections {
   margin-top: 4rem; }
@@ -649,7 +664,7 @@ td {
   left: 5%; }
 
 embed {
-  margin-top: 5rem;
+  margin-top: -8rem;
   padding-top: 4rem; }
 
 /*alignment in tabs*/
@@ -712,5 +727,40 @@ div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(3) > a {
 
 .tab-center {
   text-align: center; }
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; }
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s; }
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent; }
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1; }
 
 /*# sourceMappingURL=custom.css.map */

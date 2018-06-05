@@ -64,7 +64,7 @@
 <!--Feature List Display-->
 <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-1">
-        <p class='banner'>search through members' ideas and proposal</p>
+        <p class='banner banner-left'>Members' ideas and proposals</p>
         <div class='hidden-xs hidden-sm'>
             <div class="display">
                 <form action="{% url 'feature_search' %}" method='get'>
@@ -114,7 +114,7 @@
 
     <!--Recent Feature Completed, Active & Seeking Support-->
     <div class=" col-xs-10 col-xs-offset-1 col-md-4 col-lg-3">
-        <p>have a glance at what is new at snAPP</p>
+        <p class="banner banner-right">New at snAPP!</p>
         <ul class="nav nav-tabs">
             <li><a href="#complete">Latest Update</a></li>
             <li class="active"><a href="#doing">Active</a></li>
@@ -170,15 +170,12 @@
     </div>
 
     <!--Feature Charts-->
-    <div class="col-xs-12">
-        <p>see what we're prioritising!</p>
-    </div>
     <div class="col-xs-12 col-md-6">
-        <h2 class="chart-label">Feature Requests Received</h2>
+        <p class="banner banner-left">Activity Chart:<br>What you're proposing</p>
         <embed type="image/svg+xml" src={{feature_pie_chart_data|safe}} style='max-width:700px' />
     </div>
     <div class="col-xs-12 col-md-6">
-        <h2 class="chart-label">Activity Update</h2>
+        <p class="banner banner-right">Activity Chart:<br>What we're building & fixing</p>
         <embed type="image/svg+xml" src={{feature_chart_data|safe}} style='max-width:700px' />
     </div>
 
