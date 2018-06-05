@@ -53,7 +53,7 @@
                         <a class="nav-link" data-toggle="dropdown">Account
                           <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-center">
-                            <li><a href="{% url 'profile' %}">Profile</a></li>
+                            <li><a href="{% url 'profile' request.user.id %}">Profile</a></li>
                             <li><a href="{% url 'logout' %}">Log Out</a></li>
                         </ul>
                     </div>
