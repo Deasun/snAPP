@@ -23,46 +23,48 @@ blockquote {
 
 .profile-blockquote {
     border-left: .5rem solid $violet;
-    background: rgba(179, 123, 255, 0.17);
+    background: $violet-opaquer;
 }
 
 .bug-blockquote {
     border-left: .5rem solid $blue;
-    background: rgba(27, 143, 206, 0.17);
+    background: $blue-opaquer;
 
 }
 
 .feature-blockquote {
     border-left: .5rem solid $lime;
-    background: rgba(100, 210, 159, 0.17);
+    background: $lime-opaquer;
 }
 
 .alert-blockquote {
     border-left: .5rem solid $red;
-    background: rgba(217, 83, 79, 0.17);
+    background: $red-opaquer;
 }
 
-/*tabs*/
+/*Profile and Feature listing tabs*/
 div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(1)>a {
-    background: rgba(179, 123, 255, 0.4);
-    color: #d8d8d8;
+    background: $violet-opaque;
+    color: $off-white;
 
 }
 
-div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(2)>a {
-    background: rgba(217, 83, 79, 0.4);
-    color: #d8d8d8;
-
+div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(2)>a,
+div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(2) > a {
+    background: $red-opaque;
+    color: $off-white;
 }
 
-div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(3)>a {
-    background: rgba(100, 210, 159, 0.4);
-    color: #d8d8d8;
+div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(3)>a,
+div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(1) > a {
+    background: $lime-opaque;
+    color: $off-white;
 }
 
-div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(4)>a {
-    background: rgba(27, 143, 206, 0.4);
-    color: #d8d8d8;
+div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(4)>a,
+div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(3) > a {
+    background: $blue-opaque;
+    color: $off-white;
 }
 
 

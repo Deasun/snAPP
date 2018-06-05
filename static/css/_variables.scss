@@ -1,19 +1,26 @@
-// colours
+/*colours*/ 
 $white: #fff;
+$off-white: #d8d8d8;
 $green: #81b944;
 $orange: #e26e1b;
 $blue: #1b8fce;
 $violet: #b37bff;
-// $lime: #ace400;
 $lime: #64d29f;
 $charcoal: #313231;
 $red: #d9534f;
 $amber: #e4d043;
 
+$blue-opaque: rgba(27, 143, 206, 0.4);
+$blue-opaquer: rgba(27, 143, 206, 0.17);
+$lime-opaque: rgba(100, 210, 159, 0.4);
+$lime-opaquer: rgba(100, 210, 159, 0.14);
+$violet-opaque: rgba(179, 123, 255, 0.4);
+$violet-opaquer: rgba(179, 123, 255, 0.17);
+$red-opaque: rgba(217, 83, 79, 0.4);
+$red-opaquer: rgba(217, 83, 79, 0.17);
 
 
-
-// 
+/*fonts*/
 $font-stack-1: Anton, sans-serif;
 $font-stack-2: Lato, sans-serif;
 $font-stack-3: 'PT Sans Narrow', sans-serif;
