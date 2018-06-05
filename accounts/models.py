@@ -10,12 +10,12 @@ import datetime
 Profile model - extra information relating to User Model
 """
 class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	image = models.ImageField(upload_to='images', default='')
-	trade_union = models.CharField(max_length=100, blank=True)
-	description = models.TextField(null=True, blank=True)
-	alert = models.TextField(null=True, blank=True)
-	alert_date = models.DateField(default=datetime.date.today)
+	user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
+	image = models.ImageField(null=True, upload_to='images', default='')
+	trade_union = models.CharField(null=True, max_length=100, default='')
+	description = models.TextField(null=True, default='')
+	alert = models.TextField(null=True, default='')
+	alert_date = models.DateField(null=True, default=datetime.date.today)
 
 	def __str__(self):
 	    return "{}'s profile".format(self.user)
