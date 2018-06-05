@@ -1,0 +1,79 @@
+
+
+/*alignment in tabs*/
+.list-head {
+    margin-top: 4rem;
+}
+
+
+
+.tab-content {
+    text-align: center;
+    @media (min-width: 992px) {
+        text-align: left;
+    }
+}
+
+/*blockquote in tabs*/
+blockquote {
+    min-height: 20rem;
+    display: flex;
+}
+
+
+.profile-blockquote {
+    border-left: .5rem solid $violet;
+    background: rgba(179, 123, 255, 0.17);
+}
+
+.bug-blockquote {
+    border-left: .5rem solid $blue;
+    background: rgba(27, 143, 206, 0.17);
+
+}
+
+.feature-blockquote {
+    border-left: .5rem solid $lime;
+    background: rgba(100, 210, 159, 0.17);
+}
+
+.alert-blockquote {
+    border-left: .5rem solid $red;
+    background: rgba(217, 83, 79, 0.17);
+}
+
+/*tabs*/
+div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(1)>a {
+    background: rgba(179, 123, 255, 0.4);
+    color: #d8d8d8;
+
+}
+
+div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(2)>a {
+    background: rgba(217, 83, 79, 0.4);
+    color: #d8d8d8;
+
+}
+
+div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(3)>a {
+    background: rgba(100, 210, 159, 0.4);
+    color: #d8d8d8;
+}
+
+div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(4)>a {
+    background: rgba(27, 143, 206, 0.4);
+    color: #d8d8d8;
+}
+
+
+.nav-tabs {
+    border-bottom: none;
+    font-size: 1.3rem;
+    @media (min-width: 992px) {
+        margin-top: 4rem;
+    }
+}
+
+.tab-center {
+    text-align: center;
+}

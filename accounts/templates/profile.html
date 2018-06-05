@@ -1,197 +1,166 @@
 {% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block content %}
 
 
+<!--START - test universal view - TABS-->
 
-<!--View xs-->
-<div class="row list-head visible-xs visible-sm">
-
-    <div class="col-xs-12">
-        {% if user.profile.image != '' %}
-        <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
-        <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
-    </div>
-    <div class "col-xs-12">
-        <p><strong>{{ user.username }}'s snAPP profile.</strong></p><br>
-    </div>
-    <div class="col-xs-12 section-body">
-        <blockquote class='profile-blockquote'>
-            <p><strong>union:</strong><br> {{ user.profile.trade_union }}</p>
-            <p><strong>email:</strong><br> {{ user.email }}</p>
-            <p><strong>About me:</strong><br>{{ user.profile.description }}</p>
-        </blockquote>
-    </div>
-    <div class="col-xs-12">
-        <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile/Alert</button></a>
-    </div>
-    <div class="col-xs-10 col-xs-offset-1">
-        <div class="section-body">
-            <blockquote class="alert-blockquote">
-                <p>alert</p>
-            </blockquote>
-        </div>
-    </div>
-</div>
-<div class="row visible-xs visible-sm">
-    <div class="col-xs-12 col-sm-6">
-        <i class="fas fa-bug fa-4x"></i>
-        <label class='badge bug-badge'>{{ user.user_bugs.count }}</label>
-        <p>bugs reported</p>
-    <!--</div>-->
-    <!--<div class="col-xs-12 col-sm-6">-->
-        <div class="section-body">
-            <blockquote class="bug-blockquote">
-                <!--User's Bug Report Details-->
-                <table class="table table-condensed table-hover">
-                    <thead>
-                        <tr class="tr-bug">
-                            <th>Title</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for bug in bugs %}
-                        <tr class="tr-bug">
-                            <td>{{ bug.title }}</td>
-                            <td>{{ bug.bug_type }}</td>
-                            <td>{{ bug.status }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </blockquote>
-        </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 section-tail">
-        <i class="fas fa-cog fa-4x feature"></i>
-        <label class='badge feature-badge'>{{ user.user_features.count }}</label>
-        <p>features requested</p>
-    <!--</div>-->
-    <!--<div class="col-xs-12">-->
-        <div class="section-body">
-            <blockquote class="feature-blockquote">
-                <!--Features List-->
-                <table class="table table-condensed table-hover">
-                    <thead>
-                        <tr class="tr-feature">
-                            <th>Title</th>
-                            <th>Type</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for feature in features %}
-                        <tr class="tr-feature">
-                            <td>{{ feature.title }}</td>
-                            <td>{{ feature.feature_type }}</td>
-                            <td>{{ feature.status }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </blockquote>
-        </div>
-    </div>
+<div class="col-xs-12">
+    {% if user.profile.image != '' %}
+    <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
+    <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
+    <h2 class="user">{{ user.username }}'s snAPP profile</h2>
 </div>
 
-<!--Views sm, md and lg-->
-<div class="row list-head hidden-xs hidden-sm">
-    <!--test-->
-    <div class="col-md-9">
-        <div class="row">
-            <div class="col-md-3 col-lg-offset-1">
-                {% if user.profile.image != '' %}
-                <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
-                <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
-                <p><strong>{{ user.username }}'s snAPP profile.</strong></p>
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 col-xs-12">
+        <ul class="nav nav-tabs">
+            <li><a href="#profile">About Me</a></li>
+            <li class="active"><a href="#alert">My Alert</a></li>
+            <li><a href="#feature">Features</a></li>
+            <li><a href="#bug">Bugs</a></li>
+        </ul>
+        <div class="tab-content">
+            <!--Profile Tab-->
+            <div id="profile" class="tab-pane fade in">
+                <blockquote class='profile-blockquote'>
+                    <div class="row">
+                        <div class="col-md-3 col-xs-12 tab-center">
+                            <i class="fas fa-user-secret fa-4x profile user"></i>
+                            <p><strong>My Profile</strong></p>
+                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile</button></a>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col-md-9 col-xs-12">
+                            <p><strong>union:</strong> {{ user.profile.trade_union }}</p>
+                            <p><strong>email:</strong> {{ user.email }}</p>
+                            <p><strong>About me:</strong><br>{{ user.profile.description }}</p>
+                        </div>
+                    </div>
+                </blockquote>
+            </div>
+            <!--Alert Tab-->
+            <div id="alert" class="tab-pane fade in active">
+                <blockquote class='alert-blockquote'>
+                    <div class="row">
+                        <div class="col-md-2 col-xs-12 tab-center">
+                            <i class="fas fa-exclamation fa-5x payment"></i>
+                            <p><strong>Latest Alert</strong></strong>
+                            </p>
 
-                <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile/Alert</button></a>
+                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Update Alert</button></a>
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col-md-10 col-xs-12">
+                            <p><strong>Date Expires: {{ user.profile.alert_date }}</strong></p>
+                            <p>{{ user.profile.alert }}</p>
+                        </div>
+                    </div>
+                </blockquote>
             </div>
-            <div class="col-md-8 col-lg-7">
-                <div class="section-body">
-                    <blockquote class='profile-blockquote'>
-                        <p><strong>union:</strong><br> {{ user.profile.trade_union }}</p>
-                        <p><strong>email:</strong><br> {{ user.email }}</p>
-                        <p><strong>About me:</strong><br>{{ user.profile.description }}</p>
-                    </blockquote>
-                </div>
+            <!--Feature Tab-->
+            <div id="feature" class="tab-pane fade in">
+                <blockquote class='feature-blockquote'>
+                    <div class="row">
+                        <div class=" col-md-3 col-xs-12 tab-center">
+                            <i class="fas fa-cog fa-5x feature"></i>
+                            <label class='badge feature-badge'>{{ user.user_features.count }}</label>
+                            <p><strong>snAPP Features Requested</strong></p>
+                        </div>
+                        <div class="col-md-9 col-xs-12">
+
+                            <br>
+                            <table class="table table-condensed table-hover">
+                                <thead>
+                                    <tr class="tr-feature">
+                                        <th class="hidden-xs">#</th>
+                                        <th>Title</th>
+                                        <th class="hidden-xs hidden-sm">Date</th>
+                                        <th class="hidden-xs">Status</th>
+                                        <th>Type</th>
+                                        <th></th>
+                                        <th class="hidden-xs"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for feature in features %}
+                                    <tr>
+                                        <td class="hidden-xs">{{ feature.id }}</td>
+                                        <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title|truncatewords:3 }}</a></td>
+                                        <td class="hidden-xs hidden-sm">{{ feature.date_created }}</td>
+                                        <td>{{ feature.status }}</td>
+                                        <td class="hidden-xs">{{ feature.feature_type }}</td>
+                                        <td class="list-icons">
+                                            <i class="fas fa-bullseye fa-2x">
+                                            <!--render target amount-->
+                                            <label class='badge feature-badge'>£{{ feature.target|floatformat }}</label>
+                                            </i>
+                                        </td>
+                                        <td class="list-icons hidden-xs">
+                                            <i class="far fa-comments fa-2x">
+                                            <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>
+                                            </i>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </blockquote>
             </div>
-            <div class="col-md-3 profile-pg-icon">
-                <i class="fas fa-exclamation fa-5x payment"></i>
-                <p>alert</p>
-            </div>
-            <div class="col-md-8">
-                <div class="section-body">
-                    <blockquote class="alert-blockquote">
-                        <p>alert</p>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-md-3 profile-pg-icon">
-                <i class="fas fa-cog fa-5x feature"></i>
-                <label class='badge feature-badge'>{{ user.user_features.count }}</label>
-                <p>features requested</p>
-            </div>
-            <div class="col-md-8">
-                <div class="section-body">
-                    <blockquote class="feature-blockquote">
-                        Features List
-                        <table class="table table-condensed table-hover">
-                            <thead>
-                                <tr class="tr-feature">
-                                    <th>Title</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for feature in features %}
-                                <tr class="tr-feature">
-                                    <td>{{ feature.title }}</td>
-                                    <td>{{ feature.feature_type }}</td>
-                                    <td>{{ feature.status }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="col-md-3 profile-pg-icon">
-                <i class="fas fa-bug fa-5x"></i>
-                <label class='badge bug-badge'>{{ user.user_bugs.count }}</label>
-                <p>bugs reported</p>
-            </div>
-            <div class="col-md-8">
-                <div class="section-body">
-                    <blockquote class="bug-blockquote">
-                        <!--User's Bug Report Details-->
-                        <table class="table table-condensed table-hover">
-                            <thead>
-                                <tr class="tr-bug">
-                                    <th>Title</th>
-                                    <th>Type</th>
-                                    <th>Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for bug in bugs %}
-                                <tr class="tr-bug">
-                                    <td>{{ bug.title }}</td>
-                                    <td>{{ bug.bug_type }}</td>
-                                    <td>{{ bug.status }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </blockquote>
-                </div>
+            <!--Bug Tab-->
+            <div id="bug" class="tab-pane fade in">
+                <blockquote class='bug-blockquote'>
+                    <div class="row">
+                        <div class="col-md-2 col-xs-12 tab-center">
+                            <i class="fas fa-bug fa-5x"></i>
+                            <label class='badge bug-badge'>{{ user.user_bugs.count }}</label>
+                            <p><strong>snAPP Bugs Reported</strong></p>
+                        </div>
+                        <div class="col-md-10 col-xs-12">
+                            <br>
+                            <table class="table table-condensed table-hover">
+                                <thead>
+                                    <tr class="tr-bug">
+                                        <th class="hidden-xs">#</th>
+                                        <th>Title</th>
+                                        <th class="hidden-xs hidden-md">Type</th>
+                                        <th class="hidden-xs hidden-sm">Date</th>
+                                        <th class="hidden-xs">Status</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for bug in bugs %}
+                                    <tr>
+
+                                        <td class="hidden-xs">{{ bug.id }}</td>
+                                        <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
+                                        <td class="hidden-xs hidden-md">{{ bug.bug_type }}</td>
+                                        <td class="hidden-xs hidden-sm">{{ bug.date_created }}</td>
+
+
+                                        <!--class method to trigger bug status depending on date_started & date_completed attributes-->
+                                        <td class="hidden-xs">{{ bug.status }}</td>
+
+                                        <td class="list-icons">
+                                            <i class="far fa-thumbs-up fa-2x">
+                                                <label class='badge bug-badge'>{{ bug.votes }}</label>
+                                            </i>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </blockquote>
             </div>
         </div>
-
     </div>
-    <div class="col-md-3">
-        <a class="twitter-timeline hidden-sm" data-width="300" data-height="800" data-theme="dark" data-link-color="#E95F28" href="https://twitter.com/labourstart?ref_src=twsrc%5Etfw">Tweets by labourstart</a>
+    <div class="col-md-3 hidden-xs hidden-sm">
+        <a class="twitter-timeline hidden-sm" data-width="300" data-height="400" data-theme="dark" data-link-color="#E95F28" href="https://twitter.com/labourstart?ref_src=twsrc%5Etfw">Tweets by labourstart</a>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 </div>

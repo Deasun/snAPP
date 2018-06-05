@@ -23,8 +23,6 @@ a:hover {
 }
 
 // hover effects
-
-
 // messages
 .alert {
     text-align: center;
@@ -79,12 +77,8 @@ a:hover {
 
 }
 
-.section-body {
+.tab-content {
     text-align: left;
-    margin: {
-        top: 2rem;
-        left: 1rem;
-    }
 }
 
 
@@ -128,42 +122,6 @@ hr {
 
 
 
-
-// blockquote
-blockquote {
-    width: 100%;
-}
-
-
-.profile-blockquote {
-    border-left: .5rem solid $violet;
-    min-height: 20rem;
-    background: rgba(179, 123, 255, 0.17);
-}
-
-.bug-blockquote {
-    border-left: .5rem solid $blue;
-    min-height: 20rem;
-    background: rgba(27, 143, 206, 0.17);
-
-}
-
-.feature-blockquote {
-    border-left: .5rem solid $lime;
-    min-height: 20rem;
-    background: rgba(100, 210, 159, 0.17);
-    text-align: left;
-}
-
-.alert-blockquote {
-    border-left: .5rem solid $red;
-    min-height: 20rem;
-    background: rgba(217, 83, 79, 0.17);
-    text-align: left;
-}
-
-
-
 // DELETE PLANELS?
 // panels
 .panel {
@@ -200,30 +158,31 @@ blockquote {
 
 
 
-
-
-
-
-
-
 // badges
 .bug-badge {
     background-color: $red;
     font-size: 1rem;
     font-family: $font-stack-2;
-    margin: {
-        left: -20px;
-        bottom: -20px;
+    position: relative;
+    top: 1rem;
+    left: -4rem;
+    @media (min-width: 992px) {
+        top: -2rem;
+        left: 4rem;
     }
 }
 
+
 .feature-badge {
     background-color: $red;
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-family: $font-stack-2;
-    margin: {
-        left: -20px;
-        bottom: -20px;
+    position: relative;
+    top: 1rem;
+    left: -4rem;
+    @media (min-width: 992px) {
+    top: -2rem;
+    left: -3rem;;
     }
 }
 
@@ -235,13 +194,8 @@ blockquote {
     }
     background-color: $red;
     font-size: 2rem;
-    font-family: Lato,
-    sans-serif;
-
+    font-family: Lato, sans-serif;
 }
-
-
-
 
 .comment-badge {
     background-color: $red;
@@ -254,22 +208,11 @@ blockquote {
 }
 
 
-
-
-// profile page icons
-.profile-pg-icon {
-    @media (min-width: 992px) {
-        text-align: right;
-    }
-}
-
-
-
-
 // images
 .profile-pic {
     border: .5rem solid $violet;
     border-radius: 50%;
     height: 12rem;
     width: 12rem;
+    margin-top: 3rem;
 }

@@ -21,7 +21,10 @@ $(document).ready(function() {
     // hover effects
 
     
-    // profile slide effects
+    // profile tabs
+    $(".nav-tabs a").click(function(){
+    $(this).tab('show');
+    });
     
     
     // dropdown menu
