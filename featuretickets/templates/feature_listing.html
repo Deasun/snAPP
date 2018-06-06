@@ -8,8 +8,8 @@
     </div>
     <div class "col-xs-12">
         <h2 class="feature">Feature Requests</h2>
-         <p>snAPP develops through your ideas and support.<br>
-        <p><strong>Find out how to use snAPP's feature request system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
+        <p>snAPP develops through your ideas and support.<br>
+            <p><strong>Find out how to use snAPP's feature request system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
 </div>
 
@@ -23,6 +23,8 @@
         </div>
     </div>
 </div>
+
+
 
 
 <div class="col-xs-12">
@@ -142,8 +144,8 @@
                         {% for latest in latest_feature %}
                         <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' latest.pk %}">#{{ latest.id }} - {{ latest.title }}</strong></a>
                         </p>
-                        <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"><br> 
-                        <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
+                        <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"><br>
+                            <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
                         <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
                         <p>{{ latest.description|truncatewords:30 }}</p>
                         {% endfor %}
@@ -158,7 +160,7 @@
                         </p>
                         <p><img class='comment-pic' src='{{MEDIA_URL}}{{ random.created_by.profile.image }}' alt="" width="50" height="50">
                             <br>
-                        <a href="{% url 'profile' random.created_by.id %}"><strong>{{ random.created_by }}</strong></a></p><br>
+                            <a href="{% url 'profile' random.created_by.id %}"><strong>{{ random.created_by }}</strong></a></p><br>
                         <p><strong>Feature Type:</strong> {{random.feature_type }}</p>
                         <p>{{ random.description|truncatewords:30 }}</p>
                         {% endfor %}

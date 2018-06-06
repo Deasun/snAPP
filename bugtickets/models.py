@@ -20,9 +20,7 @@ class BugTicket(models.Model):
     votes = models.IntegerField(default = 0)
     
 
-    """
-    Registers Upvotes from users by BugUpvote class and prevents self-votes
-    """
+    """Registers Upvotes from users by BugUpvote class and prevents self-votes"""
     def upvote(self, user):
         # pass
         try:
@@ -32,9 +30,7 @@ class BugTicket(models.Model):
         except IntegrityError:
             return 'already_upvoted'
     
-    """
-    Triggers bug status based on date_started and date_completed
-    """
+    """Triggers bug status based on date_started and date_completed"""
     def status(self):
         # pass
         try:
@@ -50,9 +46,7 @@ class BugTicket(models.Model):
         except IntegrityError:
             return 'Unknown status'
 
-    """
-    Method to get BugTickets data for Daily, Weekly, Monthly Activity Line Chart
-    """
+    """Method to get BugTickets data for Daily, Weekly, Monthly Activity Line Chart"""
     @classmethod
     def qs_active_bugs(self, num):
         # pass
@@ -61,9 +55,7 @@ class BugTicket(models.Model):
         active_bug_qs = BugTicket.objects.filter(date_started__range=(enddate, startdate))
         return active_bug_qs.count()    
 
-    """
-    Method to get BugTickets data for Daily, Weekly, Monthly Completion Line Chart
-    """
+    """Method to get BugTickets data for Daily, Weekly, Monthly Completion Line Chart"""
     @classmethod
     def qs_complete_bugs(self, num):
         # pass
@@ -72,9 +64,7 @@ class BugTicket(models.Model):
         complete_bug_qs = BugTicket.objects.filter(date_completed__range=(enddate, startdate))
         return complete_bug_qs.count()
    
-    """
-    Method to count BugTickets by bug_type for Half-Pie Chart
-    """
+    """Method to count BugTickets by bug_type for Half-Pie Chart"""
     @classmethod
     def qs_by_bug_type(self, bugtype):
         # pass
