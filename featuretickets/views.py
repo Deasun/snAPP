@@ -1,13 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import FeatureTicket
 from accounts.models import Profile
-from checkout.models import Order, OrderLineItem   
+from checkout.models import Order, OrderLineItem  
 from .forms import RequestFeatureForm, CommentForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Max
 from django.contrib import auth, messages
 from django.utils import timezone
 from .charts import feature_chart_data, feature_pie_chart_data
+
+
 
 @login_required
 def request_feature(request, pk=None):
@@ -27,7 +29,7 @@ def request_feature(request, pk=None):
         request_form = RequestFeatureForm()
     return render(request, 'request_form.html', {'request_form': request_form})
    
-    
+
 @login_required
 def add_comment_to_feature(request, pk):
     post = FeatureTicket.objects.get(pk=pk)
@@ -56,18 +58,13 @@ def feature_report(request, pk=id):
 
 @login_required
 def get_feature_listing(request):
-    """
-    List features & purchases ranked by most recent date and render them to the 'feature_listing.html' template
-    """
-    # Class method for rendering FeatureTicket table ordered by date
+    """List features ranked by most recent date and render them to the 'feature_listing.html' template"""
     features = FeatureTicket.qs_desc_date()  
     
-    # Class methods for rendering latest features
+    """Display latest features by status"""
     latest_feature = FeatureTicket.qs_latest_complete_feature()
     next_feature = FeatureTicket.qs_latest_active_feature()
     random_feature = FeatureTicket.qs_random_requested_feature()
     
     return render(request, 'feature_listing.html', {'features': features, 'feature_chart_data': feature_chart_data, 'feature_pie_chart_data': feature_pie_chart_data, 'latest_feature': latest_feature, 'next_feature': next_feature, 'random_feature': random_feature })
     
-    
-
