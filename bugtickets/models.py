@@ -48,7 +48,7 @@ class BugTicket(models.Model):
 
     """Method to get BugTickets data for Daily, Weekly, Monthly Activity Line Chart"""
     @classmethod
-    def qs_active_bugs(self, num):
+    def qs_active_bugs(cls, num):
         # pass
         startdate = datetime.date.today()
         enddate = startdate - datetime.timedelta(days=num)
@@ -57,7 +57,7 @@ class BugTicket(models.Model):
 
     """Method to get BugTickets data for Daily, Weekly, Monthly Completion Line Chart"""
     @classmethod
-    def qs_complete_bugs(self, num):
+    def qs_complete_bugs(cls, num):
         # pass
         startdate = datetime.date.today()
         enddate = startdate - datetime.timedelta(days=num)
@@ -66,7 +66,7 @@ class BugTicket(models.Model):
    
     """Method to count BugTickets by bug_type for Half-Pie Chart"""
     @classmethod
-    def qs_by_bug_type(self, bugtype):
+    def qs_by_bug_type(cls, bugtype):
         # pass
         qs_bug_type = BugTicket.objects.filter(bug_type=bugtype)
         return qs_bug_type.count()
