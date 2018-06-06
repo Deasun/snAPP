@@ -59,11 +59,13 @@ def get_feature_listing(request):
     """
     List features & purchases ranked by most recent date and render them to the 'feature_listing.html' template
     """
-    features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('-date_created')   
+    # Class method for rendering FeatureTicket table ordered by date
+    features = FeatureTicket.qs_desc_date()  
     
-    latest_feature = FeatureTicket.objects.exclude(date_completed__isnull=True)[:1]
-    next_feature = FeatureTicket.objects.exclude(date_completed__isnull=False).exclude(date_started__isnull=True)[:1]
-    random_feature = FeatureTicket.objects.exclude(date_completed__isnull=False).exclude(date_started__isnull=False)[:1]
+    # Class methods for rendering latest features
+    latest_feature = FeatureTicket.qs_latest_complete_feature()
+    next_feature = FeatureTicket.qs_latest_active_feature()
+    random_feature = FeatureTicket.qs_random_requested_feature()
     
     return render(request, 'feature_listing.html', {'features': features, 'feature_chart_data': feature_chart_data, 'feature_pie_chart_data': feature_pie_chart_data, 'latest_feature': latest_feature, 'next_feature': next_feature, 'random_feature': random_feature })
     

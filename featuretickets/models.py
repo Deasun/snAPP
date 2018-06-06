@@ -1,6 +1,7 @@
 from django.db import models, IntegrityError
 from django.contrib.auth.models import User
 import datetime
+from django.utils import timezone
 from .choices import feature_list
 
 """
@@ -24,9 +25,8 @@ class FeatureTicket(models.Model):
 	 
     
     """
-    Triggers feature status based on date_started and date_completed
+    Trigger FeatureTicket status based on date_started and date_completed
     """
-
     def status(self):
         # pass
         try:
@@ -44,8 +44,10 @@ class FeatureTicket(models.Model):
 
     
     """
-    Method to get FeatureTickets data for Daily, Weekly, Monthly Activity Line Chart
+    Methods for rendering charts
     """
+    
+    """FeatureTickets data for Daily, Weekly, Monthly Activity Line Chart"""
     @classmethod
     def qs_active_features(self, num):
         # pass
@@ -55,9 +57,7 @@ class FeatureTicket(models.Model):
         return active_feature_qs.count()  
 
     
-    """
-    Method to get FeatureTickets data for Daily, Weekly, Monthly Completion Line Chart
-    """
+    """FeatureTickets data for Daily, Weekly, Monthly Completion Line Chart"""
     @classmethod
     def qs_complete_features(self, num):
         # pass
@@ -67,15 +67,44 @@ class FeatureTicket(models.Model):
         return complete_feature_qs.count()
 
 
-    """
-    Method to count FeatureTickets by bug_type for Half-Pie Chart
-    """
+    """FeatureTickets by bug_type for Half-Pie Chart"""
     @classmethod
     def qs_by_feature_type(self, featuretype):
         # pass
         qs_feature_type = FeatureTicket.objects.filter(feature_type=featuretype)
         return qs_feature_type.count()
 
+    
+    """
+    Methods for rendering latest features
+    """
+
+    """Get latest completed feature"""
+    @classmethod
+    def qs_latest_complete_feature(self):
+        latest_feature = self.objects.exclude(date_completed__isnull=True)[:1]
+        return latest_feature
+    
+    """Get latest active feature"""
+    @classmethod
+    def qs_latest_active_feature(self):
+        next_feature = FeatureTicket.objects.exclude(date_completed__isnull=False).exclude(date_started__isnull=True)[:1]
+        return next_feature
+    
+    """Get latest requested feature"""
+    @classmethod
+    def qs_random_requested_feature(self):
+        random_feature = FeatureTicket.objects.exclude(date_completed__isnull=False).exclude(date_started__isnull=False)[:1]
+        return random_feature
+    
+    """
+    Method for rendering Featureticket table
+    """
+    @classmethod
+    def qs_desc_date(self):
+        features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('-date_created')  
+        return features
+    
     
     """
     String Representation
