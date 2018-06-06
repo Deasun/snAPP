@@ -48,7 +48,9 @@ def registration(request):
     return render(request, 'registration.html', {"registration_form": registration_form})
 
 
-# User Login
+"""
+User Login
+"""
 def login(request):
     """Return a Login page"""
     if request.user.is_authenticated:
@@ -75,18 +77,22 @@ def login(request):
     return render(request, 'login.html', {"login_form": login_form})
 
 
-"""user profile page"""
+"""
+User Profile Page
+"""
 @login_required
 def user_profile(request, id):
     """The user's profile page"""
-
+    
     user = get_object_or_404(User, id=id)
     auth_user = request.user
     bugs = BugTicket.objects.filter(created_by=id)
     features = FeatureTicket.objects.filter(created_by=id)
     return render(request, 'profile.html', {"features": features, "bugs": bugs, "user": user, "auth_user": auth_user})
 
-
+"""
+Logout
+"""
 @login_required
 def logout(request):
     """Log the user out"""
@@ -95,7 +101,9 @@ def logout(request):
     return redirect(reverse('index'))
     
 
-# Edit User Profile
+"""
+Edit User Profile
+"""
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
@@ -104,7 +112,7 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-        return redirect('profile')
+        return redirect('profile', id=request.user.id)
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
