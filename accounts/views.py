@@ -41,7 +41,7 @@ def registration(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, "You're registered. Welcome to snAPP!")
-                return redirect(reverse('profile'))
+                return redirect('profile', id=request.user.id)
 
     else:
         registration_form = UserRegistrationForm()
