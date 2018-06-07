@@ -1,6 +1,6 @@
 import os
 import sys
-# import env
+import env
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'mathfilters',
-    'storages'
+    'storages',
 ]
 
 MIDDLEWARE = [

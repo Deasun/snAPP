@@ -15,7 +15,7 @@ h5 {
 h1,
 td a,
 div a {
-  color: #e26e1b; }
+  color: #fff; }
 
 h2,
 a {
@@ -49,7 +49,7 @@ caption {
       font-size: 2.5rem; } }
 
 .strapline-label {
-  color: #d8d8d8; }
+  color: #1b8fce; }
   @media (min-width: 768px) {
     .strapline-label {
       font-size: 3rem; } }
@@ -229,7 +229,7 @@ hr {
   margin-bottom: -20px; }
 
 .profile-pic {
-  border: 0.5rem solid #fff;
+  border: 0.5rem solid #b37bff;
   border-radius: 50%;
   height: 12rem;
   width: 12rem;
