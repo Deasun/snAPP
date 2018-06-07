@@ -20,7 +20,7 @@ h5 {
 h1,
 td a,
 div a {
-    color: $white;
+    color: $orange;
 }
 
 h2,
@@ -70,7 +70,7 @@ caption {
 }
 
 .strapline-label {
-    color: $blue;
+    color: $white;
     @media (min-width: 768px) {
         font-size: 3rem;
     }
