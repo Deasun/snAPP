@@ -14,7 +14,7 @@ class Profile(models.Model):
 	image = models.ImageField(null=True, upload_to='images', default='')
 	trade_union = models.CharField(null=True, max_length=100, default='')
 	description = models.TextField(null=True, default='')
-	alert = models.TextField(null=True, default='')
+	alert = models.TextField(null=True, default='No active alerts.')
 	alert_date = models.DateField(null=True, default=datetime.date.today)
 
 	def __str__(self):

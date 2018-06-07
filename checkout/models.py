@@ -15,7 +15,7 @@ class Order(models.Model):
     postcode = models.CharField(max_length=20, blank=True)
     country = models.CharField(max_length=40, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
-    date = models.DateField()
+    date = models.DateField(null=True, default=datetime.date.today)
     
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)

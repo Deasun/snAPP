@@ -1,7 +1,10 @@
 env.py
 *.sqlite3
 __pycache__
-
+.~c9*
+*.png
+static/
+media/
 
 # Unit test / coverage reports
 htmlcov/
