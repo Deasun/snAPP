@@ -15,7 +15,9 @@ Test User registration
 """
 class TestUserRegistration(TestCase):
     
-    """Test that registration produces model instance and success message"""
+    """
+    Test that registration produces model instance and success message
+    """
     def test_successful_registration(self):
         response = self.client.post(reverse('registration'),
                         data={'username': 'Tested', 
@@ -28,7 +30,9 @@ class TestUserRegistration(TestCase):
         self.assertEqual(str(messages[0]), "You're registered. Welcome to snAPP!")
         
     
-    """Test blank registration"""
+    """
+    Test blank registration
+    """
     def test_blank_registration(self):
         response = self.client.post(reverse('registration'),
                         data={'username': '', 
@@ -40,22 +44,26 @@ class TestUserRegistration(TestCase):
         self.assertEqual(Profile.objects.count(), 0)
         self.assertTemplateUsed(response, "registration.html")
     
-
-
 """
 Test Login
 """
 class TestLogin(TestCase):
     
-    """Test Login Page render"""
+    """
+    Test Login Page render
+    """
     def test_login_page_render(self):
         page = self.client.get("/accounts/login/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "login.html")
-  
-    """Test Successful Login"""
+ 
+#  ################################################################
+    """
+    Test Successful Login
+    """
     def test_login_success(self):
         pass
+# ################################################################
         
         
 """
@@ -63,32 +71,45 @@ Test logged user destination & templates
 """
 class TestLoggedViews(TestCase):
     
-    """Set up class for logged in user"""
+    """
+    Set up class for logged in user
+    """
     def setUp(self):
         self.user = User.objects.create_user('Tested', 'tested@mail.com', 'q0w9e8r7t7')
         self.user.save()
         login = self.client.login(username='Tested', password='q0w9e8r7t7')
 
     
-    """Logged in user access home page"""
+    """
+    Logged in user access home page
+    """
     def test_get_home_page(self):
         page = self.client.get("/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "index.html")
     
-    """Logged in user redirected from login page"""
+    
+    """
+    Logged in user redirected from login page
+    """
     def test_redirect_login_page(self):
         page = self.client.get("/accounts/login/")
         self.assertEqual(page.status_code, 302)
         self.assertRedirects(page, '/')
     
-    """Logged in user redirected from registration page"""
+    
+    """
+    Logged in user redirected from registration page
+    """
     def test_redirect_register_page(self):
         page = self.client.get("/accounts/register/")
         self.assertEqual(page.status_code, 302)
         self.assertRedirects(page, '/')
 
-    """Logged in user successful logout"""
+
+    """
+    Logged in user successful logout
+    """
     def test_get_logout_redirect(self):
         page = self.client.get("/accounts/logout/")
         self.assertEqual(page.status_code, 302)
@@ -96,27 +117,51 @@ class TestLoggedViews(TestCase):
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), 'You have been successfully logged out!')
 
-    """Logged in user edit user success"""
+# ################################################################
+# Need to set up user profile
+    """
+    Test getting edit user profile page
+    """
+    def test_get_edit_profile_page(self):
+        pass
+        # page = self.client.get('/edit_profile/')
+        # self.assertEqual(page.status_code, 200)
+        # self.assertTemplateUsed(page, "edit_profile.html")
+ # ################################################################
+    
+    """
+    Logged in user edit user success
+    """
     def test_user_edit_user(self):
         user = User(username="marty505", email="marty505@test.com")
         edit_form = UserEditForm({'username': 'tommy606', 'email': 'tommy606@test.com'}, instance=user)
         self.assertEquals(edit_form.is_valid(), True)
 
-    """Logged in user edit profile success"""
+# ################################################################
+    """
+    Logged in user edit profile success
+    """
     def test_user_edit_profile(self):
         pass
+# ################################################################
+
 
 """
 Test Non-logged user destination & templates
 """
 class TestNonLoggedViews(TestCase):
     
+    """
+    Non-logged in user getting landing page
+    """
     def test_get_home_page(self):
         page = self.client.get("/")
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "index.html")
     
-    """Non-logged in user renders registration form"""
+    """
+    Non-logged in user renders registration form
+    """
     def test_get_reg_form(self):
         page = self.client.get("/accounts/register/")
         self.assertEqual(page.status_code, 200)
