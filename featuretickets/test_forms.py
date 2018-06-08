@@ -10,7 +10,7 @@ class TestRequestFeatureForm(TestCase):
     Test Valid Form Completion
     """
     def test_completed_form(self):
-        form = RequestFeatureForm({'title': 'Tester', 'description': 'This is a test feature request'}) 
+        form = RequestFeatureForm({'title': 'Tester', 'feature_type': 'Design', 'description': 'This is a test feature request'}) 
         self.assertTrue(form.is_valid())
 
 class TestCommentForm(TestCase):

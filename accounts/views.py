@@ -21,12 +21,13 @@ def index(request):
 Register a User
 """
 def registration(request):
-    """
-    Redirect logged user to home page
-    """
+    
+    """Redirect logged user to home page"""
     if request.user.is_authenticated:
+    
         return redirect(reverse('index'))
 
+    
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
         

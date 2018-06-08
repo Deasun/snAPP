@@ -1,5 +1,7 @@
 import os
 import sys
+
+# ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
 import env
 import dj_database_url
 
@@ -76,19 +78,30 @@ WSGI_APPLICATION = 'snapp.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 
-if 'DATABASE_URL' in os.environ: 
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-            }
-
-else:
-    print("Databse URL not found. Use SQLite instead")
-    DATABASES = {
+# ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
+DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+
+
+
+# ###########TO BE UNCOMMENTED OUT PRIOR TO DEPLOYMENT#########
+# if 'DATABASE_URL' in os.environ: 
+#     DATABASES = {
+#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+#             }
+
+# else:
+#     print("Databse URL not found. Use SQLite instead")
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         }
+#     }
 
 
 # Password validation
@@ -147,6 +160,7 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 
+# ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
 # STATICFILES_LOCATION = 'static'
 # STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
@@ -155,11 +169,16 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static")
     ]
 
+# ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
 # MEDIAFILES_LOCATION = 'media'
 # DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
 # MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+
+# ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
 MEDIA_URL = '/media/'
 
 
