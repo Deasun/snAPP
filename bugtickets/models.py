@@ -17,6 +17,7 @@ class BugTicket(models.Model):
     title = models.CharField(max_length=200, blank=False)
     bug_type = models.CharField(max_length=30, choices=bugs, blank=False)
     description = models.TextField(null=True, blank=False)
+    report = models.TextField(null=True, blank=True)
     votes = models.IntegerField(default = 0)
     
 
