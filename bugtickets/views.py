@@ -104,7 +104,14 @@ def add_comment_to_bug(request, pk):
 @login_required
 def bug_report(request, pk=id):
     bugs = BugTicket.objects.filter(id=pk)
-    return render(request, "bug_report.html", {'bugs': bugs})
+    
+    # return message if bug does not exist
+    if not bugs:
+            messages.success(request, "There is no bug with that identity. Please search again.")
+            return redirect('get_bug_listing')
+    
+    else:
+        return render(request, "bug_report.html", {'bugs': bugs})
 
 
 @login_required
