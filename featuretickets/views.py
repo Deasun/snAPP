@@ -48,12 +48,18 @@ def add_comment_to_feature(request, pk):
 
 @login_required
 def feature_report(request, pk=id):
+    
     features = FeatureTicket.objects.filter(id=pk)
     
-    # Query OrderLineItem quantity to render upvotes
-    orders = OrderLineItem.objects.filter(feature=pk).aggregate(Sum('quantity'))
-    
-    return render(request, "feature_report.html", {'features': features, 'orders': orders})
+    # return message if bug does not exist
+    if not features:
+        messages.success(request, "That feature does not exist. Please search again.")
+        return redirect('get_feature_listing') 
+ 
+    else:
+        # Query OrderLineItem quantity to render upvotes
+        orders = OrderLineItem.objects.filter(feature=pk).aggregate(Sum('quantity'))
+        return render(request, "feature_report.html", {'features': features, 'orders': orders})
 
 
 @login_required
