@@ -25,7 +25,7 @@ def add_to_cart(request, id):
         cart.pop(id)
     
     request.session['cart'] = cart
-    return redirect(reverse('index'))
+    return redirect(reverse('view_cart'))
 
     
     
