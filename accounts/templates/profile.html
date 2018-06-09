@@ -9,7 +9,7 @@
 </div>
 
 <div class="row">
-
+    
     <!--Profile info and user activity organised into tabs using js-->
     <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 col-xs-12">
         <ul class="nav nav-tabs">
@@ -19,19 +19,25 @@
             <li><a href="#bug">Bugs</a></li>
         </ul>
         <div class="tab-content">
-
+            
             <!--Profile Tab-->
             <div id="profile" class="tab-pane fade in">
                 <blockquote class='profile-blockquote'>
                     <div class="row">
                         <div class="col-md-4 col-xs-12 tab-center">
+                            
                             {% if user.profile.image != '' %}
-                            <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
-                            <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
+                            <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> 
+                            {% else %}
+                            <i class="fas fa-user-secret fa-4x profile user"></i> 
+                            {% endif %}
+                            
                             <p><strong>My Profile</strong></p>
+                            
                             {% if user.id is auth_user.id %}
                             <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile</button></a>
-
+                            {% else %} {% endif %}
+                            
                             <br>
                             <br>
                         </div>
@@ -52,17 +58,16 @@
                             <p><strong>Latest Alert</strong></strong>
                             </p>
                             {% if user.id is auth_user.id %}
-                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Update Alert</button></a> {% else %} {% endif %}
-
+                                <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Update Alert</button></a> 
+                            {% else %} 
+                            {% endif %}
                             <br>
                         </div>
                         <div class="col-md-10 col-xs-12">
                             <br>
-                            <!-- filter to remove alert is time has elapsed-->
+                            <!-- filter to remove alert if time has elapsed-->
                             <p><strong>Date Expires: {{ user.profile.alert_date | date:"l, jS F Y" }}</strong></p>
                             <p>{{ user.profile.alert|linebreaks }}</p>
-                            {% endif %}
-
                         </div>
                     </div>
                 </blockquote>

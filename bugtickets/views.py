@@ -6,7 +6,7 @@ from django.contrib import messages
 from  django.contrib.messages import success, warning, error
 from django.utils import timezone
 import datetime
-from .charts import chart_data, pie_chart_data
+# from .charts import chart_data, pie_chart_data
 
 
 @login_required

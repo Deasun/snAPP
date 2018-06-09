@@ -91,6 +91,7 @@ def user_profile(request, id):
     features = FeatureTicket.objects.filter(created_by=id)
     return render(request, 'profile.html', {"features": features, "bugs": bugs, "user": user, "auth_user": auth_user})
 
+
 """
 Logout
 """
