@@ -5,6 +5,7 @@
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
         <i class="fas fa-bug fa-4x profile"></i>
+        <h2 class='tactics'>Reported Bugs</h2>
     </div>
     <div class "col-xs-12">
         <p><strong>Find out how to use snAPP's bug reporting system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
@@ -60,7 +61,6 @@
 <div class="row">
 
     <div class="col-xs-12 col-md-8 col-md-offset-2">
-        <h2 class='tactics head'>Reported Bugs</h2>
         <p>snAPP is <u>your</u> platform and we are committed to accountability and transparency in how snAPP develops.</p>
         <p class="hidden-xs hidden-sm">Below are a list of the {{ bugs.count }} bugs reported by snAPP members to date, with some related information on what we're prioritising.<br>Use the 'search' facility to filter them.</p><br>
         <div class='scroll-table'>
@@ -124,11 +124,14 @@
     {% for bug in bug_votes %}
     <div class="col-xs-12 col-sm-4">
         <blockquote class="bug-blockquote">
-            <p><i class="fas fa-bug pre-login fa-2x"></i><strong><a href="{% url 'bug_report' bug.pk %}">#{{ bug.id }} - {{ bug.title }}</strong></a>
-            </p>
-            <p><strong>Bug Type:</strong> {{bug.bug_type }}</p>
-            <p><strong>Current status:</strong> {{ bug.status }}</p>
-            <p><i class="far fa-thumbs-up fa-2x"><label class='badge bug-badge'>{{ bug.votes }}</label></i></p>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p><i class="fas fa-bug pre-login fa-2x"></i><strong><a href="{% url 'bug_report' bug.pk %}">#{{ bug.id }} - {{ bug.title }}</strong></a></p>
+                    <p><strong>Bug Type:</strong> {{bug.bug_type }}</p>
+                    <p><strong>Current status:</strong> {{ bug.status }}</p>
+                    <p><i class="far fa-thumbs-up fa-2x"><label class='badge bug-badge'>{{ bug.votes }}</label></i></p>
+                </div>
+            </div>
         </blockquote>
     </div>
     {% endfor %}

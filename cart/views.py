@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse
-
+from featuretickets.models import FeatureTicket
 
 
 def view_cart(request):
@@ -24,8 +24,10 @@ def add_to_cart(request, id):
     else: 
         cart.pop(id)
     
+    feature = FeatureTicket.objects.get(pk=id)
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
+    
 
     
     

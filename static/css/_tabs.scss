@@ -9,13 +9,13 @@
 
 .tab-content {
     text-align: center;
-    @media (min-width: 992px) {
+    @media (min-width: 768px) {
         text-align: left;
     }
 }
 
 /*blockquote in tabs*/
-blockquote {
+.blockquote {
     min-height: 20rem;
     display: flex;
 }
@@ -68,6 +68,38 @@ div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(3) > a {
 }
 
 
+/*Bug Report Tabs colors*/
+#blue-tab {
+    background: $blue-opaque;
+    color: $off-white;
+}
+
+#red-tab {
+    background: $red-opaque;
+    color: $off-white;
+}
+
+#violet-tab {
+    background: $violet-opaque;
+    color: $off-white;
+}
+
+#lime-tab {
+    background: $lime-opaque;
+    color: $off-white;
+}
+
+
+
+/*Feature Report tabs colors*/
+// body > div:nth-child(4) > div.col-xs-12.col-sm-10.col-sm-offset-1.col-md-5.col-md-offset-1.head > ul > li.active > a {
+//     background: $violet-opaque;
+//     color: $off-white;
+// }
+
+
+
+
 .nav-tabs {
     border-bottom: none;
     font-size: 1.3rem;
@@ -78,4 +110,8 @@ div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(3) > a {
 
 .tab-center {
     text-align: center;
+}
+
+.tab-margin {
+    margin: 1rem;
 }

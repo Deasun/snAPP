@@ -6,12 +6,18 @@
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
         <i class="fas fa-ticket-alt fa-4x profile ticket"></i>
+        <h2 class="ticket">Pre-Checkout Review</h2>
     </div>
     <div class "col-xs-12">
         <p><strong>Review your snAPP requests.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
     <div class="col-xs-12">
-        <h2 class="ticket">Review Requests</h2>
+        <p><strong>Sub-total: £{{ total }}</strong></p>
+        {% if total > 0 %}
+        <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a> {% else %}
+        <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
+        <p>You have not selected any tickets to support yet!</p>
+        {% endif %}
     </div>
 </div>
 
@@ -47,10 +53,10 @@
 </div>
 
 
-<div class="row row-flex">
+<div class="row row-flex head">
     {% for item in cart_items %}
     <div class="col-xs-10 col-xs-offset-1 col-sm-5 col-offset-1 col-md-3 col-offset-3">
-        
+
         <!--Panel to display Feature Tickets in Cart-->
         <blockquote class="feature-blockquote cart-form">
             <div class="row">
@@ -74,17 +80,10 @@
                         <button type='submit' class='btn btn-cart'><span class="fas fa-edit" aria-hidden='true'></span>Amend</button>
                     </div>
                 </form>
-                {% endfor %}
-
-                <p><strong>Sub-total: £{{ total }}</strong></p>
-                {% if total > 0 %}
-                <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a> {% else %}
-                <a href="#" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a>
-                <p>You have not selected any tickets to support yet!</p>
-                {% endif %}
             </div>
         </blockquote>
     </div>
+    {% endfor %}
 </div>
 </div>
 

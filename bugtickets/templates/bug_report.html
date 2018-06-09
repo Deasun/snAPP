@@ -55,41 +55,62 @@
     </div>
 </div>
 
-<!--BugTicket Panel Display-->
-<div class="row panels">
-    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-5 col-md-offset-1 head">
-        <i class="far fa-thumbs-up fa-6x tactics">
-            <label class='badge comment-badge'>{{ bug.votes }}</label>
-        </i><br>
-        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-danger btn-md vote" type="submit" value="Upvote"></form>
-        <div class="panel">
-            <div class="panel-heading bug_panel">
-                <p><i class="fas fa-bug white fa-2x"></i><strong> #{{ bug.id }} - {{ bug.title }}</strong></p>
-            </div>
-            <div class="panel-body">
-                <p><strong>Reported by:</strong><a href="{% url 'profile' bug.created_by.id %}"> {{ bug.created_by }}</p>
-                <p><strong>Date:</strong> {{ bug.date_created }}</p>
-                <p class="feature"><strong>Current status:</strong> {{ feature.status }}</p>
-                <hr>
-                <p><strong>Bug Type:</strong> {{bug.bug_type }}</p>
-                <p><strong>Details:</strong> {{ bug.description }}</p>
-            </div>
-            <div class="panel-footer">
-                <div class="row">
-                    <div class="col-xs-4 list-icons">
-                        <i class="far fa-thumbs-up fa-2x">
-                        <label class='badge bug-badge'>{{ bug.votes }}</label>
-                        </i>
+
+
+<!--BugTicket UpVote header-->
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-1 head">
+        <i class="far fa-thumbs-up fa-6x tactics"><label class='badge comment-badge'>{{ bug.votes }}</label></i><br>
+        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}
+            <input class="btn btn-danger btn-md vote" type="submit" value="Upvote">
+        </form>
+
+
+        <!--Bug Report Tab-->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#request" id="blue-tab">Bug Report</a></li>
+            <li><a href="#progress" id="red-tab">snAPP Bug Fix</a></li>
+        </ul>
+        <div class="tab-content">
+            <!--Bug report tab-->
+            <div id="request" class="tab-pane fade in active">
+                <blockquote class='bug-blockquote'>
+                    <div class="tab-margin">
+                        <p class="payment"><i class="fas fa-ticket-alt fa-2x"></i><strong> #{{ bug.id }} - {{ bug.title }}</strong></p>
+                        <br>
+                        <p><strong>Requested by:</strong> {{ bug.created_by }}</p>
+                        <p><strong>Date:</strong> {{ bug.date_created }}</p>
+                        <p class="payment"><strong>Current status:</strong> {{ bug.status }}</p><br>
+                        <button class="toggle-button btn btn-danger">Details</button><br><br>
+                        <div class="toggle">
+                            <p><strong>Bug Type:</strong> {{ bug.bug_type }}</p>
+                            <p>{{ bug.description|linebreaks }}</p>
+                        </div>
                     </div>
-                    <div class="col-xs-4 list-icons">
-                        <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}<input class="btn btn-danger btn-sm vote" type="submit" value="Upvote"></form>
+                </blockquote>
+            </div>
+            <!--snAPP bug fix progress-->
+            <div id="progress" class="tab-pane fade in">
+                <blockquote class='alert-blockquote'>
+                    <div class="tab-margin">
+                        <p class="tactics"><i class="fas fa-ticket-alt bug fa-2x"></i><strong> #{{ bug.id }} - {{ bug.title }}</strong></p>
+                        <br>
+                        <p><strong>Requested by:</strong> {{ bug.created_by }}</p>
+                        <p><strong>Date:</strong> {{ bug.date_created }}</p>
+                        <p class="tactics"><strong>Current status:</strong> {{ bug.status }}</p><br>
+                        <button class="toggle-button btn btn-danger">Details</button><br><br>
+                        <div class="toggle">
+                            <p><strong>Bug Type:</strong> {{ bug.bug_type }}</p>
+                            <p>{{ bug.report|linebreaks }}</p>
+                        </div>
                     </div>
-                </div>
+                </blockquote>
             </div>
         </div>
     </div>
 
-    <!--Comments List-->
+
+    <!--Comments column header-->
     <div class="col-xs-12 col-md-5 head">
         <i class="far fa-comments tactics fa-6x">
             <label class='badge comment-badge'>{{ bug.comments.count }}</label>
@@ -100,26 +121,23 @@
             <article class="comment">
                 <a class="comment-img comment-pic tactics" href="#non">
                    <img src='{{MEDIA_URL}}{{ comment.author.profile.image }}' alt="" width="50" height="50">
-                </a> 
+                </a>
                 <div class="comment-body">
                     <!--Style admin comments differently from user comments-->
                     {% if 'admin' in comment.author.username %}
                     <div class="admin-text">
-                    {% else %}
-                    <div class="text">
-                    {% endif %}
-                        <p>{{ comment.text|linebreaks }}</p>
-                        <p class="attribution">by <a href="{% url 'profile' comment.author.id %}">{{ comment.author }}</a> on {{ comment.date_created }}</p>
+                        {% else %}
+                        <div class="text">
+                            {% endif %}
+                            <p>{{ comment.text|linebreaks }}</p>
+                            <p class="attribution">by <a href="{% url 'profile' comment.author.id %}">{{ comment.author }}</a> on {{ comment.date_created }}</p>
+                        </div><br>
                     </div>
-                    <br>
                 </div>
             </article>
             {% endfor %}
         </section>
     </div>
 </div>
-</div>
 
-{% endfor %}
-
-{% endblock %}
+{% endfor %} {% endblock %}

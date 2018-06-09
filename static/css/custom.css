@@ -12,6 +12,9 @@ h5 {
   color: #fff;
   font-family: Lato, sans-serif; }
 
+h6 {
+  color: #fff; }
+
 h1,
 td a,
 div a {
@@ -664,7 +667,7 @@ td {
   left: 5%; }
 
 embed {
-  margin-top: -8rem;
+  margin-top: 4rem;
   padding-top: 4rem; }
 
 /*alignment in tabs*/
@@ -673,12 +676,12 @@ embed {
 
 .tab-content {
   text-align: center; }
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
     .tab-content {
       text-align: left; } }
 
 /*blockquote in tabs*/
-blockquote {
+.blockquote {
   min-height: 20rem;
   display: flex; }
 
@@ -718,6 +721,24 @@ div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(3) > a {
   background: rgba(27, 143, 206, 0.4);
   color: #d8d8d8; }
 
+/*Bug Report Tabs colors*/
+#blue-tab {
+  background: rgba(27, 143, 206, 0.4);
+  color: #d8d8d8; }
+
+#red-tab {
+  background: rgba(217, 83, 79, 0.4);
+  color: #d8d8d8; }
+
+#violet-tab {
+  background: rgba(179, 123, 255, 0.4);
+  color: #d8d8d8; }
+
+#lime-tab {
+  background: rgba(100, 210, 159, 0.4);
+  color: #d8d8d8; }
+
+/*Feature Report tabs colors*/
 .nav-tabs {
   border-bottom: none;
   font-size: 1.3rem; }
@@ -727,6 +748,9 @@ div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(3) > a {
 
 .tab-center {
   text-align: center; }
+
+.tab-margin {
+  margin: 1rem; }
 
 .tooltip {
   position: relative;
