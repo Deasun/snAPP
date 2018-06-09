@@ -24,7 +24,7 @@
             <div id="profile" class="tab-pane fade in">
                 <blockquote class='profile-blockquote'>
                     <div class="row">
-                        <div class="col-md-4 col-xs-12 tab-center">
+                        <div class="col-md-5 col-xs-12 tab-center">
                             
                             {% if user.profile.image != '' %}
                             <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> 
@@ -41,7 +41,7 @@
                             <br>
                             <br>
                         </div>
-                        <div class="col-md-8 col-xs-12">
+                        <div class="col-md-7 col-xs-12">
                             <p><strong>union:</strong> {{ user.profile.trade_union }}</p>
                             <p><strong>email:</strong> {{ user.email }}</p>
                             <p><strong>About me:</strong><br>{{ user.profile.description|linebreaks }}</p>
@@ -53,7 +53,7 @@
             <div id="alert" class="tab-pane fade in active">
                 <blockquote class='alert-blockquote'>
                     <div class="row">
-                        <div class="col-md-2 col-xs-12 tab-center">
+                        <div class="col-md-4 col-xs-12 tab-center">
                             <i class="fas fa-exclamation fa-5x payment"></i>
                             <p><strong>Latest Alert</strong></strong>
                             </p>
@@ -63,7 +63,7 @@
                             {% endif %}
                             <br>
                         </div>
-                        <div class="col-md-10 col-xs-12">
+                        <div class="col-md-8 col-xs-12">
                             <br>
                             <!-- filter to remove alert if time has elapsed-->
                             <p><strong>Date Expires: {{ user.profile.alert_date | date:"l, jS F Y" }}</strong></p>
@@ -127,12 +127,12 @@
             <div id="bug" class="tab-pane fade in">
                 <blockquote class='bug-blockquote'>
                     <div class="row">
-                        <div class="col-md-2 col-xs-12 tab-center">
+                        <div class="col-md-3 col-xs-12 tab-center">
                             <i class="fas fa-bug fa-5x"></i>
                             <label class='badge bug-badge'>{{ user.user_bugs.count }}</label>
                             <p><strong>snAPP Bugs Reported</strong></p>
                         </div>
-                        <div class="col-md-10 col-xs-12">
+                        <div class="col-md-9 col-xs-12">
                             <br>
                             <table class="table table-condensed table-hover">
                                 <thead>
