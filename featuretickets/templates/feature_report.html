@@ -76,78 +76,88 @@
         <!--Calculate contributions to date-->
         <p class="feature">Total contributions: <strong>£{{ orders.quantity__sum|mul:feature.contribution|floatformat  }}</strong></p>
 
-        <!--FeatureTicket Display-->
-        <div class="col-xs-12 section-body">
-            <blockquote class='profile-blockquote'>
-                <p class="feature"><i class="fas fa-ticket-alt feature fa-2x"></i><strong> #{{ feature.id }} - {{ feature.title }} -- TICKET</strong></p>
-                <p><strong>Requested by:</strong> {{ feature.created_by }}</p>
-                <p><strong>Date:</strong> {{ feature.date_created }}</p>
-                <p class="feature"><strong>Current status:</strong> {{ feature.status }}</p>
-                <br>
-                <br>
-                <button class="toggle-button btn btn-danger">Details</button>
-                <br>
-                <br>
-                <div class="toggle">
-                    <p><strong>Feature Type:</strong> {{ feature.feature_type }}</p>
-                    <p>{{ feature.description|linebreaks }}</p>
-                    
-                    <!--Purchase FeatureTicket Form-->
-                    <!--Display the number of tickets needed to reach target-->
-                    <p class="feature"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
-                    
-                    <!--Form to add tickets to cart-->
-                    <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                        {% csrf_token %}
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
-                                <br>
-                                <br>
-                                <button class="btn btn-success" type="submit">Support</button>
+
+
+
+        <!--Feature Request & Proposal tab format-->
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#request">Member Request</a></li>
+            <li><a href="#progress">snAPP Progress Report</a></li>
+        </ul>
+        <div class="tab-content">
+            <!--Member request tab-->
+            <div id="request" class="tab-pane fade in">
+                <blockquote class='profile-blockquote'>
+                    <div class="row">
+                        <div class="col-xs-11 col-xs-offset-1">
+                            <p class="feature">
+                                <i class="fas fa-ticket-alt feature fa-2x"></i><strong> #{{ feature.id }} - {{ feature.title }} -- TICKET</strong></p>
+                            <br>
+                            <p><strong>Requested by:</strong> {{ feature.created_by }}</p>
+                            <p><strong>Date:</strong> {{ feature.date_created }}</p>
+                            <p class="feature"><strong>Current status:</strong> {{ feature.status }}</p>
+                            <button class="toggle-button btn btn-danger">Details</button>
+                            <div class="toggle">
+                                <p><strong>Feature Type:</strong> {{ feature.feature_type }}</p>
+                                <p>{{ feature.description|linebreaks }}</p>
+
+                                <!--Purchase FeatureTicket Form-->
+                                <!--Display the number of tickets needed to reach target-->
+                                <p class="feature"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
+
+                                <!--Form to add tickets to cart-->
+                                <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
+                                            <button class="btn btn-success" type="submit">Support</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </blockquote>
+            </div>
+
+            <!--snAPP Proposal tab-->
+            <div id="progress" class="tab-pane fade in active">
+                <blockquote class='feature-blockquote'>
+                    <div class="row">
+                        <div class="col-xs-11 col-xs-offset-1">
+                            <p class="user"><i class="fas fa-ticket-alt user fa-2x"></i><strong> #{{ feature.id }} - {{ feature.title }} -- snAPP PROPOSAL</strong></p>
+                            <p><strong>Start Date:</strong> {{ feature.date_started }}</p><br><br>
+                            <button class="toggle-button2 btn btn-danger">Details</button><br>
+                            <div class="toggle2">
+                                <p>{{ feature.report|linebreaks }}</p>
+
+                                <!--Purchase FeatureTicket Form-->
+                                <p class="user"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
+                                <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                                    {% csrf_token %}
+                                    <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="user"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2"><br><br>
+                                                <button class="btn btn-success" type="submit">Support</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </form>
+                                <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
                             </div>
                         </div>
-                    </form>
-                    <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
-                </div>
-            </blockquote>
+                    </div>
+                </blockquote>
+            </div>
         </div>
-
-        <!--snAPP Proposal Display-->
-        {% if feature.report != blank %}
-        <div class="col-xs-12 section-body">
-            <blockquote class='feature-blockquote'>
-                <p class="user"><i class="fas fa-ticket-alt user fa-2x"></i><strong> #{{ feature.id }} - {{ feature.title }} -- snAPP PROPOSAL</strong></p>
-                <p><strong>Start Date:</strong> {{ feature.date_started }}</p>
-                <br>
-                <br>
-                <button class="toggle-button2 btn btn-danger">Details</button>
-                <br>
-                <div class="toggle2">
-                    <p>{{ feature.report|linebreaks }}</p>
-
-                    <!--Purchase FeatureTicket Form-->
-                    <p class="user"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
-                    <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                        {% csrf_token %}
-                        <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                            {% csrf_token %}
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <p class="user"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
-                                    <br>
-                                    <br>
-                                    <button class="btn btn-success" type="submit">Support</button>
-                                </div>
-                            </div>
-                        </form>
-                    </form>
-                    <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
-                </div>
-            </blockquote>
-        </div>
-        {% else %} {% endif %}
     </div>
+
 
 
     <!--Comments-->
@@ -158,7 +168,7 @@
         <a class="btn btn-danger" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a>
         <section class="comments head scroll">
 
-            {% for comment in feature.feature_comments.all %} 
+            {% for comment in feature.feature_comments.all %}
             <article class="comment">
                 <a class="comment-img feature comment-pic" href="#">
                     <img src='{{MEDIA_URL}}{{ comment.author.profile.image }}' alt="" width="50" height="50">
@@ -167,19 +177,20 @@
                 <div class="comment-body">
                     {% if 'deasun' in comment.author.username %}
                     <div class="admin-text">
-                    {% else %}
-                    <div class="text">
-                    {% endif %}
-                        <p>{{ comment.text|linebreaks }}</p>
-                        <p class="attribution">by <a href="{% url 'profile' comment.author.id %}"> {{ comment.author }}</a> on {{ comment.date_created }}</p>
+                        {% else %}
+                        <div class="text">
+                            {% endif %}
+                            <p>{{ comment.text|linebreaks }}</p>
+                            <p class="attribution">by <a href="{% url 'profile' comment.author.id %}"> {{ comment.author }}</a> on {{ comment.date_created }}</p>
+                        </div>
+                        <br>
                     </div>
-                    <br>
-                </div>
             </article>
             {% endfor %}
         </section>
+        </div>
     </div>
 </div>
-
+</div>
 
 {% endfor %} {% endblock %}
