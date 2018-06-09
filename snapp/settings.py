@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'bugtickets',
     'featuretickets',
     'cart',
+    'search',
     'checkout',
     'mathfilters',
     'storages',
