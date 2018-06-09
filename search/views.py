@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.db.models import Q
 from featuretickets.models import FeatureTicket
-# from featuretickets.charts import feature_chart_data, feature_pie_chart_data
+from featuretickets.charts import feature_chart_data, feature_pie_chart_data
 from bugtickets.models import BugTicket
-# from bugtickets.charts import chart_data, pie_chart_data
+from bugtickets.charts import chart_data, pie_chart_data
 
 
 

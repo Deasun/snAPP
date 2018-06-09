@@ -79,7 +79,6 @@
                 <tbody>
                     {% for bug in bugs %}
                     <tr>
-
                         <td class="hidden-xs">{{ bug.id }}</td>
                         <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
                         <td>{{ bug.bug_type }}</td>

@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Max
 from django.contrib import auth, messages
 from django.utils import timezone
-# from .charts import feature_chart_data, feature_pie_chart_data
+from .charts import feature_chart_data, feature_pie_chart_data
 
 
 
