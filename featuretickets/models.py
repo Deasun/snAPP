@@ -21,7 +21,7 @@ class FeatureTicket(models.Model):
     links = models.URLField(blank=True)
     contribution = models.DecimalField(max_digits=8, decimal_places=2, default=10.00, editable=False)    
     target = models.DecimalField(max_digits=8, decimal_places=2, default=0.00)
-    report = models.TextField(null=True, blank=False)
+    report = models.TextField(null=True, blank=True)
 	 
     
     """
