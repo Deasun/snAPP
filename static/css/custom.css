@@ -661,6 +661,9 @@ td {
   border-left: 0.5rem solid #d9534f;
   background: rgba(217, 83, 79, 0.17); }
 
+.bug-top-3-blockquote {
+  background: #000000d4; }
+
 /*Bug Report Tabs colors*/
 #blue-tab {
   background: rgba(27, 143, 206, 0.4);
@@ -688,6 +691,10 @@ td {
 
 .tab-margin {
   margin: 1rem; }
+
+.bug-card-head {
+  color: #de2923c7;
+  font-family: "PT Sans Narrow", sans-serif; }
 
 .tooltip {
   position: relative;
