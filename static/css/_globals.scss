@@ -124,36 +124,44 @@ hr {
 
 // DELETE PLANELS?
 // panels
-.panel {
-    margin-top: 10%;
-    width: 80%;
-    margin-left: 10%;
-}
+// .panel {
+//     margin-top: 10%;
+//     width: 80%;
+//     margin-left: 10%;
+// }
 
-.contribute {
-    text-align: left;
-}
+// .contribute {
+//     text-align: left;
+// }
 
-.panel-body p {
-    color: #000;
-    text-align: justify;
-    font-family: 'Open Sans Condensed', sans-serif;
-}
+// .panel-body p {
+//     color: #000;
+//     text-align: justify;
+//     font-family: 'Open Sans Condensed', sans-serif;
+// }
 
-.panel-body {
-    background-color: #9bdafd;
-}
+// .panel-body {
+//     background-color: #9bdafd;
+// }
 
-.bug_panel {
-    background-color: $blue;
-    text-align: left;
-    padding-left: 2rem;
-}
+// .bug_panel {
+//     background-color: $blue;
+//     text-align: left;
+//     padding-left: 2rem;
+// }
 
 .feature_panel {
-    background-color: $lime;
+    background-color: #000000c4;
     text-align: left;
     padding-left: 2rem;
+    width: 75%;
+    @media (min-width: 768px) {
+        width: 50%;
+    }
+    @media (min-width: 992px) {
+        width: 75%;
+    }
+    margin-bottom: 2rem;
 }
 
 

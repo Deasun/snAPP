@@ -8,17 +8,18 @@
     </div>
     <div class "col-xs-12">
         <h2 class="feature">Feature Requests</h2>
-        <p>snAPP develops through your ideas and support.<br>
+        <p>snAPP develops features based on your requests.</p>
+        <p>You decide which ones are prioritised.</p>
             <p><strong>Find out how to use snAPP's feature request system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
 </div>
 
-<div class="row list-search-field hidden-md hidden-lg">
+<div class="row list-search-field">
     <div class="col-xs-12">
         <div class="display">
             <form action="{% url 'feature_search' %}" method='get'>
-                <input type='text' name='q'><br><br>
-                <button type='submit' class="btn btn-feature btn-lg">Search Requests</button>
+                <input type='text' name='q'>
+                <button type='submit' class="btn btn-feature btn-sm">Search Requests</button>
             </form>
         </div>
     </div>
@@ -66,24 +67,16 @@
 <!--Feature List Display-->
 <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-1">
-        <p class='banner banner-left'>Members' ideas and proposals</p>
-        <div class='hidden-xs hidden-sm'>
-            <div class="display">
-                <form action="{% url 'feature_search' %}" method='get'>
-                    <input type='text' name='q'>
-                    <button type='submit' class="btn btn-danger">Search</button>
-                </form>
-            </div>
-        </div>
         <div class='scroll-table'>
             <table class="table table-condensed table-hover">
+                <p class="feature_panel"><strong>snAPP members' priorities</strong></p>
                 <thead>
                     <tr class="tr-feature">
                         <th class="hidden-xs">#</th>
                         <th>Title</th>
                         <th class="hidden-xs hidden-sm">Date</th>
                         <th class="hidden-xs hidden-md">Status</th>
-                        <th>Type</th>
+                        <th class="hidden-xs visible-sm hidden-md visible-lg">Type</th>
                         <th></th>
                         <th class="hidden-xs"></th>
                     </tr>
@@ -94,7 +87,7 @@
                         <td class="hidden-xs">{{ feature.id }}</td>
                         <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title|truncatewords:3 }}</a></td>
                         <td class="hidden-xs hidden-sm">{{ feature.date_created }}</td>
-                        <td>{{ feature.status }}</td>
+                        <td class="hidden-xs hidden-md">{{ feature.status }}</td>
                         <td class="hidden-xs hidden-md">{{ feature.feature_type }}</td>
                         <td class="list-icons">
                             <i class="fas fa-bullseye fa-2x">
@@ -115,69 +108,79 @@
     </div>
 
     <!--Recent Feature Completed, Active & Seeking Support-->
-    <div class=" col-xs-10 col-xs-offset-1 col-md-4 col-lg-3">
-        <p class="banner banner-right">New at snAPP!</p>
-        <ul class="nav nav-tabs">
-            <li><a href="#complete">Latest Update</a></li>
-            <li class="active"><a href="#doing">Active</a></li>
-            <li><a href="#new">New</a></li>
-        </ul>
-        <div class="tab-content tab-center">
-            <div id="complete" class="tab-pane fade in">
-                <blockquote class="feature-blockquote">
-                    <div class="row">
-                        {% for next in next_feature %}
-                        <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' next.pk %}">#{{ next.id }} - {{ next.title }}</strong></a>
-                        </p>
-                        <p><img class='comment-pic' src='{{MEDIA_URL}}{{ next.created_by.profile.image }}' alt="" width="50" height="50">
-                            <br>
-                            <a href="{% url 'profile' next.created_by.id %}"><strong>{{ next.created_by }}</strong></a></p><br>
-                        <p><strong>Feature Type:</strong> {{next.feature_type }}</p>
-                        <p>{{ next.description|truncatewords:30 }}</p>
-                        {% endfor %}
+    <div class=" col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-1">
+        <div class="row">
+            <div class="col-xs-12">
+                
+                <ul class="nav nav-tabs">
+                    <p class="feature_panel"><strong>What's the lastest?</strong></p>
+                    <li><a href="#complete" id="violet-tab">Update</a></li>
+                    <li class="active"><a href="#doing" id="blue-tab">In Progress</a></li>
+                    <li><a href="#new" id="red-tab">Brand New</a></li>
+                </ul>
+                <div class="tab-content tab-center">
+                    <div id="complete" class="tab-pane fade in">
+                        <blockquote class="profile-blockquote">
+                            <div class="row">
+                                {% for next in next_feature %}
+                                <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' next.pk %}">#{{ next.id }} - {{ next.title }}</strong></a>
+                                </p>
+                                <p><img class='comment-pic' src='{{MEDIA_URL}}{{ next.created_by.profile.image }}' alt="" width="50" height="50">
+                                    <br>
+                                    <a href="{% url 'profile' next.created_by.id %}"><strong>{{ next.created_by }}</strong></a></p><br>
+                                <p><strong>Feature Type:</strong> {{next.feature_type }}</p>
+                                <p>{{ next.description|truncatewords:30 }}</p>
+                                {% endfor %}
+                            </div>
+                        </blockquote>
                     </div>
-                </blockquote>
+                    <div id="doing" class="tab-pane fade in active">
+                        <blockquote class='bug-blockquote'>
+                            <div class="row">
+                                {% for latest in latest_feature %}
+                                <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' latest.pk %}">#{{ latest.id }} - {{ latest.title }}</strong></a>
+                                </p>
+                                <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"><br>
+                                    <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
+                                <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
+                                <p>{{ latest.description|truncatewords:30 }}</p>
+                                {% endfor %}
+                            </div>
+                        </blockquote>
+                    </div>
+                    <div id="new" class="tab-pane fade in">
+                        <blockquote class='alert-blockquote'>
+                            <div class="row">
+                                {% for random in random_feature %}
+                                <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' random.pk %}">#{{ random.id }} - {{ random.title }}</strong></a>
+                                </p>
+                                <p><img class='comment-pic' src='{{MEDIA_URL}}{{ random.created_by.profile.image }}' alt="" width="50" height="50">
+                                    <br>
+                                    <a href="{% url 'profile' random.created_by.id %}"><strong>{{ random.created_by }}</strong></a></p><br>
+                                <p><strong>Feature Type:</strong> {{random.feature_type }}</p>
+                                <p>{{ random.description|truncatewords:30 }}</p>
+                                {% endfor %}
+                            </div>
+                        </blockquote>
+                    </div>
+                </div>
             </div>
-            <div id="doing" class="tab-pane fade in active">
-                <blockquote class='alert-blockquote'>
-                    <div class="row">
-                        {% for latest in latest_feature %}
-                        <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' latest.pk %}">#{{ latest.id }} - {{ latest.title }}</strong></a>
-                        </p>
-                        <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"><br>
-                            <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
-                        <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
-                        <p>{{ latest.description|truncatewords:30 }}</p>
-                        {% endfor %}
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs">
+                    <p class="feature_panel"><strong>How snAPP is developing</strong></p>
+                    <li><a href="#activity" id="lime-tab">Our Work</a></li>
+                    <li class="active"><a href="#requests" id="lime-tab">Your Requests</a></li>
+                </ul>
+                <div class="tab-content tab-center">
+                    <div id="activity" class="tab-pane fade in">
+                        <embed type="image/svg+xml" src={{feature_pie_chart_data|safe}} style='max-width:900px' />
                     </div>
-                </blockquote>
-            </div>
-            <div id="new" class="tab-pane fade in">
-                <blockquote class='bug-blockquote'>
-                    <div class="row">
-                        {% for random in random_feature %}
-                        <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' random.pk %}">#{{ random.id }} - {{ random.title }}</strong></a>
-                        </p>
-                        <p><img class='comment-pic' src='{{MEDIA_URL}}{{ random.created_by.profile.image }}' alt="" width="50" height="50">
-                            <br>
-                            <a href="{% url 'profile' random.created_by.id %}"><strong>{{ random.created_by }}</strong></a></p><br>
-                        <p><strong>Feature Type:</strong> {{random.feature_type }}</p>
-                        <p>{{ random.description|truncatewords:30 }}</p>
-                        {% endfor %}
+                    <div id="requests" class="tab-pane fade in active">
+                        <embed type="image/svg+xml" src={{feature_chart_data|safe}} style='max-width:900px' />
                     </div>
-                </blockquote>
+                </div>
             </div>
         </div>
-    </div>
-
-    <!--Feature Charts-->
-    <div class="col-xs-12 col-md-6">
-        <p class="banner banner-left">Activity Chart:<br>What you're proposing</p>
-        <embed type="image/svg+xml" src={{feature_pie_chart_data|safe}} style='max-width:700px' />
-    </div>
-    <div class="col-xs-12 col-md-6">
-        <p class="banner banner-right">Activity Chart:<br>What we're building & fixing</p>
-        <embed type="image/svg+xml" src={{feature_chart_data|safe}} style='max-width:700px' />
     </div>
 
     {% endblock %}

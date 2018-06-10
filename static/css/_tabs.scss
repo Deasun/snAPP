@@ -42,30 +42,6 @@
     background: $red-opaquer;
 }
 
-/*Profile and Feature listing tabs*/
-div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(1)>a {
-    background: $violet-opaque;
-    color: $off-white;
-
-}
-
-div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(2)>a,
-div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(2) > a {
-    background: $red-opaque;
-    color: $off-white;
-}
-
-div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(3)>a,
-div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(1) > a {
-    background: $lime-opaque;
-    color: $off-white;
-}
-
-div.col-md-7.col-md-offset-1.col-xs-12>ul>li:nth-child(4)>a,
-div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(3) > a {
-    background: $blue-opaque;
-    color: $off-white;
-}
 
 
 /*Bug Report Tabs colors*/
@@ -91,21 +67,11 @@ div.col-xs-10.col-xs-offset-1.col-md-4.col-lg-3 > ul > li:nth-child(3) > a {
 
 
 
-/*Feature Report tabs colors*/
-// body > div:nth-child(4) > div.col-xs-12.col-sm-10.col-sm-offset-1.col-md-5.col-md-offset-1.head > ul > li.active > a {
-//     background: $violet-opaque;
-//     color: $off-white;
-// }
-
-
-
-
 .nav-tabs {
     border-bottom: none;
     font-size: 1.3rem;
-    @media (min-width: 992px) {
-        margin-top: 4rem;
-    }
+    margin-top: 5rem;
+    
 }
 
 .tab-center {
