@@ -43,7 +43,7 @@ def add_comment_to_feature(request, pk):
             return redirect('feature_report', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, "add_comments_to_feature_form.html", {'form': form})
+    return render(request, "add_comments_to_feature_form.html", {'form': form, 'post': post})
 
 
 @login_required

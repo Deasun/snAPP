@@ -98,7 +98,7 @@ def add_comment_to_bug(request, pk):
             return redirect('bug_report', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, "add_comments_to_bug_form.html", {'form': form})
+    return render(request, "add_comments_to_bug_form.html", {'form': form, 'post': post})
 
 
 @login_required
