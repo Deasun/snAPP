@@ -180,44 +180,6 @@ hr {
     .feature_panel {
       width: 75%; } }
 
-.bug-badge {
-  background-color: #d9534f;
-  font-size: 1rem;
-  font-family: Lato, sans-serif;
-  position: relative;
-  top: 1rem;
-  left: -4rem; }
-  @media (min-width: 992px) {
-    .bug-badge {
-      top: -2rem;
-      left: 4rem; } }
-
-.feature-badge {
-  background-color: #d9534f;
-  font-size: 1.5rem;
-  font-family: Lato, sans-serif;
-  position: relative;
-  top: 1rem;
-  left: -4rem; }
-  @media (min-width: 992px) {
-    .feature-badge {
-      top: -2rem;
-      left: -3rem; } }
-
-.target-badge {
-  margin-left: -100px;
-  margin-bottom: -85px;
-  background-color: #d9534f;
-  font-size: 2rem;
-  font-family: Lato, sans-serif; }
-
-.comment-badge {
-  background-color: #d9534f;
-  font-size: 2rem;
-  font-family: Lato, sans-serif;
-  margin-left: -40px;
-  margin-bottom: -20px; }
-
 .profile-pic {
   border: 0.5rem solid #b37bff;
   border-radius: 50%;
@@ -630,6 +592,9 @@ td {
   top: 3rem;
   left: 5%; }
 
+embed {
+  margin-right: 1rem; }
+
 /*alignment in tabs*/
 .list-head {
   margin-top: 4rem; }
@@ -730,5 +695,50 @@ td {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1; }
+
+.bug-badge {
+  background-color: #d9534f;
+  font-size: 1rem;
+  font-family: Lato, sans-serif;
+  position: relative;
+  top: 1rem;
+  left: -2rem; }
+  @media (min-width: 992px) {
+    .bug-badge {
+      top: -1rem;
+      left: 1rem; } }
+  @media (min-width: 1200px) {
+    .bug-badge {
+      top: 1rem;
+      left: -2rem; } }
+
+.feature-badge {
+  background-color: #d9534f;
+  font-size: 1rem;
+  font-family: Lato, sans-serif;
+  position: relative;
+  top: 1rem;
+  left: -5rem; }
+  @media (min-width: 992px) {
+    .feature-badge {
+      top: 1rem;
+      left: -4rem; } }
+
+.target-badge {
+  margin-left: -100px;
+  margin-bottom: -85px;
+  background-color: #d9534f;
+  font-size: 2rem;
+  font-family: Lato, sans-serif; }
+
+.comment-badge {
+  background-color: #d9534f;
+  font-size: 2rem;
+  font-family: Lato, sans-serif;
+  margin-left: -40px;
+  margin-bottom: -20px;
+  position: relative;
+  top: 2rem;
+  left: 1rem; }
 
 /*# sourceMappingURL=custom.css.map */

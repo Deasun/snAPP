@@ -166,54 +166,6 @@ hr {
 
 
 
-// badges
-.bug-badge {
-    background-color: $red;
-    font-size: 1rem;
-    font-family: $font-stack-2;
-    position: relative;
-    top: 1rem;
-    left: -4rem;
-    @media (min-width: 992px) {
-        top: -2rem;
-        left: 4rem;
-    }
-}
-
-
-.feature-badge {
-    background-color: $red;
-    font-size: 1.5rem;
-    font-family: $font-stack-2;
-    position: relative;
-    top: 1rem;
-    left: -4rem;
-    @media (min-width: 992px) {
-    top: -2rem;
-    left: -3rem;;
-    }
-}
-
-
-.target-badge {
-    margin: {
-        left: -100px;
-        bottom: -85px;
-    }
-    background-color: $red;
-    font-size: 2rem;
-    font-family: Lato, sans-serif;
-}
-
-.comment-badge {
-    background-color: $red;
-    font-size: 2rem;
-    font-family: $font-stack-2;
-    margin: {
-        left: -40px;
-        bottom: -20px;
-    }
-}
 
 
 // images
