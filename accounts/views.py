@@ -7,9 +7,13 @@ from accounts.models import Profile
 from bugtickets.models import BugTicket
 from featuretickets.models import FeatureTicket
 
+
+
+
 """
 Home Page
 """
+
 def index(request):
     """
     Return the home page
