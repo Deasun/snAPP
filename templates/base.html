@@ -15,11 +15,9 @@
 
     <!--jQuery, Bootstrap JS-->
     {% include 'base/js.html' %} 
+    
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
     
-    <!--{% block head_js %}-->
-    <!--{% endblock head_js %}-->
-
     <!--Custom CSS styles-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' />
 </head>
@@ -103,6 +101,8 @@
             </div>
         </div>
         {% endif %}
+        
+        
     </div>
 
     
@@ -131,6 +131,14 @@
         </div>
     </footer>
 
+
+        {% for alert in profile %}
+        <div class="snapp-alert snapp-alert-background">
+                <a  href="{% url 'profile' alert.user.id %}"><img class="alert-img comment-pic tactics hidden-xs hidden-sm" src='{{MEDIA_URL}}{{ alert.image }}' alt="" width="50" height="50">
+                <strong>{{ alert.user.username }}, Deadline: {{ alert.alert_date}}</strong></a>
+                <div class='marquee'>{{ alert.alert }}</div>
+        </div>
+        {% endfor %}
 
 
 

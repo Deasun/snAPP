@@ -1,5 +1,6 @@
 /*colours*/
 /*fonts*/
+/*shadows*/
 h1,
 h2,
 h3,
@@ -107,9 +108,6 @@ a:hover {
   margin-left: 1rem;
   margin-right: 1rem; }
 
-.alert {
-  text-align: center; }
-
 .knowledge {
   color: #b37bff; }
 
@@ -166,19 +164,6 @@ hr {
   @media (min-width: 768px) {
     hr {
       width: 50%; } }
-
-.feature_panel {
-  background-color: #000000c4;
-  text-align: left;
-  padding-left: 2rem;
-  width: 75%;
-  margin-bottom: 2rem; }
-  @media (min-width: 768px) {
-    .feature_panel {
-      width: 50%; } }
-  @media (min-width: 992px) {
-    .feature_panel {
-      width: 75%; } }
 
 .profile-pic {
   border: 0.5rem solid #b37bff;
@@ -700,6 +685,7 @@ embed {
   background-color: #d9534f;
   font-size: 1rem;
   font-family: Lato, sans-serif;
+  box-shadow: 3px 3px black;
   position: relative;
   top: 1rem;
   left: -2rem; }
@@ -716,6 +702,7 @@ embed {
   background-color: #d9534f;
   font-size: 1rem;
   font-family: Lato, sans-serif;
+  box-shadow: 3px 3px black;
   position: relative;
   top: 1rem;
   left: -5rem; }
@@ -728,17 +715,78 @@ embed {
   margin-left: -100px;
   margin-bottom: -85px;
   background-color: #d9534f;
+  box-shadow: 3px 3px black;
   font-size: 2rem;
   font-family: Lato, sans-serif; }
 
 .comment-badge {
   background-color: #d9534f;
   font-size: 2rem;
+  box-shadow: 3px 3px black;
   font-family: Lato, sans-serif;
   margin-left: -40px;
   margin-bottom: -20px;
   position: relative;
   top: 2rem;
   left: 1rem; }
+
+.alert-warning {
+  color: #000000;
+  background-color: #e26e1bfa;
+  border-color: #000000; }
+
+.alert {
+  text-align: center;
+  width: 103%;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  left: -3px; }
+
+.snapp-alert {
+  text-align: left;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  bottom: 63px;
+  box-shadow: 3px 3px black;
+  margin-bottom: 1rem; }
+  @media (min-width: 992px) {
+    .snapp-alert {
+      width: 26%;
+      height: 10rem;
+      left: -1rem;
+      top: 5%; } }
+  @media (min-width: 1200px) {
+    .snapp-alert {
+      width: 24%;
+      top: 21%; } }
+
+.snapp-alert-background {
+  color: #ffffff;
+  background-color: #631210ed;
+  padding-top: .5rem;
+  padding-right: .5rem;
+  padding-left: 2.5rem;
+  padding-bottom: .5rem;
+  overflow: hidden; }
+
+@media (min-width: 992px) {
+  background-color: #d9534f80; }
+.snapp-alert a {
+  font-family: "Open Sans Condensed", sans-serif;
+  color: #fff;
+  font-weight: 600; }
+
+.marquee {
+  overflow: hidden;
+  font-family: "Open Sans Condensed", sans-serif;
+  font-weight: 600; }
+
+.comment-img {
+  float: left;
+  margin-right: 5px;
+  border-radius: 5%;
+  overflow: hidden; }
 
 /*# sourceMappingURL=custom.css.map */

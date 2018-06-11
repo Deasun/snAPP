@@ -14,7 +14,9 @@ def index(request):
     """
     Return the home page
     """
-    return render(request, 'index.html')
+    # render random alerts
+    profile = Profile.objects.all().order_by('?')[:1]
+    return render(request, 'index.html', {"profile": profile})
 
 
 """

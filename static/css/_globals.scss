@@ -22,11 +22,7 @@ a:hover {
     }
 }
 
-// hover effects
-// messages
-.alert {
-    text-align: center;
-}
+
 
 // themes
 .knowledge {
@@ -69,8 +65,6 @@ a:hover {
 }
 
 
-
-
 .section-head {
     text-align: left;
     margin-top: 3rem;
@@ -80,8 +74,6 @@ a:hover {
 .tab-content {
     text-align: left;
 }
-
-
 
 
 // List pages
@@ -119,53 +111,6 @@ hr {
         width: 50%;
     }
 }
-
-
-
-// DELETE PLANELS?
-// panels
-// .panel {
-//     margin-top: 10%;
-//     width: 80%;
-//     margin-left: 10%;
-// }
-
-// .contribute {
-//     text-align: left;
-// }
-
-// .panel-body p {
-//     color: #000;
-//     text-align: justify;
-//     font-family: 'Open Sans Condensed', sans-serif;
-// }
-
-// .panel-body {
-//     background-color: #9bdafd;
-// }
-
-// .bug_panel {
-//     background-color: $blue;
-//     text-align: left;
-//     padding-left: 2rem;
-// }
-
-.feature_panel {
-    background-color: #000000c4;
-    text-align: left;
-    padding-left: 2rem;
-    width: 75%;
-    @media (min-width: 768px) {
-        width: 50%;
-    }
-    @media (min-width: 992px) {
-        width: 75%;
-    }
-    margin-bottom: 2rem;
-}
-
-
-
 
 
 // images

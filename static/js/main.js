@@ -33,7 +33,7 @@ $(document).ready(function() {
     });
 
     /*Hover over tabs and icons*/
-    $('.tab-pane, .tab_pane>p, i, .stick-head')
+    $('.tab-pane, i, .stick-head')
         .mouseenter(function() {
             $(this).animate({ "opacity": ".7" }, 250)
         })
@@ -44,6 +44,23 @@ $(document).ready(function() {
     /*Reduce size/pinch on click*/
     $('i').click(function() {
         $(this).animate({"opacity": "1"}, 500)
+    })
+    
+    /*
+    Marquee function for member alerts - 
+    https://www.jqueryscript.net/animation/Text-Scrolling-Plugin-for-jQuery-Marquee.html
+    */
+    $('.marquee').marquee({
+      allowCss3Support: true,
+      css3easing: 'linear',
+      easing: 'linear',
+      delayBeforeStart: 500,
+      direction: 'left',
+      duplicated: true,
+      duration: 10000,
+      gap: 80,
+      pauseOnHover: true,
+      startVisible: false,
     })
 });
 
