@@ -33,17 +33,17 @@ $(document).ready(function() {
     });
 
     /*Hover over tabs and icons*/
-    $('.tab-pane, i, .stick-head')
+    $('.tab-pane, .tab_pane>p, i, .stick-head')
         .mouseenter(function() {
-            $(this).css({ "opacity": ".7" })
+            $(this).animate({ "opacity": ".7" }, 250)
         })
         .mouseleave(function() {
-            $(this).css({ "opacity": "1" })
+            $(this).animate({ "opacity": "1"}, 250)
         });
 
     /*Reduce size/pinch on click*/
     $('i').click(function() {
-        $(this).animate({opacity: "1"}, 500)
+        $(this).animate({"opacity": "1"}, 500)
     })
 });
 
