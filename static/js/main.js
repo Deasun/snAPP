@@ -5,7 +5,8 @@ $(document).ready(function() {
     $(".intro-2").hide(0).delay(1000).show(0);
     $(".intro-3").hide(0).delay(2000).show(0);
     $(".intro-4").hide(0).delay(3000).show(0);
-    $(".home-btn").hide(0).delay(4000).show(0);
+    $(".intro-5").hide(0).show(4000);
+    $(".home-btn").hide(0).delay(5000).show(0);
 
     /*toggle featureticket report details*/
     $(".toggle").hide()
@@ -47,7 +48,7 @@ $(document).ready(function() {
     })
     
     /*
-    Marquee function for member alerts - 
+    Marquee plug-in for scrolling member alerts - 
     https://www.jqueryscript.net/animation/Text-Scrolling-Plugin-for-jQuery-Marquee.html
     */
     $('.marquee').marquee({

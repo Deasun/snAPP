@@ -20,6 +20,8 @@
     
     <!--Custom CSS styles-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' />
+    
+    
 </head>
 
 <body class="text-center">
@@ -28,7 +30,7 @@
         <header class="masthead mb-auto">
             <div class="inner">
 
-                <!--Shooping cart display for logged-in user-->
+                <!--Shopping cart display for logged-in user-->
                 {% if user.is_authenticated %}
                 <a href="{% url 'view_cart' %}"><i class="fas fa-ticket-alt ticket-nav fa-2x"></i>
 
