@@ -78,9 +78,28 @@ pie_chart_data = pie_chart.render_data_uri()
 """
 Bar Charts for top 3 most upvotes
 """
+custom_bar_style = Style(
+    font_family='googlefont:Lato',
+    legend_font_size = 20,
+    value_font_size = 20,
+    tooltip_font_size = 30,
+    major_label_font_size = 20,
+    label_font_size = 20,
+    value_label_font_size = 30,
+    background='rgba(27, 143, 206, 0.17)',
+    plot_background='transparent',
+    foreground='#fff',
+    foreground_strong='rgba(27, 143, 206, 0.17)',
+    foreground_subtle='##1e6992',
+    opacity='.8',
+    opacity_hover='0',
+    transition='400ms ease-in',
+    )
+
+
 top_bugs = BugTicket.qs_by_no_upvotes(3)
 
-bar_chart = pygal.HorizontalBar()
+bar_chart = pygal.HorizontalBar(style=custom_bar_style, legend_box_size=18)
 bar_chart.title = 'Bugs with the highest # of members upvotes (ie. get it sorted!)'
 bar_chart.add(top_bugs[0].title, top_bugs[0].votes)
 bar_chart.add(top_bugs[1].title, top_bugs[1].votes)
