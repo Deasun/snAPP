@@ -72,3 +72,18 @@ pie_chart.add('Error Notices', int(BugTicket.qs_by_bug_type('Error Notices')))
 pie_chart.add('Calculation Errors', int(BugTicket.qs_by_bug_type('Calculation Errors')))
 pie_chart.add('Flow Problems', int(BugTicket.qs_by_bug_type('Flow Problems')))
 pie_chart_data = pie_chart.render_data_uri()  
+
+
+
+"""
+Bar Charts for top 3 most upvotes
+"""
+top_bugs = BugTicket.qs_by_no_upvotes(3)
+
+bar_chart = pygal.HorizontalBar()
+bar_chart.title = 'Bugs with the highest # of members upvotes (ie. get it sorted!)'
+bar_chart.add(top_bugs[0].title, top_bugs[0].votes)
+bar_chart.add(top_bugs[1].title, top_bugs[1].votes)
+bar_chart.add(top_bugs[2].title, top_bugs[2].votes)
+
+bar_chart_data = bar_chart.render_data_uri()

@@ -72,6 +72,12 @@ class BugTicket(models.Model):
         qs_bug_type = BugTicket.objects.filter(bug_type=bugtype)
         return qs_bug_type.count()
         
+    """Method to select top # of upvotes"""
+    @classmethod
+    def qs_by_no_upvotes(cls, num):
+        qs_most_upvotes = BugTicket.objects.all().order_by('-votes')[:num]
+        return qs_most_upvotes
+    
     """
     String Representation
     """

@@ -112,6 +112,7 @@
                     <p class="feature_panel"><strong>How snAPP is developing</strong></p>
                     <li><a href="#activity" id="blue-tab">Our Work</a></li>
                     <li class="active"><a href="#requests" id="blue-tab">Your Reports</a></li>
+                    <li><a href="#top-votes" id="blue-tab">What you want fixed</a></li>
                 </ul>
                 <div class="tab-content tab-center">
                     <div id="activity" class="tab-pane fade in">
@@ -120,19 +121,10 @@
                     <div id="requests" class="tab-pane fade in active">
                         <embed type="image/svg+xml" src={{chart_data|safe}} style='max-width:900px' />
                     </div>
+                    <div id="top-votes" class="tab-pane fade in">
+                        <embed type="image/svg+xml" src={{bar_chart_data|safe}} style='max-width:900px' />
+                    </div>
                 </div>
-            </div>
-            <div class="col-xs-12">
-                <p class="feature_panel strapline"><strong>Top 3 bugs reported by you:</strong></p>
-                <blockquote class="bug-blockquote bug-top-3-blockquote tab-content">
-                    <p class="alert"><i class="fas fa-bug fa-3x"></i></p>
-                    <hr>
-                    
-                    {% for bug in bug_votes %}
-                    <p><strong><a class="bug-card-head" href="{% url 'bug_report' bug.pk %}">{{ bug.title }} (#{{ bug.id }})</a></strong></p>
-                    <p><strong class="bug"> {{ bug.status }}</strong><i class="far fa-thumbs-up"><label class='badge bug-badge'>{{ bug.votes }}</label></i></p><br> 
-                    {% endfor %}
-                </blockquote>
             </div>
         </div>
     </div>

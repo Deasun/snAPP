@@ -36,6 +36,8 @@ class TestBugticket(TestCase):
     """
     Test valid ReportBugForm submission
     """
+
+
     def test_report_bug(self):
         report_form = ReportBugForm({
             'title': 'TestTitle', 
@@ -43,9 +45,10 @@ class TestBugticket(TestCase):
             'description': 'This is a test',
         })
         self.assertEquals(report_form.is_valid(), True)
-        # submit = report_form.save(commit=False) 
-        # submit.created_by = self.user 
-        # submit.save()
+        self.assertRedirects('/bugtickets/')
+        
+
+
 ######################################### 
 
     """
