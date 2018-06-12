@@ -62,23 +62,17 @@
             <label class='badge target-badge'>£{{ feature.target|floatformat  }}</label>
  
         <!--Filter records to show status of feature ticket and if it is active, display progress bar to target-->
-        </i><br> {% if orders.quantity__sum is not None and feature.status == 'active' %}
+        </i><br> {% if total > 0 and feature.status == 'active' %}
         <div class="progress">
-            <div class="progress-bar progress-bar-striped active dynamic-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:{{orders.quantity__sum|div:feature.target|mul:1000 }}%">
+            <div class="progress-bar progress-bar-striped active dynamic-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:{{total|div:feature.target|mul:1000 }}%">
             </div>
-            <p class="feature">Total contributions: <strong>£{{ orders.quantity__sum|mul:feature.contribution|floatformat  }}</strong></p>
         </div>
-        {% elif orders.quantity__sum is not None and feature.status == 'complete' %}
+        <p class="feature total">Total contributions: <strong>£{{ total|mul:feature.contribution|floatformat  }}</strong></p>
+        {% elif total > 0 and feature.status == 'complete' %}
         <h2>Feature added to snAPP!</h2>
         {% else %}
         <p class="payment"><strong>No snAPP tickets purchaed yet</strong></p>
         {% endif %}
-
-        <!--Calculate contributions to date-->
-       
-
-
-
 
         <!--Feature Request & Proposal tab format-->
         <ul class="nav nav-tabs">
@@ -86,6 +80,7 @@
             <li><a href="#progress" id="lime-tab">snAPP Progress Report</a></li>
         </ul>
         <div class="tab-content">
+            
             <!--Member request tab-->
             <div id="request" class="tab-pane fade in active">
                 <blockquote class='profile-blockquote'>
@@ -98,12 +93,17 @@
                         <div class="toggle">
                             <p><strong>Feature Type:</strong> {{ feature.feature_type }}</p>
                             <p>{{ feature.description|linebreaks }}</p>
-
-                            {% if orders.quantity is blank %}
+                            
+                            <!--Render # of tickets needed to reach target-->
+                            {% if total == 0 %}
                             <p class="user"><strong>No tickets purchased yet!</strong></p>
-                            {% else %} 
-                            <p class="user"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
+                            {% elif feature.target|div:10 <= total %} 
+                            <p class="user"><strong>Target reached!</strong></p>
+                            {% else %}
+                            <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
                             {% endif %}
+
+
                             <!--Form to add tickets to cart-->
                             <form method='POST' action="{% url 'add_to_cart' feature.id %}">
                                 {% csrf_token %}
@@ -130,12 +130,16 @@
                         <div class="toggle2">
                             <p>{{ feature.report|linebreaks }}</p>
 
-                            <!--Purchase FeatureTicket Form-->
-                            {% if orders.quantity is blank %}
+                            <!--Render # of tickets needed to reach target-->
+                            {% if total == 0 %}
                             <p class="user"><strong>No tickets purchased yet!</strong></p>
-                            {% else %} 
-                            <p class="user"><strong>{{ feature.target|div:10|sub:orders.quantity__sum|floatformat }} more tickets needed!</strong></p>
+                            {% elif feature.target|div:10 <= total %} 
+                            <p class="user"><strong>Target reached!</strong></p>
+                            {% else %}
+                            <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
                             {% endif %}
+                            
+                            <!--Purchase tickets form-->
                             <form method='POST' action="{% url 'add_to_cart' feature.id %}">
                                 {% csrf_token %}
                                 <form method='POST' action="{% url 'add_to_cart' feature.id %}">

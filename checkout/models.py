@@ -1,10 +1,7 @@
 from django.db import models
 import datetime
-# from django.conf import settings
 from featuretickets.models import FeatureTicket
-# import stripe
 
-# stripe.api_key = settings.STRIPE_SECRET
 
 class Order(models.Model):
     full_name = models.CharField(max_length=50, blank=False)

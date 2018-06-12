@@ -573,6 +573,9 @@ td {
 .progress-bar {
   background-color: #d9534f; }
 
+.total {
+  z-index: 101; }
+
 .chart-label {
   color: #fff;
   position: absolute;

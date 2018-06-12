@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 import datetime
 from django.utils import timezone
 from .choices import feature_list
+# from checkout.models import Order
 
 """
 Feature Ticket model
@@ -108,7 +109,7 @@ class FeatureTicket(models.Model):
         features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('-date_created')  
         return features
     
-    
+        
     """
     String Representation
     """
