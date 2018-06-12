@@ -297,14 +297,16 @@ hr {
 .icon-centered {
   vertical-align: center; }
 
-.home-btn {
+.home-btn,
+.home-btn-1 {
   margin-top: 2rem;
   background: transparent;
   color: #e26e1b;
   border: solid 0.15rem;
   border-color: #e26e1b; }
   @media (min-width: 768px) {
-    .home-btn {
+    .home-btn,
+    .home-btn-1 {
       margin-top: 8rem; } }
 
 .info {
@@ -730,18 +732,24 @@ embed {
   top: 2rem;
   left: 1rem; }
 
-.alert-warning {
-  color: #000000;
-  background-color: #e26e1bfa;
-  border-color: #000000; }
+.alert-warning,
+.alert-danger {
+  color: #f5f8fa;
+  font-family: "Open Sans Condensed", sans-serif;
+  background-color: #e26e1beb;
+  font-weight: 600;
+  font-size: 2rem; }
 
 .alert {
+  width: 90%;
   text-align: center;
-  width: 103%;
   position: fixed;
-  bottom: 0;
   z-index: 100;
-  left: -3px; }
+  left: 5%; }
+  @media (min-width: 768px) {
+    .alert {
+      width: 66%;
+      left: 16%; } }
 
 .snapp-alert {
   text-align: left;

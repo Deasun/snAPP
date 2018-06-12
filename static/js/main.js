@@ -6,7 +6,7 @@ $(document).ready(function() {
     $(".intro-3").hide(0).delay(2000).show(0);
     $(".intro-4").hide(0).delay(3000).show(0);
     $(".intro-5").hide(0).show(4000);
-    $(".home-btn").hide(0).delay(5000).show(0);
+    $(".home-btn-1").hide(0).delay(5000).show(0);
 
     /*toggle featureticket report details*/
     $(".toggle").hide()
