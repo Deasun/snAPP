@@ -309,12 +309,14 @@ hr {
 .icon-centered {
   vertical-align: center; }
 
-.home-btn,
-.home-btn-1 {
+.home-btn {
   background: transparent;
   color: #e26e1b;
   border: solid 0.15rem;
   border-color: #e26e1b; }
+
+.home-btn-1 {
+  margin-top: 2rem; }
 
 .info {
   color: #e26e1b; }
@@ -804,7 +806,8 @@ Need to override default settings on <embed>
   padding-right: .5rem;
   padding-left: 2.5rem;
   padding-bottom: .5rem;
-  overflow: hidden; }
+  overflow: hidden;
+  border: 1px solid #e26e1b; }
 
 @media (min-width: 992px) {
   background-color: #d9534f80; }
