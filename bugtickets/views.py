@@ -123,7 +123,6 @@ def get_bug_listing(request):
     
     return render(request, "bug_listing.html", {
             'bugs': bugs, 
-            # 'bug_votes': bug_votes, 
             'chart_data': chart_data, 
             'pie_chart_data': pie_chart_data,
             'bar_chart_data': bar_chart_data,
