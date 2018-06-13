@@ -20,10 +20,10 @@
 
 .home-btn,
 .home-btn-1 {
-    margin-top: 2rem;
+    // margin-top: 2rem;
     @media (min-width: 768px) {
         // margin-left: 5rem;
-        margin-top: 4rem;
+        // margin-top: 4rem;
     }
     background: transparent;
     color: #e26e1b;
@@ -37,10 +37,6 @@
     color: $orange;
 }
 
-.btn-feature {
-    background-color: $lime;
-    border-color: $lime;
-}
 
 .btn-cart {
     background-color: $amber;

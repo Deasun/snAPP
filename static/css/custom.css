@@ -87,6 +87,9 @@ caption {
 .modal p {
   color: #000; }
 
+.modal-footer p {
+  color: #fff; }
+
 .modal h4 {
   color: #fff;
   font-family: Anton, sans-serif; }
@@ -308,22 +311,13 @@ hr {
 
 .home-btn,
 .home-btn-1 {
-  margin-top: 2rem;
   background: transparent;
   color: #e26e1b;
   border: solid 0.15rem;
   border-color: #e26e1b; }
-  @media (min-width: 768px) {
-    .home-btn,
-    .home-btn-1 {
-      margin-top: 4rem; } }
 
 .info {
   color: #e26e1b; }
-
-.btn-feature {
-  background-color: #64d29f;
-  border-color: #64d29f; }
 
 .btn-cart {
   background-color: #e4d043; }
@@ -412,11 +406,16 @@ a .fa-cc-stipe {
   background-color: #64d29f; }
 
 .modal-footer {
-  background-color: #313231; }
+  background-color: #313231;
+  text-align: left;
+  color: #fff; }
 
 .ticket_modal_head {
   background-color: #e4d043;
   color: #000; }
+
+.group-modal {
+  width: 4rem; }
 
 #footer {
   position: fixed;

@@ -8,9 +8,15 @@
 
 .modal-footer {
     background-color: $charcoal;
+    text-align: left;
+    color: $white;
 }
 
 .ticket_modal_head {
     background-color: $amber;
     color: #000;
+}
+
+.group-modal {
+    width: 4rem;
 }
