@@ -52,6 +52,9 @@ p {
         size: 2rem
     }
     color: $white;
+    @media (min-width: 768px) {
+        font-size: 1.75rem;
+    }
 }
 
 caption {

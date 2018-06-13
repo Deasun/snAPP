@@ -65,7 +65,16 @@ def feature_report(request, pk=id):
                 return ticket_total
         
         total = feature_upvotes()
-            
+    
+    """Trying to render top voted features"""
+    # def get_top_features():
+    #     top_orders = OrderLineItem.objects.order_by().aggregate(Sum('quantity'))
+    #     return top_orders
+    
+    # top_3_features = get_top_features()
+    
+    # print(top_3_features)
+    
     return render(request, "feature_report.html", {'features': features, 'total': total})
 
 

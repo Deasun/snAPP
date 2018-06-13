@@ -67,7 +67,7 @@
     <div class="col-xs-12 col-md-6 col-md-offset-1">
         <div class='scroll-table'>
             <table class="table table-condensed table-hover">
-                <p class="feature_panel"><strong>snAPP members' priorities</strong></p>
+                <p class="feature_panel banner"><strong><i class="fas fa-cog fa-2x feature"></i> snAPP Requests</strong></p>
                 <thead>
                     <tr class="tr-feature">
                         <th class="hidden-xs">#</th>
@@ -111,7 +111,7 @@
             <div class="col-xs-12">
                 
                 <ul class="nav nav-tabs">
-                    <p class="feature_panel"><strong>What's the lastest?</strong></p>
+                    <p class="feature_panel banner"><strong><i class="fas fa-cog fa-2x feature"></i> What's the lastest?</strong></p>
                     <li><a href="#complete" id="violet-tab">Update</a></li>
                     <li class="active"><a href="#doing" id="blue-tab">In Progress</a></li>
                     <li><a href="#new" id="red-tab">Brand New</a></li>
@@ -119,6 +119,20 @@
                 <div class="tab-content tab-center">
                     <div id="complete" class="tab-pane fade in">
                         <blockquote class="profile-blockquote">
+                            <div class="row">
+                                {% for latest in latest_feature %}
+                                <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' latest.pk %}">#{{ latest.id }} - {{ latest.title }}</strong></a>
+                                </p>
+                                <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"><br>
+                                    <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
+                                <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
+                                <p>{{ latest.description|truncatewords:30 }}</p>
+                                {% endfor %}                                
+                            </div>
+                        </blockquote>
+                    </div>
+                    <div id="doing" class="tab-pane fade in active">
+                        <blockquote class='bug-blockquote'>
                             <div class="row">
                                 {% for next in next_feature %}
                                 <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' next.pk %}">#{{ next.id }} - {{ next.title }}</strong></a>
@@ -128,21 +142,7 @@
                                     <a href="{% url 'profile' next.created_by.id %}"><strong>{{ next.created_by }}</strong></a></p><br>
                                 <p><strong>Feature Type:</strong> {{next.feature_type }}</p>
                                 <p>{{ next.description|truncatewords:30 }}</p>
-                                {% endfor %}
-                            </div>
-                        </blockquote>
-                    </div>
-                    <div id="doing" class="tab-pane fade in active">
-                        <blockquote class='bug-blockquote'>
-                            <div class="row">
-                                {% for latest in latest_feature %}
-                                <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' latest.pk %}">#{{ latest.id }} - {{ latest.title }}</strong></a>
-                                </p>
-                                <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"><br>
-                                    <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
-                                <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
-                                <p>{{ latest.description|truncatewords:30 }}</p>
-                                {% endfor %}
+                                {% endfor %}                                
                             </div>
                         </blockquote>
                     </div>
@@ -165,16 +165,16 @@
             </div>
             <div class="col-xs-12">
                 <ul class="nav nav-tabs">
-                    <p class="feature_panel"><strong>How snAPP is developing</strong></p>
-                    <li><a href="#activity" id="lime-tab">Our Work</a></li>
-                    <li class="active"><a href="#requests" id="lime-tab">Your Requests</a></li>
+                    <p class="feature_panel banner"><strong><i class="fas fa-cog fa-2x feature"></i> How snAPP is developing</strong></p>
+                    <li><a href="#activity" id="lime-tab">Requests by theme</a></li>
+                    <li class="active"><a href="#requests" id="red-tab">Our monthly activity</a></li>
                 </ul>
                 <div class="tab-content tab-center">
                     <div id="activity" class="tab-pane fade in">
-                        <embed type="image/svg+xml" src={{feature_pie_chart_data|safe}} style='max-width:900px' />
+                        <embed class="lime-border" type="image/svg+xml" src={{feature_pie_chart_data|safe}} style='max-width:900px' />
                     </div>
                     <div id="requests" class="tab-pane fade in active">
-                        <embed type="image/svg+xml" src={{feature_chart_data|safe}} style='max-width:900px' />
+                        <embed class="red-border" type="image/svg+xml" src={{feature_chart_data|safe}} style='max-width:900px' />
                     </div>
                 </div>
             </div>

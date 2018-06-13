@@ -89,3 +89,24 @@
     color: #de2923c7;
     font-family: "PT Sans Narrow", sans-serif;
 }
+
+
+/*
+Borders for charts (non-blockquote)
+Need to override default settings on <embed>
+*/
+.violet-border {
+    border-left: .5rem solid $violet-opaque !important;
+}
+
+.blue-border {
+    border-left: .5rem solid $blue-opaque !important;
+}
+
+.red-border {
+    border-left: .5rem solid $red-opaque !important;
+}
+
+.lime-border {
+    border-left: .5rem solid $lime-opaque !important;
+}

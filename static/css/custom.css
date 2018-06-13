@@ -39,6 +39,9 @@ p {
   font-family: "PT Sans Narrow", sans-serif;
   font-size: 2rem;
   color: #fff; }
+  @media (min-width: 768px) {
+    p {
+      font-size: 1.75rem; } }
 
 caption {
   color: #000; }
@@ -281,6 +284,12 @@ hr {
 .head {
   margin-bottom: 3rem;
   margin-top: 3rem; }
+
+/*feature and bug listing section banners*/
+.banner {
+  text-align: left;
+  background: #0000009e;
+  padding: 1rem; }
 
 .icon-sections {
   margin-top: 4rem; }
@@ -561,7 +570,7 @@ td {
   margin-top: 10rem; }
   @media (min-width: 992px) {
     .scroll-table {
-      margin-top: 20rem; } }
+      margin-top: 5rem; } }
 
 .progress {
   height: 3rem;
@@ -650,6 +659,22 @@ embed {
 .bug-card-head {
   color: #de2923c7;
   font-family: "PT Sans Narrow", sans-serif; }
+
+/*
+Borders for charts (non-blockquote)
+Need to override default settings on <embed>
+*/
+.violet-border {
+  border-left: 0.5rem solid rgba(179, 123, 255, 0.4) !important; }
+
+.blue-border {
+  border-left: 0.5rem solid rgba(27, 143, 206, 0.4) !important; }
+
+.red-border {
+  border-left: 0.5rem solid rgba(217, 83, 79, 0.4) !important; }
+
+.lime-border {
+  border-left: 0.5rem solid rgba(100, 210, 159, 0.4) !important; }
 
 .tooltip {
   position: relative;

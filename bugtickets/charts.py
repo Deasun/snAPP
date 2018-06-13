@@ -13,7 +13,7 @@ custom_style = Style(
     major_label_font_size = 20,
     label_font_size = 20,
     value_label_font_size = 30,
-    background='rgba(27, 143, 206, 0.17)',
+    background='rgba(2, 2, 2, 0.5)',
     plot_background='transparent',
     foreground='#fff',
     foreground_strong='#fff',
@@ -53,7 +53,7 @@ custom_pie_style = Style(
     major_label_font_size = 20,
     label_font_size = 20,
     value_label_font_size = 30,
-    background='rgba(27, 143, 206, 0.17)',
+    background='rgba(2, 2, 2, 0.5)',
     plot_background='transparent',
     foreground='#fff',
     foreground_strong='rgba(27, 143, 206, 0.17)',
@@ -86,7 +86,7 @@ custom_bar_style = Style(
     major_label_font_size = 20,
     label_font_size = 20,
     value_label_font_size = 30,
-    background='rgba(27, 143, 206, 0.17)',
+    background='rgba(2, 2, 2, 0.5)',
     plot_background='transparent',
     foreground='#fff',
     foreground_strong='rgba(27, 143, 206, 0.17)',
@@ -100,7 +100,6 @@ custom_bar_style = Style(
 top_bugs = BugTicket.qs_by_no_upvotes(3)
 
 bar_chart = pygal.HorizontalBar(style=custom_bar_style, legend_box_size=18)
-bar_chart.title = 'Bugs with the highest # of members upvotes'
 bar_chart.add(top_bugs[0].title, top_bugs[0].votes)
 bar_chart.add(top_bugs[1].title, top_bugs[1].votes)
 bar_chart.add(top_bugs[2].title, top_bugs[2].votes)

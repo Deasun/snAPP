@@ -125,7 +125,9 @@
                 <blockquote class='feature-blockquote'>
                     <div class="tab-margin">
                         <p class="user"><i class="fas fa-ticket-alt user fa-2x"></i><strong> #{{ feature.id }} - {{ feature.title }}</strong></p>
-                        <p><strong>Start Date:</strong> {{ feature.date_started }}</p><br><br>
+                        <p><strong>Requested by:</strong> {{ feature.created_by }}</p>
+                        <p><strong>Start Date:</strong> {{ feature.date_started }}</p>
+                        <p class="user"><strong>Current status:</strong> {{ feature.status }}</p><br><br>
                         <button class="toggle-button2 btn btn-danger">Details</button><br>
                         <div class="toggle2">
                             <p>{{ feature.report|linebreaks }}</p>
