@@ -34,7 +34,7 @@
                 </div>
                 <div class="modal-body">
                     <p>Before making your contribution, ensure sure that you have chosen both the <strong>correct Features</strong> and the right number of <strong>snAPP tickets.</strong><br><br>
-                        <strong>Remember that 1 snAPP ticket = £9.99</strong><br><br> When your have reviewed your requests, click the button to enter your details & make your contribution.
+                        <strong>Remember that 1 snAPP ticket = £9.99</strong><br><br> When your have reviewed your requests, click the button to enter your details & make your contribution.<br><br>We're on it.
                     </p>
                 </div>
                 <div class="modal-footer">
@@ -62,8 +62,6 @@
             <div class="row">
                 <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' item.feature.pk %}">#{{ item.feature.id }} - {{ item.feature.title }}</strong></a>
                 </p>
-                <p><img class='comment-pic' src='{{MEDIA_URL}}{{ item.feature.created_by.profile.image }}' alt="" width="50" height="50">
-                    <a href="{% url 'profile' item.feature.created_by.id %}"><strong>{{ item.feature.created_by }}</strong></a></p><br>
                 <p><strong>Feature Type:</strong> {{item.feature.feature_type }}</p>
                 <p>1 snAPP ticket = £{{ item.feature.contribution }}</p>
                 <form class="form-inline" method='post' action="{% url 'adjust_cart' item.id %}">

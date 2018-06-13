@@ -397,7 +397,9 @@ a .fa-cc-stipe {
   margin-top: 3rem; }
 
 .cart-form {
-  text-align: center; }
+  text-align: left;
+  box-shadow: 6px 7px 16px black;
+  padding-left: 3rem; }
 
 .input-group-addon {
   background-color: #313231;
