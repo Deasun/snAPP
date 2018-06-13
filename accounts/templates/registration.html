@@ -8,20 +8,20 @@
 
 {% block content %}
 <div class="row list-head">
-    <div class="col-xs-12 list-head-img">
+    <div class="col-xs-12 col-md-4 col-md-push-4 list-head-img">
         <i class="fas fa-id-card fa-4x user profile"></i>
-    </div>
-    <div class "col-xs-12">
+        <h2 class="user">Register</h2>
         <p><strong>Join today.</strong></p>
     </div>
-    <div class="col-xs-12">
-        <h2 class="user">Register</h2>
-    </div>
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-md-4 col-md-pull-4">
         <form method='POST' class="registration">
             {% csrf_token %} {{ registration_form | as_bootstrap }}
             <button type="submit" class="btn btn-lg btn-success home-btn">Register</button>
         </form>
+    </div>
+    <div class="col-md-4 hidden-xs hidden-sm">
+        <a class="twitter-timeline hidden-sm" data-width="275" data-height="450" data-theme="dark" data-link-color="#E95F28" href="https://twitter.com/labourstart?ref_src=twsrc%5Etfw">Tweets by labourstart</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 </div>
 {% endblock %}
