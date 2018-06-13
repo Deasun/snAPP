@@ -1,12 +1,13 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Ticket Page{% endblock %} {% block page_heading %}Ticket{% endblock %} {% block content %}
 <div class="row list-head">
-    
+
     <!--Feature request section head and intro-->
     <div class="col-xs-12 col-md-4 col-md-push-4 list-head-img">
         <i class="fas fa-cog fa-4x profile feature"></i>
+        <h2 class="feature">Feature Request</h2>
         <p><strong>Remember to read our Reporting Guidelines before submitting a bug report.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
         <div class="col-xs-12">
-            
+
             <!--Modal for explanation of how feature requests work-->
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
@@ -46,7 +47,6 @@
                 <button type='submit' class="btn btn-feature btn-sm">Search Requests</button>
             </form>
         </div>
-        <h2 class="feature">Feature Request</h2>
     </div>
 
     <!--Feature Request Form-->
@@ -56,7 +56,7 @@
             <button type="submit" class="btn btn-feature">Request</button>
         </form>
     </div>
-    
+
     <!--Labourstart twitter feed plug-in-->
     <div class="col-md-4 hidden-xs hidden-sm">
         <a class="twitter-timeline hidden-sm" data-width="275" data-height="450" data-theme="dark" data-link-color="#E95F28" href="https://twitter.com/labourstart?ref_src=twsrc%5Etfw">Tweets by labourstart</a>
