@@ -97,10 +97,13 @@
             </div>
         </header>
         {% if messages %}
-        <div class='alert alert-warning'>
-            <div class="messages">
-                {% for message in messages %} {{ message }} {% endfor %}
+        <div class='alert'>
+            {% for message in messages %}
+            <div class="message-fade">
+                 {{ message }}
+                 <a href='#' class='delete-message'>&times;</a>
             </div>
+            {% endfor %}
         </div>
         {% endif %}
         

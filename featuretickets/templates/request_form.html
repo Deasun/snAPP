@@ -1,77 +1,66 @@
 {% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Ticket Page{% endblock %} {% block page_heading %}Ticket{% endblock %} {% block content %}
 <div class="row list-head">
-    <div class="col-xs-12 list-head-img">
+    
+    <!--Feature request section head and intro-->
+    <div class="col-xs-12 col-md-4 col-md-push-4 list-head-img">
         <i class="fas fa-cog fa-4x profile feature"></i>
-    </div>
-    <div class "col-xs-12">
         <p><strong>Remember to read our Reporting Guidelines before submitting a bug report.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
-    </div>
-</div>
-
-<div class="col-xs-12">
-    <!--Modal-->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header feature_modal_head">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Using snAPP's feature request system</h4>
-                </div>
-                <div class="modal-body">
-                    <p>snAPP is a member-driven platform.<br><br>We develop snAPP by adding new features that have been requested by members. We prioritise our work depending on which features are in most demand. Demand is measured through member financial
-                        contributions. These contributions go towards sustaining snAPP and (partially) compensating our software developers for their time.<br><br> If you would like a feature added to snAPP, we would first recommend <strong>searching existing feature requests.</strong><br><br>You
-                        can do this by either scrolling through the list of features or, more efficiently, search by a keyword (e.g. <em>'chat', 'file sharing'</em>). Click on the feature's title to find out more details.<br><br><strong>You can support an existing feature request by making a contribution (minimum £9.99). Also, feel free to leave a comment about the request.</strong>The
-                        more contributions a feature request recieves, the more time we'll have to spend on developing it.<br><br><strong>If nobody has reported the problem yet, complete a Feature Request form.</strong><br><br> You'll be notified when
-                        we have begun to work on the feature, or our administrator may leave a comment seeking more details about your request.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>
+        <div class="col-xs-12">
+            
+            <!--Modal for explanation of how feature requests work-->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header feature_modal_head">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Using snAPP's feature request system</h4>
                         </div>
-                        <div class="col-xs-8">
-                            <button type="button" class="btn btn-lg btn-feature" data-dismiss="modal">Close</button>
+                        <div class="modal-body">
+                            <p>snAPP is a member-driven platform.<br><br>We develop snAPP by adding new features that have been requested by members. We prioritise our work depending on which features are in most demand. Demand is measured through member
+                                financial contributions. These contributions go towards sustaining snAPP and (partially) compensating our software developers for their time.<br><br> If you would like a feature added to snAPP, we would first recommend
+                                <strong>searching existing feature requests.</strong><br><br>You can do this by either scrolling through the list of features or, more efficiently, search by a keyword (e.g. <em>'chat', 'file sharing'</em>). Click on the
+                                feature's title to find out more details.<br><br><strong>You can support an existing feature request by making a contribution (minimum £9.99). Also, feel free to leave a comment about the request.</strong>The more contributions
+                                a feature request recieves, the more time we'll have to spend on developing it.<br><br><strong>If nobody has reported the problem yet, complete a Feature Request form.</strong><br><br> You'll be notified when we have begun
+                                to work on the feature, or our administrator may leave a comment seeking more details about your request.
+                            </p>
                         </div>
-
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>
+                                </div>
+                                <div class="col-xs-8">
+                                    <button type="button" class="btn btn-lg btn-feature" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
-
         </div>
-    </div>
-</div>
 
-<div class="row list-search-field">
-    <div class="col-xs-12">
+        <!--Feature search fields-->
         <div class="display">
             <form action="{% url 'feature_search' %}" method='get'>
                 <input type='text' name='q'>
                 <button type='submit' class="btn btn-feature btn-sm">Search Requests</button>
             </form>
         </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12">
         <h2 class="feature">Feature Request</h2>
     </div>
-</div>
 
-
-
-<div class="row">
-    <div class="col-xs-12 registration">
-        <form method='POST' enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ request_form|as_bootstrap }}
+    <!--Feature Request Form-->
+    <div class="col-xs-12 col-md-4 col-md-pull-4">
+        <form method='POST' class='dev-forms' enctype="multipart/form-data">
+            {% csrf_token %} {{ request_form|as_bootstrap }}
             <button type="submit" class="btn btn-feature">Request</button>
         </form>
+    </div>
+    
+    <!--Labourstart twitter feed plug-in-->
+    <div class="col-md-4 hidden-xs hidden-sm">
+        <a class="twitter-timeline hidden-sm" data-width="275" data-height="450" data-theme="dark" data-link-color="#E95F28" href="https://twitter.com/labourstart?ref_src=twsrc%5Etfw">Tweets by labourstart</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 </div>
 

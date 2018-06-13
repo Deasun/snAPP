@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 
-{% load bootstrap_tags %}
+{% load bootstrap_tags %} 
 
 {% block page_title %}Ticket Page{% endblock %} 
 
@@ -9,86 +9,77 @@
 {% block content %}
 
 <div class="row list-head">
-    <div class="col-xs-12 list-head-img">
+    
+    
+    <!--Reporting for explanation-->
+    <div class="col-xs-12 col-md-4 col-md-push-4 list-head-img">
         <i class="fas fa-bug fa-4x profile"></i>
-    </div>
-    <div class "col-xs-12">
         <p><strong>Remember to read our Reporting Guidelines before submitting a bug report.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
-    </div>
-</div>
-
-<div class="col-xs-12">
-    <!--Modal-->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header bug_modal_head">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Using snAPP's reporting system</h4>
-                </div>
-                <div class="modal-body">
-                    <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
-                        <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword (e.g. <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong> and feel free to leave a comment.<br><br>
-                        <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about your
-                        problem.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-xs-4">
-                            <img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>
+        <div class="col-xs-12">
+            
+            <!--Modal for further instructions-->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header bug_modal_head">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Using snAPP's reporting system</h4>
                         </div>
-                        <div class="col-xs-8">
-                            <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Close</button>
+                        <div class="modal-body">
+                            <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
+                                <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword
+                                (e.g. <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case,
+                                <strong>'Upvote' the report</strong> and feel free to leave a comment.<br><br>
+                                <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details
+                                about your problem.
+                            </p>
                         </div>
-
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <img class='stick-head' src='{{MEDIA_URL}}images/readstic2.png'>
+                                </div>
+                                <div class="col-xs-8">
+                                    <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
-
         </div>
-    </div>
-</div>
 
-<div class="row list-search-field">
-    <div class="col-xs-12">
+        <!--Bug search field-->
         <div class="display">
             <form action="{% url 'bug_search' %}" method='get'>
                 <input type='text' name='q'>
                 <button type='submit' class="btn btn-primary btn-sm">Search Bugs</button>
             </form>
         </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12">
         <h2 class="tactics">Report a Bug</h2>
-    </div>    
-</div>
+    </div>
 
 
-<div class="row">
-    <div class="col-xs-12 registration">
-        <form method='POST' enctype="multipart/form-data">
+    <!--Bug reporting form-->
+    <div class="col-xs-12 col-md-4 col-md-pull-4">
+        <form method='POST' class='dev-forms' enctype="multipart/form-data">
             <p><em>How to report effectively</em> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#bugModal"></i></p>
-            
             {% csrf_token %} {{ report_form | as_bootstrap }}
             <button type="submit" class="btn btn-primary">Report</button>
         </form>
     </div>
+    
+    <!--Labourstart twitter feed plug-in-->
+    <div class="col-md-4 hidden-xs hidden-sm">
+        <a class="twitter-timeline hidden-sm" data-width="275" data-height="450" data-theme="dark" data-link-color="#E95F28" href="https://twitter.com/labourstart?ref_src=twsrc%5Etfw">Tweets by labourstart</a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>
 </div>
 
 <div class="col-xs-12">
-    <!--Modal-->
+    <!--Modal for instruction on how to report effectively-->
     <div class="modal fade" id="bugModal" role="dialog">
         <div class="modal-dialog">
-
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header bug_modal_head">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -96,7 +87,8 @@
                 </div>
                 <div class="modal-body">
                     <p>When reporting a bug, <strong>please be as specific as possible.</strong> We will sort out the issue quicker if the information provided is both accurate and clear.<br><br>Please follow these guidelines:<br><br>
-                    <strong><em>Title:</em></strong> Provide a short title of your choice which sums up the problem you are experiencing.<br><br><strong><em>Bug type:</em></strong> Select the heading from the dropdown list which you believe your bug falls under:<br><br>
+                        <strong><em>Title:</em></strong> Provide a short title of your choice which sums up the problem you are experiencing.<br><br><strong><em>Bug type:</em></strong> Select the heading from the dropdown list which you believe your bug
+                        falls under:<br><br>
                         <u>Functional</u> - something that you expect snAPP to do is hard, awkward, confusing, or impossible<br>
                         <u>Communication</u> - it is not clear how to use a feature of snAPP<br>
                         <u>Syntax</u> - spelling and/or grammar is poor or confusing<br>
@@ -114,13 +106,9 @@
                         <div class="col-xs-8">
                             <button type="button" class="btn btn-lg btn-primary" data-dismiss="modal">Close</button>
                         </div>
-
                     </div>
-
-
                 </div>
             </div>
-
         </div>
     </div>
 </div>

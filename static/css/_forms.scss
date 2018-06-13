@@ -2,7 +2,7 @@
     width: 30%;
 }
 
-.login {
+.snapp-forms {
     width: 66%;
     margin-left: 17%;
     @media (min-width: 768px) {
@@ -15,21 +15,21 @@
     }
 }
 
-.registration {
-    width: 66%;
+.dev-forms {
     margin: {
-        left: 17%;
-        bottom: 8rem;
+        left: 10%;
+        right: 10%;
     }
     @media (min-width: 768px) {
-        width: 34%;
-        margin-left: 33%;
+            margin: {
+                left: 20%;
+                right: 20%;
+            }
+        }
+        @media (min-width: 992px) {
+            margin-left: 3rem;
+        }
     }
-    @media (min-width: 992px) {
-        width: 25rem;
-        margin-left: 40%;
-    }
-}
 
 .check-out {
     width: 80%;

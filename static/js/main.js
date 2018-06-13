@@ -39,29 +39,39 @@ $(document).ready(function() {
             $(this).animate({ "opacity": ".7" }, 250)
         })
         .mouseleave(function() {
-            $(this).animate({ "opacity": "1"}, 250)
+            $(this).animate({ "opacity": "1" }, 250)
         });
 
     /*Reduce size/pinch on click*/
     $('i').click(function() {
-        $(this).animate({"opacity": "1"}, 500)
+        $(this).animate({ "opacity": "1" }, 500)
     })
-    
+
+
+    /*Turn message off after 10 secs*/ 
+    setTimeout(function() {
+        $('.message-fade').fadeOut('slow');
+    }, 10000);
+
+    /*Delete message*/
+    $('.delete-message').on('click', function() {
+        $('.delete-message').parent().attr('style', 'display:none;');
+    })
+
     /*
     Marquee plug-in for scrolling member alerts - 
     https://www.jqueryscript.net/animation/Text-Scrolling-Plugin-for-jQuery-Marquee.html
     */
     $('.marquee').marquee({
-      allowCss3Support: true,
-      css3easing: 'linear',
-      easing: 'linear',
-      delayBeforeStart: 500,
-      direction: 'left',
-      duplicated: true,
-      duration: 10000,
-      gap: 80,
-      pauseOnHover: true,
-      startVisible: false,
+        allowCss3Support: true,
+        css3easing: 'linear',
+        easing: 'linear',
+        delayBeforeStart: 500,
+        direction: 'left',
+        duplicated: true,
+        duration: 10000,
+        gap: 80,
+        pauseOnHover: true,
+        startVisible: false,
     })
 });
-

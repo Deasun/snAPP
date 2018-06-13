@@ -340,30 +340,28 @@ a .fa-cc-stipe {
 .form-control-2 {
   width: 30%; }
 
-.login {
+.snapp-forms {
   width: 66%;
   margin-left: 17%; }
   @media (min-width: 768px) {
-    .login {
+    .snapp-forms {
       width: 33%;
       margin-left: 33%; } }
   @media (min-width: 992px) {
-    .login {
+    .snapp-forms {
       width: 25rem;
       margin-left: 40%; } }
 
-.registration {
-  width: 66%;
-  margin-left: 17%;
-  margin-bottom: 8rem; }
+.dev-forms {
+  margin-left: 10%;
+  margin-right: 10%; }
   @media (min-width: 768px) {
-    .registration {
-      width: 34%;
-      margin-left: 33%; } }
+    .dev-forms {
+      margin-left: 20%;
+      margin-right: 20%; } }
   @media (min-width: 992px) {
-    .registration {
-      width: 25rem;
-      margin-left: 40%; } }
+    .dev-forms {
+      margin-left: 3rem; } }
 
 .check-out {
   width: 80%;
@@ -760,13 +758,14 @@ Need to override default settings on <embed>
   top: 2rem;
   left: 1rem; }
 
-.alert-warning,
+.message-fade,
 .alert-danger {
   color: #f5f8fa;
   font-family: "Open Sans Condensed", sans-serif;
-  background-color: #e26e1beb;
+  background-color: rgba(226, 110, 27, 0.6);
   font-weight: 600;
-  font-size: 2rem; }
+  font-size: 2rem;
+  box-shadow: 3px 3px black; }
 
 .alert {
   width: 90%;

@@ -7,7 +7,7 @@
         <p><strong>Enter you login details.</strong></p>
     </div>
     <div class="col-xs-12 col-md-4 col-md-pull-4">
-        <form method='POST' class="login">
+        <form method='POST' class="snapp-forms" enctype='multipart/form-data'>
             {% csrf_token %} {{ login_form | as_bootstrap }}
             <button type="submit" class="btn btn-lg btn-success home-btn">Sign In</button>
             <h4>Forgot your password?<br>It happens.</h4>
