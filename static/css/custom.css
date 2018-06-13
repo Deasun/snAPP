@@ -797,10 +797,6 @@ Need to override default settings on <embed>
       height: 10rem;
       left: -1rem;
       top: 5%; } }
-  @media (min-width: 1200px) {
-    .snapp-alert {
-      width: 24%;
-      top: 21%; } }
 
 .snapp-alert-background {
   color: #ffffff;
