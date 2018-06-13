@@ -50,7 +50,6 @@ def upvote_bug(request, id=None):
     return render(request, "bug_report.html", {'bugs': bugs})
 
 
-
 @login_required
 def edit_bug(request, id):
     """
