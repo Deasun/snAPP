@@ -545,6 +545,9 @@ a .fa-cc-stipe {
 table {
   text-align: left; }
 
+.table {
+  width: 98%; }
+
 .tr-checkout th {
   color: #d9534f; }
 
