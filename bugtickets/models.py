@@ -8,7 +8,6 @@ import datetime
 """
 Bug Ticket model - enables users to report a bug
 """
-
 class BugTicket(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_bugs")
     date_created = models.DateField(null=True, default=datetime.date.today)
@@ -89,7 +88,6 @@ class BugTicket(models.Model):
 """
 BugUpvote Model - enables user to upvote bug reports
 """
-
 class BugUpvote(models.Model):
     bug_ticket = models.ForeignKey(BugTicket, on_delete=models.CASCADE, related_name="bug_votes")
     user = models.ForeignKey(User, related_name="user_votes", on_delete=models.CASCADE)

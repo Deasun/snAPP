@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -6,6 +7,7 @@ from accounts.forms import UserLoginForm, UserRegistrationForm, UserEditForm, Pr
 from accounts.models import Profile
 from bugtickets.models import BugTicket
 from featuretickets.models import FeatureTicket
+from context_processors import get_random_alert
 
 
 
@@ -18,9 +20,9 @@ def index(request):
     """
     Return the home page
     """
-    # render random alerts
-    profile = Profile.objects.all().order_by('?')[:1]
-    return render(request, 'index.html', {"profile": profile})
+    # profile = Profile.objects.all().order_by('?')[:1]
+    
+    return render(request, 'index.html')
 
 
 """

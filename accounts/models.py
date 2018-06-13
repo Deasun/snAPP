@@ -17,6 +17,7 @@ class Profile(models.Model):
 	alert = models.TextField(null=True, default='No active alerts.')
 	alert_date = models.DateField(null=True, default=datetime.date.today)
 
+	
 	def __str__(self):
 	    return "{}'s profile".format(self.user)
 	
