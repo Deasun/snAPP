@@ -118,7 +118,7 @@ a:hover {
   color: #b37bff; }
 
 .support {
-  color: #81b944; }
+  color: #b9ac44; }
 
 .tactics {
   color: #1b8fce; }
@@ -305,11 +305,11 @@ hr {
     .icon-sections {
       margin-top: 8rem; } }
 
-@media (min-width: 768px) {
-  .fa-share-alt,
-  .fa-people-carry,
-  .fa-chess-rook {
-    font-size: 10rem; } }
+.index-icons {
+  text-shadow: 4px 5px rgba(88, 78, 78, 0.4); }
+  @media (min-width: 768px) {
+    .index-icons {
+      font-size: 12rem; } }
 
 .icon-centered {
   vertical-align: center; }
