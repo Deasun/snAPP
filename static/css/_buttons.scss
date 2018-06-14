@@ -52,3 +52,18 @@ a .fa-cc-stipe {
     margin-top: .5rem;
 }
 
+
+/*Table search margins*/
+
+.search-margin {
+   text-align: center;
+   margin-left: 2rem;
+   margin-bottom: 3rem;
+   @media (min-width: 992px) {
+         text-align: left;
+     }
+}
+
+.reset-btn {
+    margin-top: 2rem;
+}

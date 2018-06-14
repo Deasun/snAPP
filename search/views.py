@@ -60,6 +60,25 @@ def member_search(request):
          messages.success(request, "There are no snAPP members with that username. Please try again.")
          return redirect('profile', id=request.user.id)
 
-  
+# search for keyword in alert
+@login_required
+def alert_search(request):
+    alerts = Profile.objects.filter(alert__icontains=request.GET['q'])
+    
+    # Handle empty query set with django message 
+    if not alerts:
+        messages.success(request, "Your search returned no results. Please try again.")
+    
+    user = request.user
+    auth_user = request.user
+    bugs = BugTicket.objects.filter(created_by=user.id)
+    features = FeatureTicket.objects.filter(created_by=user.id)
+    return render(request, 'profile.html', {
+                "features": features, 
+                "bugs": bugs, 
+                "user": user, 
+                "auth_user": auth_user, 
+                "alerts": alerts,
+                })
         
     
