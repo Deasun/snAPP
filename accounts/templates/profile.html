@@ -195,11 +195,13 @@
                 </thead>
                 <tbody>
                     {% for alert in alerts %}
+                    {% if alert.alert != "No active alerts." %}
                     <tr>
                         <td>{{ alert.user.username }}</td>
                         <td><a>{{ alert.alert|truncatewords:5 }}</a></td>
                         <td>{{ alert.alert_date }}</td>
                     </tr>
+                    {% endif %}
                     {% endfor %}
                 </tbody>
             </table>

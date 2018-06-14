@@ -599,7 +599,7 @@ td {
 /*Alert table on profile page*/
 @media (min-width: 992px) {
   .alert-table {
-    margin-top: 33rem; } }
+    margin-top: 18rem; } }
 
 .progress {
   height: 3rem;

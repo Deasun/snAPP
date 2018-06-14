@@ -8,6 +8,9 @@ from accounts.models import Profile
 from bugtickets.models import BugTicket
 from featuretickets.models import FeatureTicket
 from context_processors import get_random_alert
+from datetime import date, datetime
+
+
 
 
 
@@ -95,7 +98,11 @@ def user_profile(request, id):
     auth_user = request.user
     bugs = BugTicket.objects.filter(created_by=id)
     features = FeatureTicket.objects.filter(created_by=id)
-    alerts = Profile.objects.all()
+    
+    # filter out expired alerts
+    today = datetime.today()
+    alerts = Profile.objects.filter(alert_date__gte=today)
+    
     return render(request, 'profile.html', {
                 "features": features, 
                 "bugs": bugs, 
