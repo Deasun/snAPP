@@ -3,67 +3,73 @@
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
         <i class="fas fa-bug fa-4x profile"></i>
-    </div>
-    <div class "col-xs-12">
+        <!--</div>-->
+        <!--<div class "col-xs-12">-->
         <p><strong>Making snAPP work for you.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
-    </div>
-    <div class="col-xs-12">
+        <!--</div>-->
+        <!--<div class="col-xs-12">-->
         <h2 class="tactics">Bug Report #{{ bug.id }}</h2>
-    </div>
-    <div class="row list-search-field">
-        <div class="col-xs-12">
-            <div class="display">
-                <form action="{% url 'bug_search' %}" method='get'>
-                    <input type='text' name='q'>
-                    <button type='submit' class="btn btn-success home-btn">Search Bugs</button>
-                </form>
-            </div>
+        <!--</div>-->
+        <!--<div class="row list-search-field">-->
+        <!--<div class="col-xs-12">-->
+        <div class="display">
+            <form action="{% url 'bug_search' %}" method='get'>
+                <input type='text' name='q'>
+                <button type='submit' class="btn btn-success home-btn">Search Bugs</button>
+            </form>
         </div>
+        <!--</div>-->
     </div>
 </div>
 
-<!--Modal for Bug Reporting System-->
-<div class="col-xs-12">
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header bug_modal_head">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Using snAPP's reporting system</h4>
-                </div>
-                <div class="modal-body">
-                    <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
-                        <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword (e.g.
-                        <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong>                        and feel free to leave a comment.<br><br>
-                        <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about your
-                        problem.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-xs-9">
-                            <img class='group-modal' src='{{MEDIA_URL}}images/group-white.png'>
-                            <p class="hidden-xs">You need. We build. You use. We develop.</p>
-                        </div>
-                        <div class="col-xs-3">
-                            <button type="button" class="btn btn-success home-btn" data-dismiss="modal">Close</button>
+
+    <!--Modal for Bug Reporting System-->
+    <div class="col-xs-12">
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header bug_modal_head">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Using snAPP's reporting system</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
+                            <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword
+                            (e.g.
+                            <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong>                            and feel free to leave a comment.<br><br>
+                            <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about
+                            your problem.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <img class='group-modal' src='{{MEDIA_URL}}images/group-white.png'>
+                                <p class="hidden-xs">You need. We build. You use. We develop.</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-success home-btn" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-
-<!--BugTicket UpVote header-->
 <div class="row">
+    <!--BugTicket UpVote header-->
+    <!--<div class="row">-->
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-1 head">
-        <i class="far fa-thumbs-up fa-6x tactics"><label class='badge comment-badge'>{{ bug.votes }}</label></i><br>
+        <!--Header for Bug Details-->
+        <p class="feature_panel banner">
+            <i class="far fa-thumbs-up fa-2x tactics"><label class='badge comment-badge'>{{ bug.votes }}</label></i>
+            <strong> Bug Report details</strong>
+        </p><br>
         <form method='POST' action="{% url 'upvote_bug' bug.id %}">{% csrf_token %}
-            <input class="btn btn-danger btn-md vote" type="submit" value="Upvote">
+            <input class="btn btn-success home-btn" type="submit" value="Upvote">
         </form>
 
 
@@ -112,11 +118,14 @@
 
 
     <!--Comments column header-->
-    <div class="col-xs-12 col-md-5 head">
-        <i class="far fa-comments tactics fa-6x">
-            <label class='badge comment-badge'>{{ bug.comments.count }}</label>
-        </i><br>
-        <a class="btn btn-danger" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
+    <div class="col-xs-12 col-md-5 col-lg-4 col-lg-offset-1 head">
+
+        <p class="feature_panel banner">
+            <i class="far fa-comments tactics fa-2x tactics"><label class='badge comment-badge'>{{ bug.comments.count }}</label></i>
+            <strong> Bug Report details</strong>
+        </p><br>
+
+        <a class="btn btn-success home-btn" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
         <section class="comments head scroll">
             {% for comment in bug.comments.all %}
             <article class="comment">

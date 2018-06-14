@@ -57,13 +57,15 @@
 <!--FeatureTicket column header with upvote count-->
 <div class="row">
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-1 head">
-        <i class="fas fa-bullseye fa-6x head feature feature-tool">
-            
-            <!--Display Amount Raised-->
-            <label class='badge target-badge'>£{{ feature.target|floatformat  }}</label>
- 
+        
+        <!--Display Amount Raised-->
+        <p class="feature_panel banner">
+            <i class="fas fa-bullseye fa-2x feature"><label class='badge target-badge'>£{{ feature.target|floatformat  }}</label>
+            </i><strong> Find out more & contribute</strong>
+        </p><br>
+
         <!--Filter records to show status of feature ticket and if it is active, display progress bar to target-->
-        </i><br> {% if total > 0 and feature.status == 'active' %}
+        {% if total > 0 and feature.status == 'active' %}
         <div class="progress">
             <div class="progress-bar progress-bar-striped active dynamic-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:{{total|div:feature.target|mul:1000 }}%">
             </div>
@@ -81,7 +83,7 @@
             <li><a href="#progress" id="lime-tab">snAPP Progress Report</a></li>
         </ul>
         <div class="tab-content">
-            
+
             <!--Member request tab-->
             <div id="request" class="tab-pane fade in active">
                 <blockquote class='profile-blockquote'>
@@ -94,28 +96,28 @@
                         <div class="toggle">
                             <p><strong>Feature Type:</strong> {{ feature.feature_type }}</p>
                             <p>{{ feature.description|linebreaks }}</p>
-                            
+
                             <!--Render # of tickets needed to reach target-->
                             {% if total == 0 %}
                             <p class="user"><strong>No tickets purchased yet!</strong></p>
-                            {% elif feature.target|div:10 <= total %} 
-                            <p class="user"><strong>Target reached!</strong></p>
-                            {% else %}
-                            <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
-                            {% endif %}
+                            {% elif feature.target|div:10
+                            <=t otal %} <p class="user"><strong>Target reached!</strong></p>
+                                {% else %}
+                                <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
+                                {% endif %}
 
 
-                            <!--Form to add tickets to cart-->
-                            <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                                {% csrf_token %}
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
-                                        <button class="btn btn-success" type="submit">Support</button>
+                                <!--Form to add tickets to cart-->
+                                <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                                    {% csrf_token %}
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
+                                            <button class="btn btn-success" type="submit">Support</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
-                            <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                                </form>
+                                <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
                         </div>
                     </div>
                 </blockquote>
@@ -136,26 +138,26 @@
                             <!--Render # of tickets needed to reach target-->
                             {% if total == 0 %}
                             <p class="user"><strong>No tickets purchased yet!</strong></p>
-                            {% elif feature.target|div:10 <= total %} 
-                            <p class="user"><strong>Target reached!</strong></p>
-                            {% else %}
-                            <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
-                            {% endif %}
-                            
-                            <!--Purchase tickets form-->
-                            <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                                {% csrf_token %}
+                            {% elif feature.target|div:10
+                            <=t otal %} <p class="user"><strong>Target reached!</strong></p>
+                                {% else %}
+                                <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
+                                {% endif %}
+
+                                <!--Purchase tickets form-->
                                 <form method='POST' action="{% url 'add_to_cart' feature.id %}">
                                     {% csrf_token %}
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2"><br><br>
-                                            <button class="btn btn-success" type="submit">Support</button>
+                                    <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                                        {% csrf_token %}
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2"><br><br>
+                                                <button class="btn btn-success" type="submit">Support</button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </form>
-                            </form>
-                            <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                                <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
                         </div>
                     </div>
                 </blockquote>
@@ -166,10 +168,11 @@
 
 
     <!--Comments-->
-    <div class="col-xs-12 col-md-5 head">
-        <i class="far fa-comments fa-6x feature">
-            <label class='badge comment-badge'>{{ feature.feature_comments.count }}</label>
-        </i><br>
+    <div class="col-xs-12 col-md-5 col-lg-4 col-lg-offset-1 head">
+        <p class="feature_panel banner">
+            <i class="far fa-comment fa-2x feature"><label class='badge comment-badge'>{{ feature.feature_comments.count }}</label>
+            </i><strong> Help to shape this feature.</strong>
+        </p><br>
         <a class="btn btn-danger" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a>
         <section class="comments head scroll">
 
