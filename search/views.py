@@ -55,10 +55,10 @@ def member_search(request):
     try:
         user = User.objects.get(username=member)
         return redirect('profile', id=user.id)
+    
     except ObjectDoesNotExist:
          messages.success(request, "There are no snAPP members with that username. Please try again.")
          return redirect('profile', id=request.user.id)
-        # raise Http404("There are no snAPP members with that username.")
 
   
         

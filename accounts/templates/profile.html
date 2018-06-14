@@ -7,6 +7,8 @@
     <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
     <h2 class="user">{{ user.username }}'s snAPP profile</h2>
     <p><strong>Search for a snAPP member by their username.</strong></p>
+    
+    <!--Member search featurw-->
     <div class="display">
         <form action="{% url 'member_search' %}" method='GET'>
             <input type='text' name='member'>
@@ -17,7 +19,7 @@
 
 <div class="row">
 
-    <!--Profile info and user activity organised into tabs using js-->
+    <!--Profile info and member activity organised into tabs using js-->
     <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
         <ul class="nav nav-tabs">
             <li><a href="#profile" id="violet-tab">About Me</a></li>
@@ -27,7 +29,7 @@
         </ul>
         <div class="tab-content">
 
-            <!--Profile Tab-->
+            <!--Member Profile Tab-->
             <div id="profile" class="tab-pane fade in">
                 <blockquote class='profile-blockquote'>
                     <div class="row">
@@ -53,6 +55,7 @@
                     </div>
                 </blockquote>
             </div>
+            
             <!--Alert Tab-->
             <div id="alert" class="tab-pane fade in active">
                 <blockquote class='alert-blockquote'>
@@ -67,13 +70,15 @@
                         </div>
                         <div class="col-sm-8 col-xs-12">
                             <br>
-                            <!-- filter to remove alert if time has elapsed-->
+                            
+                            <!-- filter to remove alert if end date has passed-->
                             <p><strong>Date Expires: {{ user.profile.alert_date | date:"l, jS F Y" }}</strong></p>
                             <p>{{ user.profile.alert|linebreaks }}</p>
                         </div>
                     </div>
                 </blockquote>
             </div>
+            
             <!--Feature Tab-->
             <div id="feature" class="tab-pane fade in">
                 <blockquote class='feature-blockquote'>
@@ -125,6 +130,7 @@
                     </div>
                 </blockquote>
             </div>
+            
             <!--Bug Tab-->
             <div id="bug" class="tab-pane fade in">
                 <blockquote class='bug-blockquote'>
@@ -155,7 +161,6 @@
                                         <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
                                         <td class="hidden-xs hidden-md">{{ bug.bug_type }}</td>
                                         <td class="hidden-xs hidden-sm">{{ bug.date_created }}</td>
-
 
                                         <!--class method to trigger bug status depending on date_started & date_completed attributes-->
                                         <td class="hidden-xs">{{ bug.status }}</td>
