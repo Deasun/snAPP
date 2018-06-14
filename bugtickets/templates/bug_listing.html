@@ -1,8 +1,4 @@
-{% extends 'base.html' %} 
-
-{% load staticfiles %} 
-
-{% block content %}
+{% extends 'base.html' %} {% load staticfiles %} {% block content %}
 
 
 <!--Bug page headers-->
@@ -12,15 +8,10 @@
         <h2 class='tactics'>Fixing snAPP</h2>
         <p>snAPP is <u>your</u> platform and we are committed to accountability and transparency in how snAPP develops.</p>
         <p class="hidden-xs hidden-sm">Below are a list of the {{ bugs.count }} bugs reported by snAPP members to date, with some related information on what we're prioritising.<br>Use the 'search' facility to filter them.</p><br>
-    </div>
-    <div class "col-xs-12">
         <p><strong>Find out how to use snAPP's bug reporting system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
-    </div>
-</div>
 
-<!--Bug ticket search field-->
-<div class="row list-search-field">
-    <div class="col-xs-12">
+
+        <!--Bug ticket search field-->
         <div class="display">
             <form action="{% url 'bug_search' %}" method='get'>
                 <input type='text' name='q'>
@@ -28,44 +19,42 @@
             </form>
         </div>
     </div>
-</div>
 
-
-<div class="col-xs-12">
-    <!--Bug ticket explanation modal-->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bug_modal_head">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title banner">Using snAPP's reporting system</h4>
-                </div>
-                <div class="modal-body">
-                    <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
-                        <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword (e.g.
-                        <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong>                        and feel free to leave a comment.<br><br>
-                        <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about your
-                        problem.
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <div class="row">
-                        <div class="col-xs-9">
-                            <img class='group-modal' src='{{MEDIA_URL}}images/group-white.png'>
-                            <p class="hidden-xs">You need. We build. You use. We develop.</p>
-                        </div>
-                        <div class="col-xs-3">
-                            <button type="button" class="btn btn-success home-btn" data-dismiss="modal">Close</button>
+    <div class="col-xs-12">
+        <!--Bug ticket explanation modal-->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bug_modal_head">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title banner">Using snAPP's reporting system</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
+                            <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword
+                            (e.g.
+                            <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong>                            and feel free to leave a comment.<br><br>
+                            <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about
+                            your problem.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <img class='group-modal' src='{{MEDIA_URL}}images/group-white.png'>
+                                <p class="hidden-xs">You need. We build. You use. We develop.</p>
+                            </div>
+                            <div class="col-xs-3">
+                                <button type="button" class="btn btn-success home-btn" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!--Bug ticket table-->
-<div class="row">
+    <!--Bug ticket table-->
     <div class="col-xs-12 col-md-6 col-md-offset-1">
         <div class='scroll-table'>
             <table class="table table-condensed table-hover">
@@ -111,27 +100,24 @@
     </div>
     <!--Test tab charts-->
     <div class=" col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-1">
-        <div class="row">
-            <div class="col-xs-12">
-                <ul class="nav nav-tabs">
-                    <p class="feature_panel banner"><strong><i class="fas fa-bug fa-2x"></i> How snAPP is developing</strong></p>
-                    <li><a href="#activity" id="violet-tab">Our monthly activity</a></li>
-                    <li class="active"><a href="#requests" id="blue-tab">Your Reports</a></li>
-                    <li><a href="#top-votes" id="red-tab">Your priority fixes</a></li>
-                </ul>
-                <div class="tab-content tab-center">
-                    <div id="activity" class="tab-pane fade in">
-                        <embed class="violet-border" type="image/svg+xml" src={{pie_chart_data|safe}} style='max-width:900px' />
-                    </div>
-                    <div id="requests" class="tab-pane fade in active">
-                        <embed class="blue-border" type="image/svg+xml" src={{chart_data|safe}} style='max-width:900px' />
-                    </div>
-                    <div id="top-votes" class="tab-pane fade in">
-                        <embed class="red-border" type="image/svg+xml" src={{bar_chart_data|safe}} style='max-width:900px' />
-                    </div>
-                </div>
+        <ul class="nav nav-tabs">
+            <p class="feature_panel banner"><strong><i class="fas fa-bug fa-2x"></i> How snAPP is developing</strong></p>
+            <li><a href="#activity" id="violet-tab">Our monthly activity</a></li>
+            <li class="active"><a href="#requests" id="blue-tab">Your Reports</a></li>
+            <li><a href="#top-votes" id="red-tab">Your priority fixes</a></li>
+        </ul>
+        <div class="tab-content tab-center">
+            <div id="activity" class="tab-pane fade in inactive">
+                <embed class="violet-border" type="image/svg+xml" src={{pie_chart_data|safe}} style='max-width:900px' />
+            </div>
+            <div id="requests" class="tab-pane fade in active">
+                <embed class="blue-border" type="image/svg+xml" src={{chart_data|safe}} style='max-width:900px' />
+            </div>
+            <div id="top-votes" class="tab-pane fade in inactive">
+                <embed class="red-border" type="image/svg+xml" src={{bar_chart_data|safe}} style='max-width:900px' />
             </div>
         </div>
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}

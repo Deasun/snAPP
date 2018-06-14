@@ -20,8 +20,6 @@ def index(request):
     """
     Return the home page
     """
-    # profile = Profile.objects.all().order_by('?')[:1]
-    
     return render(request, 'index.html')
 
 

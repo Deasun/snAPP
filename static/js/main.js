@@ -57,6 +57,8 @@ $(document).ready(function() {
     $('.delete-message').on('click', function() {
         $('.delete-message').parent().attr('style', 'display:none;');
     })
+    
+ 
 
     /*
     Marquee plug-in for scrolling member alerts - 

@@ -8,7 +8,6 @@ urlpatterns = [
     url(r'^login/', login, name="login"),
     url(r'^register/', registration, name="registration"),
     url(r'^profile/(?P<id>\d+)$', user_profile, name="profile"),
-    # url(r'^other_profile/(?P<id>\d+)$', other_profile, name="other_profile"),
     url(r'^password_reset/', include(url_reset)),
     url(r'^edit_profile/$', edit_profile, name="edit_profile"),
 ]
