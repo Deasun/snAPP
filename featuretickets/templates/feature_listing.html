@@ -10,7 +10,7 @@
         <h2 class="feature">Developing snAPP</h2>
         <p>snAPP develops features based on your requests.</p>
         <p>You decide which ones are prioritised.</p>
-            <p><strong>Find out how to use snAPP's feature request system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
+        <p><strong>Find out how to use snAPP's feature request system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
     </div>
 </div>
 <!--Feature ticket search field-->
@@ -103,6 +103,9 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <form action="{% url 'get_bug_listing' %}">
+                <button type='submit' class="btn btn-danger btn-sm reset-btn">Reset Search</button>
+            </form>
         </div>
     </div>
 
@@ -110,7 +113,7 @@
     <div class=" col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-1">
         <div class="row">
             <div class="col-xs-12">
-                
+
                 <ul class="nav nav-tabs">
                     <p class="feature_panel banner"><strong><i class="fas fa-cog fa-2x feature"></i> What's the lastest?</strong></p>
                     <li><a href="#complete" id="violet-tab">Update</a></li>
@@ -128,7 +131,7 @@
                                     <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
                                 <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
                                 <p>{{ latest.description|truncatewords:30 }}</p>
-                                {% endfor %}                                
+                                {% endfor %}
                             </div>
                         </blockquote>
                     </div>
@@ -143,7 +146,7 @@
                                     <a href="{% url 'profile' next.created_by.id %}"><strong>{{ next.created_by }}</strong></a></p><br>
                                 <p><strong>Feature Type:</strong> {{next.feature_type }}</p>
                                 <p>{{ next.description|truncatewords:30 }}</p>
-                                {% endfor %}                                
+                                {% endfor %}
                             </div>
                         </blockquote>
                     </div>

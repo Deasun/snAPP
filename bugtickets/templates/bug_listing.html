@@ -56,9 +56,6 @@
 
     <!--Bug ticket table-->
     <div class="col-xs-12 col-md-6 col-md-offset-1">
-        <form action="{% url 'bug_listing' %}">
-            <button type='submit' class="btn btn-danger btn-sm reset-btn">Reset</button>
-        </form>
         <div class='scroll-table'>
             <table class="table table-condensed table-hover">
                 <p class="feature_panel banner"><strong><i class="fas fa-bug fa-2x"></i> Latest reported bugs</strong></p>
@@ -99,6 +96,9 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <form action="{% url 'get_bug_listing' %}">
+                <button type='submit' class="btn btn-danger btn-sm reset-btn">Reset Search</button>
+            </form>
         </div>
     </div>
     <!--Test tab charts-->
