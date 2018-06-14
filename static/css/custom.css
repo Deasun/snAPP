@@ -602,6 +602,19 @@ td {
   .alert-table {
     margin-top: 18rem; } }
 
+.alert-table-2 {
+  text-align: left;
+  color: #fff;
+  font-family: "Open Sans Condensed", sans-serif; }
+
+@media (min-width: 992px) {
+  #id_trade_union,
+  #id_image,
+  #id_description,
+  #id_alert,
+  #id_alert_date {
+    width: 90%; } }
+
 .progress {
   height: 3rem;
   width: 66.6%;

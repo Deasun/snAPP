@@ -1,26 +1,188 @@
-{% extends 'base.html' %} 
-{% load bootstrap_tags %} {% block page_title %}Edit Profile{% endblock %} {% block page_heading %}Profile{% endblock %} {% block content %}
+{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Edit Profile{% endblock %} {% block page_heading %}Profile{% endblock %} {% block content %}
 
 
-    <div class="row">
-        <div class="col-xs-12">
-            <h2 class="user">Edit Profile</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
-            <form method='POST' class="edit_form" enctype="multipart/form-data">
-                {% csrf_token %}
-            <div class="cold-md-6 col-lg-4">
-                {{ user_form | as_bootstrap }}
+
+
+<div class="row">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-push-4 col-md-offset-0 col-lg-offset-0 list-head-img">
+
+        <!--Edit Profile headers-->
+        {% if user.profile.image != '' %}
+        <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
+        <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
+        <p class="user"><strong>{{ user.username }}</strong></p>
+        <h2 class="user">Edit Profile</h2>
+
+        <!--Profile info and member activity organised into tabs using js-->
+        <ul class="nav nav-tabs">
+            <li><a href="#profile" id="violet-tab">About Me</a></li>
+            <li class="active"><a href="#alert" id="red-tab">My Alert</a></li>
+            <li><a href="#feature" id="lime-tab">Features</a></li>
+            <li><a href="#bug" id="blue-tab">Bugs</a></li>
+        </ul>
+        <div class="tab-content">
+
+            <!--Member Profile Tab-->
+            <div id="profile" class="tab-pane fade in">
+                <blockquote class='profile-blockquote'>
+                    <div class="row">
+                        <div class="col-sm-2 col-md-3 col-xs-12 tab-center">
+
+                            {% if user.profile.image != '' %}
+                            <img class="profile-pic sm-profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
+                            <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
+
+                            <p><strong>My Profile</strong></p>
+
+                            {% if user.id is auth_user.id %}
+                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile</button></a> {% else %} {% endif %}
+
+                            <br>
+                            <br>
+                        </div>
+                        <div class="col-sm-10 col-md-9 col-xs-12">
+                            <p><strong>union:</strong> {{ user.profile.trade_union }}</p>
+                            <p><strong>email:</strong> {{ user.email }}</p>
+                            <p><strong>About me:</strong><br>{{ user.profile.description|linebreaks }}</p>
+                        </div>
+                    </div>
+                </blockquote>
             </div>
-            <div class="cold-md-6 col-lg-4">
-                {{ profile_form | as_bootstrap }}
-            </div>    
-                <button type="submit" class="btn btn-danger">Save Changes</button>
-            </form>
+
+            <!--Alert Tab-->
+            <div id="alert" class="tab-pane fade in active">
+                <blockquote class='alert-blockquote'>
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-12 tab-center">
+                            <i class="fas fa-exclamation fa-5x payment"></i>
+                            <p><strong>Latest Alert</strong></strong>
+                            </p>
+                            {% if user.id is auth_user.id %}
+                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Update Alert</button></a> {% else %} {% endif %}
+                            <br>
+                        </div>
+                        <div class="col-sm-9 col-xs-12">
+                            <br>
+
+                            <!-- filter to remove alert if end date has passed-->
+                            <p><strong>Date Expires: {{ user.profile.alert_date | date:"l, jS F Y" }}</strong></p>
+                            <p>{{ user.profile.alert|linebreaks }}</p>
+                        </div>
+                    </div>
+                </blockquote>
+            </div>
+
+            <!--Feature Tab-->
+            <div id="feature" class="tab-pane fade in">
+                <blockquote class='feature-blockquote'>
+                    <div class="row">
+                        <div class=" col-sm-2 col-xs-12 tab-center">
+                            <i class="fas fa-cog fa-3x feature"></i>
+                            <label class='badge feature-badge'>{{ user.user_features.count }}</label>
+                        </div>
+                        <div class="col-sm-10 col-xs-12">
+                            <p><strong>snAPP Features Requested</strong></p>
+                            <br>
+                            <table class="table table-condensed table-hover">
+                                <thead>
+                                    <tr class="tr-feature">
+                                        <th>Title</th>
+                                        <th>Type</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for feature in features %}
+                                    <tr>
+                                        <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title|truncatewords:3 }}</a></td>
+                                        <td class="hidden-xs">{{ feature.feature_type }}</td>
+                                        <td class="list-icons">
+                                            <i class="fas fa-bullseye fa-2x">
+                                            <!--render target amount-->
+                                            <label class='badge feature-badge'>£{{ feature.target|floatformat }}</label>
+                                            </i>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </blockquote>
+            </div>
+
+            <!--Bug Tab-->
+            <div id="bug" class="tab-pane fade in">
+                <blockquote class='bug-blockquote'>
+                    <div class="row">
+                        <div class="col-sm-2 col-xs-12 tab-center">
+                            <i class="fas fa-bug fa-2x"></i>
+                            <label class='badge bug-badge'>{{ user.user_bugs.count }}</label>
+                            <p><strong>snAPP Bugs Reported</strong></p>
+                        </div>
+                        <div class="col-sm-10 col-xs-12">
+                            <br>
+                            <table class="table table-condensed table-hover">
+                                <thead>
+                                    <tr class="tr-bug">
+                                        <th class="hidden-xs">#</th>
+                                        <th>Title</th>
+                                        <th>Type</th>
+                                        <!--<th class="hidden-xs hidden-sm">Date</th>-->
+                                        <!--<th class="hidden-xs">Status</th>-->
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for bug in bugs %}
+                                    <tr>
+                                        <td class="hidden-xs">{{ bug.id }}</td>
+                                        <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
+                                        <td>{{ bug.bug_type }}</td>
+                                        <!--<td class="hidden-xs hidden-sm">{{ bug.date_created }}</td>-->
+
+                                        <!--class method to trigger bug status depending on date_started & date_completed attributes-->
+                                        <!--<td class="hidden-xs">{{ bug.status }}</td>-->
+
+                                        <td class="list-icons">
+                                            <i class="far fa-thumbs-up fa-2x">
+                                                <label class='badge bug-badge'>{{ bug.votes }}</label>
+                                            </i>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </blockquote>
+            </div>
         </div>
     </div>
+
+    <!--User Edit Form-->
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-pull-4 col-md-offset-0 col-lg-3 col-lg-offset-1 alert-table">
+        <form method='POST' class="edit_form" enctype="multipart/form-data">
+            <p class="feature_panel banner"><strong><i class="fas fa-user-secret fa-2x user"></i> Edit your personal details</strong></p>
+            {% csrf_token %} {{ user_form | as_bootstrap }}
+    </div>
+
+    <!--Profile Edit Form-->
+    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-4 col-md-offset-0 col-lg-3 col-lg-offset-0 alert-table alert-table-2">
+        <p class="feature_panel banner"><strong><i class="fas fa-user-secret fa-2x user"></i> Edit you sAPP Profile details</strong></p>
+        {{ profile_form | as_bootstrap }}
+        <button type="submit" class="btn btn-danger">Save Changes</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 
 
 

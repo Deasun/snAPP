@@ -54,8 +54,25 @@ td {
 
 
 /*Alert table on profile page*/
+
 .alert-table {
     @media (min-width: 992px) {
         margin-top: 18rem;
+    }
+}
+
+.alert-table-2 {
+    text-align: left;
+    color: $white;
+    font-family: $font-stack-4;
+}
+
+#id_trade_union,
+#id_image,
+#id_description,
+#id_alert,
+#id_alert_date{
+    @media (min-width: 992px) {
+        width: 90%;
     }
 }
