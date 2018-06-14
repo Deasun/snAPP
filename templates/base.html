@@ -141,7 +141,7 @@
             <!--Use context processor to render random alert. Filter default alerts-->
             {% for alert in profile %}
             {% if alert.alert != "No active alerts." %}
-            <a  href="{% url 'profile' alert.user.id %}"><img class="alert-img comment-pic tactics hidden-xs hidden-sm" src='{{MEDIA_URL}}{{ alert.image }}' alt="" width="50" height="50">
+            <a  href="{% url 'profile' alert.user.id %}"><img class="alert-img comment-pic tactics" src='{{MEDIA_URL}}{{ alert.image }}' alt="" width="50" height="50">
             <strong>{{ alert.user.username }}, Deadline: {{ alert.alert_date}}</strong></a>
             <div class='marquee'>{{ alert.alert }}</div>
             {% endif %}

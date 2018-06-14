@@ -860,7 +860,7 @@ Need to override default settings on <embed>
   @media (min-width: 992px) {
     .snapp-alert {
       width: 29%;
-      height: 10rem;
+      height: 8rem;
       left: -1rem;
       top: 5%; } }
 
