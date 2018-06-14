@@ -128,8 +128,6 @@
                                         <th class="hidden-xs">#</th>
                                         <th>Title</th>
                                         <th>Type</th>
-                                        <!--<th class="hidden-xs hidden-sm">Date</th>-->
-                                        <!--<th class="hidden-xs">Status</th>-->
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -139,11 +137,6 @@
                                         <td class="hidden-xs">{{ bug.id }}</td>
                                         <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
                                         <td>{{ bug.bug_type }}</td>
-                                        <!--<td class="hidden-xs hidden-sm">{{ bug.date_created }}</td>-->
-
-                                        <!--class method to trigger bug status depending on date_started & date_completed attributes-->
-                                        <!--<td class="hidden-xs">{{ bug.status }}</td>-->
-
                                         <td class="list-icons">
                                             <i class="far fa-thumbs-up fa-2x">
                                                 <label class='badge bug-badge'>{{ bug.votes }}</label>
@@ -158,6 +151,7 @@
                 </blockquote>
             </div>
         </div>
+        <p class="feature_panel banner"><strong><i class="fas fa-exclamation fa-2x payment"></i> Edit your snAPP Alert</strong></p>
     </div>
 
     <!--User Edit Form-->

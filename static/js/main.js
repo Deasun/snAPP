@@ -48,7 +48,7 @@ $(document).ready(function() {
     })
 
 
-    /*Turn message off after 10 secs*/ 
+    /*Turn message off after 10 secs*/
     setTimeout(function() {
         $('.message-fade').fadeOut('slow');
     }, 10000);
@@ -57,8 +57,7 @@ $(document).ready(function() {
     $('.delete-message').on('click', function() {
         $('.delete-message').parent().attr('style', 'display:none;');
     })
-    
- 
+
 
     /*
     Marquee plug-in for scrolling member alerts - 

@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from .models import Profile
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
+
 
 
 
@@ -60,3 +62,12 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         exclude = ('user',)
+        fields = ('image', 'trade_union', 'description', 'alert', 'alert_date')
+        labels = {
+            'image': _('Profile Image'),
+            'trade_union': _('Trade Union'),
+            'description': _('Brief description of yourself'),
+            'alert': _('Update your snAPP Alert'),
+            'alert_date': _('Enter what date your Alert ends'),
+        }
+        
