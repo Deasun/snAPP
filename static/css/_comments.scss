@@ -6,10 +6,13 @@
     *zoom: 1;
 }
 
-.comment-img {
+.comment-pic {
     float: left;
-    margin-right: 33px;
-    border-radius: 5px;
+    margin-right: 5px;
+    border-radius: 50%;
+    border: solid .5rem;
+    height: 6rem;
+    width: 6rem;
     overflow: hidden;
 }
 
@@ -17,12 +20,6 @@
     display: block;
 }
 
-.comment-pic {
-    border: solid .5rem;
-    height: 6rem;
-    width: 6rem;
-    border-radius: 50%;
-}
 
 .comment-body {
     overflow: hidden;
@@ -34,6 +31,8 @@
     border-radius: 5px;
     background: rgba(255, 255, 255, .58);
     margin-right: 1.5rem;
+    width: 90%;
+    margin-left: 3%;
 }
 
 .comment .admin-text {
@@ -42,6 +41,9 @@
     border-radius: 5px;
     background: rgba(234, 118, 34, .85);
     margin-right: 1.5rem;
+    width: 90%;
+    margin-left: 3%;
+
 }
 
 
@@ -94,9 +96,8 @@
 }
 
 .comment:hover:before {
-    background: orange;
+    background: $orange;
 }
-
 
 
 .comment p {

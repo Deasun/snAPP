@@ -120,7 +120,7 @@
         <section class="comments head scroll">
             {% for comment in bug.comments.all %}
             <article class="comment">
-                <a class="comment-img comment-pic tactics" href="#non">
+                <a class="comment-pic tactics" href="#non">
                    <img src='{{MEDIA_URL}}{{ comment.author.profile.image }}' alt="" width="50" height="50">
                 </a>
                 <div class="comment-body">
