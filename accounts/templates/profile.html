@@ -1,26 +1,27 @@
 {% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block content %}
 
 
-<div class="col-xs-12">
-    {% if user.profile.image != '' %}
-    <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
-    <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
-    <h2 class="user">{{ user.username }}'s snAPP profile</h2>
-    <p><strong>Search for a snAPP member by their username.</strong></p>
-    
-    <!--Member search featurw-->
-    <div class="display">
-        <form action="{% url 'member_search' %}" method='GET'>
-            <input type='text' name='member'>
-            <button type='submit' class="btn btn-success home-btn">Search</button>
-        </form>
-    </div>
-</div>
-
 <div class="row">
 
-    <!--Profile info and member activity organised into tabs using js-->
-    <div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-push-4 col-md-offset-0 col-lg-offset-0 list-head-img">
+        {% if user.profile.image != '' %}
+        <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
+        <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
+        <h2 class="user">{{ user.username }}'s snAPP profile</h2>
+        <p><strong>Search for a snAPP member by their username.</strong></p>
+
+        <!--Member search feature-->
+        <div class="display">
+            <form action="{% url 'member_search' %}" method='GET'>
+                <input type='text' name='member'>
+                <button type='submit' class="btn btn-success home-btn">Search</button>
+            </form>
+        </div>
+
+        <!--Put Alert modal in here-->
+
+        <!--Profile info and member activity organised into tabs using js-->
+        <!--<div class="col-lg-6 col-lg-offset-2 col-md-7 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12">-->
         <ul class="nav nav-tabs">
             <li><a href="#profile" id="violet-tab">About Me</a></li>
             <li class="active"><a href="#alert" id="red-tab">My Alert</a></li>
@@ -33,10 +34,10 @@
             <div id="profile" class="tab-pane fade in">
                 <blockquote class='profile-blockquote'>
                     <div class="row">
-                        <div class="col-sm-5 col-xs-12 tab-center">
+                        <div class="col-sm-2 col-md-3 col-xs-12 tab-center">
 
                             {% if user.profile.image != '' %}
-                            <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
+                            <img class="profile-pic sm-profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
                             <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
 
                             <p><strong>My Profile</strong></p>
@@ -47,7 +48,7 @@
                             <br>
                             <br>
                         </div>
-                        <div class="col-sm-7 col-xs-12">
+                        <div class="col-sm-10 col-md-9 col-xs-12">
                             <p><strong>union:</strong> {{ user.profile.trade_union }}</p>
                             <p><strong>email:</strong> {{ user.email }}</p>
                             <p><strong>About me:</strong><br>{{ user.profile.description|linebreaks }}</p>
@@ -55,12 +56,12 @@
                     </div>
                 </blockquote>
             </div>
-            
+
             <!--Alert Tab-->
             <div id="alert" class="tab-pane fade in active">
                 <blockquote class='alert-blockquote'>
                     <div class="row">
-                        <div class="col-sm-4 col-xs-12 tab-center">
+                        <div class="col-sm-3 col-xs-12 tab-center">
                             <i class="fas fa-exclamation fa-5x payment"></i>
                             <p><strong>Latest Alert</strong></strong>
                             </p>
@@ -68,9 +69,9 @@
                             <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Update Alert</button></a> {% else %} {% endif %}
                             <br>
                         </div>
-                        <div class="col-sm-8 col-xs-12">
+                        <div class="col-sm-9 col-xs-12">
                             <br>
-                            
+
                             <!-- filter to remove alert if end date has passed-->
                             <p><strong>Date Expires: {{ user.profile.alert_date | date:"l, jS F Y" }}</strong></p>
                             <p>{{ user.profile.alert|linebreaks }}</p>
@@ -78,48 +79,35 @@
                     </div>
                 </blockquote>
             </div>
-            
+
             <!--Feature Tab-->
             <div id="feature" class="tab-pane fade in">
                 <blockquote class='feature-blockquote'>
                     <div class="row">
-                        <div class=" col-sm-3 col-xs-12 tab-center">
-                            <i class="fas fa-cog fa-5x feature"></i>
+                        <div class=" col-sm-2 col-xs-12 tab-center">
+                            <i class="fas fa-cog fa-3x feature"></i>
                             <label class='badge feature-badge'>{{ user.user_features.count }}</label>
-                            <p><strong>snAPP Features Requested</strong></p>
                         </div>
-                        <div class="col-sm-9 col-xs-12">
-
+                        <div class="col-sm-10 col-xs-12">
+                            <p><strong>snAPP Features Requested</strong></p>
                             <br>
                             <table class="table table-condensed table-hover">
                                 <thead>
                                     <tr class="tr-feature">
-                                        <th class="hidden-xs">#</th>
                                         <th>Title</th>
-                                        <th class="hidden-xs hidden-sm">Date</th>
-                                        <th class="hidden-xs">Status</th>
                                         <th>Type</th>
                                         <th></th>
-                                        <th class="hidden-xs"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {% for feature in features %}
                                     <tr>
-                                        <td class="hidden-xs">{{ feature.id }}</td>
                                         <td><a href="{% url 'feature_report' feature.pk %}">{{ feature.title|truncatewords:3 }}</a></td>
-                                        <td class="hidden-xs hidden-sm">{{ feature.date_created }}</td>
-                                        <td>{{ feature.status }}</td>
                                         <td class="hidden-xs">{{ feature.feature_type }}</td>
                                         <td class="list-icons">
                                             <i class="fas fa-bullseye fa-2x">
                                             <!--render target amount-->
                                             <label class='badge feature-badge'>£{{ feature.target|floatformat }}</label>
-                                            </i>
-                                        </td>
-                                        <td class="list-icons hidden-xs">
-                                            <i class="far fa-comments fa-2x">
-                                            <label class='badge feature-badge'>{{ feature.feature_comments.count }}</label>
                                             </i>
                                         </td>
                                     </tr>
@@ -130,26 +118,26 @@
                     </div>
                 </blockquote>
             </div>
-            
+
             <!--Bug Tab-->
             <div id="bug" class="tab-pane fade in">
                 <blockquote class='bug-blockquote'>
                     <div class="row">
-                        <div class="col-sm-3 col-xs-12 tab-center">
-                            <i class="fas fa-bug fa-5x"></i>
+                        <div class="col-sm-2 col-xs-12 tab-center">
+                            <i class="fas fa-bug fa-2x"></i>
                             <label class='badge bug-badge'>{{ user.user_bugs.count }}</label>
                             <p><strong>snAPP Bugs Reported</strong></p>
                         </div>
-                        <div class="col-sm-9 col-xs-12">
+                        <div class="col-sm-10 col-xs-12">
                             <br>
                             <table class="table table-condensed table-hover">
                                 <thead>
                                     <tr class="tr-bug">
                                         <th class="hidden-xs">#</th>
                                         <th>Title</th>
-                                        <th class="hidden-xs hidden-md">Type</th>
-                                        <th class="hidden-xs hidden-sm">Date</th>
-                                        <th class="hidden-xs">Status</th>
+                                        <th>Type</th>
+                                        <!--<th class="hidden-xs hidden-sm">Date</th>-->
+                                        <!--<th class="hidden-xs">Status</th>-->
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -159,11 +147,11 @@
 
                                         <td class="hidden-xs">{{ bug.id }}</td>
                                         <td><a href="{% url 'bug_report' bug.pk %}">{{ bug.title|truncatewords:3 }}</a></td>
-                                        <td class="hidden-xs hidden-md">{{ bug.bug_type }}</td>
-                                        <td class="hidden-xs hidden-sm">{{ bug.date_created }}</td>
+                                        <td>{{ bug.bug_type }}</td>
+                                        <!--<td class="hidden-xs hidden-sm">{{ bug.date_created }}</td>-->
 
                                         <!--class method to trigger bug status depending on date_started & date_completed attributes-->
-                                        <td class="hidden-xs">{{ bug.status }}</td>
+                                        <!--<td class="hidden-xs">{{ bug.status }}</td>-->
 
                                         <td class="list-icons">
                                             <i class="far fa-thumbs-up fa-2x">
@@ -180,7 +168,35 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 hidden-xs hidden-sm">
+
+    <!--table test-->
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-pull-4 col-md-offset-0 col-lg-offset-0">
+        <div class='scroll-table alert-table'>
+            <table class="table table-condensed table-hover">
+                <p class="feature_panel banner"><strong><i class="fas fa-exclamation fa-2x payment"></i> Latest reported bugs</strong></p>
+                <thead>
+                    <tr class="tr-alert">
+                        <th>Member</th>
+                        <th>Alert</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for alert in alerts %}
+                    <tr>
+                        <td>{{ alert.user.username }}</td>
+                        <td><a>{{ alert.alert|truncatewords:5 }}</a></td>
+                        <td>{{ alert.alert_date }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--table test-->
+
+    <!--Labourstart twitter plug-in display-->
+    <div class="col-md-4 hidden-xs hidden-sm alert-table">
         <a class="twitter-timeline hidden-sm" data-width="300" data-height="400" data-theme="dark" data-link-color="#E95F28" href="https://twitter.com/labourstart?ref_src=twsrc%5Etfw">Tweets by labourstart</a>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>

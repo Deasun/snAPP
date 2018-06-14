@@ -95,7 +95,14 @@ def user_profile(request, id):
     auth_user = request.user
     bugs = BugTicket.objects.filter(created_by=id)
     features = FeatureTicket.objects.filter(created_by=id)
-    return render(request, 'profile.html', {"features": features, "bugs": bugs, "user": user, "auth_user": auth_user})
+    alerts = Profile.objects.all()
+    return render(request, 'profile.html', {
+                "features": features, 
+                "bugs": bugs, 
+                "user": user, 
+                "auth_user": auth_user, 
+                "alerts": alerts,
+                })
 
 
 """

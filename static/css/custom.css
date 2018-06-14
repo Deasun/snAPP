@@ -178,6 +178,11 @@ hr {
   width: 12rem;
   margin-top: 3rem; }
 
+.sm-profile-pic {
+  height: 6rem;
+  width: 6rem;
+  margin-top: 0; }
+
 .nav-link {
   margin-right: 4rem;
   font-size: 1.5rem; }
@@ -565,16 +570,24 @@ td {
 .tr-feature th {
   color: #64d29f; }
 
+.tr-alert th {
+  color: #d9534f; }
+
 .table-hover tbody tr:hover td {
   background: #09486b; }
 
 .scroll-table {
   overflow-y: auto;
-  max-height: 30rem;
+  max-height: 50%;
   margin-top: 10rem; }
   @media (min-width: 992px) {
     .scroll-table {
       margin-top: 5rem; } }
+
+/*Alert table on profile page*/
+@media (min-width: 992px) {
+  .alert-table {
+    margin-top: 33rem; } }
 
 .progress {
   height: 3rem;
@@ -649,7 +662,8 @@ embed {
 
 /*blockquote in tabs*/
 .blockquote {
-  min-height: 20rem; }
+  min-height: 20rem;
+  display: flex; }
 
 .profile-blockquote {
   border-left: 0.5rem solid #b37bff;

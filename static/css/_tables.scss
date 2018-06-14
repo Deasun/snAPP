@@ -32,6 +32,10 @@ td {
     color: $lime;
 }
 
+.tr-alert th {
+    color: $red;
+}
+
 
 // hover colors
 .table-hover tbody tr:hover td {
@@ -40,7 +44,7 @@ td {
 
 .scroll-table {
     overflow-y: auto;
-    max-height: 30rem;
+    max-height: 50%;
     margin-top: 10rem;
     @media (min-width: 992px) {
         margin-top: 5rem;
@@ -48,3 +52,9 @@ td {
 }
 
 
+/*Alert table on profile page*/
+.alert-table {
+    @media (min-width: 992px) {
+        margin-top: 33rem;
+    }
+}
