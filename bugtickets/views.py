@@ -6,7 +6,11 @@ from django.contrib import messages
 from  django.contrib.messages import success, warning, error
 from django.utils import timezone
 import datetime
-from .charts import chart_data, pie_chart_data, bar_chart_data
+from bugtickets.charts import config_bugline_chart, config_bugpie_chart, config_bugbar_chart
+
+import pygal
+from pygal.style import Style
+from .models import BugTicket
 
 
 @login_required
@@ -116,15 +120,18 @@ def bug_report(request, pk=id):
 @login_required
 def get_bug_listing(request):
     """
-    List bugs with most recent on top and render line chart data
+    List bugs with most recent on top and render chart data
     """
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('-date_created')
     
+    bug_line_data = config_bugline_chart()
+    bug_pie_data = config_bugpie_chart()
+    bug_bar_data = config_bugbar_chart()
     
     return render(request, "bug_listing.html", {
             'bugs': bugs, 
-            'chart_data': chart_data, 
-            'pie_chart_data': pie_chart_data,
-            'bar_chart_data': bar_chart_data,
+            'bug_line_data': bug_line_data, 
+            'bug_pie_data': bug_pie_data,
+            'bug_bar_data': bug_bar_data,
     })
     

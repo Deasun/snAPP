@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Max
 from django.contrib import auth, messages
 from django.utils import timezone
-from .charts import feature_chart_data, feature_pie_chart_data
+from .charts import config_featureline_chart, config_featurepie_chart
 
 
 
@@ -83,10 +83,19 @@ def get_feature_listing(request):
     """List features ranked by most recent date and render them to the 'feature_listing.html' template"""
     features = FeatureTicket.qs_desc_date()  
     
+    feature_line_data = config_featureline_chart()
+    feature_pie_data = config_featurepie_chart()
+    
     """Display latest features by status"""
     latest_feature = FeatureTicket.qs_latest_complete_feature()
     next_feature = FeatureTicket.qs_latest_active_feature()
     random_feature = FeatureTicket.qs_random_requested_feature()
     
-    return render(request, 'feature_listing.html', {'features': features, 'feature_chart_data': feature_chart_data, 'feature_pie_chart_data': feature_pie_chart_data, 'latest_feature': latest_feature, 'next_feature': next_feature, 'random_feature': random_feature })
+    return render(request, 'feature_listing.html', {
+                'features': features, 
+                'feature_line_data': feature_line_data, 
+                'feature_pie_data': feature_pie_data, 
+                'latest_feature': latest_feature, 
+                'next_feature': next_feature, 
+                'random_feature': random_feature })
     
