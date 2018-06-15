@@ -111,17 +111,18 @@ def config_bugbar_chart():
         )
     
     # Use Bugticket class method to retrive top 3 bugs by upvote
-    
     top_bugs = BugTicket.qs_by_no_upvotes(3)
     
     # Get title & vote attributes from queryset
-    
     bar_chart = pygal.HorizontalBar(style=custom_bar_style, legend_box_size=18)
     
-    bar_chart.add(top_bugs[0].title, top_bugs[0].votes)
-    bar_chart.add(top_bugs[1].title, top_bugs[1].votes)
-    bar_chart.add(top_bugs[2].title, top_bugs[2].votes)
+    try:
+        bar_chart.add(top_bugs[0].title, top_bugs[0].votes)
+        bar_chart.add(top_bugs[1].title, top_bugs[1].votes)
+        bar_chart.add(top_bugs[2].title, top_bugs[2].votes)
     
+    except IndexError as e:
+        return e
     
     # Create variable to pass to accounts/views.py
     

@@ -83,6 +83,7 @@ def get_feature_listing(request):
     """List features ranked by most recent date and render them to the 'feature_listing.html' template"""
     features = FeatureTicket.qs_desc_date()  
     
+    """Pyagl chart data for features"""
     feature_line_data = config_featureline_chart()
     feature_pie_data = config_featurepie_chart()
     
