@@ -687,9 +687,10 @@ embed {
       text-align: left; } }
 
 /*blockquote in tabs*/
-.blockquote {
-  min-height: 20rem;
-  display: flex; }
+blockquote {
+  display: flex;
+  height: 34rem;
+  overflow: scroll; }
 
 .profile-blockquote {
   border-left: 0.5rem solid #b37bff;

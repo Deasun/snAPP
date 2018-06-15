@@ -15,9 +15,10 @@
 }
 
 /*blockquote in tabs*/
-.blockquote {
-    min-height: 20rem;
+blockquote {
     display: flex;
+    height: 34rem;
+    overflow: scroll;
 }
 
 
