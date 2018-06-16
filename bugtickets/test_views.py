@@ -45,7 +45,6 @@ class TestBugticket(TestCase):
             'description': 'This is a test',
         })
         self.assertEquals(report_form.is_valid(), True)
-        self.assertRedirects('/bugtickets/')
         
 
 

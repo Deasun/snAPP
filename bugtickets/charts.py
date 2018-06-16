@@ -116,11 +116,13 @@ def config_bugbar_chart():
     # Get title & vote attributes from queryset
     bar_chart = pygal.HorizontalBar(style=custom_bar_style, legend_box_size=18)
     
+    # Exception to catch Index Error
     try:
         bar_chart.add(top_bugs[0].title, top_bugs[0].votes)
         bar_chart.add(top_bugs[1].title, top_bugs[1].votes)
         bar_chart.add(top_bugs[2].title, top_bugs[2].votes)
     
+    # Exception does not stop programme from running but is required for testing
     except IndexError as e:
         return e
     
