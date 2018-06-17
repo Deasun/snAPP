@@ -158,16 +158,11 @@ class TestLoggedViews(TestCase):
     Logged in user edit user success
     """
     def test_user_edit_user(self):
-        # response = self.client.post('/accounts/edit_profile/', {'username': 'marty', 'alert': 'Brand new alert.'})
-        
         response = self.client.post(('/accounts/edit_profile/'), data={'alert': 'Brand new alert.'})
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, '/accounts/profile/1')
-        # self.assertEqual(self.profile.alert, 'Brand new alert.')
-        # self.assertIn('Brand new alert.', response.content.decode())
-        
-        
-        
+
+
 """
 Test Non-logged user destination & templates
 """
