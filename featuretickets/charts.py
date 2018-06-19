@@ -10,7 +10,7 @@ def config_featureline_chart():
         font_family='googlefont:Lato',
         legend_font_size = 20,
         value_font_size = 20,
-        tooltip_font_size = 30,
+        tooltip_font_size = 40,
         major_label_font_size = 20,
         label_font_size = 20,
         value_label_font_size = 30,
@@ -28,7 +28,7 @@ def config_featureline_chart():
     line_chart.x_labels = 'today', 'last week', 'last fortnight', 'last 30 days'
     
     """Apply class methods to filter current & completed FeatureTicket chart data"""
-    line_chart.add('Active', [
+    line_chart.add('In Development', [
          int(FeatureTicket.qs_active_features(0)),
          int(FeatureTicket.qs_active_features(7)),
          int(FeatureTicket.qs_active_features(14)),
