@@ -23,6 +23,9 @@ def index(request):
     """
     Return the home page
     """
+    if request.user.is_authenticated:
+        return redirect('profile', id=request.user.id)
+    
     return render(request, 'index.html')
 
 
@@ -31,12 +34,10 @@ Register a User
 """
 def registration(request):
     
-    """Redirect logged user to home page"""
+    """Redirect logged user to profile page"""
     if request.user.is_authenticated:
-    
-        return redirect(reverse('index'))
+        return redirect('profile', id=request.user.id)
 
-    
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
         
@@ -64,7 +65,7 @@ User Login
 def login(request):
     """Return a Login page"""
     if request.user.is_authenticated:
-        return redirect(reverse('index'))
+        return redirect('profile', id=request.user.id)
         
     if request.method == 'POST':
         login_form = UserLoginForm(request.POST)
