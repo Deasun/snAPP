@@ -1,4 +1,10 @@
-{% extends 'base.html' %} {% block page_title %}{{ user }}'s Profile{% endblock %} {% block page_heading %}{{ user }}'s Profile{% endblock %} {% block content %}
+{% extends 'base.html' %} 
+
+{% block page_title %}{{ user }}'s Profile{% endblock %} 
+
+{% block page_heading %}{{ user }}'s Profile{% endblock %} 
+
+{% block content %}
 
 
 <div class="row">
@@ -8,17 +14,52 @@
         <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
         <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
         <h2 class="user">{{ user.username }}'s snAPP profile</h2>
-        <p><strong>Search for a snAPP member by their username.</strong></p>
-
+        <p><strong>Find out how to use snAPP's Alert System.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
+        
+        
+        <div class="col-xs-12">
+        <!--Modal explaining how to use Alert System-->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header alert_modal_head">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Using snAPP's reporting system</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>snAPP is used by its members to both provide and access support. This is facilitated through the Alert System.</p>
+                            <p>Alerts can be anything you want - information that will help you build your grievance case or assist you in negotiations about terms and conditions, precedents that will help you defend a member in a disciplinary, practical assistance to carry out an online action, or just some basic advice you'd appreciate.</p>
+                            <p>You can create an alert in your 'Edit Profile' section on your profile page and you must add a date on which the alert expires.</p> 
+                            <p>Alerts that have expired will not be shown on the snAPP app (although they will stay in your edit profile section).</p>
+                            <p>Your alert will be displayed on your profile page which other members can visit, and will appear in the snAPP Alert Table and on the random scrolling alerts.</p>
+                            <p>You must leave good contact details otherwise you will not receive any support from members.</p>
+                            <p>While you may leave any alert that you wish, you are more likely to get support if your alerts are <strong>clear and concise.</strong></p>
+                            <p>Members will want to know exaclty WHAT they can do, WHEN you need it done by and HOW they can provide support.</strong></p>
+                        </div>                        
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-xs-9">
+                                    <img class='group-modal' src='{{MEDIA_URL}}images/group-white.png'>
+                                    <p class="hidden-xs">You need. We build. You use. We develop.</p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <button type="button" class="btn btn-success home-btn" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        
         <!--Member search feature-->
+        <p><strong>Search for a snAPP member by their username.</strong></p>
         <div class="display">
             <form action="{% url 'member_search' %}" method='GET'>
                 <input type='text' name='member'>
                 <button type='submit' class="btn btn-sm btn-success home-btn">Search</button>
             </form>
         </div>
-
-        <!--Put Alert modal in here-->
 
         <!--Profile info and member activity organised into tabs using js-->
         <ul class="nav nav-tabs">
@@ -27,6 +68,8 @@
             <li><a data-toggle="tab" href="#feature" id="lime-tab">Features</a></li>
             <li><a data-toggle="tab" href="#bug" id="blue-tab">Bugs</a></li>
         </ul>
+        
+        <!--Tab section to display member activity-->
         <div class="tab-content">
 
             <!--Member Profile Tab-->
@@ -37,7 +80,8 @@
 
                             {% if user.profile.image != '' %}
                             <img class="profile-pic sm-profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
-                            <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
+                            <i class="fas fa-user-secret fa-4x profile user"></i> 
+                            {% endif %}
 
                             <p><strong>My Profile</strong></p>
                         </div>
@@ -102,6 +146,7 @@
                                         <td class="hidden-xs">{{ feature.feature_type }}</td>
                                         <td class="list-icons">
                                             <i class="fas fa-bullseye fa-2x">
+                                            
                                             <!--render target amount-->
                                             <label class='badge feature-badge'>£{{ feature.target|floatformat }}</label>
                                             </i>
@@ -201,6 +246,4 @@
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 </div>
-
-
 {% endblock %}

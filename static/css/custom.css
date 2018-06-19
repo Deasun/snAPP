@@ -425,6 +425,9 @@ a .fa-cc-stipe {
 .feature_modal_head {
   background-color: #64d29f; }
 
+.alert_modal_head {
+  background-color: #d9534f; }
+
 .modal-footer {
   background-color: #313231;
   text-align: left;
