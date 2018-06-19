@@ -306,6 +306,7 @@ hr {
       margin-top: 8rem; } }
 
 .index-icons {
+  opacity: .6;
   text-shadow: 4px 5px rgba(88, 78, 78, 0.4); }
   @media (min-width: 768px) {
     .index-icons {
@@ -767,40 +768,13 @@ Need to override default settings on <embed>
   width: 6rem;
   overflow: hidden; }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; }
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -60px;
-  opacity: 0;
-  transition: opacity 0.3s; }
-
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent; }
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1; }
+.tooltip-inner {
+  width: 40rem;
+  text-align: left;
+  font-size: 1.75rem;
+  background-color: #082838;
+  box-shadow: 3px 3px #e26e1b;
+  border: solid #e26e1b 1px; }
 
 .bug-badge {
   background-color: #d9534f;
