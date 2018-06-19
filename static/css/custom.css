@@ -773,8 +773,8 @@ Need to override default settings on <embed>
   text-align: left;
   font-size: 1.75rem;
   background-color: #082838;
-  box-shadow: 3px 3px #e26e1b;
-  border: solid #e26e1b 1px; }
+  box-shadow: 3px 3px #544a42;
+  border: solid #000 1px; }
 
 .bug-badge {
   background-color: #d9534f;
