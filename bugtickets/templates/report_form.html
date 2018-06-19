@@ -1,15 +1,23 @@
-{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Ticket Page{% endblock %} {% block page_heading %}Bug Report Ticket{% endblock %} {% block content %}
+{% extends 'base.html' %} 
+
+{% load bootstrap_tags %} 
+
+{% block page_title %}Ticket Page{% endblock %} 
+
+{% block page_heading %}Bug Report Ticket{% endblock %} 
+
+{% block content %}
 
 <div class="row list-head">
-
-
+    
     <!--Reporting for explanation-->
     <div class="col-xs-12 col-md-4 col-md-push-4 list-head-img">
         <i class="fas fa-bug fa-4x profile"></i>
+        <h2 class="tactics">Report a Bug</h2>        
         <p><strong>Remember to read our Reporting Guidelines before submitting a bug report.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
         <div class="col-xs-12">
 
-            <!--Modal for further instructions-->
+            <!--Modal for further instructions on how to report a bug-->
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -18,13 +26,13 @@
                             <h4 class="modal-title">Using snAPP's reporting system</h4>
                         </div>
                         <div class="modal-body">
-                            <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
-                                <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword
-                                (e.g. <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case,
-                                <strong>'Upvote' the report</strong> and feel free to leave a comment.<br><br>
-                                <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details
-                                about your problem.
-                            </p>
+                            <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.</p>
+                            <p><strong>It's very simple.</strong></p>
+                            <p>If you experience a bug, <strong>search existing bug reports.</p>
+                            <p><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong></strong></p>
+                            <p>You can do this by either scrolling through the list of bugs on this page or, more efficiently, search by a keyword (e.g. <em>'login', 'crash'</em>). Click on the bug's title to find out more details.</p>
+                            <p>If this is the case,<strong>'Upvote' the report</strong> and feel free to leave a comment.</p>
+                            <p><strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> snAPP admin will notify you in the comments when work has begun fixing the problem and/or may leave a comment seeking more details about the problem you are experiencing.</p>
                         </div>
                         <div class="modal-footer">
                             <div class="row">
@@ -46,10 +54,9 @@
         <div class="display">
             <form action="{% url 'bug_search' %}" method='get'>
                 <input type='text' name='q'>
-                <button type='submit' class="btn btn-success home-btn">Search Bugs</button>
+                <button type='submit' class="btn btn-sm btn-success home-btn">Search Bugs</button>
             </form>
         </div>
-        <h2 class="tactics">Report a Bug</h2>
     </div>
 
 
@@ -79,17 +86,17 @@
                     <h4 class="modal-title">Report effectively</h4>
                 </div>
                 <div class="modal-body">
-                    <p>When reporting a bug, <strong>please be as specific as possible.</strong> We will sort out the issue quicker if the information provided is both accurate and clear.<br><br>Please follow these guidelines:<br><br>
+                    <p>When reporting a bug, <strong>please be as specific as possible.</strong> We will sort out the issue quicker if the information provided is both accurate and clear.</p>
+                    <p>Please follow these guidelines:
                         <strong><em>Title:</em></strong> Provide a short title of your choice which sums up the problem you are experiencing.<br><br><strong><em>Bug type:</em></strong> Select the heading from the dropdown list which you believe your bug
                         falls under:<br><br>
                         <u>Functional</u> - something that you expect snAPP to do is hard, awkward, confusing, or impossible<br>
                         <u>Communication</u> - it is not clear how to use a feature of snAPP<br>
                         <u>Syntax</u> - spelling and/or grammar is poor or confusing<br>
-                        <u>Error Notices</u> - you experience an error notice when navigating snAPP<br>
+                        <u>Error Notices</u> - you experience an error notice when using snAPP<br>
                         <u>Calculation Errors</u> - the number of upvotes, comments, items in your checkout or total amount is wrong<br>
-                        <u>Flow Problems</u> - the naviation of snAPP is not brigning you where you want it to<br><br>
-                        <strong><em>Description:</em></strong> Describe your problem in the most concise and accurate way you can. It helps us to solve issues quickly!
-                    </p>
+                        <u>Flow Problems</u> - the navigation of snAPP is not brigning you where you want it to<br><br>
+                        <strong><em>Description:</em></strong> Describe your problem in the most concise and accurate way you can. It helps us to solve issues quickly!</p>
                 </div>
                 <div class="modal-footer">
                     <div class="row">
@@ -106,5 +113,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
