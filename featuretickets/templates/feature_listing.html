@@ -134,8 +134,8 @@
                             {% for latest in latest_feature %}
                             <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' latest.pk %}">#{{ latest.id }} - {{ latest.title }}</strong></a>
                             </p>
-                            <p><img class='comment-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"><br>
-                                <a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p><br>
+                            <p><img class='card-pic' src='{{MEDIA_URL}}{{ latest.created_by.profile.image }}' alt="" width="50" height="50"></p>
+                            <p><a href="{% url 'profile' latest.created_by.id %}"><strong>{{ latest.created_by }}</strong></a></p>
                             <p><strong>Feature Type:</strong> {{latest.feature_type }}</p>
                             <p>{{ latest.description|truncatewords:30 }}</p>
                             {% endfor %}
@@ -148,9 +148,8 @@
                             {% for next in next_feature %}
                             <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' next.pk %}">#{{ next.id }} - {{ next.title }}</strong></a>
                             </p>
-                            <p><img class='comment-pic' src='{{MEDIA_URL}}{{ next.created_by.profile.image }}' alt="" width="50" height="50">
-                                <br>
-                                <a href="{% url 'profile' next.created_by.id %}"><strong>{{ next.created_by }}</strong></a></p><br>
+                            <p><img class='card-pic' src='{{MEDIA_URL}}{{ next.created_by.profile.image }}' alt="" width="50" height="50"></p>
+                            <p><a href="{% url 'profile' next.created_by.id %}"><strong>{{ next.created_by }}</strong></a></p>
                             <p><strong>Feature Type:</strong> {{next.feature_type }}</p>
                             <p>{{ next.description|truncatewords:30 }}</p>
                             {% endfor %}
@@ -163,9 +162,8 @@
                             {% for random in random_feature %}
                             <p><i class="fas fa-cog feature fa-2x"></i><strong><a href="{% url 'feature_report' random.pk %}">#{{ random.id }} - {{ random.title }}</strong></a>
                             </p>
-                            <p><img class='comment-pic' src='{{MEDIA_URL}}{{ random.created_by.profile.image }}' alt="" width="50" height="50">
-                                <br>
-                                <a href="{% url 'profile' random.created_by.id %}"><strong>{{ random.created_by }}</strong></a></p><br>
+                            <p><img class='card-pic' src='{{MEDIA_URL}}{{ random.created_by.profile.image }}' alt="" width="50" height="50"></p>
+                            <p><a href="{% url 'profile' random.created_by.id %}"><strong>{{ random.created_by }}</strong></a></p>
                             <p><strong>Feature Type:</strong> {{random.feature_type }}</p>
                             <p>{{ random.description|truncatewords:30 }}</p>
                             {% endfor %}

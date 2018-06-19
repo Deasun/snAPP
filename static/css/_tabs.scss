@@ -111,3 +111,12 @@ Need to override default settings on <embed>
 .lime-border {
     border-left: .5rem solid $lime-opaque !important;
 }
+
+.card-pic {
+    margin-right: 5px;
+    border-radius: 50%;
+    border: solid .5rem;
+    height: 6rem;
+    width: 6rem;
+    overflow: hidden;
+}

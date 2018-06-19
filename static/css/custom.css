@@ -759,6 +759,14 @@ Need to override default settings on <embed>
 .lime-border {
   border-left: 0.5rem solid rgba(100, 210, 159, 0.4) !important; }
 
+.card-pic {
+  margin-right: 5px;
+  border-radius: 50%;
+  border: solid .5rem;
+  height: 6rem;
+  width: 6rem;
+  overflow: hidden; }
+
 .tooltip {
   position: relative;
   display: inline-block;
