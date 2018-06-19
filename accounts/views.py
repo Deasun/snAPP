@@ -12,17 +12,11 @@ from datetime import date, datetime
 
 
 
-
-
-
 """
 Home Page
 """
-
 def index(request):
-    """
-    Return the home page
-    """
+    """Return the home page"""
     if request.user.is_authenticated:
         return redirect('profile', id=request.user.id)
     
@@ -33,7 +27,6 @@ def index(request):
 Register a User
 """
 def registration(request):
-    
     """Redirect logged user to profile page"""
     if request.user.is_authenticated:
         return redirect('profile', id=request.user.id)

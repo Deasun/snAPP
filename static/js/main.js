@@ -36,10 +36,10 @@ $(document).ready(function() {
     /*Hover over tabs and icons*/
     $('.tab-pane, i, .stick-head')
         .mouseenter(function() {
-            $(this).animate({ "opacity": ".7" }, 250)
+            $(this).animate({ "opacity": "1" }, 250)
         })
         .mouseleave(function() {
-            $(this).animate({ "opacity": "1" }, 250)
+            $(this).animate({ "opacity": ".6" }, 250)
         });
 
     /*Reduce size/pinch on click*/
