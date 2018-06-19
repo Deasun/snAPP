@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     /*Index page tooltips*/
     $('[data-toggle="tooltip"]').tooltip()
-    
+
 
     /*toggle featureticket report details*/
     $(".toggle").hide()
