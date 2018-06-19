@@ -31,7 +31,7 @@ def config_bugline_chart():
     line_chart.x_labels = 'today', 'last 7 days', 'last fortnight', 'last 30 days'
     
     """Apply class methods to filter current & completed BugTicket chart data"""
-    line_chart.add('Active', [
+    line_chart.add('In Development', [
          int(BugTicket.qs_active_bugs(0)),
          int(BugTicket.qs_active_bugs(7)),
          int(BugTicket.qs_active_bugs(14)),

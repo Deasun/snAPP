@@ -123,11 +123,9 @@ There are search facilities available for members, alerts, bugtickets and featur
 ## Credits
 
 ### Media
-- The photos used in this site were obtained from [Pixabay](https://pixabay.com/)
-- The video used on this site belongs to Nat Geo Wild channel on [youtube](https://www.youtube.com/watch?v=WfrG95GyU9U)
+- Background image to the site was sourced from [FREEIMAGES](https://www.freeimages.com)
 
 ### Information
 - The categories for bugs were adapted from [Software Testing Help's](https://www.softwaretestinghelp.com/types-of-software-errors/) guide
 - The categories for features were adapted from this [Mobidev's](https://mobidev.biz/blog/11_key_features_of_a_successful_mobile_app) article
-- Background image to the site was sourced from [FREEIMAGES](https://www.freeimages.com)
 - The twitter feed is from [Labourstart](https://www.labourstart.org)
