@@ -1,5 +1,8 @@
 {% extends 'base.html' %} 
-{% load staticfiles %} {% block content %}
+
+{% load staticfiles %} 
+
+{% block content %}
 
 
 <!--Bug page headers-->
@@ -10,7 +13,6 @@
         <p>snAPP is <u>your</u> platform and we are committed to accountability and transparency in how snAPP develops.</p>
         <p class="hidden-xs hidden-sm">Below are a list of the {{ bugs.count }} bugs reported by snAPP members to date, with some related information on what we're prioritising.<br>Use the 'search' facility to filter them.</p><br>
         <p><strong>Find out how to use snAPP's bug reporting system.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
-
 
         <!--Bug ticket search field-->
         <div class="display">
@@ -115,7 +117,7 @@
             <div id="activity" class="tab-pane fade in inactive">
                 <embed class="blue-border" type="image/svg+xml" src={{bug_line_data|safe}} style='max-width:900px' />
             </div>
-            <div id="requests" class="tab-pane fade in active">
+            <div id="requests" class="tab-pane fade in active inactive">
                 <embed class="violet-border" type="image/svg+xml" src={{bug_pie_data|safe}} style='max-width:900px' />
             </div>
             <div id="top-votes" class="tab-pane fade in inactive">
