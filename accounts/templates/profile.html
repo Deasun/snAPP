@@ -220,18 +220,18 @@
                 </div>
                 <thead>
                     <tr class="tr-alert">
-                        <th>Member</th>
                         <th>Alert</th>
                         <th>End Date</th>
+                        <th>Member</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for alert in alerts %}
                     {% if alert.alert != "No active alerts." %}
                     <tr>
-                        <td>{{ alert.user.username }}</td>
-                        <td><a>{{ alert.alert|truncatewords:5 }}</a></td>
+                        <td><a href="{% url 'profile' alert.user.id %}">{{ alert.alert|truncatewords:5 }}</a></td>
                         <td>{{ alert.alert_date }}</td>
+                        <td>{{ alert.user.username }}</td>
                     </tr>
                     {% endif %}
                     {% endfor %}
