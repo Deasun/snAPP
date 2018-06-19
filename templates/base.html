@@ -20,30 +20,24 @@
     
     <!--Custom CSS styles-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' />
-    
-    
 </head>
 
 <body class="text-center">
-
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
             <div class="inner">
 
-                <!--Shopping cart display for logged-in user-->
+                <!--ticket tally display for logged-in user-->
                 {% if user.is_authenticated %}
                 <a href="{% url 'view_cart' %}"><i class="fas fa-ticket-alt ticket-nav fa-2x"></i>
-
-
                     {% if feature_count > 0 %}
                     <label class='badge badge-warning feature-count'>{{ feature_count }}</label>
                     {% endif %}
-                </a> {% endif %}
-
+                </a> 
+                {% endif %}
 
                 <h1 class="masthead-brand"><img class='stick-head' src='{{MEDIA_URL}}images/group-white.png'><a href="{% url 'index' %}">snAPP</a></h1>
                 <p class="hidden-xs">You need. We build. You use. We develop.</p>
-
                 <hr>
                 <nav class="nav nav-masthead justify-content-center">
 
@@ -79,6 +73,7 @@
                         </ul>
                     </div>
                     {% else %}
+                    
                     <!--Navbar for unlogged user-->
                     <div class="dropdown">
                         <a class="nav-link" href="{% url 'login' %}">Login
@@ -96,6 +91,8 @@
                 </nav>
             </div>
         </header>
+        
+        <!--Django messages for displaying acknowledging successful login/logout, empty search results and payment info-->
         {% if messages %}
         <div class='alert'>
             {% for message in messages %}
@@ -106,16 +103,16 @@
             {% endfor %}
         </div>
         {% endif %}
-        
-        
     </div>
 
     
-    {% block content %} {% endblock %}
-
+    {% block content %} 
+    
+    {% endblock %}
+    
+    <!--Footer - using hidden and visible bs for different viewports-->
     <footer id="footer">
         <div class="row">
-           
             <div class='hidden-xs hidden-sm col-lg-2 col-lg-offset-1'>
                 <h2 class='hidden-md'><img class='footer-logo' src='{{MEDIA_URL}}images/group-white.png'>snAPP</h2>
             </div>
@@ -135,10 +132,11 @@
             </div>
         </div>
     </footer>
-
-        <div class="snapp-alert snapp-alert-background">
+    
+    <!--snAPP scrolling aLert-->
+    <div class="snapp-alert snapp-alert-background">
             
-            <!--Use context processor to render random alert. Filter default alerts-->
+            <!--Use context processor to render random alert. Filter out expired alerts-->
             {% for alert in profile %}
             {% if alert.alert != "No active alerts." %}
             <a  href="{% url 'profile' alert.user.id %}"><img class="alert-img comment-pic tactics" src='{{MEDIA_URL}}{{ alert.image }}' alt="" width="50" height="50">
@@ -147,9 +145,6 @@
             {% endif %}
             {% endfor %}
         </div>
-
-
-
 </body>
 
 </html>
