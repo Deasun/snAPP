@@ -32,6 +32,10 @@ def request_feature(request, pk=None):
 
 @login_required
 def add_comment_to_feature(request, pk):
+    """
+    Enable user to add a comment to a feature request
+    """
+    
     post = FeatureTicket.objects.get(pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -48,6 +52,9 @@ def add_comment_to_feature(request, pk):
 
 @login_required
 def feature_report(request, pk=id):
+    """
+    Display Feature Report
+    """
     
     features = FeatureTicket.objects.filter(id=pk)
     
@@ -57,7 +64,7 @@ def feature_report(request, pk=id):
         return redirect('get_feature_listing') 
  
     else:
-        # Query OrderLineItem quantity to render upvotes
+        """Query OrderLineItem quantity to render upvotes"""
         def feature_upvotes():
             orders = OrderLineItem.objects.filter(feature=pk).aggregate(Sum('quantity'))
             for k,v in orders.items():
@@ -65,29 +72,24 @@ def feature_report(request, pk=id):
                 return ticket_total
         
         total = feature_upvotes()
-    
-    """Trying to render top voted features"""
-    # def get_top_features():
-    #     top_orders = OrderLineItem.objects.order_by().aggregate(Sum('quantity'))
-    #     return top_orders
-    
-    # top_3_features = get_top_features()
-    
-    # print(top_3_features)
-    
+
     return render(request, "feature_report.html", {'features': features, 'total': total})
 
 
 @login_required
 def get_feature_listing(request):
+    """
+    Display information on feature requests
+    """
+    
     """List features ranked by most recent date and render them to the 'feature_listing.html' template"""
     features = FeatureTicket.qs_desc_date()  
     
-    """Pyagl chart data for features"""
+    """Pyagl chart data for snAPP admin activity on features"""
     feature_line_data = config_featureline_chart()
     feature_pie_data = config_featurepie_chart()
     
-    """Display latest features by status"""
+    """Retrieve chart data on latest features by status"""
     latest_feature = FeatureTicket.qs_latest_complete_feature()
     next_feature = FeatureTicket.qs_latest_active_feature()
     random_feature = FeatureTicket.qs_random_requested_feature()

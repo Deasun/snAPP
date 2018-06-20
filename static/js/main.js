@@ -36,7 +36,7 @@ $(document).ready(function() {
     });
 
     /*Hover over tabs and icons*/
-    $('.tab-pane, .fa-info-circle, .stick-head')
+    $('.tab-pane, .fa-info-circle')
         .mouseenter(function() {
             $(this).animate({ "opacity": "1" }, 250)
         })

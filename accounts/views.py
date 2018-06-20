@@ -23,10 +23,12 @@ def index(request):
     return render(request, 'index.html')
 
 
-"""
-Register a User
-"""
+
 def registration(request):
+    """
+    Register a User
+    """
+    
     """Redirect logged user to profile page"""
     if request.user.is_authenticated:
         return redirect('profile', id=request.user.id)
@@ -52,11 +54,13 @@ def registration(request):
     return render(request, 'registration.html', {"registration_form": registration_form})
 
 
-"""
-User Login
-"""
+
 def login(request):
-    """Return a Login page"""
+    """
+    User Login
+    """
+    
+    """Access login page and enter credentials"""
     if request.user.is_authenticated:
         return redirect('profile', id=request.user.id)
         
@@ -81,13 +85,13 @@ def login(request):
     return render(request, 'login.html', {"login_form": login_form})
 
 
-"""
-User Profile Page
-"""
 @login_required
 def user_profile(request, id):
-    """The user's profile page"""
+    """
+    User Profile Page
+    """
     
+    """The user's profile page"""
     user = get_object_or_404(User, id=id)
     auth_user = request.user
     bugs = BugTicket.objects.filter(created_by=id)
@@ -106,29 +110,33 @@ def user_profile(request, id):
                 })
 
 
-"""
-Logout
-"""
 @login_required
 def logout(request):
+    """
+    Logout
+    """
     """Log the user out"""
     auth.logout(request)
     messages.success(request, "You have been successfully logged out!")
     return redirect(reverse('index'))
     
 
-"""
-Edit User Profile
-"""
+
 @login_required
 def edit_profile(request):
+    """
+    Edit User Profile
+    """
+    """edit both the user and profile model instances"""
     if request.method == 'POST':
         user_form = UserEditForm(data=request.POST or None, instance=request.user)
         profile_form = ProfileEditForm(data=request.POST or None, instance=request.user.profile, files=request.FILES)
+        
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
         return redirect('profile', id=request.user.id)
+    
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)

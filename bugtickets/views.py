@@ -54,43 +54,12 @@ def upvote_bug(request, id=None):
     return render(request, "bug_report.html", {'bugs': bugs})
 
 
-# DELETED FUNCTION - NOT NECESSARY. ADMIN ONLY FUNCTION
-# @login_required
-# def edit_bug(request, id):
-#     """
-#     Edit a Bug Report ticket
-#     """
-#     submit = get_object_or_404(BugTicket, pk=id)
-#     # Is this required? Double protection - also in template
-#     """Enable authors only to edit bugs"""
-#     if submit.created_by != request.user:
-#         messages.warning(request, "You cannot edit a bug report that you did not generate.")
-#     else:    
-#         if request.method == 'POST':
-#             report_form = ReportBugForm(request.POST, instance=submit)
-#             if report_form.is_valid():
-#                 submit = report_form.save(commit=False)
-#                 submit.created_by = request.user
-#                 submit.save()
-#                 return redirect('get_bug_listing')
-#         else:
-#             report_form = ReportBugForm(instance=submit)
-#     return render(request, 'report_form.html', {'report_form': report_form})
-
-
-# DELETED FUNCTION - NOT NECESSARY. ADMIN ONLY FUNCTION
-# @login_required
-# def delete_bug(request, id=None):
-#     query = BugTicket.objects.get(id=id)
-#     query.delete()
-#     messages.success(request, "Your bug report has been deleted.")
-    
-#     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('date_created')
-#     return render(request, "bug_listing.html", {'bugs': bugs})
-
-
 @login_required
 def add_comment_to_bug(request, pk):
+    """
+    Enable user to add comments to bug reports
+    """
+    
     post = BugTicket.objects.get(pk=pk)
     if request.method == "POST":
         
@@ -108,6 +77,10 @@ def add_comment_to_bug(request, pk):
 
 @login_required
 def bug_report(request, pk=id):
+    """
+    Enable user to report a bug_report
+    """
+    
     bugs = BugTicket.objects.filter(id=pk)
     
     # return message if bug does not exist
@@ -124,8 +97,11 @@ def get_bug_listing(request):
     """
     List bugs with most recent on top and render chart data
     """
+    
+    """order bugs by date reported"""
     bugs = BugTicket.objects.filter(date_created__lte=timezone.now()).order_by('-date_created')
     
+    """retrieve data on snAPP admin activity for charts"""
     bug_line_data = config_bugline_chart()
     bug_pie_data = config_bugpie_chart()
     bug_bar_data = config_bugbar_chart()

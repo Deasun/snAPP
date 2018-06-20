@@ -4,14 +4,14 @@ from featuretickets.models import FeatureTicket
 
 def view_cart(request):
     """
-    A view that renders the contents page
+    Display feature ticket review page
     """
     return render(request, 'cart.html')
 
 
 def add_to_cart(request, id):
     """
-    Add a quantity of the specified product to the cart
+    Enable the user to add tickets to their order
     """
     quantity=int(request.POST.get('quantity'))
     
@@ -28,12 +28,10 @@ def add_to_cart(request, id):
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
     
-
-    
     
 def adjust_cart(request, id):
     """
-    Adjust the quantity of the specified product to the specififed amount
+    Adjust the quantity of tickets ordered
     """
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})

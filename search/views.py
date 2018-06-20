@@ -13,21 +13,22 @@ from accounts.models import Profile
 
 
 
-
-
 @login_required
 def feature_search(request):
+    """
+    Enable user to search snAPP features by feature_type
+    """
+    
     features = FeatureTicket.objects.filter(feature_type__icontains=request.GET['q'])
     
     # Handle empty query set with django message 
     if not features:
         messages.success(request, "Your search returned no results. Please try again.")
     
-    """Pyagl chart data for features"""
+    """Pyagl chart data for snAPP admin activity on features and member requests"""
     feature_line_data = config_featureline_chart()
     feature_pie_data = config_featurepie_chart()
     
-    # Pass data to render charts
     return render(request, 'feature_listing.html', {
                 'features': features, 
                 'feature_line_data': feature_line_data, 
@@ -36,12 +37,16 @@ def feature_search(request):
 
 @login_required
 def bug_search(request):
+    """
+    Enable user to search snAPP bugs by description
+    """
     bugs = BugTicket.objects.filter(description__icontains=request.GET['q'])
     
     # Handle empty query set with django message 
     if not bugs:
         messages.success(request, "Your search returned no results. Please try again.")
     
+    """Pyagl chart data for snAPP admin activity on bugs and member bug reports"""
     bug_line_data = config_bugline_chart()
     bug_pie_data = config_bugpie_chart()
     bug_bar_data = config_bugbar_chart()
@@ -55,9 +60,12 @@ def bug_search(request):
                  })
 
 
-# search for snAPP member profile (by username)
 @login_required
 def member_search(request):
+    """
+    Enable users to search for other snAPP member profiles by username
+    """
+    
     member = request.GET['member']
     
     try:
@@ -68,9 +76,13 @@ def member_search(request):
          messages.success(request, "There are no snAPP members with that username. Please try again.")
          return redirect('profile', id=request.user.id)
 
-# search for keyword in alert
+
 @login_required
 def alert_search(request):
+    """
+    Enable users to search snAPP alerts by keyword
+    """
+    
     alerts = Profile.objects.filter(alert__icontains=request.GET['q'])
     
     # Handle empty query set with django message 
