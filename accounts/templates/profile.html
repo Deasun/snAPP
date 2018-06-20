@@ -14,7 +14,6 @@
         <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
         <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
         <h2 class="user">{{ user.username }}'s snAPP profile</h2>
-        <p><strong>Find out how to use snAPP's Alert System.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
         
         <div class="col-xs-12">
         <!--Modal explaining how to use Alert System-->
@@ -57,7 +56,8 @@
             <form action="{% url 'member_search' %}" method='GET'>
                 <input type='text' name='member'>
                 <button type='submit' class="btn btn-sm btn-success home-btn">Search</button>
-            </form>
+            </form><br><br>
+            <p><strong>Find out how to use snAPP's Alert System.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
         </div>
 
         <!--Profile info and member activity organised into tabs using js-->
@@ -215,7 +215,7 @@
                     </form>
                     <form action="{% url 'profile' id=user.id %}">
                         <button type='submit' class="btn btn-danger btn-sm reset-btn">Reset</button>
-                    </form>
+                    </form><br>
                 </div>
                 <thead>
                     <tr class="tr-alert">
