@@ -10,7 +10,6 @@ $(document).ready(function() {
     /*Index page tooltips*/
     $('[data-toggle="tooltip"]').tooltip()
 
-
     /*toggle featureticket report details*/
     $(".toggle").hide()
     $(".toggle-button").click(function() {
@@ -37,19 +36,13 @@ $(document).ready(function() {
     });
 
     /*Hover over tabs and icons*/
-    $('.tab-pane, i, .stick-head')
+    $('.tab-pane, .fa-info-circle, .stick-head')
         .mouseenter(function() {
             $(this).animate({ "opacity": "1" }, 250)
         })
         .mouseleave(function() {
-            $(this).animate({ "opacity": ".6" }, 250)
+            $(this).animate({ "opacity": ".7" }, 250)
         });
-
-    /*opacity on click*/
-    // $('i').click(function() {
-    //     $(this).animate({ "opacity": "1" }, 500)
-    // })
-
 
     /*Turn message off after 10 secs*/
     setTimeout(function() {
@@ -60,7 +53,6 @@ $(document).ready(function() {
     $('.delete-message').on('click', function() {
         $('.delete-message').parent().attr('style', 'display:none;');
     })
-
 
     /*
     Marquee plug-in for scrolling member alerts - 
@@ -76,6 +68,6 @@ $(document).ready(function() {
         duration: 20000,
         gap: 150,
         pauseOnHover: true,
-        startVisible: false,
+        startVisible: true,
     })
 });
