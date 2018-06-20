@@ -56,7 +56,7 @@
         <div class="display">
             <form action="{% url 'member_search' %}" method='GET'>
                 <input type='text' name='member'>
-                <button type='submit' class="btn btn-sm btn-success home-btn">Search</button>
+                <button type='submit' class="btn btn-sm btn-success home-btn">Search <i class="fas fa-search"></i></button>
             </form><br><br>
             <p><strong>Find out how to use snAPP's Alert System.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>
         </div>
@@ -91,7 +91,9 @@
                             <p><strong>About me:</strong><br>{{ user.profile.description|linebreaks }}</p>
                             <br>
                             {% if user.id is auth_user.id %}
-                            <a href="{% url 'edit_profile' %}"><button class="btn btn-sm btn-danger">Edit Profile</button></a> {% else %} {% endif %}
+                            <a href="{% url 'edit_profile' %}"><button class="btn btn-sm btn-danger">Edit Profile <i class="fas fa-pencil-alt"></i></button></a> 
+                            {% else %} 
+                            {% endif %}
                         </div>
                     </div>
                 </blockquote>
@@ -114,7 +116,9 @@
                             <p>{{ user.profile.alert|linebreaks }}</p>
                             <br>
                             {% if user.id is auth_user.id %}
-                            <a href="{% url 'edit_profile' %}"><button class="btn btn-sm btn-danger">Update Alert</button></a> {% else %} {% endif %}
+                            <a href="{% url 'edit_profile' %}"><button class="btn btn-sm btn-danger">Update Alert <i class="fas fa-pencil-alt"></i></button></a> 
+                            {% else %} 
+                            {% endif %}
                         </div>
                     </div>
                 </blockquote>
@@ -211,7 +215,7 @@
                 <div class="display search-margin">
                     <form action="{% url 'alert_search' %}" method='get'>
                         <input type='text' name='q'>
-                        <button type='submit' class="btn btn-success btn-sm home-btn">Search Alerts</button>
+                        <button type='submit' class="btn btn-success btn-sm home-btn">Search Alerts <i class="fas fa-search"></i></button>
                     </form>
                     <form action="{% url 'profile' id=user.id %}">
                         <button type='submit' class="btn btn-danger btn-sm reset-btn">Reset</button>
