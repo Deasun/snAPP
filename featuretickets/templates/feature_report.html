@@ -57,15 +57,12 @@
         
         <!--Display Amount Raised-->
         <p class="feature_panel banner">
-            <i class="fas fa-bullseye fa-2x feature"><label class='badge target-badge'>£{{ feature.target|floatformat  }}</label>
-            </i><strong> Find out more & contribute</strong>
-        </p><br>
+            <i class="fas fa-bullseye fa-2x feature"><label class='badge target-badge'>£{{ feature.target|floatformat  }}</label></i><strong> Find out more & contribute</strong></p><br>
 
         <!--Filter records to show status of feature ticket and if it is active, display progress bar to target-->
         {% if total > 0 and feature.status == 'active' %}
         <div class="progress">
-            <div class="progress-bar progress-bar-striped active dynamic-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:{{total|div:feature.target|mul:1000 }}%">
-            </div>
+            <div class="progress-bar progress-bar-striped active dynamic-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:{{total|div:feature.target|mul:1000 }}%"></div>
         </div>
         <p class="feature total">Total contributions: <strong>£{{ total|mul:feature.contribution|floatformat  }}</strong></p>
         {% elif total > 0 and feature.status == 'complete' %}
@@ -167,9 +164,7 @@
     <!--Comments-->
     <div class="col-xs-12 col-md-5 col-lg-4 col-lg-offset-1 head">
         <p class="feature_panel banner">
-            <i class="far fa-comment fa-2x feature"><label class='badge comment-badge'>{{ feature.feature_comments.count }}</label>
-            </i><strong> Help to shape this feature.</strong>
-        </p><br>
+            <i class="far fa-comment fa-2x feature"><label class='badge comment-badge'>{{ feature.feature_comments.count }}</label></i><strong> Help to shape this feature.</strong></p><br>
         <a class="btn btn-danger" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a>
         <section class="comments head scroll">
 
