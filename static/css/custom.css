@@ -173,7 +173,7 @@ hr {
 
 .profile-pic {
   border: 0.5rem solid #b37bff;
-  border-radius: 50%;
+  border-radius: 58px;
   height: 12rem;
   width: 12rem;
   margin-top: 3rem; }
@@ -247,7 +247,7 @@ hr {
 .dropdown-menu {
   background-color: #082838;
   box-shadow: 7px 10px 10px black;
-  border-radius: 3%; }
+  border-radius: 6px; }
 
 .dropdown-menu li a {
   color: #fff;
@@ -285,7 +285,7 @@ hr {
 /*profile headers*/
 .profile {
   border: solid 3px;
-  border-radius: 50%;
+  border-radius: 58px;
   padding: 1.75rem; }
 
 /*comments*/
@@ -447,7 +447,7 @@ a .fa-cc-stipe {
   left: 2.5%;
   background-color: #082838;
   height: 7rem;
-  border-radius: 10%; }
+  border-radius: 18px; }
 
 .globe {
   text-align: left;
@@ -478,7 +478,7 @@ a .fa-cc-stipe {
 .comment-pic {
   float: left;
   margin-right: 5px;
-  border-radius: 50%;
+  border-radius: 30px;
   border: solid .5rem;
   height: 6rem;
   width: 6rem;
@@ -765,7 +765,7 @@ Need to override default settings on <embed>
 
 .card-pic {
   margin-right: 5px;
-  border-radius: 50%;
+  border-radius: 58px;
   border: solid .5rem;
   height: 6rem;
   width: 6rem;
@@ -863,11 +863,5 @@ Need to override default settings on <embed>
   overflow: hidden;
   font-family: "Open Sans Condensed", sans-serif;
   font-weight: 600; }
-
-.comment-img {
-  float: left;
-  margin-right: 5px;
-  border-radius: 5%;
-  overflow: hidden; }
 
 /*# sourceMappingURL=custom.css.map */
