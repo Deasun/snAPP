@@ -39,7 +39,7 @@
                 <h1 class="masthead-brand"><img class='stick-head' src='{{MEDIA_URL}}images/group-white.png'><a href="{% url 'index' %}">snAPP</a></h1>
                 <p class="hidden-xs">You need. We build. You use. We develop.</p>
                 <hr>
-                <nav class="nav nav-masthead justify-content-center">
+                <nav class="nav nav-masthead">
 
                     <!--Navbar for logged in user-->
                     {% if user.is_authenticated %}
@@ -51,25 +51,20 @@
                             <li><a href="{% url 'logout' %}">Log Out</a></li>
                         </ul>
                     </div>
-                    <div class="dropdown">
+                    <div class="dropdown nav-margin">
                         <a class="nav-link" data-toggle="dropdown">Develop
                           <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-center">
-                            <li><a href="{% url 'report_bug' %}">Report a bug</a></li>
-                            <li><a href="{% url 'get_bug_listing' %}">Fixing snAPP</a></li>
-                            <br>
-                            <hr>
                             <li><a href="{% url 'request_feature' %}">Make a request</a></li>
                             <li><a href="{% url 'get_feature_listing' %}">Developing snAPP</a></li>
                         </ul>
                     </div>
                     <div class="dropdown">
-                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">Explore
+                        <a class="dropdown-toggle nav-link" data-toggle="dropdown">Fix
                           <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-menu-center">
-                            <li><a href="#">Knoweldge</a></li>
-                            <li><a href="#">Support</a></li>
-                            <li><a href="#">Strategy</a></li>
+                            <li><a href="{% url 'report_bug' %}">Report a bug</a></li>
+                            <li><a href="{% url 'get_bug_listing' %}">Fixing snAPP</a></li>
                         </ul>
                     </div>
                     {% else %}
