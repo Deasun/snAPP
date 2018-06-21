@@ -107,7 +107,6 @@
         </div>
     </div>
 
-
     <!--Comments column header-->
     <div class="col-xs-12 col-md-5 col-lg-4 col-lg-offset-1 head">
         <p class="feature_panel banner">
@@ -117,7 +116,7 @@
 
             {% for comment in bug.comments.all %}
             <article class="comment">
-                <a class="comment-pic tactics" href="#non">
+                <a class="comment-pic tactics" href="{% url 'profile' comment.author.id %}">
                    <img src='{{MEDIA_URL}}{{ comment.author.profile.image }}' alt="" width="50" height="50">
                 </a>
                 <div class="comment-body">

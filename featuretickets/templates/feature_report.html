@@ -170,7 +170,7 @@
 
             {% for comment in feature.feature_comments.all %}
             <article class="comment">
-                <a class="feature comment-pic" href="#">
+                <a class="feature comment-pic" href="{% url 'profile' comment.author.id %}">
                     <img src='{{MEDIA_URL}}{{ comment.author.profile.image }}' alt="" width="50" height="50">
                 </a>
                 <!--Style admin comments differently from user comments-->
