@@ -24,7 +24,7 @@ The **FeatureTicket** system is the mechanism for members to request, discuss an
  
 ### How does it work
  
-This website uses the **Django** microframework to route viewers through the site and execute the programme which is written in **python 3.4**. 
+This website uses the **Django** microframework to route viewers through the site and execute the programme which is written in **python 3.4.3**. 
 
 The site is styled with **Bootstrap** and **JQuery** code for enhancing user-experience and hiding descriptive text (used to guide the member through the site and provide detailed information) in modals, tooltips and tabs. Random member alerts are scrolled across the screen using the JQuery plug-in **Marquee**. 
 
@@ -32,7 +32,7 @@ User data is inputted using **django-bootstrap-forms** and stored in a **Postgre
 
 Data-visualisation charts are created using the **pygal** python svg plotting library. Static and media files are stored in an **AWS S3** bucket. Payments are processed using the **Stripe** online payment processing system. 
 
-**Bower** has been used to manage package dependencies for deployment of site on github pages. The site is designed using a **mobile-first** design and can be viewed [HERE](https://futoisaru.github.io/hippo/). 
+**AWS Cloud9** has been used to manage package dependencies for deployment of site on github pages. The site is designed using a **mobile-first** design and can be viewed [HERE](insert link following deployment). 
 
 The snAPP **API**, providing data relating to the application's development is available [HERE]() User information and alerts are not provided to the public. A **twitter** widget displaying the feed of the news source LabourStart is rendered on medium and large viewports across the site.
 
@@ -120,17 +120,19 @@ There are search facilities available for members, alerts, bugtickets and featur
   - Opera
   - Microsoft Edge
   - Mozilla Firefox
+- The application [Can I Use](https://www.caniuse.com) was used to check CSS code against the latest vendor prefix requirements.
 
 ## Contributing
  
 ### Getting the code up and running
-1. Firstly you will need to clone this repository by running the ```git clone <project's Github URL>``` command
-2. After you've that you'll need to make sure that you have **npm** installed
+1. Create a virtual environment running python 3.4.3 as the default in your IDE
+2. Clone this repository by running the ```git clone https://github.com/Deasun/snAPP.git``` command
+2. Following this, ensure that you have **npm** installed
   1. You can get **npm** by installing Node from [here](https://nodejs.org/en/)
 4. After those dependencies have been installed you'll need to make sure that you have **http-server** installed. You can install this by running the following: ```npm install -g http-server # this also may require sudo on Mac/Linux```
 5. Once **http-server** is installed run ```http-server -c-1```
 6. The project will now run on [localhost](http://127.0.0.1:8080)
-7. Make changes to the code and if you think it belongs in here then just submit a pull request
+7. We welcome all contributions to improving our code, so make changes you think are needed/desired and submit a pull request
 
 ## Credits
 
