@@ -1,10 +1,4 @@
-{% extends 'base.html' %} 
-
-{% block page_title %}Bug Report{% endblock %} 
-
-{% block page_heading %}Bug Report Ticket{% endblock %} 
-
-{% block content %} 
+{% extends 'base.html' %} {% block page_title %}Bug Report{% endblock %} {% block page_heading %}Bug Report Ticket{% endblock %} {% block content %}
 
 <!--Bug Report headers and search field-->
 {% for bug in bugs %}
@@ -23,43 +17,42 @@
 </div>
 
 
-    <!--Modal for Bug Reporting System-->
-    <div class="col-xs-12">
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header bug_modal_head">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Using snAPP's reporting system</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
-                            <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword
-                            (e.g.
-                            <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong>                            and feel free to leave a comment.<br><br>
-                            <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about
-                            your problem.
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="row">
-                            <div class="col-xs-9">
-                                <img class='group-modal' src='{{MEDIA_URL}}images/group-white.png'>
-                                <p class="hidden-xs">You need. We build. You use. We develop.</p>
-                            </div>
-                            <div class="col-xs-3">
-                                <button type="button" class="btn btn-success home-btn" data-dismiss="modal">Close</button>
-                            </div>
+<!--Modal for Bug Reporting System-->
+<div class="col-xs-12">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header bug_modal_head">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Using snAPP's reporting system</h4>
+                </div>
+                <div class="modal-body">
+                    <p>At snAPP, we prioritise addressing the problems which are being experienced by the most members. This is decided through a voting system.<br><br>
+                        <strong>It's very simple.</strong><br><br> If you experience a bug, <strong>search existing bug reports.</strong><br><br>You can do this by either scrolling through the list of bugs or, more efficiently, search by a keyword (e.g.
+                        <em>'login', 'crash'</em>). Click on the bug's title to find out more details.<br><br><strong>Chances are someone else is experiencing the same thing and has reported it already.</strong><br><br>If this is the case, <strong>'Upvote' the report</strong>                        and feel free to leave a comment.<br><br>
+                        <strong>If nobody has reported the problem yet, complete a Report Form.</strong><br><br> You'll be notified when we have begun to work on fixing the problem, or our administrator may leave a comment seeking more details about your
+                        problem.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-xs-9">
+                            <img class='group-modal' src='{{MEDIA_URL}}images/group-white.png'>
+                            <p class="hidden-xs">You need. We build. You use. We develop.</p>
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="button" class="btn btn-success home-btn" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 <div class="row">
-    
+
     <!--BugTicket UpVote header-->
     <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-1 head">
         <!--Header for Bug Details-->
@@ -93,7 +86,7 @@
                     </div>
                 </blockquote>
             </div>
-           
+
             <!--snAPP bug progress report-->
             <div id="progress" class="tab-pane fade in">
                 <blockquote class='alert-blockquote'>
@@ -118,18 +111,17 @@
     <!--Comments column header-->
     <div class="col-xs-12 col-md-5 col-lg-4 col-lg-offset-1 head">
         <p class="feature_panel banner">
-            <i class="far fa-comments tactics fa-2x tactics"><label class='badge comment-badge'>{{ bug.comments.count }}</label></i>
-            <strong> Bug Report details</strong>
-        </p><br>
+            <i class="far fa-comments tactics fa-2x tactics"><label class='badge comment-badge'>{{ bug.comments.count }}</label></i><strong> Bug Report details</strong></p><br>
         <a class="btn btn-success home-btn" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
         <section class="comments head scroll">
+
             {% for comment in bug.comments.all %}
             <article class="comment">
                 <a class="comment-pic tactics" href="#non">
                    <img src='{{MEDIA_URL}}{{ comment.author.profile.image }}' alt="" width="50" height="50">
                 </a>
                 <div class="comment-body">
-                    
+
                     <!--Style admin comments differently from user comments-->
                     {% if 'admin' in comment.author.username %}
                     <div class="admin-text">
@@ -140,12 +132,10 @@
                             <p class="attribution">by <a href="{% url 'profile' comment.author.id %}">{{ comment.author }}</a> on {{ comment.date_created }}</p>
                         </div><br>
                     </div>
-                </div>
             </article>
             {% endfor %}
         </section>
+        </div>
     </div>
 </div>
-{% endfor %} 
-
-{% endblock %}
+{% endfor %} {% endblock %}

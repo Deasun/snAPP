@@ -175,15 +175,14 @@
                 </a>
                 <!--Style admin comments differently from user comments-->
                 <div class="comment-body">
-                    {% if 'deasun' in comment.author.username %}
+                    {% if 'admin' in comment.author.username %}
                     <div class="admin-text">
                         {% else %}
                         <div class="text">
                             {% endif %}
                             <p>{{ comment.text|linebreaks }}</p>
                             <p class="attribution">by <a href="{% url 'profile' comment.author.id %}"> {{ comment.author }}</a> on {{ comment.date_created }}</p>
-                        </div>
-                        <br>
+                        </div><br>
                     </div>
             </article>
             {% endfor %}
