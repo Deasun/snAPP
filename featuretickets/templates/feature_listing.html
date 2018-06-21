@@ -112,10 +112,10 @@
                 <li class="active"><a data-toggle="tab" href="#requests" id="red-tab">Our monthly activity</a></li>
             </ul>
             <div class="tab-content tab-center">
-                <div id="activity" class="tab-pane fade in inactive">
+                <div id="activity" class="tab-pane fade in">
                     <embed class="lime-border" type="image/svg+xml" src={{feature_pie_data|safe}} style='max-width:900px' />
                 </div>
-                <div id="requests" class="tab-pane fade in active inactive">
+                <div id="requests" class="tab-pane fade in active">
                     <embed class="red-border" type="image/svg+xml" src={{feature_line_data|safe}} style='max-width:900px' />
                 </div>
             </div>
@@ -128,7 +128,7 @@
                 <li><a href="#new" id="red-tab">Brand New</a></li>
             </ul>
             <div class="tab-content tab-center">
-                <div id="complete" class="tab-pane fade in inactive">
+                <div id="complete" class="tab-pane fade in">
                     <blockquote class="profile-blockquote">
                         <div class="row">
                             {% for latest in latest_feature %}
@@ -142,7 +142,7 @@
                         </div>
                     </blockquote>
                 </div>
-                <div id="doing" class="tab-pane fade in active inactive">
+                <div id="doing" class="tab-pane fade in active">
                     <blockquote class='bug-blockquote'>
                         <div class="row">
                             {% for next in next_feature %}
@@ -156,7 +156,7 @@
                         </div>
                     </blockquote>
                 </div>
-                <div id="new" class="tab-pane fade in inactive">
+                <div id="new" class="tab-pane fade in">
                     <blockquote class='alert-blockquote'>
                         <div class="row">
                             {% for random in random_feature %}
