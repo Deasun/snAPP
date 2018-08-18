@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
@@ -21,7 +20,6 @@ def index(request):
         return redirect('profile', id=request.user.id)
     
     return render(request, 'index.html')
-
 
 
 def registration(request):
@@ -48,7 +46,6 @@ def registration(request):
                 auth.login(user=user, request=request)
                 messages.success(request, "You're registered. Welcome to snAPP!")
                 return redirect('profile', id=request.user.id)
-
     else:
         registration_form = UserRegistrationForm()
     return render(request, 'registration.html', {"registration_form": registration_form})
@@ -75,7 +72,6 @@ def login(request):
                 auth.login(user=user, request=request)
                 messages.success(request, "You have successfully logged in!")
                 return redirect('profile', id=request.user.id)
-    
             else:
                 login_form.add_error(None, "Your username or password is incorrect")
         
@@ -120,7 +116,6 @@ def logout(request):
     messages.success(request, "You have been successfully logged out!")
     return redirect(reverse('index'))
     
-
 
 @login_required
 def edit_profile(request):
