@@ -13,13 +13,11 @@ from django.utils import timezone
 from datetime import datetime
 
 
-
 """
 Test Checkout Process
 """
 
 # limited testing as process automated through Stripe's Checkout payment tool
-
 class TestCheckout(TestCase):
 
     """Simulate login object for accessing checkout"""   
@@ -38,7 +36,6 @@ class TestCheckout(TestCase):
     def test_card_rejection_no_js_stripe_payment_form(self):
         
         stripe.api_key = settings.STRIPE_SECRET
-        
         token = stripe.Token.create(
             card={
                 'number': '4242424242424242',

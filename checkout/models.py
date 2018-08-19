@@ -2,7 +2,7 @@ from django.db import models
 import datetime
 from featuretickets.models import FeatureTicket
 
-
+"""member's personal details"""
 class Order(models.Model):
     full_name = models.CharField(max_length=50, blank=False)
     street_address1 = models.CharField(max_length=40, blank=False)
@@ -17,6 +17,7 @@ class Order(models.Model):
     def __str__(self):
         return "{0}-{1}-{2}".format(self.id, self.date, self.full_name)
 
+"""specific info on the featureticket item being purchased"""
 class OrderLineItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, null=True)
     feature = models.ForeignKey(FeatureTicket, on_delete=models.CASCADE, null=False, related_name="features_vote")

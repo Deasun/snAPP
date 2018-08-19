@@ -9,16 +9,13 @@ from featuretickets.models import FeatureTicket
 import stripe
 
 
-
 stripe.api_key = settings.STRIPE_SECRET
-
 
 @login_required()
 def checkout(request):
     """
     Enable user to enter details and process Stripe PaymentForm
     """
-    
     if request.method=='POST':
         order_form = OrderForm(request.POST)
         payment_form = PaymentForm(request.POST)
@@ -41,7 +38,6 @@ def checkout(request):
                 
                 order_line_item.save()
 
-            
             try:
                 customer = stripe.Charge.create(
                     amount = int(total * 100),
@@ -49,7 +45,6 @@ def checkout(request):
                     description = request.user.email,
                     card = payment_form.cleaned_data['stripe_id'],
                     )
- 
             except stripe.error.CardError:
                 messages.error(request, "Your card was declined!")
             

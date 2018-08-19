@@ -4,12 +4,10 @@
 
 {% load bootstrap_tags %}
 
+{% block content %} 
 
 <!--Stripe scripts-->
-
-
-
-{% block content %} {% block scripts %}
+{% block scripts %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
     //<![CDATA[
@@ -19,7 +17,6 @@
 <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
 
-
 <div class="row list-head">
     
     <!--Checkout header into-->
@@ -28,7 +25,6 @@
         <h2 class="payment">Your Requests</h2>
         <p><strong>Enter your payment details.</strong> <i type="button" class="fas fa-info-circle fa-2x info" data-toggle="modal" data-target="#myModal"></i></p>
 
-        
         <!--Order details-->
         <table class="table table-hover">
             <thead>
@@ -59,7 +55,6 @@
         <div class="credit-card-errors" style="display:none">
             <div class='alert-message block-message error' id='stripe-error-message'></div>
         </div>
-        <!--</div>-->
         <div class="col-xs-12 col-sm-6 col-md-4 col-md-pull-4">
             <h2>Personal Details</h2>
             <div class="form-group check-out">
@@ -78,7 +73,4 @@
     <a target="_blank" href="https://stripe.com/be"><i class="fab fa-cc-stripe fa-3x"></i></a>
     </div>
 </div>
-
-
-
 {% endblock %}
