@@ -51,7 +51,6 @@ def registration(request):
     return render(request, 'registration.html', {"registration_form": registration_form})
 
 
-
 def login(request):
     """
     User Login
@@ -137,5 +136,19 @@ def edit_profile(request):
         profile_form = ProfileEditForm(instance=request.user.profile)
     
     return render(request, 'edit_profile.html', {'user_form': user_form, 'profile_form': profile_form })
+
+@login_required
+def delete_profile(request, id):
+    """
+    Delete user profile
+    """
+    if request.method == 'POST':
+        Profile.objects.filter(user=request.user).delete()
+        user = get_object_or_404(User, id=id)
+        user.delete()
+        # Profile.objects.filter(pk=request.user.pk).update(is_active=False, email=None)
+        messages.success(request, "You have left the snAPP network. Thank you for your contribution.")
+        return redirect(reverse('index'))
+                
     
     

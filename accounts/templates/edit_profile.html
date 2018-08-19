@@ -11,6 +11,11 @@
         <img class="profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
         <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
         <p class="user"><strong>{{ user.username }}</strong></p>
+        
+        <!--NEED A DELETE FUNCTIOn-->
+        <form method='POST' action="{% url 'delete_profile' id=user.id %}">{% csrf_token %}
+            <input class="btn btn-success home-btn" type="submit" value="Delete">
+        </form>
         <h2 class="user">Edit Profile</h2>
 
         <!--Profile info and member activity organised into tabs using js-->
@@ -168,16 +173,5 @@
         </form>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 
 {% endblock %}
