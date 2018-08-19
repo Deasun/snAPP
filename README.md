@@ -68,6 +68,8 @@ Members can review their order on the checkout page and are asked to input their
 #### Search
 There are search facilities available for members, alerts, bugtickets and featuretickets. Members are encouraged to use the search facility to prevent duplicating feature requests and bug reports. When searching bugtickets and featuretickets, search is carried out by 'Title' field.
 
+#### Persistence of contributions
+When members leave the snAPP newtork, any bugs, features, comments or upvotes they contributed persist. This feature recognises the collaborative nature of the platform.
 
 ### Features Left to Implement
 - email alerts to members when there is activity (upvotes, comments, contributions) relating to their bugs or features.

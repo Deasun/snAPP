@@ -106,6 +106,8 @@ nb - *Django's default authentication models (including First Name, Last Name an
 |        | | | | `target` | | |
 |     |    | | | `report` | | |
 
+The primary key for Profile (user) is set to ``null=True, on_delete=models.SET_NULL`` while all children referenced are also set to ``null=True``. This is to enable bugtickets, featuretickets, comments and upvotes to persist after the member has left the network.
+
 Final models, with dataypes, can be found in the `models.py` file of the relevant app in the directory.
 
                         
