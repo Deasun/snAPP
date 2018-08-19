@@ -10,7 +10,7 @@ import datetime
 Profile model - extra information relating to User Model
 """
 class Profile(models.Model):
-	user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
+	user = models.OneToOneField(User, unique=True, null=True, on_delete=models.SET_NULL)
 	image = models.ImageField(upload_to='images', default='images/group-white_eSru9tk.png')
 	trade_union = models.CharField(null=True, max_length=100, default='')
 	description = models.TextField(null=True, default='No profile description provided.')
