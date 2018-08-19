@@ -8,8 +8,6 @@ from accounts.models import Profile
 from featuretickets.models import FeatureTicket
 
 
-
-
 """
 Test Cart
 """
@@ -31,7 +29,6 @@ class TestCart(TestCase):
         ticket = FeatureTicket.objects.create(created_by_id=1, title='TestTitle', feature_type='Design', description='This is a test') 
         response = self.client.post('/cart/add/1', {'quantity': '2'})
         self.assertEqual(response.status_code, 302)
-        
     
     """Test adjust amount of items in cart"""
     def test_adjust_cart(self):

@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
 
 
-
-
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
         <i class="fas fa-ticket-alt fa-4x profile ticket" data-toggle="modal" data-target="#myModal"></i>
@@ -34,14 +32,15 @@
                 </div>
                 <div class="modal-body">
                     <p>Before making your contribution, ensure sure that you have chosen both the <strong>correct Features</strong> and the right number of <strong>snAPP tickets.</strong><br><br>
-                        <strong>Remember that 1 snAPP ticket = £9.99</strong><br><br> When your have reviewed your requests, click the button to enter your details & make your contribution.<br><br>We're on it.
+                        <strong>Remember that 1 snAPP ticket = £10</strong><br><br> When your have reviewed your requests, click the button to enter your details & make your contribution.<br><br>We're on it.
                     </p>
                 </div>
                 <div class="modal-footer">
                     <div class="row">
                         <div class="col-xs-9">
                             <img class='group-modal' src='{{MEDIA_URL}}images/group-white.png'>
-                            <p class="hidden-xs">You need. We build. You use. We develop.</p>                        </div>
+                            <p class="hidden-xs">You need. We build. You use. We develop.</p>               
+                        </div>
                         <div class="col-xs-3">
                             <button type="button" class="btn btn-success home-btn" data-dismiss="modal">Close</button>
                         </div>
@@ -51,7 +50,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="row row-flex head">
     {% for item in cart_items %}
