@@ -1,7 +1,16 @@
-{% extends 'base.html' %} {% load staticfiles %} {% block page_title %}Feature Report{% endblock %} {% block page_heading %}Feature Report Ticket{% endblock %} {% load mathfilters %} {% block content %} {% for feature in features %}
+{% extends 'base.html' %} 
 
+{% load staticfiles %} 
 
+{% block page_title %}Feature Report{% endblock %} 
 
+{% block page_heading %}Feature Report Ticket{% endblock %} 
+
+{% load mathfilters %} 
+
+{% block content %} 
+
+{% for feature in features %}
 <!--Feature report page heading-->
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
@@ -11,7 +20,6 @@
         <p><strong>Building snAPP one feature at a time.</strong> <i type="button" class="fas fa-info-circle fa-2x info" data-toggle="modal" data-target="#myModal"></i></p>
         <h2 class="feature">Feature Request #{{ feature.id }}</h2>
     </div>
-
 </div>
 
 <!--Modal for Feature Request System-->
@@ -96,25 +104,24 @@
                             <!--Render # of tickets needed to reach target-->
                             {% if total == 0 %}
                             <p class="user"><strong>No tickets purchased yet!</strong></p>
-                            {% elif feature.target|div:10
-                            <=t otal %} <p class="user"><strong>Target reached!</strong></p>
-                                {% else %}
-                                <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
-                                {% endif %}
+                            {% elif feature.target|div:10 <= total %} <p class="user"><strong>Target reached!</strong></p>
+                            
+                            {% else %}
+                            <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
+                            {% endif %}
 
-
-                                <!--Form to add tickets to cart-->
-                                <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                                    {% csrf_token %}
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <p class="feature"><strong>Contribute Now!</strong></p>
-                                            <input name='quantity' required="required" type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
-                                            <button class="btn btn-success" type="submit">Support</button>
-                                        </div>
+                            <!--Form to add tickets to cart-->
+                            <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p class="feature"><strong>Contribute Now!</strong></p>
+                                        <input name='quantity' required="required" type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
+                                        <button class="btn btn-success" type="submit">Support</button>
                                     </div>
-                                </form>
-                                <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                                </div>
+                            </form>
+                            <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
                         </div>
                     </div>
                 </blockquote>
@@ -135,26 +142,26 @@
                             <!--Render # of tickets needed to reach target-->
                             {% if total == 0 %}
                             <p class="user"><strong>No tickets purchased yet!</strong></p>
-                            {% elif feature.target|div:10
-                            <=t otal %} <p class="user"><strong>Target reached!</strong></p>
-                                {% else %}
-                                <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
-                                {% endif %}
+                            {% elif feature.target|div:10 <= total %} 
+                            <p class="user"><strong>Target reached!</strong></p>
+                            {% else %}
+                            <p class="user"><strong>{{ feature.target|div:10|sub:total|floatformat }} more tickets needed!</strong></p>
+                            {% endif %}
 
-                                <!--Purchase tickets form-->
+                            <!--Purchase tickets form-->
+                            <form method='POST' action="{% url 'add_to_cart' feature.id %}">
+                                {% csrf_token %}
                                 <form method='POST' action="{% url 'add_to_cart' feature.id %}">
                                     {% csrf_token %}
-                                    <form method='POST' action="{% url 'add_to_cart' feature.id %}">
-                                        {% csrf_token %}
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2"><br><br>
-                                                <button class="btn btn-success" type="submit">Support</button>
-                                            </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2"><br><br>
+                                            <button class="btn btn-success" type="submit">Support</button>
                                         </div>
-                                    </form>
+                                    </div>
                                 </form>
-                                <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
+                            </form>
+                            <h6>* 1 x Ticket = £10. You will be asked to verify the amount before checking out. </h6>
                         </div>
                     </div>
                 </blockquote>
@@ -162,12 +169,11 @@
         </div>
     </div>
 
-
-
     <!--Comments-->
     <div class="col-xs-12 col-md-5 col-lg-4 col-lg-offset-1 head">
         <p class="feature_panel banner">
-            <i class="far fa-comment fa-2x feature"><label class='badge comment-badge'>{{ feature.feature_comments.count }}</label></i><strong> Help to shape this feature.</strong></p><br>
+            <i class="far fa-comment fa-2x feature"><label class='badge comment-badge'>{{ feature.feature_comments.count }}</label></i><strong> Help to shape this feature.</strong>
+        </p><br>
         <a class="btn btn-danger" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a>
         <section class="comments head scroll">
 
@@ -193,7 +199,6 @@
         </div>
     </div>
 </div>
-
 {% endfor %} 
 
 {% endblock %}

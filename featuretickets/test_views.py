@@ -59,7 +59,6 @@ class TestFeatureticket(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "feature_report.html")
     
-
     """Test for feature_listing status code and template"""
     def test_get_feature_listing(self):
         response = self.client.get(reverse('get_feature_listing'))

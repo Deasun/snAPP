@@ -6,7 +6,6 @@ class RequestFeatureForm(forms.ModelForm):
         model = FeatureTicket
         fields = ['title', 'feature_type', 'description', 'links']
         
-
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment

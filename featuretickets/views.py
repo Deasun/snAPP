@@ -10,7 +10,6 @@ from django.utils import timezone
 from .charts import config_featureline_chart, config_featurepie_chart
 
 
-
 @login_required
 def request_feature(request, pk=None):
     """
@@ -24,7 +23,6 @@ def request_feature(request, pk=None):
             submit.save()
             messages.success(request, "Excellent. Your feature request will be posted to start attracting supporters once you have made your snAPP contribution!")
             return redirect('get_feature_listing')
-
     else:
         request_form = RequestFeatureForm()
     return render(request, 'request_form.html', {'request_form': request_form})
@@ -35,7 +33,6 @@ def add_comment_to_feature(request, pk):
     """
     Enable user to add a comment to a feature request
     """
-    
     post = FeatureTicket.objects.get(pk=pk)
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -55,7 +52,6 @@ def feature_report(request, pk=id):
     """
     Display Feature Report
     """
-    
     features = FeatureTicket.objects.filter(id=pk)
     
     # return message if bug does not exist

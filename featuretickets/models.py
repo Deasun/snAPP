@@ -8,9 +8,8 @@ from .choices import feature_list
 """
 Feature Ticket model
 """
-
 class FeatureTicket(models.Model):
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_features")
+    created_by = models.ForeignKey(User, null=True, on_delete=models.SET_NULL, related_name="user_features")
     date_created = models.DateField(null=True, default=datetime.date.today)
     date_started = models.DateField(blank=True, null=True)
     date_completed = models.DateField(blank=True, null=True)
@@ -57,7 +56,6 @@ class FeatureTicket(models.Model):
         active_feature_qs = FeatureTicket.objects.filter(date_started__range=(enddate, startdate))
         return active_feature_qs.count()  
 
-    
     """FeatureTickets data for Daily, Weekly, Monthly Completion Line Chart"""
     @classmethod
     def qs_complete_features(cls, num):
@@ -66,7 +64,6 @@ class FeatureTicket(models.Model):
         enddate = startdate - datetime.timedelta(days=num)
         complete_feature_qs = FeatureTicket.objects.filter(date_completed__range=(enddate, startdate))
         return complete_feature_qs.count()
-
 
     """FeatureTickets by bug_type for Half-Pie Chart"""
     @classmethod
@@ -86,13 +83,11 @@ class FeatureTicket(models.Model):
         latest_feature = cls.objects.exclude(date_completed__isnull=True)[:1]
         return latest_feature
     
-    
     """Get latest active feature"""
     @classmethod
     def qs_latest_active_feature(cls):
         next_feature = FeatureTicket.objects.exclude(date_completed__isnull=False).exclude(date_started__isnull=True)[:1]
         return next_feature
-    
     
     """Get latest requested feature"""
     @classmethod
@@ -109,7 +104,7 @@ class FeatureTicket(models.Model):
         features = FeatureTicket.objects.filter(date_created__lte=timezone.now()).order_by('-date_created')  
         return features
     
-        
+     
     """
     String Representation
     """
@@ -117,17 +112,14 @@ class FeatureTicket(models.Model):
 	    return "Request: {} ({})".format(self.title, self.date_created)
 
 
-
 """
 Comment Model - enables user to leave comments on feature requests
 """
-
 class Comment(models.Model):
-    feature_ticket = models.ForeignKey(FeatureTicket, on_delete=models.CASCADE, related_name="feature_comments")
+    feature_ticket = models.ForeignKey(FeatureTicket, null=True, on_delete=models.SET_NULL, related_name="feature_comments")
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="comment_author")
     text = models.TextField()
     date_created = models.DateField(default=datetime.date.today)
 
-    
     def __str__(self):
         return "{}: {}'s COMMENTS".format(self.feature_ticket, self.author)
