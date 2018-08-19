@@ -71,15 +71,15 @@
                     
                     <!--Navbar for unlogged user-->
                     <div class="dropdown">
-                        <a class="nav-link" href="{% url 'login' %}">Login
+                        <a class="nav-link unlogged-nav-margin-left" href="{% url 'login' %}">Login
                           <span></span></a>
                     </div>
+                    <!--<div class="dropdown">-->
+                    <!--    <a class="nav-link" href="#">About-->
+                    <!--      <span></span></a>-->
+                    <!--</div>-->
                     <div class="dropdown">
-                        <a class="nav-link" href="#">About
-                          <span></span></a>
-                    </div>
-                    <div class="dropdown">
-                        <a class="nav-link" href="{% url 'registration' %}">Register
+                        <a class="nav-link unlogged-nav-margin-right" href="{% url 'registration' %}">Register
                           <span></span></a>
                     </div>
                     {% endif %}
