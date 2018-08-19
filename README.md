@@ -121,7 +121,7 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
 ### Automated Testing
 - [coverage.py](https://coverage.readthedocs.io/en/coverage-4.5.1/)
     - Python code across applications is tested extensively using the **coverage.py** testing tool. Custom code, for example provided by the Stripe payment service, was manually tested using the Stripe dashboard (also accounting for the under 90% test covergae on the Checkout app). The coverage on each of the apps is currently:
-        - Accounts – 96%
+        - Accounts – 94%
         - BugTickets – 93%
         - FeatureTickets – 96%
         - Cart – 91%
@@ -129,14 +129,14 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
         - Search – 94% 
 
 - [Travis CI](https://bower.io)
-    - pre-deployment integration tests are carried out using the **Travis Continuous Integration** service
+    - pre-deployment integration tests are carried out using the **Travis Continuous Integration** service. Integration tests were passing at time of deployment (as should be seen at the head of this README file)
 
 ### Manual Testing
-- **User stories** were used to test the functionalities of the application.  
+- **User stories**, located in the [database schema](database_schema/db_schema.md) were used to test the functionalities of the application. This involved a step-by-step process of testing links, forms, comments, upvotes, bugticket and featureticket reports.
+
+- **Password Reset** feature was tested by going through the reset process. Gmail settings had to be adjucted on two occasions - first to allow 'less secure' apps access to the account and secondly a 'Critical Security Alert' in my inbox which required a response to confirm the app's access to gmail account.
 
 - **JQuery** code used to style the application and enhance UX was tested manually across the site. The process of triggering the effect, checking if it occured, refreshing the page and triggering again was used on each styled element.
-
-
 
 - **Browser compatibility** - the site was viewed and tested manually across mobile, tablet, laptop and large desktop views and in the following browsers:
   - Google Chrome
