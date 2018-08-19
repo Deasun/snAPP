@@ -57,7 +57,9 @@
         
         <!--Display Amount Raised-->
         <p class="feature_panel banner">
-            <i class="fas fa-bullseye fa-2x feature"><label class='badge target-badge'>£{{ feature.target|floatformat  }}</label></i><strong> Find out more & contribute</strong></p><br>
+            <i class="fas fa-bullseye fa-2x feature"><label class='badge target-badge'>£{{ feature.target|floatformat  }}</label></i>
+            <strong> Find out more & contribute</strong>
+        </p><br>
 
         <!--Filter records to show status of feature ticket and if it is active, display progress bar to target-->
         {% if total > 0 and feature.status == 'active' %}
@@ -106,7 +108,8 @@
                                     {% csrf_token %}
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <p class="feature"><strong>Contribute Now!</strong></p><input name='quantity' type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
+                                            <p class="feature"><strong>Contribute Now!</strong></p>
+                                            <input name='quantity' required="required" type='number' min="1" max='999' placeholder="# tickets" class="form-control-2">
                                             <button class="btn btn-success" type="submit">Support</button>
                                         </div>
                                     </div>
