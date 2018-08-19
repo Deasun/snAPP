@@ -6,8 +6,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 
-
-
 # Registration
 class UserRegistrationForm(UserCreationForm):
     """Form used to register a new user"""
@@ -52,7 +50,7 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
 
 
-# Edit User Profile
+# Edit User Profile - provide more details than asked for a registration
 class UserEditForm(forms.ModelForm):
     class Meta:
         model = User

@@ -105,12 +105,12 @@ class TestLoggedViews(TestCase):
         self.profile.save()
 
     """
-    Logged in user access home page
+    Logged in user redirected from home page
     """
     def test_get_home_page(self):
         page = self.client.get("/")
-        self.assertEqual(page.status_code, 200)
-        self.assertTemplateUsed(page, "index.html")
+        self.assertEqual(page.status_code, 302)
+        self.assertRedirects(page, '/accounts/profile/1')
     
     """
     Logged in user redirected from login page
@@ -118,7 +118,7 @@ class TestLoggedViews(TestCase):
     def test_redirect_login_page(self):
         page = self.client.get("/accounts/login/")
         self.assertEqual(page.status_code, 302)
-        self.assertRedirects(page, '/')
+        self.assertRedirects(page, '/accounts/profile/1')
     
     """
     Logged in user redirected from registration page
@@ -126,7 +126,7 @@ class TestLoggedViews(TestCase):
     def test_redirect_register_page(self):
         page = self.client.get("/accounts/register/")
         self.assertEqual(page.status_code, 302)
-        self.assertRedirects(page, '/')
+        self.assertRedirects(page, '/accounts/profile/1')
     
     """
     Logged in user access to own profile page
@@ -184,6 +184,4 @@ class TestNonLoggedViews(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "registration.html")
         
-    
-
     

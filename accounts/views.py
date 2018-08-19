@@ -130,7 +130,6 @@ def edit_profile(request):
             user_form.save()
             profile_form.save()
         return redirect('profile', id=request.user.id)
-    
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
@@ -146,7 +145,6 @@ def delete_profile(request, id):
         Profile.objects.filter(user=request.user).delete()
         user = get_object_or_404(User, id=id)
         user.delete()
-        # Profile.objects.filter(pk=request.user.pk).update(is_active=False, email=None)
         messages.success(request, "You have left the snAPP network. Thank you for your contribution.")
         return redirect(reverse('index'))
                 
