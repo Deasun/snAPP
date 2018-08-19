@@ -59,10 +59,8 @@ def add_comment_to_bug(request, pk):
     """
     Enable user to add comments to bug reports
     """
-    
     post = BugTicket.objects.get(pk=pk)
     if request.method == "POST":
-        
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
@@ -80,14 +78,12 @@ def bug_report(request, pk=id):
     """
     Enable user to report a bug_report
     """
-    
     bugs = BugTicket.objects.filter(id=pk)
     
     # return message if bug does not exist
     if not bugs:
             messages.success(request, "There is no bug with that identity. Please search again.")
             return redirect('get_bug_listing')
-    
     else:
         return render(request, "bug_report.html", {'bugs': bugs})
 
@@ -112,4 +108,3 @@ def get_bug_listing(request):
             'bug_pie_data': bug_pie_data,
             'bug_bar_data': bug_bar_data,
     })
-    

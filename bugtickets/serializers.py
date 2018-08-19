@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import BugTicket
 
-
+# Select fileds to be included in API
 class BugTicketSerializer(serializers.ModelSerializer):
     class Meta:
         model = BugTicket
@@ -9,5 +9,4 @@ class BugTicketSerializer(serializers.ModelSerializer):
     
     
     
-# figure out method to calculate # 'doing' & # complete by day, week, month
-# count method include in json data
+

@@ -12,8 +12,6 @@ urlpatterns = [
     path('bug/<int:pk>', bug_report, name='bug_report'),
     path('bug/<int:pk>/comment', add_comment_to_bug, name='add_comment_to_bug'),
     path('api_views/', api_views.BugTicketViewSet.as_view())
-
-
 ]
 
 

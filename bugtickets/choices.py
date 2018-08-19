@@ -1,3 +1,4 @@
+# imported to models.py and used for attribute options
 bugs = (
     ('Functional', 'Functional'),
     ('Communication', 'Communication'),

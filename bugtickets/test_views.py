@@ -47,8 +47,7 @@ class TestBugticket(TestCase):
         self.assertEqual(response.status_code, 200)
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
-        # self.assertEqual(str(messages[0]), messages.success(request, "Your upvote has been counted. Thanks"))
-        
+
     """Test getting add comment to bug page"""
     def test_add_comments_to_bug(self):
         response = self.client.get("/bugtickets/bug/1/comment")
