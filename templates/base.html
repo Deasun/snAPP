@@ -9,15 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>snAPP</title>
-
+    
     <!-- Bootstrap CSS and fonts -->
     {% include 'base/css.html' %}
-
+    
     <!--jQuery, Bootstrap JS-->
     {% include 'base/js.html' %} 
-    
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    
     <!--Custom CSS styles-->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}" type='text/css' />
 </head>
@@ -35,7 +33,6 @@
                     {% endif %}
                 </a> 
                 {% endif %}
-
                 <h1 class="masthead-brand"><img class='stick-head' src='{{MEDIA_URL}}images/group-white.png'><a href="{% url 'index' %}">snAPP</a></h1>
                 <p class="hidden-xs">You need. We build. You use. We develop.</p>
                 <hr>
@@ -68,16 +65,11 @@
                         </ul>
                     </div>
                     {% else %}
-                    
                     <!--Navbar for unlogged user-->
                     <div class="dropdown">
                         <a class="nav-link unlogged-nav-margin-left" href="{% url 'login' %}">Login
                           <span></span></a>
                     </div>
-                    <!--<div class="dropdown">-->
-                    <!--    <a class="nav-link" href="#">About-->
-                    <!--      <span></span></a>-->
-                    <!--</div>-->
                     <div class="dropdown">
                         <a class="nav-link unlogged-nav-margin-right" href="{% url 'registration' %}">Register
                           <span></span></a>
@@ -99,13 +91,11 @@
         </div>
         {% endif %}
     </div>
-
-    
     {% block content %} 
     
     {% endblock %}
     
-    <!--Footer - using hidden and visible bs for different viewports-->
+    <!--Footer - using hidden and visible bootstrap for different viewports-->
     <footer id="footer">
         <div class="row">
             <div class='hidden-xs hidden-sm col-lg-2 col-lg-offset-1'>
@@ -131,15 +121,14 @@
     <!--snAPP scrolling aLert-->
     <div class="snapp-alert snapp-alert-background">
             
-            <!--Use context processor to render random alert. Filter out expired alerts-->
-            {% for alert in profile %}
-            {% if alert.alert != "No active alerts." %}
-            <a  href="{% url 'profile' alert.user.id %}"><img class="alert-img comment-pic tactics" src='{{MEDIA_URL}}{{ alert.image }}' alt="" width="50" height="50">
-            <strong>{{ alert.user.username }}, Deadline: {{ alert.alert_date}}</strong></a>
-            <div class='marquee'>{{ alert.alert }}</div>
-            {% endif %}
-            {% endfor %}
-        </div>
+        <!--Use context processor to render random alert. Filter out expired alerts-->
+        {% for alert in profile %}
+        {% if alert.alert != "No active alerts." %}
+        <a  href="{% url 'profile' alert.user.id %}"><img class="alert-img comment-pic tactics" src='{{MEDIA_URL}}{{ alert.image }}' alt="" width="50" height="50">
+        <strong>{{ alert.user.username }}, Deadline: {{ alert.alert_date}}</strong></a>
+        <div class='marquee'>{{ alert.alert }}</div>
+        {% endif %}
+        {% endfor %}
+    </div>
 </body>
-
 </html>
