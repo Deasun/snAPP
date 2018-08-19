@@ -104,6 +104,8 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
     - **Sass/scss** CSS extension is used to code and organise CSS stylesheets
 
 #### Functionality
+- [Pygal](http://pygal.org/en/stable/)
+    - The charts displaying bugticket and featureticket activity data are rendered using the **python** based open source programm **Pygal**.  
 - [Stripe](https://stripe.com)
     - The online payment processing system **Stripe** is used to handle member contributions.
 - [AWS S3](https://aws.amazon.com/s3/)
