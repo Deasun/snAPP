@@ -24,7 +24,7 @@ The **FeatureTicket** system is the mechanism for members to request, discuss an
  
 ### How does it work
  
-This website uses the **Django** microframework to route viewers through the site and execute the programme which is written in **python 3.4.3**. 
+This website uses the **Django** framework to route viewers through the site and execute the programme which is written in **python 3.4.3**. 
 
 The site is styled with **Bootstrap** and **JQuery** code for enhancing user-experience and hiding descriptive text (used to guide the member through the site and provide detailed information) in modals, tooltips and tabs. Random member alerts are scrolled across the screen using the JQuery plug-in **Marquee**. 
 
@@ -38,12 +38,13 @@ The snAPP **API**, providing data relating to the application's development is a
 
 ## Features
 Find below the applications and the features provided in each. 
+
 ### Existing Features
 #### Accounts
-* registration to create users (members) and login credentials password reset process
+* registration to create users (members) and login credentials 
+* if a member forgets, or wishes to change, their passwordm, a password reset process is included which will send reset instructions to the inbox registered with the member's account
 * each member has a profile page containing some personal (and editable) information, details of their involvement in snAPP's development (what bugs they have reported or features they have requested) and their snAPP alert
 * a summary table of the most recent alerts across the snAPP network. Random alerts are also displayed constantly in browser view and accessible through a click. Member alerts cease to appear on the alert system when they expire. Members can amend their alerts at any time
-
 
 #### BugTickets
 * members report bugs by completing a Bug Report Form. Members must classify their bugs to assist the snAPP admin pinpoint and classify reported problems. 
@@ -53,7 +54,7 @@ snAPP admin particpate in the comments section to report on progress. A Progress
 
 #### FeatureTickets
 * members request a feature by completing a Feature Request Form in which they describe and classify their request.
-* each Feature has its own profile page where members can access full details about the feature, add comments to suggest refining/amending the request. snAPP admin enageg in the discussion to refine the request. Once this process is complete, snAPP admin team develop a Feature Report and costing of how much money will be required to create the entire feature. This costing is the feature's target
+* each Feature has its own profile page where members can access full details about the feature, add comments to suggest refining/amending the request. snAPP admin engage in the discussion to refine the request. Once this process is complete, snAPP admin team develop a Feature Report and costing of how much money will be required to create the entire feature. This costing is the feature's target
 * members contribute to the feature by purchasing FeatureTickets (£10 x 1). The snAPP admin team will begin work once the feature starts to get contributions. A progress bar is displayed to show how many more FeatureTickets are required to complete the feature
 * the Developing snAPP page uses data-visualisation charts to show the activity of the snAPP team in responding to members' requests. The most recently added feature, one feature in development, and one without any contributions - as well as a table of features list by date - are displayed for the purposes of transparency and promoting certain features. 
 
@@ -65,7 +66,7 @@ Members can access their carts to review the number of tickets purchased and pro
 Members can review their order on the checkout page and are asked to input their personal and payment details using the Stripe online payment processing system.
 
 #### Search
-There are search facilities available for members, alerts, bugtickets and featuretickets. Members are encouraged to use the search facility to prevent duplicating feature requests and bug reports.
+There are search facilities available for members, alerts, bugtickets and featuretickets. Members are encouraged to use the search facility to prevent duplicating feature requests and bug reports. When searching bugtickets and featuretickets, search is carried out by 'Title' field.
 
 
 ### Features Left to Implement
@@ -76,11 +77,19 @@ There are search facilities available for members, alerts, bugtickets and featur
 - member choose which twitter feed they want on their page (their union's, a campaign's, etc)
 - activating the FeatureTicket Upvote (non-payment) system which will help to assess popularity among members and assist snAPP admin to promote features to certain unions
 
+## Database Schema
+Details of the database scheme developed and used for snAPP can be found [HERE](database_schema/db_schema.md)
+
 ## Tech Used
+
+### Development and Deployment
+While in development mode, environment variables (used in ```settings.py```) relating to **static files**, **media**, **email**, **stripe payment information**, **secret keys** and **database url** were located in the env.py file which was not pushed to GitHub and was retained in local directory using ```.gitignore```.
+
+For deployment, these environment variables were stored in Heroku's Config Vars.
 
 ### Specific technology used on the application includes:
 
-### Code 
+#### Code
 - **HTML**, **CSS**, **JQuery** and **Python**
   - Base languages used to create website
 - [Django](https://www.djangoproject.com/)
@@ -89,50 +98,65 @@ There are search facilities available for members, alerts, bugtickets and featur
     - **Bootstrap 3.3.7** is used to render a responsive layout and hide text-heavy areas in modals and tabs to enable quicker, selective browsing
 - [JQuery](https://jquery.com)
     - **JQuery** adds animation styling to our site to enhance user experience. The JQuery plug-in **Marquee** was used to display the scrolling alerts
+- [Sass](https://sass-lang.com/)
+    - **Sass/scss** CSS extension is used to code and organise CSS stylesheets
 
-### Functionality
+#### Functionality
 - [Stripe](https://stripe.com)
     - The online payment processing system **Stripe** is used to handle member contributions.
 - [AWS S3](https://aws.amazon.com/s3/)
     - **AWS S3** cloud storage is used to store the static and media files for the application.
 
-### Hosting
+#### Hosting
 - [Heroku-Postres](https://www.heroku.com/postgres)
-    - During development mode, models were migrated to the default SQLite databse provided by Django. In production mode, data is stored in a postgreSQL database using **Heroku-Postres**.
+    - During development mode, models were migrated to the default SQLite databse provided by Django. In production mode, data is stored in a postgreSQL database using **Heroku-Postres**. Hosting on Heroku required creating a ```Procfile`` file in the local directory.
 - [Heroku](https://www.heroku.com/)
     - The Cloud Application Platform **Heroku** hosts the snAPP application.
 
-<!--npm and bower check-->
-- [npm](https://www.npmjs.com/)
-    - We use **npm** to install **http-server** in order to view the site
-- [Bower](https://bower.io)
-    - Using **Bower** to manage package dependencies
 
+## Testing
 
-### Testing
+### Automated Testing
 - [coverage.py](https://coverage.readthedocs.io/en/coverage-4.5.1/)
-    - Python code across applications is tested extensively using the **coverage.py** testing tool 
+    - Python code across applications is tested extensively using the **coverage.py** testing tool. Custom code, for example provided by the Stripe payment service, was manually tested using the Stripe dashboard (also accounting for the under 90% test covergae on the Checkout app). The coverage on each of the apps is currently:
+        - Accounts – 96%
+        - BugTickets – 93%
+        - FeatureTickets – 96%
+        - Cart – 91%
+        - Checkout – 88%
+        - Search – 94% 
+
 - [Travis CI](https://bower.io)
-    - pre-deployment tests are carried out using the **Travis Continuous Integration** service
-- JQuery styling code was tested manually across the site
-- The site was viewed and tested across mobile, tablet, laptop and large desktop views and in the following browsers:
+    - pre-deployment integration tests are carried out using the **Travis Continuous Integration** service
+
+### Manual Testing
+- **User stories** were used to test the functionalities of the application.  
+
+- **JQuery** code used to style the application and enhance UX was tested manually across the site. The process of triggering the effect, checking if it occured, refreshing the page and triggering again was used on each styled element.
+
+
+
+- **Browser compatibility** - the site was viewed and tested manually across mobile, tablet, laptop and large desktop views and in the following browsers:
   - Google Chrome
   - Opera
   - Microsoft Edge
   - Mozilla Firefox
+
+**An unresolved bug occured in Chrome (JUMPING Bucket)**
+
 - The application [Can I Use](https://www.caniuse.com) was used to check CSS code against the latest vendor prefix requirements.
 
+
 ## Contributing
- 
+
 ### Getting the code up and running
 1. Create a virtual environment running python 3.4.3 as the default in your IDE
 2. Clone this repository by running the ```git clone https://github.com/Deasun/snAPP.git``` command
-2. Following this, ensure that you have **npm** installed
-  1. You can get **npm** by installing Node from [here](https://nodejs.org/en/)
-4. After those dependencies have been installed you'll need to make sure that you have **http-server** installed. You can install this by running the following: ```npm install -g http-server # this also may require sudo on Mac/Linux```
-5. Once **http-server** is installed run ```http-server -c-1```
+3. pip install requirements
+4. Enter ```python manage.py make migrations``` followed by ```python manage.py migrate``` to create your database
+5. Set your own environment variables (marked in the ```settings.py`` file)
 6. The project will now run on [localhost](http://127.0.0.1:8080)
-7. We welcome all contributions to improving our code, so make changes you think are needed/desired and submit a pull request
+7. We welcome all contributions to improving our code, so make changes you think are needed/desired and submit a pull request. If you are egaer to support, please refer first to the **Features Left to Implement** section above.
 
 ## Credits
 
