@@ -149,6 +149,11 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
 - The application [Can I Use](https://www.caniuse.com) was used to check CSS code against the latest vendor prefix requirements.
 
 
+## API
+At this point, snAPP provides an API relating to bug information only. It is intended to release more snAPP information for analysis as the site develops.
+
+The API can be found [HERE](https://sn-app-deasunod.c9users.io/bugtickets/api_views/)
+
 ## Contributing
 
 ### Getting the code up and running
