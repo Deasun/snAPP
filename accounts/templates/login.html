@@ -1,4 +1,12 @@
-{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Login Page{% endblock %} {% block page_heading %}Login{% endblock %} {% block content %}
+{% extends 'base.html' %} 
+
+{% load bootstrap_tags %} 
+
+{% block page_title %}Login Page{% endblock %} 
+
+{% block page_heading %}Login{% endblock %} 
+
+{% block content %}
 
 <div class="row list-head">
     <div class="col-xs-12 col-md-4 col-md-push-4 list-head-img">
@@ -13,13 +21,11 @@
             <h4>Forgot your password?<br>It happens.</h4>
             <h2 class="password-reset"><a href="{% url 'password_reset' %}">Reset</a></h2>
         </form>
-
     </div>
     <div class="col-md-4 hidden-xs hidden-sm">
         <a class="twitter-timeline hidden-sm" data-width="275" data-height="450" data-theme="dark" data-link-color="#E95F28" href="https://twitter.com/labourstart?ref_src=twsrc%5Etfw">Tweets by labourstart</a>
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
 </div>
-
 
 {% endblock %}

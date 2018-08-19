@@ -1,7 +1,12 @@
-{% extends 'base.html' %} {% load bootstrap_tags %} {% block page_title %}Edit Profile{% endblock %} {% block page_heading %}Profile{% endblock %} {% block content %}
+{% extends 'base.html' %} 
 
+{% load bootstrap_tags %} 
 
+{% block page_title %}Edit Profile{% endblock %} 
 
+{% block page_heading %}Profile{% endblock %} 
+
+{% block content %}
 
 <div class="row">
     <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-4 col-md-push-4 col-md-offset-0 col-lg-offset-0 list-head-img">
@@ -14,7 +19,7 @@
         
         <!--NEED A DELETE FUNCTIOn-->
         <form method='POST' action="{% url 'delete_profile' id=user.id %}">{% csrf_token %}
-            <input class="btn btn-success home-btn" type="submit" value="Delete">
+            <input class="btn btn-success home-btn" type="submit" value="Delete Profile">
         </form>
         <h2 class="user">Edit Profile</h2>
 
@@ -32,16 +37,16 @@
                 <blockquote class='profile-blockquote'>
                     <div class="row">
                         <div class="col-sm-2 col-md-3 col-xs-12 tab-center">
-
                             {% if user.profile.image != '' %}
-                            <img class="profile-pic sm-profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> {% else %}
-                            <i class="fas fa-user-secret fa-4x profile user"></i> {% endif %}
-
+                            <img class="profile-pic sm-profile-pic" src='{{MEDIA_URL}}{{ user.profile.image }}'> 
+                            {% else %}
+                            <i class="fas fa-user-secret fa-4x profile user"></i> 
+                            {% endif %}
                             <p><strong>My Profile</strong></p>
-
                             {% if user.id is auth_user.id %}
-                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile</button></a> {% else %} {% endif %}
-
+                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Edit Profile</button></a> 
+                            {% else %} 
+                            {% endif %}
                             <br>
                             <br>
                         </div>
@@ -63,12 +68,13 @@
                             <p><strong>Latest Alert</strong></strong>
                             </p>
                             {% if user.id is auth_user.id %}
-                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Update Alert</button></a> {% else %} {% endif %}
+                            <a href="{% url 'edit_profile' %}"><button class="btn btn-md btn-danger">Update Alert</button></a> 
+                            {% else %} 
+                            {% endif %}
                             <br>
                         </div>
                         <div class="col-sm-9 col-xs-12">
                             <br>
-
                             <!-- filter to remove alert if end date has passed-->
                             <p><strong>Date Expires: {{ user.profile.alert_date | date:"l, jS F Y" }}</strong></p>
                             <p>{{ user.profile.alert|linebreaks }}</p>
