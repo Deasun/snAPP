@@ -209,6 +209,30 @@ nav {
       margin-right: 20rem;
       margin-left: 20rem; } }
 
+.unlogged-nav-margin-left {
+  margin-right: 4rem; }
+  @media (min-width: 768px) {
+    .unlogged-nav-margin-left {
+      margin-right: 12rem; } }
+  @media (min-width: 992px) {
+    .unlogged-nav-margin-left {
+      margin-right: 18rem; } }
+  @media (min-width: 1200px) {
+    .unlogged-nav-margin-left {
+      margin-right: 20rem; } }
+
+.unlogged-nav-margin-right {
+  margin-left: 4rem; }
+  @media (min-width: 768px) {
+    .unlogged-nav-margin-right {
+      margin-left: 12rem; } }
+  @media (min-width: 992px) {
+    .unlogged-nav-margin-right {
+      margin-left: 18rem; } }
+  @media (min-width: 1200px) {
+    .unlogged-nav-margin-right {
+      margin-left: 20rem; } }
+
 .fa-sign-out-alt {
   position: fixed;
   left: 5%;
@@ -363,6 +387,9 @@ a .fa-cc-stipe {
 .reset-btn {
   margin-top: 2rem; }
 
+.fa-info-circle {
+  opacity: .7; }
+
 .form-control-2 {
   width: 30%; }
 
@@ -380,7 +407,8 @@ a .fa-cc-stipe {
 
 .dev-forms {
   margin-left: 10%;
-  margin-right: 10%; }
+  margin-right: 10%;
+  margin-top: 3rem; }
   @media (min-width: 768px) {
     .dev-forms {
       margin-left: 20%;
@@ -396,7 +424,9 @@ a .fa-cc-stipe {
 
 #id_email {
   display: block;
-  width: 100%;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
   height: 38px;
   padding: 8px 12px;
   font-size: 14px;
@@ -430,6 +460,19 @@ a .fa-cc-stipe {
 .input-group-addon {
   background-color: #313231;
   color: #fff; }
+
+.error-msg {
+  color: #fff; }
+
+.login p {
+  padding-bottom: 1rem; }
+
+.login li {
+  color: #b9ac44;
+  font-weight: 300; }
+
+input {
+  color: #000; }
 
 .bug_modal_head {
   background-color: #1b8fce; }

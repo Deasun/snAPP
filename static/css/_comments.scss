@@ -20,7 +20,6 @@
     display: block;
 }
 
-
 .comment-body {
     overflow: hidden;
 }
@@ -46,8 +45,6 @@
 
 }
 
-
-
 .comment .text p:last-child {
     margin: 0;
 }
@@ -63,7 +60,6 @@
 }
 
 /* Decoration */
-
 .comments,
 .comment {
     position: relative;
@@ -98,7 +94,6 @@
 .comment:hover:before {
     background: $orange;
 }
-
 
 .comment p {
     color: #000;

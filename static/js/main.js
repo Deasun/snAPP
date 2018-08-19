@@ -6,7 +6,7 @@ $(document).ready(function() {
     $(".intro-4").hide(0).delay(6000).show(0);
     $(".intro-1").hide(0).fadeIn(8000);
     $(".home-btn-1").hide(0).delay(8000).show(0);
-
+    
     /*Index page tooltips*/
     $('[data-toggle="tooltip"]').tooltip()
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
     });
 
     /*Hover over tabs and icons*/
-    $('.tab-pane, .fa-info-circle')
+    $('.tab-pane, .fa-info-circle, fa-cog')
         .mouseenter(function() {
             $(this).animate({ "opacity": "1" }, 250)
         })

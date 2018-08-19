@@ -15,7 +15,6 @@
 
 .icon-centered {
     vertical-align: center;
-
 }
 
 .home-btn {
@@ -29,12 +28,9 @@
     margin-top: 2rem;
 }
 
-
-
 .info {
     color: $orange;
 }
-
 
 .btn-cart {
     background-color: $amber;
@@ -54,7 +50,6 @@ a .fa-cc-stipe {
 
 
 /*Table search margins*/
-
 .search-margin {
    text-align: center;
    margin-left: 2rem;
@@ -66,4 +61,8 @@ a .fa-cc-stipe {
 
 .reset-btn {
     margin-top: 2rem;
+}
+
+.fa-info-circle {
+    opacity: .7;
 }

@@ -9,8 +9,6 @@ body {
     margin-bottom: 15rem;
 }
 
-
-
 a:hover {
     color: #fdbc8e !important;
     text-decoration: none;
@@ -24,22 +22,17 @@ a:hover {
     }
 }
 
-
-
 // themes
 .knowledge {
     color: $violet;
-
 }
 
 .support {
     color: $yellow;
-
 }
 
 .tactics {
     color: $blue;
-
 }
 
 .feature {
@@ -66,17 +59,14 @@ a:hover {
     color: $white;
 }
 
-
 .section-head {
     text-align: left;
     margin-top: 3rem;
-
 }
 
 .tab-content {
     text-align: left;
 }
-
 
 // List pages
 .list-head {
@@ -102,9 +92,6 @@ a:hover {
     text-align: center;
 }
 
-
-
-
 hr {
     margin-top: -1rem;
     border-color: $white;
@@ -113,7 +100,6 @@ hr {
         width: 50%;
     }
 }
-
 
 // images
 .profile-pic {

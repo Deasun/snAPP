@@ -12,9 +12,8 @@ h4,
 h5 {
     color: $white;
     font: {
-        family: $font-stack-2
+        family: $font-stack-2;
     }
-    ;
 }
 
 h6 {
@@ -38,9 +37,7 @@ h1 {
         font-size: 11rem;
         margin-bottom: -16px;
     }
-    
 }
-
 
 h3 {
     font-size: 1rem;
@@ -61,12 +58,10 @@ caption {
     color: #000;
 }
 
-
 // button font
 .btn {
     font-family: $font-stack-1;
 }
-
 
 // labels font
 .index-label {
@@ -83,14 +78,12 @@ caption {
     }
 }
 
-
 .control-label {
     margin-top: 1rem;
     color: $red;
     font: {
-        family: $font-stack-2
+        family: $font-stack-2;
     }
-    ;
 }
 
 .help-block {
@@ -98,14 +91,12 @@ caption {
     font-size: 1.5rem;
 }
 
-
 // panels font
 .panel-head {
     color: $white;
     font: {
-        family: $font-stack-2
+        family: $font-stack-2;
     }
-
 }
 
 // icons
@@ -121,7 +112,6 @@ caption {
     padding: {
         left: 0;
         right: 0;
-
     }
 }
 
@@ -133,8 +123,6 @@ caption {
 .modal-footer p {
     color: #fff;
 }
-
-
 
 .modal h4 {
     color: $white;

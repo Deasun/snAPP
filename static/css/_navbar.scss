@@ -16,7 +16,6 @@ nav {
     @media (min-width: 1200px) {
         // margin-right: 20rem;
     }
-    
 }
 
 .nav-margin {
@@ -37,6 +36,35 @@ nav {
     }
 }
 
+.unlogged-nav-margin-left {
+    margin-right: 4rem;
+    
+    @media (min-width: 768px) {
+        margin-right: 12rem;
+    }
+    @media (min-width: 992px) {
+        margin-right: 18rem;
+
+    }
+    @media (min-width: 1200px) {
+        margin-right: 20rem;
+    }
+}
+
+.unlogged-nav-margin-right {
+    margin-left: 4rem;
+    
+    @media (min-width: 768px) {
+        margin-left: 12rem;
+    }
+    @media (min-width: 992px) {
+        margin-left: 18rem;
+    }
+    @media (min-width: 1200px) {
+        margin-left: 20rem;
+    }
+}
+
 .fa-sign-out-alt {
     position: fixed;
     left: 5%;
@@ -52,7 +80,6 @@ nav {
       font-size: 6rem;  
     }
     z-index: 1049;
-    
 }
 
 .feature-count {
@@ -88,7 +115,6 @@ nav {
     display: none;
 }
 
-
 .dropdown {
     display: inline-block;
 }
@@ -104,7 +130,6 @@ nav {
     font-size: 1.75rem;
     font-family: Lato, sans-serif;
     font-weight: 600;
-    
 }
 
 .dropdown-menu-center {
