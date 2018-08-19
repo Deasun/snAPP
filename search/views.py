@@ -12,13 +12,11 @@ from django.contrib.auth.models import User
 from accounts.models import Profile
 
 
-
 @login_required
 def feature_search(request):
     """
     Enable user to search snAPP features by feature_type
     """
-    
     features = FeatureTicket.objects.filter(feature_type__icontains=request.GET['q'])
     
     # Handle empty query set with django message 
@@ -34,6 +32,7 @@ def feature_search(request):
                 'feature_line_data': feature_line_data, 
                 'feature_pie_data': feature_pie_data
                 })
+
 
 @login_required
 def bug_search(request):
@@ -65,9 +64,8 @@ def member_search(request):
     """
     Enable users to search for other snAPP member profiles by username
     """
-    
+  
     member = request.GET['member']
-    
     try:
         user = User.objects.get(username=member)
         return redirect('profile', id=user.id)
@@ -82,7 +80,6 @@ def alert_search(request):
     """
     Enable users to search snAPP alerts by keyword
     """
-    
     alerts = Profile.objects.filter(alert__icontains=request.GET['q'])
     
     # Handle empty query set with django message 
@@ -100,5 +97,3 @@ def alert_search(request):
                 "auth_user": auth_user, 
                 "alerts": alerts,
                 })
-        
-    
