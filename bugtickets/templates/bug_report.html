@@ -4,8 +4,8 @@
 {% for bug in bugs %}
 <div class="row list-head">
     <div class="col-xs-12 list-head-img">
-        <i class="fas fa-bug fa-4x profile"></i>
-        <p><strong>Making snAPP work for you.</strong> <i type="button" class="fas fa-info-circle fa-1x info" data-toggle="modal" data-target="#myModal"></i></p>->
+        <i class="fas fa-bug fa-4x profile" data-toggle="modal" data-target="#myModal"></i>
+        <p><strong>Making snAPP work for you.</strong> <i type="button" class="fas fa-info-circle fa-2x info" data-toggle="modal" data-target="#myModal"></i></p>
         <h2 class="tactics">Bug Report #{{ bug.id }}</h2>
         <div class="display">
             <form action="{% url 'bug_search' %}" method='get'>
