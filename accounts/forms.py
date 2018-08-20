@@ -28,6 +28,8 @@ class UserRegistrationForm(UserCreationForm):
         username = self.cleaned_data.get('username')
         if User.objects.filter(email=email).exclude(username=username):
             raise forms.ValidationError(u'This email address is currently registered to another snAPP member.')
+        elif email == '':
+            raise forms.ValidationError(u'You must provide an email to register with snAPP.')
         return email
     
     def clean_password2(self):

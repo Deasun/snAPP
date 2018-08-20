@@ -16,7 +16,8 @@
     </div>
     <div class="col-xs-12 col-md-4 col-md-pull-4">
         <form method='POST' class="snapp-forms">
-            {% csrf_token %} {{ registration_form | as_bootstrap }}
+            {% csrf_token %} 
+            {{ registration_form | as_bootstrap }}
             <button type="submit" class="btn btn-lg btn-success home-btn">Register</button>
         </form>
     </div>

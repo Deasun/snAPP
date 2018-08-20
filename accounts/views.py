@@ -31,9 +31,9 @@ def registration(request):
     if request.user.is_authenticated:
         return redirect('profile', id=request.user.id)
 
-    if request.method == "POST":
+    elif request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
-        
+
         if registration_form.is_valid():
             registration_form.save()
             user = auth.authenticate(username=request.POST['username'],
