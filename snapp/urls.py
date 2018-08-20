@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.conf.urls import url, include 
+from django.urls import path, include 
 from accounts import urls as urls_accounts
 from bugtickets import urls as urls_bugtickets
 from featuretickets import urls as urls_featuretickets
@@ -11,13 +11,13 @@ from django.views import static
 from .settings import MEDIA_ROOT
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', index, name="index"),
-    url(r'^accounts/', include(urls_accounts)),
-    url(r'^bugtickets/', include(urls_bugtickets)),
-    url(r'^featuretickets/', include(urls_featuretickets)),
-    url(r'^cart/', include(urls_cart)),
-    url(r'^search/', include(urls_search)),
-    url(r'^checkout/', include(urls_checkout)),
-    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
+    path('admin/', admin.site.urls),
+    path('', index, name="index"),
+    path('accounts/', include(urls_accounts)),
+    path('bugtickets/', include(urls_bugtickets)),
+    path('featuretickets/', include(urls_featuretickets)),
+    path('cart/', include(urls_cart)),
+    path('search/', include(urls_search)),
+    path('checkout/', include(urls_checkout)),
+    path('media/(<path>)', static.serve, {'document_root': MEDIA_ROOT}),
 ]
