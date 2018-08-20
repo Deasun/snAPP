@@ -104,3 +104,15 @@
 input {
     color: #000;
 }
+
+.pword-reset {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+    width: 80%;
+    @media (min-width: 768px) {
+        width: 20%;
+
+    }
+}
