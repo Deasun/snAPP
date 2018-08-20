@@ -78,7 +78,7 @@
         {% elif total > 0 and feature.status == 'complete' %}
         <h2>Feature added to snAPP!</h2>
         {% else %}
-        <p class="payment"><strong>No snAPP tickets purchaed yet</strong></p>
+        <p class="payment"><strong>No snAPP tickets purchased yet</strong></p>
         {% endif %}
 
         <!--Feature Request & Proposal tab format-->
@@ -174,7 +174,7 @@
         <p class="feature_panel banner">
             <i class="far fa-comment fa-2x feature"><label class='badge comment-badge'>{{ feature.feature_comments.count }}</label></i><strong> Help to shape this feature.</strong>
         </p><br>
-        <a class="btn btn-danger" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment</a>
+        <a class="btn btn-danger" href="{% url 'add_comment_to_feature' pk=feature.id %}">Add comment <i class="far fa-comment-alt"></i></a>
         <section class="comments head scroll">
 
             {% for comment in feature.feature_comments.all %}

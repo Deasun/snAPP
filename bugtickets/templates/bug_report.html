@@ -10,7 +10,7 @@
         <div class="display">
             <form action="{% url 'bug_search' %}" method='get'>
                 <input type='text' name='q'>
-                <button type='submit' class="btn btn-success home-btn">Search Bugs</button>
+                <button type='submit' class="btn btn-success home-btn">Search Bugs <i class="fas fa-search"></i></button>
             </form>
         </div>
     </div>
@@ -111,7 +111,7 @@
     <div class="col-xs-12 col-md-5 col-lg-4 col-lg-offset-1 head">
         <p class="feature_panel banner">
             <i class="far fa-comments tactics fa-2x tactics"><label class='badge comment-badge'>{{ bug.comments.count }}</label></i><strong> Bug Report details</strong></p><br>
-        <a class="btn btn-success home-btn" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment</a>
+        <a class="btn btn-success home-btn" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment <i class="far fa-comment-alt"></i></a>
         <section class="comments head scroll">
 
             {% for comment in bug.comments.all %}
