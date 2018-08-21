@@ -1,8 +1,8 @@
 import os
 import sys
 
-# ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-# import env
+# ########p###TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
+import env
 
 import dj_database_url
 
