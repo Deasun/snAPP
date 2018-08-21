@@ -84,8 +84,14 @@ Details of the database scheme developed and used for snAPP can be found [HERE](
 ## Tech Used
 
 ### Development and Deployment
+Database - dropped SQLite3 development database and set up postgres database through Heroku Postgres
+Static Files - changed from local directory to AWS Bucket
+Media Files - changed from local directory to AWS Bucket
+All environment variables moved to Heorku
 
-> [rqeuirement] **describes the deployment procedure including settings files, environment variables, dependencies and any other differences between the dev and live versions
+> [requirement] **describes the deployment procedure including settings files, environment variables, dependencies and any other differences between the dev and live versions
+
+ 
 
 
 While in development mode, environment variables (used in ```settings.py```) relating to **static files**, **media**, **email**, **stripe payment information**, **secret keys** and **database url** were located in the env.py file which was not pushed to GitHub and was retained in local directory using ```.gitignore```.
@@ -108,7 +114,9 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
 
 #### Functionality
 - [Pygal](http://pygal.org/en/stable/)
-    - The charts displaying bugticket and featureticket activity data are rendered using the **python** based ineractive charting programme **Pygal**.  
+    - The charts displaying bugticket and featureticket activity data are rendered using the **python** based ineractive charting programme **Pygal**.
+- [Whitenoise](https://warehouse.python.org/project/whitenoise/)
+    - Static files are served in production with Whitenoise 
 - [Stripe](https://stripe.com)
     - The online payment processing system **Stripe** is used to handle member contributions.
 - [AWS S3](https://aws.amazon.com/s3/)
@@ -144,6 +152,8 @@ To run automated testing enter the following into the command line (replace 'app
 - **User stories**, located in the [database schema](database_schema/db_schema.md) were used to test the functionalities of the application. This involved a step-by-step process of testing links, forms, comments, upvotes, bugticket and featureticket reports.
 
 - **Password Reset** feature was tested by going through the reset process. Gmail settings had to be adjucted on two occasions - first to allow 'less secure' apps access to the account and secondly a 'Critical Security Alert' in my inbox which required a response to confirm the app's access to gmail account.
+
+- The **Stripe** payment method had limited testing (2) in the automated testing suite. To test the payment system manually, details were entered (using Stripe's test Credit Card details) in the snAPP checkout form and the details associated with this purchase order (name, amount, date( was checked against the details provided on the Payment/Customer section of the Stripe Dashboard. 
 
 - **JQuery** used to style the application and enhance UX was tested manually across the site. The process of triggering the effect, checking if it occured, refreshing the page and triggering again was used on each styled element.
 
