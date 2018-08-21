@@ -87,9 +87,7 @@ WSGI_APPLICATION = 'snapp.wsgi.application'
 
 # ###########TO BE UNCOMMENTED OUT PRIOR TO DEPLOYMENT#########
 if 'DATABASE_URL' in os.environ: 
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-            }
+    DATABASES = { 'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 else:
     print("Databse URL not found. Use SQLite instead")
