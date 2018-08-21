@@ -133,6 +133,10 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
         - Checkout – 88%
         - Search – 94% 
 
+To run automated testing enter the following into the command line (replace 'app' with name of the application being tested:
+```$ coverage run --source=<app> manage.py test``` 
+
+
 - [Travis CI](https://bower.io)
     - pre-deployment integration tests are carried out using the **Travis Continuous Integration** service. Integration tests were passing at time of deployment (as should be seen at the head of this README file)
 

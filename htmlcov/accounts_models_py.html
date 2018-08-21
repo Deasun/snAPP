@@ -79,17 +79,18 @@
 <p id="n10" class="pln"><a href="#n10">10</a></p>
 <p id="n11" class="pln"><a href="#n11">11</a></p>
 <p id="n12" class="stm run hide_run"><a href="#n12">12</a></p>
-<p id="n13" class="stm run hide_run"><a href="#n13">13</a></p>
+<p id="n13" class="pln"><a href="#n13">13</a></p>
 <p id="n14" class="stm run hide_run"><a href="#n14">14</a></p>
 <p id="n15" class="stm run hide_run"><a href="#n15">15</a></p>
 <p id="n16" class="stm run hide_run"><a href="#n16">16</a></p>
 <p id="n17" class="stm run hide_run"><a href="#n17">17</a></p>
 <p id="n18" class="stm run hide_run"><a href="#n18">18</a></p>
-<p id="n19" class="pln"><a href="#n19">19</a></p>
+<p id="n19" class="stm run hide_run"><a href="#n19">19</a></p>
 <p id="n20" class="pln"><a href="#n20">20</a></p>
-<p id="n21" class="stm run hide_run"><a href="#n21">21</a></p>
+<p id="n21" class="pln"><a href="#n21">21</a></p>
 <p id="n22" class="stm run hide_run"><a href="#n22">22</a></p>
-<p id="n23" class="pln"><a href="#n23">23</a></p>
+<p id="n23" class="stm run hide_run"><a href="#n23">23</a></p>
+<p id="n24" class="pln"><a href="#n24">24</a></p>
 
             </td>
             <td class="text">
@@ -105,17 +106,18 @@
 <p id="t10" class="pln"><span class="str">Profile model - extra information relating to User Model</span><span class="strut">&nbsp;</span></p>
 <p id="t11" class="pln"><span class="str">"""</span><span class="strut">&nbsp;</span></p>
 <p id="t12" class="stm run hide_run"><span class="key">class</span> <span class="nam">Profile</span><span class="op">(</span><span class="nam">models</span><span class="op">.</span><span class="nam">Model</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t13" class="stm run hide_run">        <span class="nam">user</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">OneToOneField</span><span class="op">(</span><span class="nam">User</span><span class="op">,</span> <span class="nam">unique</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">on_delete</span><span class="op">=</span><span class="nam">models</span><span class="op">.</span><span class="nam">SET_NULL</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t14" class="stm run hide_run">        <span class="nam">image</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">ImageField</span><span class="op">(</span><span class="nam">upload_to</span><span class="op">=</span><span class="str">'images'</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="str">'images/group-white_eSru9tk.png'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t15" class="stm run hide_run">        <span class="nam">trade_union</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">CharField</span><span class="op">(</span><span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">max_length</span><span class="op">=</span><span class="num">100</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="str">''</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t16" class="stm run hide_run">        <span class="nam">description</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">TextField</span><span class="op">(</span><span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="str">'No profile description provided.'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t17" class="stm run hide_run">        <span class="nam">alert</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">TextField</span><span class="op">(</span><span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="str">'No active alerts.'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t18" class="stm run hide_run">        <span class="nam">alert_date</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">DateField</span><span class="op">(</span><span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="nam">datetime</span><span class="op">.</span><span class="nam">date</span><span class="op">.</span><span class="nam">today</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t19" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t13" class="pln">        <span class="com"># user to to null=True and models.SET_NULL to prevent related objects being deleted if Profile deleted</span><span class="strut">&nbsp;</span></p>
+<p id="t14" class="stm run hide_run">        <span class="nam">user</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">OneToOneField</span><span class="op">(</span><span class="nam">User</span><span class="op">,</span> <span class="nam">unique</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">on_delete</span><span class="op">=</span><span class="nam">models</span><span class="op">.</span><span class="nam">SET_NULL</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t15" class="stm run hide_run">        <span class="nam">image</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">ImageField</span><span class="op">(</span><span class="nam">upload_to</span><span class="op">=</span><span class="str">'images'</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="str">'images/group-white_eSru9tk.png'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t16" class="stm run hide_run">        <span class="nam">trade_union</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">CharField</span><span class="op">(</span><span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">max_length</span><span class="op">=</span><span class="num">100</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="str">''</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t17" class="stm run hide_run">        <span class="nam">description</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">TextField</span><span class="op">(</span><span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="str">'No profile description provided.'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t18" class="stm run hide_run">        <span class="nam">alert</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">TextField</span><span class="op">(</span><span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="str">'No active alerts.'</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t19" class="stm run hide_run">        <span class="nam">alert_date</span> <span class="op">=</span> <span class="nam">models</span><span class="op">.</span><span class="nam">DateField</span><span class="op">(</span><span class="nam">null</span><span class="op">=</span><span class="key">True</span><span class="op">,</span> <span class="nam">default</span><span class="op">=</span><span class="nam">datetime</span><span class="op">.</span><span class="nam">date</span><span class="op">.</span><span class="nam">today</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
 <p id="t20" class="pln"><span class="strut">&nbsp;</span></p>
-<p id="t21" class="stm run hide_run">        <span class="key">def</span> <span class="nam">__str__</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
-<p id="t22" class="stm run hide_run">            <span class="key">return</span> <span class="str">"{}'s profile"</span><span class="op">.</span><span class="nam">format</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">user</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
-<p id="t23" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t21" class="pln"><span class="strut">&nbsp;</span></p>
+<p id="t22" class="stm run hide_run">        <span class="key">def</span> <span class="nam">__str__</span><span class="op">(</span><span class="nam">self</span><span class="op">)</span><span class="op">:</span><span class="strut">&nbsp;</span></p>
+<p id="t23" class="stm run hide_run">            <span class="key">return</span> <span class="str">"{}'s profile"</span><span class="op">.</span><span class="nam">format</span><span class="op">(</span><span class="nam">self</span><span class="op">.</span><span class="nam">user</span><span class="op">)</span><span class="strut">&nbsp;</span></p>
+<p id="t24" class="pln"><span class="strut">&nbsp;</span></p>
 
             </td>
         </tr>
@@ -126,7 +128,7 @@
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v4.5.1</a>,
-            created at 2018-08-19 21:29
+            created at 2018-08-21 17:14
         </p>
     </div>
 </div>
