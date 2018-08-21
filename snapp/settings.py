@@ -2,7 +2,7 @@ import os
 import sys
 
 # ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-import env
+# import env
 
 import dj_database_url
 
@@ -76,29 +76,29 @@ WSGI_APPLICATION = 'snapp.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 # ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-
-
-
-# ###########TO BE UNCOMMENTED OUT PRIOR TO DEPLOYMENT#########
-# if 'DATABASE_URL' in os.environ: 
-#     DATABASES = {
-#         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-#             }
-
-# else:
-#     print("Databse URL not found. Use SQLite instead")
-#     DATABASES = {
+# DATABASES = {
 #         'default': {
 #             'ENGINE': 'django.db.backends.sqlite3',
 #             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #         }
 #     }
+
+
+
+# ###########TO BE UNCOMMENTED OUT PRIOR TO DEPLOYMENT#########
+if 'DATABASE_URL' in os.environ: 
+    DATABASES = {
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+            }
+
+else:
+    print("Databse URL not found. Use SQLite instead")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -158,8 +158,8 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 
 # ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
-# STATICFILES_LOCATION = 'static'
-# STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -167,16 +167,16 @@ STATICFILES_DIRS = [
     ]
 
 # ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
-# MEDIAFILES_LOCATION = 'media'
-# DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
-# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 # ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
 
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
