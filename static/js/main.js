@@ -58,16 +58,13 @@ $(document).ready(function() {
     Marquee plug-in for scrolling member alerts - 
     https://www.jqueryscript.net/animation/Text-Scrolling-Plugin-for-jQuery-Marquee.html
     */
+
     $('.marquee').marquee({
-        allowCss3Support: true,
-        css3easing: 'linear',
-        easing: 'linear',
-        delayBeforeStart: 300,
-        direction: 'left',
-        duplicated: true,
-        duration: 20000,
-        gap: 150,
-        pauseOnHover: true,
-        startVisible: true,
-    })
+    duration: 20000,
+    gap: 50,
+    delayBeforeStart: 0,
+    direction: 'left',
+    pauseOnHover: true,
+    duplicated: true
+    });
 });
