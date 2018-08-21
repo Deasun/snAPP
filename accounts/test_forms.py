@@ -50,5 +50,5 @@ class TestUserEditForm(TestCase):
     """Test Valid Blank User Fields"""
     def test_user_with_blank_field(self):
         form_edit = UserEditForm({'username': 'Tester', 'first_name': '', 'last_name': 'McFester', 'email': ''}) 
-        self.assertTrue(form_edit.is_valid())
+        self.assertFalse(form_edit.is_valid())
     
