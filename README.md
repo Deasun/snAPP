@@ -23,7 +23,6 @@ The **FeatureTicket** system is the mechanism for members to request, discuss an
 
  
 ### How does it work
- 
 This website uses the **Django** framework to route viewers through the site and execute the programme which is written in **python 3.4.3**. 
 
 The site is styled with **Bootstrap** and **JQuery** code for enhancing user-experience and hiding descriptive text (used to guide the member through the site and provide detailed information) in modals, tooltips and tabs. Random member alerts are scrolled across the screen using the JQuery plug-in **Marquee**. 
@@ -55,7 +54,7 @@ snAPP admin particpate in the comments section to report on progress. A Progress
 #### FeatureTickets
 * members request a feature by completing a Feature Request Form in which they describe and classify their request.
 * each Feature has its own profile page where members can access full details about the feature, add comments to suggest refining/amending the request. snAPP admin engage in the discussion to refine the request. Once this process is complete, snAPP admin team develop a Feature Report and costing of how much money will be required to create the entire feature. This costing is the feature's target
-* members contribute to the feature by purchasing FeatureTickets (£10 x 1). The snAPP admin team will begin work once the feature starts to get contributions. A progress bar is displayed to show how many more FeatureTickets are required to complete the feature
+* members contribute to the feature by purchasing FeatureTickets (£10 x 1). The snAPP admin team will begin work once the feature starts to get contributions. A progress bar is displayed to show how many more FeatureTickets are required to complete the feature (and the number of tickets required to be purchased is also rendered in the description)
 * the Developing snAPP page uses data-visualisation charts to show the activity of the snAPP team in responding to members' requests. The most recently added feature, one feature in development, and one without any contributions - as well as a table of features list by date - are displayed for the purposes of transparency and promoting certain features. 
 
 #### Cart
@@ -85,6 +84,10 @@ Details of the database scheme developed and used for snAPP can be found [HERE](
 ## Tech Used
 
 ### Development and Deployment
+
+> [rqeuirement] **describes the deployment procedure including settings files, environment variables, dependencies and any other differences between the dev and live versions
+
+
 While in development mode, environment variables (used in ```settings.py```) relating to **static files**, **media**, **email**, **stripe payment information**, **secret keys** and **database url** were located in the env.py file which was not pushed to GitHub and was retained in local directory using ```.gitignore```.
 
 For deployment, these environment variables were stored in Heroku's Config Vars.
@@ -92,20 +95,20 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
 ### Specific technology used on the application includes:
 
 #### Code
-- **HTML**, **CSS**, **JQuery** and **Python**
+- **HTML**, **CSS**, **Javascript** and **Python**
   - Base languages used to create website
 - [Django](https://www.djangoproject.com/)
-    - **Django** is used to develop models, templates and views used in the site amd handle routing
+    - The python framework **Django** was used to develop models, templates and views used in the site amd handle routing
 - [Bootstrap](http://getbootstrap.com/)
     - **Bootstrap 3.3.7** is used to render a responsive layout and hide text-heavy areas in modals and tabs to enable quicker, selective browsing
 - [JQuery](https://jquery.com)
-    - **JQuery** adds animation styling to our site to enhance user experience. The JQuery plug-in **Marquee** was used to display the scrolling alerts
+    - The Javascript library **JQuery** adds animation styling to our site to enhance user experience. The JQuery plug-in **Marquee** was used to display the scrolling alerts
 - [Sass](https://sass-lang.com/)
     - **Sass/scss** CSS extension is used to code and organise CSS stylesheets
 
 #### Functionality
 - [Pygal](http://pygal.org/en/stable/)
-    - The charts displaying bugticket and featureticket activity data are rendered using the **python** based open source programm **Pygal**.  
+    - The charts displaying bugticket and featureticket activity data are rendered using the **python** based ineractive charting programme **Pygal**.  
 - [Stripe](https://stripe.com)
     - The online payment processing system **Stripe** is used to handle member contributions.
 - [AWS S3](https://aws.amazon.com/s3/)
@@ -138,7 +141,7 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
 
 - **Password Reset** feature was tested by going through the reset process. Gmail settings had to be adjucted on two occasions - first to allow 'less secure' apps access to the account and secondly a 'Critical Security Alert' in my inbox which required a response to confirm the app's access to gmail account.
 
-- **JQuery** code used to style the application and enhance UX was tested manually across the site. The process of triggering the effect, checking if it occured, refreshing the page and triggering again was used on each styled element.
+- **JQuery** used to style the application and enhance UX was tested manually across the site. The process of triggering the effect, checking if it occured, refreshing the page and triggering again was used on each styled element.
 
 - **Browser compatibility** - the site was viewed and tested manually across mobile, tablet, laptop and large desktop views and in the following browsers:
   - Google Chrome
@@ -146,7 +149,7 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
   - Microsoft Edge
   - Mozilla Firefox
 
-**An unresolved bug occured in Chrome (JUMPING Bucket)**
+*Clicking on the tab panes for displaying feature and bug charts in Chrome causes the page to 'blink'. This is an unresoled bug.*
 
 - The application [Can I Use](https://www.caniuse.com) was used to check CSS code against the latest vendor prefix requirements.
 
