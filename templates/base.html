@@ -66,12 +66,12 @@
                     </div>
                     {% else %}
                     <!--Navbar for unlogged user-->
-                    <div class="dropdown">
-                        <a class="nav-link unlogged-nav-margin-left" href="{% url 'login' %}">Login
+                    <div class="dropdown nav-margin">
+                        <a class="nav-link" href="{% url 'login' %}">Login
                           <span></span></a>
                     </div>
-                    <div class="dropdown">
-                        <a class="nav-link unlogged-nav-margin-right" href="{% url 'registration' %}">Register
+                    <div class="dropdown nav-margin">
+                        <a class="nav-link" href="{% url 'registration' %}">Register
                           <span></span></a>
                     </div>
                     {% endif %}

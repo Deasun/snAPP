@@ -201,36 +201,12 @@ nav {
       margin-right: 12rem;
       margin-left: 12rem; } }
   @media (min-width: 992px) {
-    .nav-margin {
-      margin-right: 18rem;
-      margin-left: 18rem; } }
+    .nav-margin margin {
+      right: 18rem;
+      left: 18rem; } }
   @media (min-width: 1200px) {
     .nav-margin {
       margin-right: 20rem;
-      margin-left: 20rem; } }
-
-.unlogged-nav-margin-left {
-  margin-right: 4rem; }
-  @media (min-width: 768px) {
-    .unlogged-nav-margin-left {
-      margin-right: 12rem; } }
-  @media (min-width: 992px) {
-    .unlogged-nav-margin-left {
-      margin-right: 18rem; } }
-  @media (min-width: 1200px) {
-    .unlogged-nav-margin-left {
-      margin-right: 20rem; } }
-
-.unlogged-nav-margin-right {
-  margin-left: 4rem; }
-  @media (min-width: 768px) {
-    .unlogged-nav-margin-right {
-      margin-left: 12rem; } }
-  @media (min-width: 992px) {
-    .unlogged-nav-margin-right {
-      margin-left: 18rem; } }
-  @media (min-width: 1200px) {
-    .unlogged-nav-margin-right {
       margin-left: 20rem; } }
 
 .fa-sign-out-alt {
