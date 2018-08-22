@@ -157,23 +157,19 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
-
-
 # ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 ##
 
-
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATICFILES_LOCATION = 'static'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR,"static")
-#     ]
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static")
+    ]
 
 # STRIPE payment service
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
