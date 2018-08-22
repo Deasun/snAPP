@@ -17,6 +17,7 @@ DEBUG = True
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'snapp-app.herokuapp.com']
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
