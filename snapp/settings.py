@@ -2,7 +2,7 @@ import os
 import sys
 
 # ########p###TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-import env
+# import env
 
 import dj_database_url
 
@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'snapp-app.herokuapp.com']
 
@@ -49,8 +49,6 @@ MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware', # simplified static file serving
 ]
 
-
-
 ROOT_URLCONF = 'snapp.urls'
 
 TEMPLATES = [
@@ -79,27 +77,27 @@ WSGI_APPLICATION = 'snapp.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 # ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        }
-    }
-
-
-
-# ###########TO BE UNCOMMENTED OUT PRIOR TO DEPLOYMENT#########
-# if 'DATABASE_URL' in os.environ: 
-#     DATABASES = { 'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
-
-# else:
-#     print("Databse URL not found. Use SQLite instead")
-#     DATABASES = {
+# DATABASES = {
 #         'default': {
 #             'ENGINE': 'django.db.backends.sqlite3',
 #             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #         }
 #     }
+
+
+
+# ###########TO BE UNCOMMENTED OUT PRIOR TO DEPLOYMENT#########
+if 'DATABASE_URL' in os.environ: 
+    DATABASES = { 'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+
+else:
+    print("Databse URL not found. Use SQLite instead")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 
 # Password validation
@@ -120,8 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# AUTH_PROFILE_MODULE = 'accounts.Profile'
-
 # Creating Login capability
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -130,70 +126,62 @@ AUTHENTICATION_BACKENDS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
-
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.0/howto/static-files/
 
+
+# Media files served from AWS
 AWS_S3_OBJECT_PARAMETERS = {
     'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
     'CacheControl': 'max-age=94608000',
 }
-
 AWS_STORAGE_BUCKET_NAME = 'snapp-app'
 AWS_S3_REGION_NAME = 'eu-west-1'
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
-
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
+# MEDIA_URL = '/media/'
 
 
 # ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
-# STATICFILES_LOCATION = 'static'
-# STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+
+
+# ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
+MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 ##
 
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static")
     ]
 
-# ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
-# MEDIAFILES_LOCATION = 'media'
-# DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
-# MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-
-##
-
-# ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-MEDIA_URL = '/media/'
-
-
+# STRIPE payment service
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET')
 
-
-MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
-
-
+# Reset password email feature
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get("EMAIL_ADDRESS")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
+
+# Django message feature
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
