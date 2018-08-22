@@ -21,7 +21,7 @@ def request_feature(request, pk=None):
             submit = request_form.save(commit=False)
             submit.created_by = request.user
             submit.save()
-            messages.success(request, "Excellent. Your feature request will be posted to start attracting supporters once you have made your snAPP contribution!")
+            messages.success(request, "Excellent. Your feature ticket has been posted. Now make a contribution!")
             return redirect('get_feature_listing')
     else:
         request_form = RequestFeatureForm()
@@ -68,6 +68,7 @@ def feature_report(request, pk=id):
                 return ticket_total
         
         total = feature_upvotes()
+
 
     return render(request, "feature_report.html", {'features': features, 'total': total})
 
