@@ -172,6 +172,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"static")
     ]
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # STRIPE payment service
 STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE')
