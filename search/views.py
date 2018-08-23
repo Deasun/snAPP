@@ -1,13 +1,8 @@
-from django.http import Http404
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
-
-# testting postgres search
 from django.contrib.postgres.search import SearchVector
-
-
 from django.contrib import messages
 from featuretickets.models import FeatureTicket
 from featuretickets.charts import config_featurepie_chart, config_featureline_chart
@@ -20,13 +15,10 @@ from accounts.models import Profile
 @login_required
 def feature_search(request):
     """
-    Enable user to search snAPP features by feature_type
+    Enable full-text search of featureticket title, description and type
     """
-    # features = FeatureTicket.objects.filter(feature_type__icontains=request.GET['q'])
-    
-    # testintg postgres search
     features = FeatureTicket.objects.annotate(
-        search=SearchVector('title', 'description'),
+        search=SearchVector('title', 'description', 'feature_type'),
         ).filter(search=request.GET['q'])
     
     # Handle empty query set with django message 
@@ -47,9 +39,11 @@ def feature_search(request):
 @login_required
 def bug_search(request):
     """
-    Enable user to search snAPP bugs by description
+    Enable user to search snAPP bugs by title, description and type
     """
-    bugs = BugTicket.objects.filter(description__icontains=request.GET['q'])
+    bugs = BugTicket.objects.annotate(
+        search=SearchVector('title', 'description', 'bug_type'),
+        ).filter(search=request.GET['q'])
     
     # Handle empty query set with django message 
     if not bugs:
@@ -90,7 +84,10 @@ def alert_search(request):
     """
     Enable users to search snAPP alerts by keyword
     """
-    alerts = Profile.objects.filter(alert__icontains=request.GET['q'])
+
+    alerts = Profile.objects.annotate(
+        search=SearchVector('alert'),
+        ).filter(search=request.GET['q'])
     
     # Handle empty query set with django message 
     if not alerts:
