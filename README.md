@@ -65,7 +65,7 @@ Members can access their carts to review the number of tickets purchased and pro
 Members can review their order on the checkout page and are asked to input their personal and payment details using the Stripe online payment processing system.
 
 #### Search
-There are search facilities available for members, alerts, bugtickets and featuretickets. Members are encouraged to use the search facility to prevent duplicating feature requests and bug reports. When searching bugtickets and featuretickets, search is carried out by 'Title' field.
+There are search facilities available for members, alerts, bugtickets and featuretickets. Members are encouraged to use the search facility to prevent duplicating feature requests and bug reports. Search is executed using Django's full text search feature Search Vector and searches via 'title' and 'description' fields.
 
 #### Persistence of contributions
 When members leave the snAPP newtork, any bugs, features, comments or upvotes they contributed persist. This feature recognises the collaborative nature of the platform.
@@ -81,24 +81,27 @@ When members leave the snAPP newtork, any bugs, features, comments or upvotes th
 ## Database Schema
 Details of the database scheme developed and used for snAPP can be found [HERE](database_schema/db_schema.md)
 
-## Tech Used
+## Technoloy Used
 
-### Development and Deployment
-Database - dropped SQLite3 development database and set up postgres database through Heroku Postgres
-Static Files - changed from local directory to AWS Bucket
-Media Files - changed from local directory to AWS Bucket
-All environment variables moved to Heorku
+#### Development and Deployment
+snAPP was developed locally using the [AWS Cloud 9](https://aws.amazon.com/cloud9/) IDE. In development mode a local SQLite database provided by Django was used. Environment variables stored the following in the env.py file in the local directory (which had .gitignore applied to prevent security information being push to git):
+* ```SECRET_KEY```
+* ```STRIPE_PUBLISHABLE```
+* ```STRIPE_SECRET```
+* ```EMAIL_ADDRESS```
+* ```EMAIL_PASSWORD```
 
-> [requirement] **describes the deployment procedure including settings files, environment variables, dependencies and any other differences between the dev and live versions
+In production mode, media files were stored in an [AWS Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) and staticfiles were served to Heorku using [Whitenoise](https://warehouse.python.org/project/whitenoise/). 
 
- 
+The SQLite database was dropped and migration history was cleared before the models were migrated to a Postgreql database using the Heroku-Postgres add-on (and a new ```DATABASE_URL``` set). The environment variables defined in the env.py during development were stored in Heroku Config Vars for production and ```debug``` was set to ```false``` in settings.py with the follwing variables created for accessing the AWS bucket:
+* ```AWS_ACCESS_KEY_ID```
+* ```AWS_SECRET_ACCESS_KEY```
 
+In development, the ```search``` facility in development is restricted to filtering by one field only using SQLite database. In production, ```search``` carries out a full-text search using Django's postgres full-text search field.
 
-While in development mode, environment variables (used in ```settings.py```) relating to **static files**, **media**, **email**, **stripe payment information**, **secret keys** and **database url** were located in the env.py file which was not pushed to GitHub and was retained in local directory using ```.gitignore```.
+If running snAPP in your local environment using SQLite, the code for searching (by the 'description' field) is:
 
-For deployment, these environment variables were stored in Heroku's Config Vars.
-
-### Specific technology used on the application includes:
+    ```bugs = BugTicket.objects.filter(description__icontains=request.GET['q'])```
 
 #### Code
 - **HTML**, **CSS**, **Javascript** and **Python**
@@ -128,50 +131,13 @@ For deployment, these environment variables were stored in Heroku's Config Vars.
 - [Heroku](https://www.heroku.com/)
     - The Cloud Application Platform **Heroku** hosts the snAPP application.
 
-
 ## Testing
-
-### Automated Testing
-- [coverage.py](https://coverage.readthedocs.io/en/coverage-4.5.1/)
-    - Python code across applications is tested extensively using the **coverage.py** testing tool. Custom code, for example provided by the Stripe payment service, was manually tested using the Stripe dashboard (also accounting for the under 90% test covergae on the Checkout app). The coverage on each of the apps is currently:
-        - Accounts – 94%
-        - BugTickets – 93%
-        - FeatureTickets – 96%
-        - Cart – 91%
-        - Checkout – 88%
-        - Search – 94% 
-
-To run automated testing enter the following into the command line (replace 'app' with name of the application being tested:
-```$ coverage run --source=<app> manage.py test``` 
-
-
-- [Travis CI](https://bower.io)
-    - pre-deployment integration tests are carried out using the **Travis Continuous Integration** service. Integration tests were passing at time of deployment (as should be seen at the head of this README file)
-
-### Manual Testing
-- **User stories**, located in the [database schema](database_schema/db_schema.md) were used to test the functionalities of the application. This involved a step-by-step process of testing links, forms, comments, upvotes, bugticket and featureticket reports.
-
-- **Password Reset** feature was tested by going through the reset process. Gmail settings had to be adjucted on two occasions - first to allow 'less secure' apps access to the account and secondly a 'Critical Security Alert' in my inbox which required a response to confirm the app's access to gmail account.
-
-- The **Stripe** payment method had limited testing (2) in the automated testing suite. To test the payment system manually, details were entered (using Stripe's test Credit Card details) in the snAPP checkout form and the details associated with this purchase order (name, amount, date( was checked against the details provided on the Payment/Customer section of the Stripe Dashboard. 
-
-- **JQuery** used to style the application and enhance UX was tested manually across the site. The process of triggering the effect, checking if it occured, refreshing the page and triggering again was used on each styled element.
-
-- **Browser compatibility** - the site was viewed and tested manually across mobile, tablet, laptop and large desktop views and in the following browsers:
-  - Google Chrome
-  - Opera
-  - Microsoft Edge
-  - Mozilla Firefox
-
-*Clicking on the tab panes for displaying feature and bug charts in Chrome causes the page to 'blink'. This is an unresoled bug.*
-
-- The application [Can I Use](https://www.caniuse.com) was used to check CSS code against the latest vendor prefix requirements.
-
+For details of automated and manual testing carried out, see [HERE](testing.md)
 
 ## API
-At this point, snAPP provides an API relating to bug information only. It is intended to release more snAPP information for analysis as the site develops.
+At this point, snAPP provides an API relating to bugticket information only. It is intended to release more snAPP information (which does not reveal details of snAPP members) for analysis as the site develops.
 
-The API can be found [HERE](https://sn-app-deasunod.c9users.io/bugtickets/api_views/)
+The API can be found [HERE](https://snapp-app.herokuapp.com/bugtickets/api_views/)
 
 ## Contributing
 
@@ -179,8 +145,8 @@ The API can be found [HERE](https://sn-app-deasunod.c9users.io/bugtickets/api_vi
 1. Create a virtual environment running python 3.4.3 as the default in your IDE
 2. Clone this repository by running the ```git clone https://github.com/Deasun/snAPP.git``` command
 3. pip install requirements
-4. Enter ```python manage.py make migrations``` followed by ```python manage.py migrate``` to create your database
-5. Set your own environment variables (marked in the ```settings.py`` file)
+4. Set your own environment variables for development mode as described in the **Deployment** section above. Save these in an ```env.py``` file in your root directory and ```import env``` in your ```settings.py``` file in your main application (snapp directory)
+5. Enter ```python manage.py make migrations``` followed by ```python manage.py migrate``` on the Command Line to create your database
 6. The project will now run on [localhost](http://127.0.0.1:8080)
 7. We welcome all contributions to improving our code, so make changes you think are needed/desired and submit a pull request. If you are egaer to support, please refer first to the **Features Left to Implement** section above.
 
