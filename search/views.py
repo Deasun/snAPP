@@ -27,7 +27,7 @@ def feature_search(request):
     # testintg postgres search
     features = FeatureTicket.objects.annotate(
         search=SearchVector('title', 'description'),
-        ).filter(search=request)
+        ).filter(search=request.GET['q'])
     
     # Handle empty query set with django message 
     if not features:
