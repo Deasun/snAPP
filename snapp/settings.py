@@ -1,9 +1,5 @@
 import os
 import sys
-
-# ########p###TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-# import env
-
 import dj_database_url
 
 
@@ -16,10 +12,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [os.environ.get('C9_HOSTNAME'), 'snapp-app.herokuapp.com']
 
-
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -74,20 +67,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'snapp.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-# ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-# DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
-#     }
-
-
-
-# ###########TO BE UNCOMMENTED OUT PRIOR TO DEPLOYMENT#########
+# POSTGRESQL Database
 if "DATABASE_URL" in os.environ:
     DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL')) }
 else:
@@ -99,11 +79,8 @@ else:
         }
     }
 
-
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -124,7 +101,6 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.EmailAuth']
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 LANGUAGE_CODE = 'en-us'
@@ -132,9 +108,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-
-
-
 
 # Media files served from AWS
 AWS_S3_OBJECT_PARAMETERS = {
@@ -148,19 +121,9 @@ AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# ###########TO BE COMMENTED OUT PRIOR TO DEPLOYMENT#########
-# MEDIA_URL = '/media/'
-
-
-# ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
 MEDIAFILES_LOCATION = 'media'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-
-# ###########TO BE UNCOMMENTED PRIOR TO DEPLOYMENT#########
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
-
-##
 
 # Static files (CSS, JavaScript)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
