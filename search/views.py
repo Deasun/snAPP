@@ -25,7 +25,7 @@ def feature_search(request):
     # features = FeatureTicket.objects.filter(feature_type__icontains=request.GET['q'])
     
     # testintg postgres search
-    features = FeatureTicket.objects,annotate(
+    features = FeatureTicket.objects.annotate(
         search=SearchVector('title', 'description'),
         ).filter(search=request)
     
