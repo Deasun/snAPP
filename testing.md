@@ -2,15 +2,16 @@
 
 ### Automated Testing
 - [coverage.py](https://coverage.readthedocs.io/en/coverage-4.5.1/)
-    - Python code across applications is tested extensively using the **coverage.py** testing tool. 65 tests were run in development mode (inc. 8 tests on Search feature for SQLite database) and 57 in production (search feature test for Postgres database carried out manually). Custom code, for example provided by the Stripe payment service, was manually tested using the Stripe dashboard (also accounting for the under 90% test covergae on the Checkout app). The coverage on each of the apps is currently:
-        - Accounts – 94%
-        - BugTickets – 93%
-        - FeatureTickets – 96%
-        - Cart – 91%
-        - Checkout – 88%
-        - Search – (see manual testing)
+    - Python code across applications is tested extensively using the **coverage.py** testing tool. **65 tests were run in development mode** (inc. 8 tests on Search feature for SQLite database) and **57 in production** (search feature test for Postgres database carried out manually). Custom code, for example provided by the Stripe payment service, was manually tested using the Stripe dashboard (also accounting for the under 90% test covergae on the Checkout app). The coverage on each of the apps is currently:
+        - **Accounts** – 94%
+        - **BugTickets** – 93%
+        - **FeatureTickets** – 96%
+        - **Cart** – 91%
+        - **Checkout** – 88%
+        - **Search** – (see manual testing)
 
-To run automated testing enter the following into the command line (replace ```app``` with name of the application being tested:
+To run automated testing in your local environment enter the following in the Command Line (replace ```app``` with name of the application being tested:
+
 ```$ coverage run --source=<app> manage.py test``` 
 
 To produce a report of the coverage across a particualr app, follow the above command with:
@@ -18,7 +19,7 @@ To produce a report of the coverage across a particualr app, follow the above co
 ```$ coverage report```
 
 - [Travis CI](https://bower.io)
-    - pre-deployment integration tests are carried out using the **Travis Continuous Integration** service. Integration tests were passing at time of deployment (as displayed at the head of this README file)
+    - pre-deployment integration tests are carried out using the **Travis Continuous Integration** service. Integration tests were passing at time of deployment (as displayed at the head of the README file)
 
 ### Manual Testing
 - The **Search** feature in development mode was based on queries of the Django provided SQLite database. The following tests (there were 8 in total) are an example of those run across the tables in which search was enabled (User, Profile, BugTicket, FeatureTicket):
@@ -26,8 +27,8 @@ To produce a report of the coverage across a particualr app, follow the above co
 
     class TestSearch(TestCase):
     """
-    Simulate user, bug/featuretickets and alert for search tests
-    """   
+    Simulate user for search tests
+    """"
     def setUp(self):
         self.user = User.objects.create_user('Tested', 'tested@mail.com', 'q0w9e8r7t7')
         self.user.save()
@@ -55,9 +56,11 @@ To produce a report of the coverage across a particualr app, follow the above co
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), "Your search returned no results. Please try again.")
 
-Coverage ran at 94%.
+**Coverage ran at 94%**.
 
-In production, however, testing was required for the Postgresql database. This testing was done manually. Using a small sample of data (3 x users, 3 x bugtickets, 3 x featuretickets, 3 x alerts) keywords were inputted into the search form which tested if the query successfully located matching text in the fields targeted. The keywords were entered with a mixture of upper and lowercase to ensure searches were not case sensitive and the small sample enabled testing to identify keywords which appeared in a number of records and therefore produced more than one result (e.g. 'happens' in bugtickets, or 'union' in featuretickets).
+In production, however, a **Postgresql database** is used which caused these tests to fail the Travis CI test. Testing on the Postgresql database was done manually. 
+
+Using a small sample of data (3 x users, 3 x bugtickets, 3 x featuretickets, 3 x alerts) keywords were inputted into the search form which tested if the query successfully located matching text in the fields targeted. The keywords were entered with a mixture of upper and lowercase to ensure searches were not case sensitive and the small sample enabled testing to identify keywords which appeared in a number of records and therefore produced more than one result (e.g. 'happens' in bugtickets, or 'union' in featuretickets).
 
 - **User stories**, located in the [database schema](database_schema/db_schema.md) were used to test the functionalities of the application. This involved a step-by-step process of testing links, forms, comments, upvotes, bugticket and featureticket reports in production.
 
@@ -73,6 +76,6 @@ In production, however, testing was required for the Postgresql database. This t
   - Microsoft Edge
   - Mozilla Firefox
 
-*Clicking on the tab panes for displaying feature and bug charts in Chrome causes the page to 'blink'. This is an unresoled bug.*
+> Clicking on the tab panes for displaying feature and bug charts in Chrome causes the page to 'blink'. This is an unresolved bug.
 
 - The application [Can I Use](https://www.caniuse.com) was used to check CSS code against the latest vendor prefix requirements.
