@@ -3,6 +3,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
+
+# testting postgres search
+from django.contrib.postgres.search import SearchVector
+
+
 from django.contrib import messages
 from featuretickets.models import FeatureTicket
 from featuretickets.charts import config_featurepie_chart, config_featureline_chart
@@ -17,7 +22,12 @@ def feature_search(request):
     """
     Enable user to search snAPP features by feature_type
     """
-    features = FeatureTicket.objects.filter(feature_type__icontains=request.GET['q'])
+    # features = FeatureTicket.objects.filter(feature_type__icontains=request.GET['q'])
+    
+    # testintg postgres search
+    features = FeatureTicket.objects,annotate(
+        search=SearchVector('title', 'description'),
+        ).filter(search=request)
     
     # Handle empty query set with django message 
     if not features:
