@@ -68,13 +68,13 @@ class TestSearch(TestCase):
     
     """Test member search status code and page render"""
     def test_member_search(self):
-        response = self.client.get("/search/member_search/?member={0}".format("Tested"))
+        response = self.client.get("/search/member_search/?q={0}".format("Tested"))
         self.assertEqual(response.status_code, 302)
         self.assertRedirects(response, '/accounts/profile/1')    
     
     """Test member search with no matches"""
     def test_member_search_no_match(self):
-        response = self.client.get("/search/member_search/?member={0}".format("Tested"))
+        response = self.client.get("/search/member_search/?q={0}".format("Tested"))
         messages = list(get_messages(response.wsgi_request))
         self.assertEqual(len(messages), 1)
         self.assertEqual(str(messages[0]), "There are no snAPP members with that username. Please try again.")
@@ -86,7 +86,7 @@ class TestSearch(TestCase):
         self.assertTemplateUsed(response, "profile.html")  
     
     """Test alert search with no matches"""
-    def test_member_search_no_match(self):
+    def test_alert_search_no_match(self):
         response = self.client.get("/search/alert/?q={0}".format("2alert2"))
         self.assertEqual(response.status_code, 200)
         messages = list(get_messages(response.wsgi_request))
