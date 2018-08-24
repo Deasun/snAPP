@@ -26,10 +26,9 @@ To produce a report of the coverage across a particualr app, follow the above co
 
 
     class TestSearch(TestCase):
-    """
-    Simulate user for search tests
-    """"
-    def setUp(self):
+
+        def setUp(self):
+    
         self.user = User.objects.create_user('Tested', 'tested@mail.com', 'q0w9e8r7t7')
         self.user.save()
         login = self.client.login(username='Tested', password='q0w9e8r7t7')
@@ -39,22 +38,20 @@ To produce a report of the coverage across a particualr app, follow the above co
                 description='this is a feature',
                 created_by_id = 1
                 )
-    """
-    Test feature search status code and page render
-    """
-    def test_feature_search(self):
-        response = self.client.get("/search/feature/?q={0}".format("feature"))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "feature_listing.html")    
-    """
-    Test feature search with no matching results
-    """
-    def test_feature_search_no_match(self):
-        response = self.client.get("/search/feature/?q={0}".format("2feature2"))
-        self.assertEqual(response.status_code, 200)
-        messages = list(get_messages(response.wsgi_request))
-        self.assertEqual(len(messages), 1)
-        self.assertEqual(str(messages[0]), "Your search returned no results. Please try again.")
+    
+        # Test feature search status code and page render
+        def test_feature_search(self):
+            response = self.client.get("/search/feature/?q={0}".format("feature"))
+            self.assertEqual(response.status_code, 200)
+            self.assertTemplateUsed(response, "feature_listing.html")    
+    
+        # Test feature search with no matching results
+        def test_feature_search_no_match(self):
+            response = self.client.get("/search/feature/?q={0}".format("2feature2"))
+            self.assertEqual(response.status_code, 200)
+            messages = list(get_messages(response.wsgi_request))
+            self.assertEqual(len(messages), 1)
+            self.assertEqual(str(messages[0]), "Your search returned no results. Please try again.")
 
 **Coverage ran at 94%**.
 

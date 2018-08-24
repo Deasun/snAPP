@@ -43,7 +43,7 @@ Find below the applications and the features provided in each.
 * **registration** to create users (members) and login credentials 
 * if a member forgets, or wishes to change, their password, a **password reset** process is included which will send reset instructions to the inbox registered with the member's account
 * each member has a **profile page** containing some personal (and editable) information, details of their involvement in snAPP's development (what bugs they have reported or features they have requested) and their snAPP alert
-* a **summary table of the most recent alerts** across the snAPP network. **Random alerts are also displayed constantly** in browser view and accessible through a click. Member alerts cease to appear on the alert system when they expire. Members can amend their alerts at any time from their profile page**
+* a **summary table of the most recent alerts** across the snAPP network. **Random alerts are also displayed constantly** in browser view and accessible through a click. Member alerts cease to appear on the alert system when they expire. **Members can amend their alerts at any time from their profile page**
 
 #### BugTickets
 * members report bugs by completing a **Bug Report Form**. Members must classify their bugs to assist the snAPP admin pinpoint and classify reported problems. 
@@ -59,12 +59,11 @@ snAPP admin particpate in the **comments section** to report on progress. A **Pr
 * the Developing snAPP page uses **data-visualisation charts** to show the activity of the snAPP team in responding to members' requests. The most recently added feature, one feature in development, and one without any contributions - as well as a table of features list by date - are displayed for the purposes of transparency and promoting certain features. Sample data has been added to the database so users can see the charts rendered.
 
 #### Cart
-The cart keeps track of a member's **FeatureTicket purchases** during each session. 
-Members can access their carts to re**view the number of tickets purchased and proceed to checkout.
+The cart keeps track of a member's **FeatureTicket purchases** during each session. Members can access their carts to **review the number of tickets purchased** and proceed to checkout.
 
 #### Checkout
 Members can **review their order** on the checkout page and are asked to input their personal and payment details using the Stripe online payment processing system.
-**
+
 #### Search
 There are **search facilities available for members, alerts, bugtickets and featuretickets**. Members are encouraged to use the search facility to prevent duplicating feature requests and bug reports. Search is executed using Django's full text search feature Search Vector and searches via 'title' and 'description' fields.
 
