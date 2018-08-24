@@ -26,6 +26,7 @@ def config_featureline_chart():
         )
     line_chart = pygal.Line(fill=True, interpolate='cubic', style=custom_style, legend_at_bottom=True, x_label_rotation=-20, legend_box_size=18)
     line_chart.x_labels = 'today', 'last week', 'last fortnight', 'last 30 days'
+    line_chart = pygal.Line(max_scale=4)
     
     """Apply class methods to filter current & completed FeatureTicket chart data"""
     line_chart.add('In Development', [

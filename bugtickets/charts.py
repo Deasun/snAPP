@@ -28,6 +28,7 @@ def config_bugline_chart():
     
     line_chart = pygal.Line(fill=True, legend_at_bottom=True, interpolate='cubic', style=custom_style, x_label_rotation=-20, legend_box_size=18)
     line_chart.x_labels = 'today', 'last 7 days', 'last fortnight', 'last 30 days'
+    line_chart = pygal.Line(max_scale=4)
     
     """Apply class methods to filter current & completed BugTicket chart data"""
     line_chart.add('In Development', [
