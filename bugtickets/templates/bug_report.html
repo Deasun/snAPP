@@ -110,7 +110,7 @@
     <!--Comments column header-->
     <div class="col-xs-12 col-md-5 col-lg-4 col-lg-offset-1 head">
         <p class="feature_panel banner">
-            <i class="far fa-comments tactics fa-2x tactics"><label class='badge comment-badge'>{{ bug.comments.count }}</label></i><strong> Bug Report details</strong></p><br>
+            <i class="far fa-comments tactics fa-2x tactics"><label class='badge comment-badge'>{{ bug.comments.count }}</label></i><strong> Bug Comments</strong></p><br>
         <a class="btn btn-success home-btn" href="{% url 'add_comment_to_bug' pk=bug.id %}">Add comment <i class="far fa-comment-alt"></i></a>
         <section class="comments head scroll">
 
