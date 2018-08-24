@@ -76,9 +76,9 @@ Using a small sample of data (3 x users, 3 x bugtickets, 3 x featuretickets, 3 x
   - Opera
   - Microsoft Edge
 
+- **Unresolved bugs:**
+    1. Clicking on the tab panes for displaying feature and bug charts in Chrome causes the page to 'blink'
+    2. *embed* tag is not supported in Microsoft Edge preventing the pygal charts from rendering in that browser
 
-> Unresolved bugs:
-- Clicking on the tab panes for displaying feature and bug charts in Chrome causes the page to 'blink'
-- <embed> tag is not supported in Microsoft Edge preventing the pygal charts from rendering
 
-- The application [Can I Use](https://www.caniuse.com) was used to check CSS code against the latest vendor prefix requirements.
+- **The application [Can I Use](https://www.caniuse.com)** was used to check CSS code against the latest vendor prefix requirements.

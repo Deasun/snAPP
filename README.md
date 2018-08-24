@@ -146,7 +146,7 @@ For details of automated and manual testing carried out, see [HERE](testing.md)
 4. Set your own environment variables for development mode as described in the **Deployment** section above. Save these in an ```env.py``` file in your root directory and ```import env``` in your ```settings.py``` file in the main application ('snap'p directory)
 5. Enter ```python manage.py make migrations``` followed by ```python manage.py migrate``` on the Command Line to create your database
 6. The project will now run on [localhost](http://127.0.0.1:8080)
-7. We welcome all contributions to improving our code, so make changes you think are needed/desired and submit a pull request. If you are egaer to support, please refer first to the **Features Left to Implement** section above.
+7. We welcome all contributions to improving our code, so make changes you think are needed/desired and submit a pull request. If you are egaer to support, please refer first to the **Features Left to Implement** section above and the **Unresolved Bugs** section of the [testing file](testing.md)
 
 ## Credits
 
