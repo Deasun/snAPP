@@ -49,14 +49,14 @@ Find below the applications and the features provided in each.
 * members report bugs by completing a **Bug Report Form**. Members must classify their bugs to assist the snAPP admin pinpoint and classify reported problems. 
 * each **bug has its own page** where other member can view details of the bug, add a comment or upvote it (if they experience it as well). Only snAPP admin have the ability to amend or delete bug reports.
 snAPP admin particpate in the **comments section** to report on progress. A **Progress Report** is published upon completion
-* for purposes of transparency, the Fixing snAPP page displays **data-visualisation charts** outlining the type of bugs being reported, as well as the daily, weekly, fortnightly and monthly activity of the snAPP admin team. A table outlining the most upvoted bugs is also displayed
+* for purposes of transparency, the Fixing snAPP page displays **data-visualisation charts** outlining the type of bugs being reported, as well as the daily, weekly, fortnightly and monthly activity of the snAPP admin team. A table outlining the most upvoted bugs is also displayed. Sample data has been added to the database so users can see the charts rendered.
 
 #### FeatureTickets
 * members request a feature by completing a **Feature Request Form** in which they describe and classify their request.**
 * each **Feature has its own profile page** where members can access full details about the feature, add comments to suggest refining/amending the request. snAPP admin engage in the discussion to refine the request. Once this process is complete, snAPP admin team develop a **Feature Report** and **costing** of how much money will be required to create the entire feature. This costing is the feature's target
 * members contribute to the feature by purchasing **FeatureTickets** (£10 x 1). 
 * Working through the **Django Admin Panel** the snAPP admin team will set a **target for contributions required to produce the feature**. Work on the feature will begin once the feature starts to get contributions. A progress bar is displayed to show how many more FeatureTickets are required to complete the feature (and the number of tickets required to be purchased is also rendered in the description)
-* the Developing snAPP page uses **data-visualisation charts** to show the activity of the snAPP team in responding to members' requests. The most recently added feature, one feature in development, and one without any contributions - as well as a table of features list by date - are displayed for the purposes of transparency and promoting certain features. 
+* the Developing snAPP page uses **data-visualisation charts** to show the activity of the snAPP team in responding to members' requests. The most recently added feature, one feature in development, and one without any contributions - as well as a table of features list by date - are displayed for the purposes of transparency and promoting certain features. Sample data has been added to the database so users can see the charts rendered.
 
 #### Cart
 The cart keeps track of a member's **FeatureTicket purchases** during each session. 
