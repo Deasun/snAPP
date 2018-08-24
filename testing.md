@@ -71,11 +71,14 @@ Using a small sample of data (3 x users, 3 x bugtickets, 3 x featuretickets, 3 x
 - **JQuery** used to style the application and enhance UX was tested manually across the site. The process of triggering the effect, checking if it occured, refreshing the page and triggering again was used on each styled element.
 
 - **Browser compatibility** - the site was viewed and tested manually across mobile, tablet, laptop and large desktop views and in the following browsers:
+  - Mozilla Firefox
   - Google Chrome
   - Opera
   - Microsoft Edge
-  - Mozilla Firefox
 
-> Clicking on the tab panes for displaying feature and bug charts in Chrome causes the page to 'blink'. This is an unresolved bug.
+
+> Unresolved bugs:
+- Clicking on the tab panes for displaying feature and bug charts in Chrome causes the page to 'blink'
+- <embed> tag is not supported in Microsoft Edge preventing the pygal charts from rendering
 
 - The application [Can I Use](https://www.caniuse.com) was used to check CSS code against the latest vendor prefix requirements.
