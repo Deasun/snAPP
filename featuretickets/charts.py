@@ -24,7 +24,7 @@ def config_featureline_chart():
         transition='400ms ease-in',
         colors=('#ff01c0', '#1eb13b')
         )
-    line_chart = pygal.Line(fill=True, interpolate='cubic', style=custom_style, legend_at_bottom=True, x_label_rotation=-20, legend_box_size=18, max_scale=4, order_min=1)
+    line_chart = pygal.Line(fill=True, interpolate='cubic', style=custom_style, legend_at_bottom=True, x_label_rotation=-20, legend_box_size=18)
     line_chart.x_labels = 'today', 'last week', 'last fortnight', 'last 30 days'
     
     """Apply class methods to filter current & completed FeatureTicket chart data"""
